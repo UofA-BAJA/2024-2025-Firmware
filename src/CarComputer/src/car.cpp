@@ -1,3 +1,10 @@
+/* 
+ * Represents the car as a whole, controlling the various subsystems
+ *
+ * 
+ * Author: Matthew Larson
+ */
+
 #include "car.h"
 #include <iostream>
 
@@ -7,5 +14,5 @@ Car::Car(){
 }
 
 void Car::execute(){
-
+    std::cout << "Help\n";
 }

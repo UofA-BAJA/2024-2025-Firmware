@@ -29,6 +29,8 @@ int main(){
 
     int i = 0;
 
+    // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
+
     while(1){
         // req defines a time value required by nanosleep 
         struct timespec req = {0};
