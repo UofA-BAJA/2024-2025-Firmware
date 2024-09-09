@@ -10,11 +10,27 @@
 #include <time.h>
 #include <cstdlib>
 #include "Car.h"
-
+#include "CarContainer.h"
 
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
+
+
+Car::Car() {
+    // Init behavior that needs to be called before the subsystems start running.
+    init();
+
+    CarContainer carContainer = CarContainer(*this);
+
+    for(int i = 0; i < numCommands; i++){
+        std::cout << commands[i]->toString() << std::endl;
+        commands[i]->init();
+    }
+
+    execute();
+}
+
 
 Car::~Car(){
     // Later on we'll probably call this function as a command from the pit. Actually, 
@@ -43,7 +59,7 @@ void Car::execute(){
         nanosleep(&req, (struct timespec *)NULL);
 
         for(int i = 0; i < numCommands; i++){
-            commands[i].execute();
+            commands[i]->execute();
         }
 
     }
@@ -53,17 +69,12 @@ void Car::execute(){
 }
 
 void Car::init(){
-
-    for(int i = 0; i < numCommands; i++){
-        commands[i].init();
-    }
-
     std::cout << "Car Sucessfully Initialized\n";
 }
 
 void Car::end(){
     for(int i = 0; i < numCommands; i++){
-        commands[i].end();
+        commands[i]->end();
     }
     std::cout << "Car sucessfully destroyed\n";
 }
@@ -78,11 +89,11 @@ void Car::end(){
  * Returns: EXIT_SUCCESS for successful binding and
  * EXIT_FAILURE for unsucessful binding. 
  */
-int Car::BindCommand(Command command){
+int Car::bindCommand(Command* command){
 
     if(numCommands >= MAX_COMMANDS){
         std::cout << "Number of commands is at its max. ";
-        std::cout << command.toString() << " will not be included in the car.\n";
+        std::cout << command->toString() << " will not be included in the car.\n";
         return EXIT_FAILURE;
     }
 

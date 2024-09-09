@@ -8,16 +8,14 @@
 #ifndef CAR_H
 #define CAR_H
 
-#include "commands/command.h"
+#include "commands/Command.h"
 
-
-class Car
-{
+class Car{
     public:
         Car();
         ~Car();
 
-        int BindCommand(Command command);
+        int bindCommand(Command* command);
 
     private:
         void init();
@@ -26,7 +24,7 @@ class Car
 
         static const int MAX_COMMANDS = 256;
         int numCommands = 0;
-        Command commands[MAX_COMMANDS];   // No way we have more than 32 subsystems. Even 8 would be excessive.
+        Command *commands[MAX_COMMANDS];   // No way we have more than 256 commands.
 };
 
 #endif

@@ -11,8 +11,5 @@
 
 int main(){
     Car car = Car();
-    CarContainer carContainer = CarContainer(car);
-
-
     return 0;
 }
