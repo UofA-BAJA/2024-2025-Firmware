@@ -10,6 +10,7 @@
 
 #include "subsystems/subsystem.h"
 
+
 class Car
 {
     public:
@@ -23,8 +24,9 @@ class Car
         void execute();
         void end();
 
+        static const int MAX_DEVICES = 32;
         int numSubsystems = 0;
-        Subsystem subsystems[32];   // No way we have more than 32 subsystems. Even 8 would be excessive.
+        Subsystem subsystems[MAX_DEVICES];   // No way we have more than 32 subsystems. Even 8 would be excessive.
 };
 
 #endif

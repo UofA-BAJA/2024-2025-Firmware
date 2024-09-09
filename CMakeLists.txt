@@ -11,7 +11,6 @@ file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/*.cpp)
 file(GLOB_RECURSE SUBSYSTEM_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/subsystems/*.cpp)
 
 
-
 set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES})
 
 # include(CTest)

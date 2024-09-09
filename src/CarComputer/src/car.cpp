@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <cstdlib>
 #include "car.h"
 
 
@@ -19,12 +20,15 @@
 Car::Car(){
     // All of the subsystems constructor's are alreading being called. So only 
     // Write code relevant to the car here.
-
     init();
     execute();
 }
 
+
 Car::~Car(){
+    // Later on we'll probably call this function as a command from the pit. Actually, 
+    // the car should theoretically never be destroyed unless the program quits, which
+    // should never happen while the car is running. 
     end();
 }
 
@@ -47,6 +51,9 @@ void Car::execute(){
         req.tv_nsec = cycleTimens;
         nanosleep(&req, (struct timespec *)NULL);
 
+        for(int i = 0; i < numSubsystems; i++){
+            subsystems[i].execute();
+        }
 
     }
 
@@ -55,9 +62,41 @@ void Car::execute(){
 }
 
 void Car::init(){
+
+    for(int i = 0; i < numSubsystems; i++){
+        subsystems[i].init();
+    }
+
     std::cout << "Car Sucessfully Initialized\n";
 }
 
 void Car::end(){
+    for(int i = 0; i < numSubsystems; i++){
+        subsystems[i].end();
+    }
     std::cout << "Car sucessfully destroyed\n";
+}
+
+/* 
+ * Adds a subsystem to the car, binding it to the clock, 
+ * initialization, and termination functions.
+ * 
+ * Parameter: 
+ *      subsystem -- the subsystem to bind to the car
+ * 
+ * Returns: EXIT_SUCCESS for successful binding and
+ * EXIT_FAILURE for insucessful binding. 
+ */
+int Car::BindSubsystem(Subsystem subsystem){
+
+    if(numSubsystems >= MAX_DEVICES){
+        std::cout << "Number of subsystems is at its max. ";
+        std::cout << subsystem.toString() << " will not be included in the car.\n";
+        return EXIT_FAILURE;
+    }
+
+    subsystems[numSubsystems] = subsystem;
+    numSubsystems++;
+
+    return EXIT_SUCCESS;
 }
