@@ -6,10 +6,13 @@
  * Author: Matthew Larson
  */
 
-#include "car.h"
+#include "Car.h"
+#include "CarContainer.h"
 
 int main(){
     Car car = Car();
+    CarContainer carContainer = CarContainer(car);
+
 
     return 0;
 }

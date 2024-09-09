@@ -9,21 +9,12 @@
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
-#include "car.h"
+#include "Car.h"
 
 
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
-
-
-Car::Car(){
-    // All of the subsystems constructor's are alreading being called. So only 
-    // Write code relevant to the car here.
-    init();
-    execute();
-}
-
 
 Car::~Car(){
     // Later on we'll probably call this function as a command from the pit. Actually, 
@@ -51,8 +42,8 @@ void Car::execute(){
         req.tv_nsec = cycleTimens;
         nanosleep(&req, (struct timespec *)NULL);
 
-        for(int i = 0; i < numSubsystems; i++){
-            subsystems[i].execute();
+        for(int i = 0; i < numCommands; i++){
+            commands[i].execute();
         }
 
     }
@@ -78,14 +69,14 @@ void Car::end(){
 }
 
 /* 
- * Adds a subsystem to the car, binding it to the clock, 
+ * Adds a command to the car, binding it to the clock, 
  * initialization, and termination functions.
  * 
  * Parameter: 
- *      subsystem -- the subsystem to bind to the car
+ *      command -- the command to bind to the car
  * 
  * Returns: EXIT_SUCCESS for successful binding and
- * EXIT_FAILURE for insucessful binding. 
+ * EXIT_FAILURE for unsucessful binding. 
  */
 int Car::BindCommand(Command command){
 
