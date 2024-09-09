@@ -4,8 +4,8 @@
 */
 
 enum Commands{
-    START_LOG,
-    END_LOG,
-    RETRIEVE,
+    START_LOG,              // Starts recording data and realtime transmission
+    END_LOG,                // Stops recording data and realtime transmission
+    RETRIEVE,               // Sends the logs to the Pit Computer
     EMERGENCY_STOP          // Not sure if we'll ever use this one
 };
