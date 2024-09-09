@@ -2,5 +2,5 @@
 #include <iostream>
 
 Dash::Dash(){
-    std::cout << "TEST!";
+    std::cout << "Dash Initialized!\n";
 }
