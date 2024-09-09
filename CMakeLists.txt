@@ -3,7 +3,11 @@ project(BajaCar VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(${CMAKE_SOURCE_DIR}/src/CarComputer/src)
+include_directories(${CMAKE_SOURCE_DIR}/src/CarComputer/src ${CMAKE_SOURCE_DIR}/lib)
+
+
+# ! Apparently using GLOB is discouraged in cmake. It's working for now, but I guess I need to figure out
+#   the correct way to do it.
 
 # Grab all the .cpp files in src
 file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/*.cpp)

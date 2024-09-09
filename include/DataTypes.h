@@ -1,0 +1,14 @@
+
+
+enum DataTypes{
+    RPM_FRONT_L,
+    RPM_FRONT_R,
+    RPM_BACK_L,
+    RPM_BACK_R,
+    MOTOR_RPM,
+    PITCH,
+    ROLL,
+    BRAKE_PRESSURE_REAR,
+    BRAKE_PRESSURE_FRONT,
+    CAR_SPEED
+};
