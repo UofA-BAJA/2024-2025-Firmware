@@ -63,16 +63,16 @@ void Car::execute(){
 
 void Car::init(){
 
-    for(int i = 0; i < numSubsystems; i++){
-        subsystems[i].init();
+    for(int i = 0; i < numCommands; i++){
+        commands[i].init();
     }
 
     std::cout << "Car Sucessfully Initialized\n";
 }
 
 void Car::end(){
-    for(int i = 0; i < numSubsystems; i++){
-        subsystems[i].end();
+    for(int i = 0; i < numCommands; i++){
+        commands[i].end();
     }
     std::cout << "Car sucessfully destroyed\n";
 }
@@ -87,16 +87,16 @@ void Car::end(){
  * Returns: EXIT_SUCCESS for successful binding and
  * EXIT_FAILURE for insucessful binding. 
  */
-int Car::BindSubsystem(Subsystem subsystem){
+int Car::BindCommand(Command command){
 
-    if(numSubsystems >= MAX_DEVICES){
-        std::cout << "Number of subsystems is at its max. ";
-        std::cout << subsystem.toString() << " will not be included in the car.\n";
+    if(numCommands >= MAX_COMMANDS){
+        std::cout << "Number of commands is at its max. ";
+        std::cout << command.toString() << " will not be included in the car.\n";
         return EXIT_FAILURE;
     }
 
-    subsystems[numSubsystems] = subsystem;
-    numSubsystems++;
+    commands[numCommands] = command;
+    numCommands++;
 
     return EXIT_SUCCESS;
 }

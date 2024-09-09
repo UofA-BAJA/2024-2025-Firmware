@@ -8,7 +8,7 @@
 #ifndef CAR_H
 #define CAR_H
 
-#include "subsystems/subsystem.h"
+#include "commands/command.h"
 
 
 class Car
@@ -17,16 +17,16 @@ class Car
         Car();
         ~Car();
 
-        int BindSubsystem(Subsystem subsystem);
+        int BindCommand(Command command);
 
     private:
         void init();
         void execute();
         void end();
 
-        static const int MAX_DEVICES = 32;
-        int numSubsystems = 0;
-        Subsystem subsystems[MAX_DEVICES];   // No way we have more than 32 subsystems. Even 8 would be excessive.
+        static const int MAX_COMMANDS = 256;
+        int numCommands = 0;
+        Command commands[MAX_COMMANDS];   // No way we have more than 32 subsystems. Even 8 would be excessive.
 };
 
 #endif
