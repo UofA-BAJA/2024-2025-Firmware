@@ -9,9 +9,10 @@ include_directories(${CMAKE_SOURCE_DIR}/src/CarComputer/src)
 file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/*.cpp)
 # Grab all the .cpp files in subsystems recursively
 file(GLOB_RECURSE SUBSYSTEM_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/subsystems/*.cpp)
+# Grab all the .cpp files in commands recursively
+file(GLOB_RECURSE COMMAND_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/commands/*.cpp)
 
-
-set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES})
+set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${COMMAND_FILES})
 
 # include(CTest)
 # enable_testing()
