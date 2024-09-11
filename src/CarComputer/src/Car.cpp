@@ -12,6 +12,8 @@
 #include "Car.h"
 #include "CarContainer.h"
 
+#include "Commands.h"
+
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
@@ -24,7 +26,6 @@ Car::Car() {
     CarContainer carContainer = CarContainer(*this);
 
     for(int i = 0; i < numCommands; i++){
-        std::cout << commands[i]->toString() << std::endl;
         commands[i]->init();
     }
 
