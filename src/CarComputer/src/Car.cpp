@@ -11,23 +11,23 @@
 #include <cstdlib>
 #include "Car.h"
 #include "CarContainer.h"
+#include "ProcedureScheduler.h"
 
-#include "Commands.h"
 
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
 
 
+ProcedureScheduler procedureScheduler;
+
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
 
-    CarContainer carContainer = CarContainer(*this);
+    CarContainer carContainer = CarContainer(procedureScheduler);
 
-    for(int i = 0; i < numCommands; i++){
-        commands[i]->init();
-    }
+    procedureScheduler.init();
 
     execute();
 }
@@ -59,9 +59,7 @@ void Car::execute(){
         req.tv_nsec = cycleTimens;
         nanosleep(&req, (struct timespec *)NULL);
 
-        for(int i = 0; i < numCommands; i++){
-            commands[i]->execute();
-        }
+        procedureScheduler.execute();
 
     }
 
@@ -74,32 +72,6 @@ void Car::init(){
 }
 
 void Car::end(){
-    for(int i = 0; i < numCommands; i++){
-        commands[i]->end();
-    }
+    procedureScheduler.end();
     std::cout << "Car sucessfully destroyed\n";
-}
-
-/* 
- * Adds a command to the car, binding it to the clock, 
- * initialization, and termination functions.
- * 
- * Parameter: 
- *      command -- the command to bind to the car
- * 
- * Returns: EXIT_SUCCESS for successful binding and
- * EXIT_FAILURE for unsucessful binding. 
- */
-int Car::bindCommand(Command* command){
-
-    if(numCommands >= MAX_COMMANDS){
-        std::cout << "Number of commands is at its max. ";
-        std::cout << command->toString() << " will not be included in the car.\n";
-        return EXIT_FAILURE;
-    }
-
-    commands[numCommands] = command;
-    numCommands++;
-
-    return EXIT_SUCCESS;
 }

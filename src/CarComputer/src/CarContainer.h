@@ -7,11 +7,13 @@
 #ifndef CARCONTAINER_H
 #define CARCONTAINER_H
 
-class Car;
+#include "ProcedureScheduler.h"
+
+// class Car;
 
 class CarContainer{
     public:
-        CarContainer(Car& car);
+        CarContainer(ProcedureScheduler& procedureScheduler);
 };
 
 
