@@ -16,5 +16,4 @@ class CarContainer{
         CarContainer(ProcedureScheduler& procedureScheduler);
 };
 
-
 #endif

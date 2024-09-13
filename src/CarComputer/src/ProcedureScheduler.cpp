@@ -51,7 +51,7 @@ void ProcedureScheduler::end(){
  * Returns: EXIT_SUCCESS for successful binding and
  * EXIT_FAILURE for unsucessful binding. 
  */
-int ProcedureScheduler::bindCommand(Procedure* procedure, Command){
+int ProcedureScheduler::bindCommand(Procedure* procedure, Command Command){
 
     // if(numProcedures >= MAX_PROCEDURES){
     //     std::cout << "Number of commands is at its max. ";

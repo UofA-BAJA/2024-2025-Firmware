@@ -11,12 +11,10 @@ class ProcedureScheduler{
         void execute();
         void end();
 
-        int bindCommand(Procedure* procedure, Command);
+        int bindCommand(Procedure* procedure, Command command);
 
     private:
-        // static const int MAX_PROCEDURES = 256;
-        // int numProcedures = 0;
-        std::unordered_set<Procedure*> procedures;   // No way we have more than 256 commands.
+        std::unordered_set<Procedure*> procedures;
 };
 
 #endif
