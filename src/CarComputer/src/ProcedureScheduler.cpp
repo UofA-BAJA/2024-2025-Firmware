@@ -6,38 +6,37 @@
 
 
 void ProcedureScheduler::init(){
-    for(auto procedure : procedures){
-        procedure->init();
-    }
+    // for(auto procedure : procedures){
+    //     procedure->init();
+    // }
 }
 
 void ProcedureScheduler::execute(){
-    for(auto procedure : procedures){
 
-        if(procedure->isFinished()){
-            procedure->end();
+    for(auto keyValuePair : activeProcedures){
+        for(auto procedure : activeProcedures[keyValuePair.first]){
 
-            // Remove the procedure from theh procedures list that way it doesn't get run.
-            procedures.erase(procedure);
-            continue;
+            if(procedure->isFinished()){
+                procedure->end();
+                // Remove the procedure from the active procedures list that way it doesn't get run.
+                activeProcedures[keyValuePair.first].erase(procedure);
+                continue;
+            }
 
-
-            // THERE"S A MEMORY LEAK HERE
+            procedure->execute();
         }
-
-        procedure->execute();
-
     }
 }
 
 void ProcedureScheduler::end(){
 
-    for(auto procedure : procedures){
-        procedure->end();
+
+    for(auto keyValuePair : activeProcedures){
+        for(auto procedure : activeProcedures[keyValuePair.first]){
+            procedure->end();
+            activeProcedures[keyValuePair.first].erase(procedure);
+        }
     }
-    // for(int i = 0; i < numProcedures; i++){
-    //     procedures[i]->end();
-    // }
 }
 
 
@@ -51,16 +50,33 @@ void ProcedureScheduler::end(){
  * Returns: EXIT_SUCCESS for successful binding and
  * EXIT_FAILURE for unsucessful binding. 
  */
-int ProcedureScheduler::bindCommand(Procedure* procedure, Command Command){
+int ProcedureScheduler::bindCommand(Procedure* procedure, Command command){
 
-    // if(numProcedures >= MAX_PROCEDURES){
-    //     std::cout << "Number of commands is at its max. ";
-    //     std::cout << procedure->toString() << " will not be included in the car.\n";
-    //     return EXIT_FAILURE;
+    totalProcedures[command].insert(procedure);
+    // if(totalCommandMap.find(command) == totalCommandMap.end()){
+    //     // If the command does not exist, first add the command to the command map
+
     // }
 
-    procedures.insert(procedure);
-    // numProcedures++;
+
+    // procedures.insert(procedure);
+
+    return EXIT_SUCCESS;
+}
+
+/* 
+ * If we receive a comm command, we gotta set all the bounded commands as active
+ */
+int ProcedureScheduler::receiveComCommand(Command command){
+
+    // Iterates through all the procedures bounded to command
+    for(auto procedure : totalProcedures[command]){
+        procedure->init();
+
+        activeProcedures[command].insert(procedure);
+    }
+
+    std::cout << "command: " << command << " received" << std::endl;
 
     return EXIT_SUCCESS;
 }

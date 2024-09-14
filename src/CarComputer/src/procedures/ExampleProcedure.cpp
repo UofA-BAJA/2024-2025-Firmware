@@ -5,8 +5,6 @@
 
 class ExampleProcedure : public Procedure {
     public:
-
-
         // ExampleSubsystem exampleSubsystem;
         
         void init(){

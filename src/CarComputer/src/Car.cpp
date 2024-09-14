@@ -30,6 +30,9 @@ Car::Car() {
 
     procedureScheduler.init();
 
+    procedureScheduler.receiveComCommand(Command::START_LOG);
+
+
     execute();
 }
 
@@ -62,6 +65,12 @@ void Car::execute(){
 
         procedureScheduler.execute();
 
+
+        i++;
+
+        if(i == 1000){
+            procedureScheduler.receiveComCommand(Command::START_LOG);
+        }
     }
 
     // printing for other subsystems only works if you print something to the terminal...?

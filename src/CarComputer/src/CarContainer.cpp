@@ -20,7 +20,7 @@ ExampleProcedure exampleProcedure;
 
 CarContainer::CarContainer(ProcedureScheduler& procedureScheduler){
 
-    procedureScheduler.bindCommand(&exampleProcedure, Command::RETRIEVE);
+    procedureScheduler.bindCommand(&exampleProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
 
