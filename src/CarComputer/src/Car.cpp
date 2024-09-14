@@ -52,7 +52,6 @@ void Car::execute(){
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
 
-    int i = 0;
 
     // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
 
@@ -64,13 +63,6 @@ void Car::execute(){
         nanosleep(&req, (struct timespec *)NULL);
 
         procedureScheduler.execute();
-
-
-        i++;
-
-        if(i == 1000){
-            procedureScheduler.receiveComCommand(Command::START_LOG);
-        }
     }
 
     // printing for other subsystems only works if you print something to the terminal...?

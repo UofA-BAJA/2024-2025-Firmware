@@ -29,8 +29,6 @@ void ProcedureScheduler::execute(){
 }
 
 void ProcedureScheduler::end(){
-
-
     for(auto keyValuePair : activeProcedures){
         for(auto procedure : activeProcedures[keyValuePair.first]){
             procedure->end();
@@ -71,12 +69,16 @@ int ProcedureScheduler::receiveComCommand(Command command){
 
     // Iterates through all the procedures bounded to command
     for(auto procedure : totalProcedures[command]){
-        procedure->init();
 
-        activeProcedures[command].insert(procedure);
+        // If the procedure is already active, then obviously we don't want to activate it again, right...?
+        if(activeProcedures[command].find(procedure) == activeProcedures[command].end()){
+            procedure->init();
+            // Technically insert uses the find() function already, so there's the possiblity for optimization.
+            activeProcedures[command].insert(procedure);
+        }
     }
 
-    std::cout << "command: " << command << " received" << std::endl;
+    std::cout << "Command: " << command << " received" << std::endl;
 
     return EXIT_SUCCESS;
 }
