@@ -6,9 +6,13 @@
 
 #include <iostream>
 #include "CarContainer.h"
-#include "procedures/ExampleProcedure.cpp"
 #include "Car.h"
 #include "Commands.h"
+
+#include "procedures/ExampleProcedure.cpp"
+#include "procedures/TestProcedure.cpp"
+
+#include "subsystems/DataStorage.h"
 
 /*
  * Here you create the subsystems and commands.
@@ -16,11 +20,18 @@
  * do anything.
 */
 
-ExampleProcedure exampleProcedure;
+ExampleProcedure* exampleProcedure;
+TestProcedure* testProcedure;
+
+DataStorage dataStorage;
 
 CarContainer::CarContainer(ProcedureScheduler& procedureScheduler){
 
-    procedureScheduler.bindCommand(&exampleProcedure, Command::START_LOG);
+    exampleProcedure = new ExampleProcedure(dataStorage);
+    testProcedure = new TestProcedure(dataStorage);
+
+    procedureScheduler.bindCommand(exampleProcedure, Command::START_LOG);
+    procedureScheduler.bindCommand(testProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
 

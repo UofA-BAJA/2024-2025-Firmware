@@ -14,16 +14,22 @@ void ProcedureScheduler::init(){
 void ProcedureScheduler::execute(){
 
     for(auto keyValuePair : activeProcedures){
-        for(auto procedure : activeProcedures[keyValuePair.first]){
+        
+        auto& procedures = keyValuePair.second;  // Reference to the set of procedures
+
+        for(auto it =  procedures.begin(); it != procedures.end(); ){
+            Procedure* procedure = *it;
 
             if(procedure->isFinished()){
                 procedure->end();
                 // Remove the procedure from the active procedures list that way it doesn't get run.
                 activeProcedures[keyValuePair.first].erase(procedure);
-                continue;
+            }
+            else{
+                procedure->execute();
+                ++it;   // Only increment the iterator if we're not erasing anything.
             }
 
-            procedure->execute();
         }
     }
 }
