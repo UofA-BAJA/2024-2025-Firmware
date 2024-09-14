@@ -17,6 +17,7 @@ void ProcedureScheduler::execute(){
         
         auto& procedures = keyValuePair.second;  // Reference to the set of procedures
 
+        // Use of an iterator is required, as we are removing elements from the set we are iterating over.
         for(auto it =  procedures.begin(); it != procedures.end(); ){
             Procedure* procedure = *it;
 
