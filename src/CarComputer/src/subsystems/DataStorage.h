@@ -8,7 +8,9 @@
 #define DATASTORAGE_H
 
 class DataStorage{
-
+    public:
+        int getData();
+        void storeData(int data);
 };
 
 
