@@ -23,16 +23,17 @@
 ExampleProcedure* exampleProcedure;
 TestProcedure* testProcedure;
 
-DataStorage dataStorage;
+DataStorage* dataStorage;
 
 CarContainer::CarContainer(ProcedureScheduler& procedureScheduler){
 
-    exampleProcedure = new ExampleProcedure(dataStorage);
-    testProcedure = new TestProcedure(dataStorage);
+    dataStorage = new DataStorage();
+
+    exampleProcedure = new ExampleProcedure(*dataStorage);
+    testProcedure = new TestProcedure(*dataStorage);
 
     procedureScheduler.bindCommand(exampleProcedure, Command::START_LOG);
     procedureScheduler.bindCommand(testProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
-
 }
