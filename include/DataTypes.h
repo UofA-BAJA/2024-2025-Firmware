@@ -3,19 +3,6 @@
 
 // The hex code associated with the data type is going to be the CAN id that represents the data type.
 enum DataTypes{
-<<<<<<< HEAD
-    RPM_FRONT_L,
-    RPM_FRONT_R,
-    RPM_BACK_L,
-    RPM_BACK_R,
-    MOTOR_RPM,
-    PITCH,
-    ROLL,
-    BRAKE_PRESSURE_REAR,
-    BRAKE_PRESSURE_FRONT,
-    CAR_SPEED
-};
-=======
     RPM_FRONT_L = 0x100,
     RPM_FRONT_R = 0x101,
     RPM_BACK_L = 0x102,
@@ -28,4 +15,3 @@ enum DataTypes{
     BRAKE_PRESSURE_FRONT = 0x10A,
     CAR_SPEED = 0x10B
 };
->>>>>>> fcbb791 (Car side of CAN configuration)

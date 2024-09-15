@@ -27,14 +27,8 @@ TestProcedure* testProcedure;
 
 CarContainer::CarContainer(ProcedureScheduler& procedureScheduler, int can_socket_fd){
 
-<<<<<<< HEAD
-    // exampleProcedure = new ExampleProcedure(*dataStorage);
-    testProcedure = new TestProcedure(*dataStorage);
-=======
-
     // exampleProcedure = new ExampleProcedure(*dataStorage);
     // testProcedure = new TestProcedure(*dataStorage);
->>>>>>> fcbb791 (Car side of CAN configuration)
 
     // procedureScheduler.bindCommand(exampleProcedure, Command::START_LOG);
     procedureScheduler.bindCommand(testProcedure, Command::START_LOG);
