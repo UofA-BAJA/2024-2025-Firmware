@@ -58,13 +58,6 @@ void ProcedureScheduler::end(){
 int ProcedureScheduler::bindCommand(Procedure* procedure, Command command){
 
     totalProcedures[command].insert(procedure);
-    // if(totalCommandMap.find(command) == totalCommandMap.end()){
-    //     // If the command does not exist, first add the command to the command map
-
-    // }
-
-
-    // procedures.insert(procedure);
 
     return EXIT_SUCCESS;
 }

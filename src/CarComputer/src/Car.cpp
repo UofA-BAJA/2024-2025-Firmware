@@ -21,7 +21,6 @@
 
 ProcedureScheduler procedureScheduler;
 
-
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
@@ -47,7 +46,7 @@ Car::~Car(){
 void Car::execute(){
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 200;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 400;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
