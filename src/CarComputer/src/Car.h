@@ -20,10 +20,6 @@ class Car{
         void init();
         void execute();
         void end();
-
-        int open_can_socket(const char* interface);
-        int can_socket_fd;
-
 };
 
 #endif

@@ -13,7 +13,7 @@
 
 class CarContainer{
     public:
-        CarContainer(ProcedureScheduler& procedureScheduler, int can_socket_fd);
+        CarContainer(ProcedureScheduler& procedureScheduler);
 };
 
 #endif

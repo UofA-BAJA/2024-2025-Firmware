@@ -25,7 +25,7 @@ TestProcedure* testProcedure;
 
 
 
-CarContainer::CarContainer(ProcedureScheduler& procedureScheduler, int can_socket_fd){
+CarContainer::CarContainer(ProcedureScheduler& procedureScheduler){
 
     // exampleProcedure = new ExampleProcedure(*dataStorage);
     // testProcedure = new TestProcedure(*dataStorage);

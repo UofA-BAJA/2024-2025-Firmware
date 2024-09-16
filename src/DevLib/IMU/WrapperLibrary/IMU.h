@@ -1,22 +1,24 @@
 #ifndef IMU_H
 #define IMU_H
 
+
+#include "CANDispatcher.h"
+
 class IMU{
 
     public:
-        IMU(int can_socket_fd, int can_id);
+        IMU(CANDispatcher* canDispatcher);
 
-        double getRotationX();
-        double getRotationY();
-        double getRotationZ();
+        double requestRotationX();
+        double requestRotationY();
+        double requestRotationZ();
 
-        double getAccelerationX();
-        double getAccelerationY();
-        double getAccelerationZ();
-    
+        double requestAccelerationX();
+        double requestAccelerationY();
+        double requestAccelerationZ();
     private:
-        int can_socket_fd;
-        int can_id;
+        CANDispatcher* canDispatcher;
+
 };
 
 

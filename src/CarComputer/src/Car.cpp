@@ -14,17 +14,6 @@
 #include "ProcedureScheduler.h"
 
 
-// Mostly stuff for the CAN socket programming
-#include <cstring>      // For strerror()
-#include <cstdlib>      // For exit()
-#include <unistd.h>     // For close()
-#include <sys/socket.h>
-#include <linux/can.h>
-#include <linux/can/raw.h>
-#include <net/if.h>
-#include <sys/ioctl.h>
-
-
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
@@ -36,7 +25,7 @@ Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
 
-    CarContainer carContainer = CarContainer(procedureScheduler, can_socket_fd);
+    CarContainer carContainer = CarContainer(procedureScheduler);
 
     procedureScheduler.init();
 
@@ -83,7 +72,7 @@ void Car::init(){
 
     const char* can_interface = "can0";
 
-    can_socket_fd = open_can_socket(can_interface);
+    // can_socket_fd = open_can_socket(can_interface);
 
     std::cout << "Car Sucessfully Initialized\n";
 }
@@ -91,37 +80,4 @@ void Car::init(){
 void Car::end(){
     procedureScheduler.end();
     std::cout << "Car sucessfully destroyed\n";
-}
-
-
-int Car::open_can_socket(const char* interface){
-    int socket_fd = socket(PF_CAN, SOCK_RAW, CAN_RAW);                  // socket returns a file descriptor for a socket
-    if(socket_fd < 0){
-        std::cerr << "Error while opening socket: " << strerror(errno) << std::endl;
-        exit(EXIT_FAILURE);
-    }
-
-    struct ifreq ifr;                       // ifreq is used in networking to interact with network interfaces. In this case, the can0 interface.
-
-    // Copy the interface str (can0) into ifr.name
-    strcpy(ifr.ifr_name, interface);
-    // ioctl (input and output control) is used to talk to device drivers. In this case, we are getting the network index of the interface and binding it to the socket. 
-    if(ioctl(socket_fd, SIOGIFINDEX, &ifr) < 0){
-        std::cerr << "Error getting interface index: " << strerror(errno) << std::endl;
-        close(socket_fd);
-        exit(EXIT_FAILURE);
-    }
-
-    struct sockaddr_can addr;
-    memset(&addr, 0, sizeof(addr));         // Zero the struct to avoid junk values.
-    addr.can_family = AF_CAN;
-    addr.can_ifindex = ifr.ifr_ifindex;
-
-    if(bind(socket_fd, (struct sockaddr *)&addr, sizeof(addr)) < 0){
-        std::cerr << "Error in socket bind: " << strerror(errno) << std::endl;
-        close(socket_fd);
-        exit(EXIT_FAILURE);
-    }
-
-    return socket_fd;
 }
