@@ -24,7 +24,7 @@ double IMU::requestRotationX(){
     std::vector<byte> data = {0xAB};
 
 
-    canDispatcher->sendCanCommand(canID, data, std::function<void(can_frame)>(getRotationX));
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->getRotationX(frame);});
 
 
     // struct can_frame frame;

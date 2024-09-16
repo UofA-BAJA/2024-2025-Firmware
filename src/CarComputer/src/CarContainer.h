@@ -8,12 +8,13 @@
 #define CARCONTAINER_H
 
 #include "ProcedureScheduler.h"
+#include "CANDispatcher.h"
 
 // class Car;
 
 class CarContainer{
     public:
-        CarContainer(ProcedureScheduler& procedureScheduler);
+        CarContainer(ProcedureScheduler& procedureScheduler, CANDispatcher* canDispatcher);
 };
 
 #endif

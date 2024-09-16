@@ -21,19 +21,20 @@
 
 
 ProcedureScheduler procedureScheduler;
+CANDispatcher* canDispatcher;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
 
     const char* can_interface = "can0";
-    CANDispatcher canDispatcher = CANDispatcher(can_interface);
+    canDispatcher = new CANDispatcher(can_interface);
 
-    CarContainer carContainer = CarContainer(procedureScheduler);
+    CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
 
     procedureScheduler.init();
 
-    // procedureScheduler.receiveComCommand(Command::START_LOG);
+    procedureScheduler.receiveComCommand(Command::START_LOG);
 
 
     execute();
