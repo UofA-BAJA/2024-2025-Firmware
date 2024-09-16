@@ -21,7 +21,7 @@ double IMU::requestAccelerationZ(){
 double IMU::requestRotationX(){
 
     byte canID = Devices::IMU;
-    std::vector<byte> data = {0xAB};
+    std::vector<byte> data = {0xA4, 0x77, 0xAC};
 
 
     if(!canDispatcher){
@@ -39,12 +39,17 @@ double IMU::requestRotationX(){
 void IMU::getRotationX(can_frame frame){
 
     // Output the received frame
-    std::cout << "Received CAN frame with ID: 0x" << std::hex << frame.can_id << std::endl;
-    std::cout << "Data: ";
-    for(int i = 0; i < frame.can_dlc; i++){
-        std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
-    }
+    // std::cout << "Received CAN frame with ID: 0x" << std::hex << frame.can_id << std::endl;
+    // std::cout << "Data: ";
+    // for(int i = 0; i < frame.can_dlc; i++){
+    //     std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
+    // }
 
+    float xRot;
+
+    memcpy(&xRot, &frame.data, sizeof(xRot));
+
+    std:: cout << "X Rotation: " << xRot;
     std::cout << std::endl;
 }
 

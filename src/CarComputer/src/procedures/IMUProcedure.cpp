@@ -18,7 +18,7 @@ class IMUProcedure : public Procedure{
         }
 
         void execute() override {
-            std::cout << "IMU procedure execution: " << i << std::endl;
+            // std::cout << "IMU procedure execution: " << i << std::endl;
             i++;
 
             imuSubsystem->getRotationX();

@@ -44,6 +44,8 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     frame.can_id = deviceID;                                            // CAN ID
     frame.can_dlc = data.size();                                        // Data length
 
+    frame.data[0] = messageID;
+
     for(int i = 0; i < data.size(); i++){
         frame.data[i+1] = data.at(i);
     }
@@ -86,8 +88,6 @@ void CANDispatcher::readCANInterface(){
                 callbacks.erase(callback_key);
             }
         }
-
-        std::cout << "THIS IS A TEST" << std::endl;
     }
 }
 

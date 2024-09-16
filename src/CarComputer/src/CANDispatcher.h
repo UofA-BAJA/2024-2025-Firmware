@@ -30,8 +30,8 @@ class CANDispatcher{
         void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
 
     private:
-        const int MIN_UID_BOUND = 100;
-        const int MAX_UID_BOUND = 16 * 16 * 8;
+        const int MIN_UID_BOUND = 0;
+        const int MAX_UID_BOUND = 255;
 
         int can_socket_fd;
         int currUID;

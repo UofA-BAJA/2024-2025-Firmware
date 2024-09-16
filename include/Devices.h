@@ -3,7 +3,7 @@
 
 
 enum Devices{
-    IMU = 0x200
+    IMU = 0x001
 };
 
 #endif
