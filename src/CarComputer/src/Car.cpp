@@ -12,6 +12,7 @@
 #include "Car.h"
 #include "CarContainer.h"
 #include "ProcedureScheduler.h"
+#include "CANDispatcher.h"
 
 
 // I'm not sure why I need this preprocessor, but this works...
@@ -25,11 +26,14 @@ Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
 
+    const char* can_interface = "can0";
+    CANDispatcher canDispatcher = CANDispatcher(can_interface);
+
     CarContainer carContainer = CarContainer(procedureScheduler);
 
     procedureScheduler.init();
 
-    procedureScheduler.receiveComCommand(Command::START_LOG);
+    // procedureScheduler.receiveComCommand(Command::START_LOG);
 
 
     execute();
@@ -69,11 +73,6 @@ void Car::execute(){
 }
 
 void Car::init(){
-
-    const char* can_interface = "can0";
-
-    // can_socket_fd = open_can_socket(can_interface);
-
     std::cout << "Car Sucessfully Initialized\n";
 }
 

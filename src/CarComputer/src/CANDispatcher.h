@@ -25,7 +25,7 @@ class CANDispatcher{
 
     public:
 
-        CANDispatcher();
+        CANDispatcher(const char* interface);
 
         void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
 

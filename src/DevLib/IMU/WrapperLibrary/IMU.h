@@ -3,6 +3,8 @@
 
 
 #include "CANDispatcher.h"
+#include "functional"
+#include "linux/can.h"
 
 class IMU{
 
@@ -18,6 +20,9 @@ class IMU{
         double requestAccelerationZ();
     private:
         CANDispatcher* canDispatcher;
+
+        void getRotationX(struct can_frame frame);
+
 
 };
 

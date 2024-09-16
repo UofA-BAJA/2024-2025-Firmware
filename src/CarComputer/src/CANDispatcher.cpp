@@ -2,11 +2,9 @@
 
 
 
-CANDispatcher::CANDispatcher(){
+CANDispatcher::CANDispatcher(const char* interface){
 
-    const char* interface = "can0";
     can_socket_fd = openCANSocket(interface);
-
 
     currUID = MIN_UID_BOUND;
 
@@ -77,7 +75,6 @@ void CANDispatcher::readCANInterface(int socket){
                     // Invoke the registered callback
                     callbacks[callback_key](frame);
                 }
-
             }
         }
     }).detach();

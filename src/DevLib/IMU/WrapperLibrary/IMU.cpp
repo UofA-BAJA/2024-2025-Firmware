@@ -21,9 +21,10 @@ double IMU::requestAccelerationZ(){
 double IMU::requestRotationX(){
 
     byte canID = Devices::IMU;
-    std::vector<byte> data = {0x52};
+    std::vector<byte> data = {0xAB};
 
-    canDispatcher->sendCanCommand(canID, data, getRotationX);
+
+    canDispatcher->sendCanCommand(canID, data, std::function<void(can_frame)>(getRotationX));
 
 
     // struct can_frame frame;
@@ -31,7 +32,7 @@ double IMU::requestRotationX(){
 
 }
 
-double getRotationX(struct can_frame frame){
+void IMU::getRotationX(can_frame frame){
 
     // Output the received frame
     std::cout << "Received CAN frame with ID: 0x" << std::hex << frame.can_id << std::endl;
@@ -48,7 +49,7 @@ double IMU::requestRotationY(){
     
 }
 
-double IMU::requestAccelerationZ(){
+double IMU::requestRotationZ(){
     
 }
 
