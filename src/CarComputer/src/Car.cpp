@@ -29,13 +29,9 @@ Car::Car() {
 
     const char* can_interface = "can0";
     canDispatcher = new CANDispatcher(can_interface);
-
-    CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
-
     procedureScheduler.init();
-
+    CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
     procedureScheduler.receiveComCommand(Command::START_LOG);
-
 
     execute();
 }
@@ -51,7 +47,7 @@ Car::~Car(){
 void Car::execute(){
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 400;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 3;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);

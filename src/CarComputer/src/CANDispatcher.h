@@ -36,11 +36,13 @@ class CANDispatcher{
         int can_socket_fd;
         int currUID;
 
+        std::thread canReadingThread;
+
         std::map<uint16_t, std::function<void(can_frame)>> callbacks;
         std::mutex callbacks_mutex;
 
         int openCANSocket(const char* interface);
-        void readCANInterface(int socket);
+        void readCANInterface();
 
 };
 

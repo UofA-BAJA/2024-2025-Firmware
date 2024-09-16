@@ -24,6 +24,10 @@ double IMU::requestRotationX(){
     std::vector<byte> data = {0xAB};
 
 
+    if(!canDispatcher){
+        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    }
+
     canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->getRotationX(frame);});
 
 

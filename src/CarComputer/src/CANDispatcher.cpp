@@ -8,7 +8,12 @@ CANDispatcher::CANDispatcher(const char* interface){
 
     currUID = MIN_UID_BOUND;
 
-    readCANInterface(can_socket_fd);
+
+    canReadingThread = std::thread(&CANDispatcher::readCANInterface, this);
+
+    // canReadingThread.detach();
+
+    // readCANInterface(can_socket_fd);
 }
 
 void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback){
@@ -21,11 +26,14 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     uint16_t messageID = currUID + 1;                                                 // The unique messageID that CAN will send back to the PI to perform a callback
 
+    std::cout << currUID << std::endl;
     if(messageID > MAX_UID_BOUND){
         messageID = MIN_UID_BOUND;
     }
 
-    if(callbacks.find(messageID) == callbacks.end()){
+    currUID = messageID;
+
+    if(callbacks.find(messageID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
         return;
     }
@@ -55,29 +63,32 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
 
 
-void CANDispatcher::readCANInterface(int socket){
-    std::thread([this, socket](){
-        struct can_frame frame;
+void CANDispatcher::readCANInterface(){
 
-        // Continuous loop to read from the CAN bus
-        while(true){
-            int nbytes = read(socket, &frame, sizeof(struct can_frame));
+    struct can_frame frame;
 
-            if(nbytes > 0){
-                uint16_t message_id = frame.can_id;
+    // Continuous loop to read from the CAN bus
+    while(true){
+        int nbytes = read(can_socket_fd, &frame, sizeof(struct can_frame));
 
-                std::lock_guard<std::mutex> lock(callbacks_mutex);
+        if(nbytes > 0){
+            uint16_t message_id = frame.can_id;
 
-                uint16_t callback_key = message_id;
+            std::lock_guard<std::mutex> lock(callbacks_mutex);
 
-                // Check to see if the can frame is actually meant for us.
-                if(callbacks.find(callback_key) != callbacks.end()){
-                    // Invoke the registered callback
-                    callbacks[callback_key](frame);
-                }
+            uint16_t callback_key = message_id;
+
+            // Check to see if the can frame is actually meant for us.
+            if(callbacks.find(callback_key) != callbacks.end()){
+                // Invoke the registered callback
+                callbacks[callback_key](frame);
+
+                callbacks.erase(callback_key);
             }
         }
-    }).detach();
+
+        std::cout << "THIS IS A TEST" << std::endl;
+    }
 }
 
 int CANDispatcher::openCANSocket(const char* interface){
