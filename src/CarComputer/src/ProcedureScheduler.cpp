@@ -1,16 +1,26 @@
 
-#include <unordered_set>
 #include "ProcedureScheduler.h"
-#include "procedures/Procedure.h"
-#include "Commands.h"
+
+ProcedureScheduler::ProcedureScheduler(){
 
 
-void ProcedureScheduler::init(){
-    // for(auto procedure : procedures){
-    //     procedure->init();
-    // }
 }
 
+/*
+ *  Method:  execute
+ *
+ *  Purpose: Run the execution of all active procedures and check if the procedure should
+ *           terminate. If it should, terminate the procedure.
+ *
+ *  Pre-Condition: None
+ * 
+ *  Post-Condition: All active procedures are executed; If the procedure should be terminated, 
+ *                  it is ended;
+ * 
+ *  Parameters: None
+ *
+ *  Returns: None
+ */
 void ProcedureScheduler::execute(){
 
     for(auto keyValuePair : activeProcedures){
@@ -35,7 +45,22 @@ void ProcedureScheduler::execute(){
     }
 }
 
+/*
+ *  Method:  end
+ *
+ *  Purpose: Halts the execution of actively running procedures and ends it.
+ *
+ *  Pre-Condition: None
+ * 
+ *  Post-Condition: All active procedures are ended
+ * 
+ *  Parameters: None
+ *
+ *  Returns: None
+ */
 void ProcedureScheduler::end(){
+    // ! We're going to get a bug here! We need to do this the way it's done in the 
+    // ! execute method above. (The bug will be a )
     for(auto keyValuePair : activeProcedures){
         for(auto procedure : activeProcedures[keyValuePair.first]){
             procedure->end();
@@ -45,34 +70,42 @@ void ProcedureScheduler::end(){
 }
 
 
-/* 
- * Adds a procedure to the scheduler, binding it to the clock, 
- * initialization, and termination functions.
+/*
+ *  Method:  bindCommand
+ *
+ *  Purpose: Bind a procedure to a command, so that when the command is received the procedure is run
+ *
+ *  Pre-Condition:  procedure points to a valid procedure; procedure is not bound to any commands;
  * 
- * Parameter: 
- *      procedure -- the procedure to bind to the scheduler
+ *  Post-Condition: The procedure is successfully bound to the corresponding command; 
  * 
- * Returns: EXIT_SUCCESS for successful binding and
- * EXIT_FAILURE for unsucessful binding. 
+ *  Parameters:
+ *          procedure -- The procedure to bind
+ *
+ *          command -- The command to bind the procedure to
+ *
+ *  Returns: None
+ *
  */
-int ProcedureScheduler::bindCommand(Procedure* procedure, Command command){
-
+void ProcedureScheduler::bindCommand(Procedure* procedure, Command command){
     totalProcedures[command].insert(procedure);
-    // if(totalCommandMap.find(command) == totalCommandMap.end()){
-    //     // If the command does not exist, first add the command to the command map
-
-    // }
-
-
-    // procedures.insert(procedure);
-
-    return EXIT_SUCCESS;
 }
 
-/* 
- * If we receive a comm command, we gotta set all the bounded commands as active
+/*
+ *  Method:  receiveComCommand
+ *
+ *  Purpose: Activate all the procedures bound to the command sent from the pit computer
+ *
+ *  Pre-Condition:  command is a valid command recognized by the Raspberry PI;
+ * 
+ *  Post-Condition: All procedures bound to command are activated;
+ * 
+ *  Parameters:
+ *          command -- The command sent from the pit computer to the Raspberry PI
+ *
+ *  Returns: None
  */
-int ProcedureScheduler::receiveComCommand(Command command){
+void ProcedureScheduler::receiveComCommand(Command command){
 
     // Iterates through all the procedures bounded to command
     for(auto procedure : totalProcedures[command]){
@@ -86,6 +119,4 @@ int ProcedureScheduler::receiveComCommand(Command command){
     }
 
     std::cout << "Command: " << command << " received" << std::endl;
-
-    return EXIT_SUCCESS;
 }

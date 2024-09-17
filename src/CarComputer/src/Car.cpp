@@ -12,6 +12,7 @@
 #include "Car.h"
 #include "CarContainer.h"
 #include "ProcedureScheduler.h"
+#include "CANDispatcher.h"
 
 
 // I'm not sure why I need this preprocessor, but this works...
@@ -20,18 +21,16 @@
 
 
 ProcedureScheduler procedureScheduler;
-
+CANDispatcher* canDispatcher;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
 
-    CarContainer carContainer = CarContainer(procedureScheduler);
-
-    procedureScheduler.init();
-
+    const char* can_interface = "can0";
+    canDispatcher = new CANDispatcher(can_interface);
+    CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
     procedureScheduler.receiveComCommand(Command::START_LOG);
-
 
     execute();
 }
@@ -47,7 +46,7 @@ Car::~Car(){
 void Car::execute(){
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 200;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 20;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);

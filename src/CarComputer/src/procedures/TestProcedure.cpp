@@ -21,8 +21,8 @@ class TestProcedure : public Procedure {
             std::cout << "Test procedure execution: " << i << std::endl;
             i++;
 
-            exampleSubsystem.storeData(i);
-            exampleSubsystem.getData();
+            // exampleSubsystem.storeData(i);
+            // exampleSubsystem.getData();
         }
 
         void end() override {
