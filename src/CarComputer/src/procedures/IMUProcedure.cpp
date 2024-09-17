@@ -5,10 +5,6 @@ class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
 
-        IMUProcedure(){
-
-        }
-
         IMUProcedure(IMUSubsystem *imuSubsystem){
             this->imuSubsystem = imuSubsystem;
         }

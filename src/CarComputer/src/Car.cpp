@@ -29,7 +29,6 @@ Car::Car() {
 
     const char* can_interface = "can0";
     canDispatcher = new CANDispatcher(can_interface);
-    procedureScheduler.init();
     CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
     procedureScheduler.receiveComCommand(Command::START_LOG);
 

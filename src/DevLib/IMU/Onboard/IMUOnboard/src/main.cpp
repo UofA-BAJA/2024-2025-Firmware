@@ -43,66 +43,66 @@ void setup() {
     while(1);
   }
   
-  // delay(1000);
+  delay(1000);
     
   bno.setExtCrystalUse(true);
 }
 
-byte data[8] = {0x01, 0x01, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+// byte data[8] = {0x01, 0x01, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
 
 void loop() {
-  // long unsigned int rxId;
-  // unsigned char len = 0;
-  // unsigned char rxBuf[8];
-
-  // // Check for incoming CAN messages
-  // if (CAN_MSGAVAIL == CAN.checkReceive()) {
-  //   CAN.readMsgBuf(&rxId, &len, rxBuf);  // Read message
-  //   Serial.print(">ID: ");
-  //   Serial.println(rxId, HEX);
-
-  //   for (int i = 0; i < len; i++) {
-  //     Serial.print(">Data: ");
-  //     Serial.println(rxBuf[i], HEX);
-  //   }
-
-  //   Serial.println("-------------------------");
-
-
-  //   if(rxId == 0x123){
-
-  //     byte sendMSG = CAN.sendMsgBuf(0x666,0,8,data);
-
-  //     if(sendMSG == CAN_OK){
-  //       Serial.println("Message Sent Successfully!");
-  //     } else {
-  //       Serial.println("Error Sending Message...");
-  //     }
-  //   }
-
-    
-    _delay_ms(10);
-        byte sendMSG = CAN.sendMsgBuf(0x555,0,8,data);
-
-      if(sendMSG == CAN_OK){
-        Serial.println("Message Sent Successfully!");
-      } else {
-        Serial.println("Error Sending Message...");
-      }
-
-      //----------------------------------------
-
-      //   /* Get a new sensor event */ 
       sensors_event_t event; 
       bno.getEvent(&event);
-      
-      // /* Display the floating point data */
+
       Serial.print("X: ");
       Serial.print(event.orientation.x, 4);
+      Serial.println();
+
+      byte data[sizeof event.orientation.x];
+
+      memcpy(data, &event.orientation.x, sizeof event.orientation.x);
+
+
+
+    long unsigned int rxId;
+    unsigned char len = 0;
+    unsigned char rxBuf[8];
+
+  // // Check for incoming CAN messages
+    if (CAN_MSGAVAIL == CAN.checkReceive()) {
+      CAN.readMsgBuf(&rxId, &len, rxBuf);  // Read message
+      Serial.print(">ID: ");
+      Serial.println(rxId, HEX);
+
+      // for (int i = 0; i < len; i++) {
+      //   Serial.print(">Data: ");
+      //   Serial.println(rxBuf[i], HEX);
+      // }
+
+      Serial.println("-------------------------");
+
+
+      if(rxBuf[1] == 0xA4){
+
+        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,8,data);
+
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully!");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
+
+    }
+        /* Get a new sensor event */ 
+      
+      /* Display the floating point data */
+      // Serial.print("X: ");
+      // Serial.print(event.orientation.x, 4);
       // Serial.print("\tY: ");
       // Serial.print(event.orientation.y, 4);
       // Serial.print("\tZ: ");
       // Serial.print(event.orientation.z, 4);
       // Serial.println("");
-      
-  }
+    // _delay_ms(10);
+}

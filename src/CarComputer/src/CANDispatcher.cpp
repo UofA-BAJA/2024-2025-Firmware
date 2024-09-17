@@ -1,21 +1,39 @@
 #include "CANDispatcher.h"
 
 
-
 CANDispatcher::CANDispatcher(const char* interface){
 
     can_socket_fd = openCANSocket(interface);
 
     currUID = MIN_UID_BOUND;
 
-
     canReadingThread = std::thread(&CANDispatcher::readCANInterface, this);
-
-    // canReadingThread.detach();
-
-    // readCANInterface(can_socket_fd);
 }
 
+/*
+ *  Method:  sendCanCommand
+ *
+ *  Purpose: Sends a CAN frame to a device connected to the CAN bus, where the data
+ *           represents a command that the device should respond to. If we expect a
+ *           response from the device, provide a function that will get called when
+ *           a response is received.
+ *
+ *  Pre-Condition:  There is a device on the CAN bus with ID deviceID; The size of the data
+ *                  vector is 7 or less (subject to change to 6 soon...?)
+ *
+ *  Post-Condition: The data is successfully sent over the CAN bus to the device with deviceID;
+ *                  When a message is received, the given callback function will be executed
+ *
+ *  Parameters:
+ *          deviceID -- The ID of the device on the CAN bus to send the data to
+ *              
+ *          data -- The data to send to the device on the CAN bus that represents a command for the device
+ * 
+ *          callback -- A function to be executed once the device responds with data
+ *
+ *  Returns: None
+ *
+ */
 void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback){
 
     if(data.size() > 7){
@@ -24,15 +42,17 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         return;
     }
 
-    uint16_t messageID = currUID + 1;                                                 // The unique messageID that CAN will send back to the PI to perform a callback
+    uint16_t messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
 
-    std::cout << currUID << std::endl;
+    // std::cout << currUID << std::endl;
+
     if(messageID > MAX_UID_BOUND){
         messageID = MIN_UID_BOUND;
     }
 
     currUID = messageID;
 
+    
     if(callbacks.find(messageID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
         return;
@@ -60,12 +80,24 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     std::cout << "CAN frame sent!" << std::endl;
 }
 
-
-
-
+/*
+ *  Method:  readCANInterface
+ *
+ *  Purpose: Continuously read the CAN bus and invoke registered callbacks stored in the callbacks map.
+ *
+ *  Pre-Condition:  This function is invoked on a separate thread so as to not block the main thread;
+ * 
+ *  Post-Condition: The CAN buffer is successfully read; When a CAN frame is read, the frame gets
+ *                  forwarded via the callback method associated with the ID of the CAN frame;
+ * 
+ *  Parameters: None
+ *
+ *  Returns: None
+ *
+ */
 void CANDispatcher::readCANInterface(){
 
-    struct can_frame frame;
+    struct can_frame frame;                     // The data read from the CAN bus will be stored here
 
     // Continuous loop to read from the CAN bus
     while(true){
@@ -86,11 +118,24 @@ void CANDispatcher::readCANInterface(){
                 callbacks.erase(callback_key);
             }
         }
-
-        std::cout << "THIS IS A TEST" << std::endl;
     }
 }
 
+/*
+ *  Method:  openCANSocket
+ *
+ *  Purpose: Open a socket on the Raspberry PI that is used to interface with the CAN bus
+ *
+ *  Pre-Condition:  interface is a string with the name of an existing, active CAN interface
+ * 
+ *  Post-Condition: The socket is sucessfully opened and is readable and writeable.
+ * 
+ *  Parameters:
+ *          interface -- A string that represents the name of the interface we will open a socket for
+ *
+ *  Returns: A socket file descriptor that is used to interface with the socket that was opened
+ *
+ */
 int CANDispatcher::openCANSocket(const char* interface){
     int socket_fd = socket(PF_CAN, SOCK_RAW, CAN_RAW);                  // socket returns a file descriptor for a socket
     if(socket_fd < 0){
