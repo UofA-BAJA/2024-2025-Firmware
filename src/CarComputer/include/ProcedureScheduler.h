@@ -4,7 +4,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include "Commands.h"
-#include "procedures/Procedure.h"
+#include "Procedure.h"
 
 class ProcedureScheduler{
     public:

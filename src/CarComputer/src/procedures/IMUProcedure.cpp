@@ -1,5 +1,5 @@
 #include "Procedure.h"
-#include "subsystems/IMUSubsystem.h"
+#include "IMUSubsystem.h"
 
 class IMUProcedure : public Procedure{
     public:

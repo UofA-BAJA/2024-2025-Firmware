@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Procedure.h"
-#include "subsystems/DataStorage.h"
+#include "DataStorage.h"
 
 class ExampleProcedure : public Procedure {
     public:

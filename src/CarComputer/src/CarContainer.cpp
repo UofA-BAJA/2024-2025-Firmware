@@ -13,8 +13,8 @@
 #include "procedures/TestProcedure.cpp"
 #include "procedures/IMUProcedure.cpp"
 
-#include "subsystems/DataStorage.h"
-#include "subsystems/IMUSubsystem.h"
+#include "DataStorage.h"
+#include "IMUSubsystem.h"
 
 /*
  * Here you create the subsystems and commands.

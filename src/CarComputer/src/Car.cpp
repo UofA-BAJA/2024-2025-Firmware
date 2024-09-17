@@ -6,19 +6,11 @@
  * Author: Matthew Larson
  */
 
-#include <iostream>
-#include <time.h>
-#include <cstdlib>
-#include "Car.h"
-#include "CarContainer.h"
-#include "ProcedureScheduler.h"
-#include "CANDispatcher.h"
-
-
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
 
+#include "Car.h"
 
 ProcedureScheduler procedureScheduler;
 CANDispatcher* canDispatcher;

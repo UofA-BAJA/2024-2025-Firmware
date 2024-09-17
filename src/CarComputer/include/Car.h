@@ -8,7 +8,15 @@
 #ifndef CAR_H
 #define CAR_H
 
-#include "procedures/Procedure.h"
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+
+#include "Car.h"
+#include "CarContainer.h"
+#include "ProcedureScheduler.h"
+#include "CANDispatcher.h"
+#include "Procedure.h"
 
 class Car{
     public:
