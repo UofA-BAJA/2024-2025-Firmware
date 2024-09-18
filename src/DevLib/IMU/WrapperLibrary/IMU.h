@@ -11,17 +11,32 @@ class IMU{
     public:
         IMU(CANDispatcher* canDispatcher);
 
-        double requestRotationX();
-        double requestRotationY();
-        double requestRotationZ();
+        float getLatestRotationX();
+        float getLatestRotationY();
+        float getLatestRotationZ();
 
-        double requestAccelerationX();
-        double requestAccelerationY();
-        double requestAccelerationZ();
+        float getLatestAccelerationX();
+        float getLatestAccelerationY();
+        float getLatestAccelerationZ();
     private:
         CANDispatcher* canDispatcher;
 
-        void getRotationX(struct can_frame frame);
+        float rotX = 0;
+        float rotY = 0;
+        float rotZ = 0;
+
+        float accX = 0;
+        float accY = 0;
+        float accZ = 0;
+
+        void populateRotationX(struct can_frame frame);
+        void populateRotationY(struct can_frame frame);
+        void populateRotationZ(struct can_frame frame);
+
+        void populateAccelerationX(struct can_frame frame);
+        void populateAccelerationY(struct can_frame frame);
+        void populateAccelerationZ(struct can_frame frame);
+
 
 
 };

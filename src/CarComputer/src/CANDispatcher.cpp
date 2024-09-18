@@ -44,6 +44,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     uint16_t messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
 
+
     // std::cout << currUID << std::endl;
 
     if(messageID > MAX_UID_BOUND){
@@ -52,6 +53,16 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     currUID = messageID;
 
+
+    // If the device already has a command, but hasn't responded, it can be considered a droped packet.
+    if(currentDeviceCommands.find(deviceID) != currentDeviceCommands.end()){
+        callbacks.erase(currentDeviceCommands[deviceID]);
+        droppedCommands++;
+
+        std::cout << "Dropped packet. Dropped packet count: " << droppedCommands << std::endl;
+    }
+    
+    currentDeviceCommands[deviceID] = messageID;
     
     if(callbacks.find(messageID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
@@ -67,6 +78,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     frame.data[0] = messageID;
 
     for(int i = 0; i < data.size(); i++){
+        std::cout << i << std::endl;
         frame.data[i+1] = data.at(i);
     }
 
@@ -116,8 +128,9 @@ void CANDispatcher::readCANInterface(){
             if(callbacks.find(callback_key) != callbacks.end()){
                 // Invoke the registered callback
                 callbacks[callback_key](frame);
-
+                
                 callbacks.erase(callback_key);
+                currentDeviceCommands.erase(message_id);
             }
         }
     }

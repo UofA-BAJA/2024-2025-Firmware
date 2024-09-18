@@ -14,15 +14,15 @@ class IMUProcedure : public Procedure{
         }
 
         void execute() override {
-            // std::cout << "IMU procedure execution: " << i << std::endl;
-            i++;
+            // std::cout << "IMU procedure execution"<< std::endl;
 
-            imuSubsystem->getRotationX();
+            float xRot = imuSubsystem->getRotationX();
+
+            std::cout << "IMU Rotation X: " << xRot << std::endl;
         }
 
         void end() override {
             // ! Remember to reset any local variables! This class does not actually get destroyed, only reused!
-            i = 0;
             std::cout << "IMU procedure ended" << std::endl;
         }
 
@@ -35,5 +35,4 @@ class IMUProcedure : public Procedure{
         }
 
     private:
-        int i = 0;
 };

@@ -6,6 +6,5 @@ IMUSubsystem::IMUSubsystem(CANDispatcher* canDispatcher){
 
 
 double IMUSubsystem::getRotationX(){
-    imu->requestRotationX();
-    return 0;
+    return imu->getLatestRotationX();
 }
