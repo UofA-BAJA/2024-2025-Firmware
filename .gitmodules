@@ -1,0 +1,3 @@
+[submodule "CANopenLinux"]
+	path = CANopenLinux
+	url = https://github.com/CANopenNode/CANopenLinux.git
