@@ -3,7 +3,6 @@
 
 CANDispatcher::CANDispatcher(const char* interface){
 
-
     can_socket_fd = openCANSocket(interface);
 
     currUID = MIN_UID_BOUND;

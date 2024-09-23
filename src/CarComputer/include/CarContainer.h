@@ -1,9 +1,3 @@
-/*
- *
- *
- * Author: Matthew Larson
-*/
-
 #ifndef CARCONTAINER_H
 #define CARCONTAINER_H
 

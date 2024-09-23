@@ -12,6 +12,4 @@ class IMUSubsystem{
         IMU* imu;
 };
 
-
-
 #endif

@@ -39,10 +39,13 @@ class CANDispatcher{
         std::thread canReadingThread;
 
         std::map<uint16_t, std::function<void(can_frame)>> callbacks;
+        std::map<int, uint16_t> currentDeviceCommands;
         std::mutex callbacks_mutex;
 
         int openCANSocket(const char* interface);
         void readCANInterface();
+
+        int droppedCommands = 0;
 
 };
 
