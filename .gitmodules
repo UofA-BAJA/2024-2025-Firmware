@@ -1,3 +1,0 @@
-[submodule "canopen-stack"]
-	path = canopen-stack
-	url = https://github.com/embedded-office/canopen-stack.git
