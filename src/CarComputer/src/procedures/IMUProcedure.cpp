@@ -1,6 +1,8 @@
 #include "Procedure.h"
 #include "IMUSubsystem.h"
 
+#include <iomanip>
+
 class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
@@ -10,6 +12,15 @@ class IMUProcedure : public Procedure{
         }
         
         void init() override {
+            // float xRot = imuSubsystem->getRotationX();
+            // float yRot = imuSubsystem->getRotationY();
+            // float zRot = imuSubsystem->getRotationZ();
+            // xRot = imuSubsystem->getRotationX();
+            // yRot = imuSubsystem->getRotationY();
+            // zRot = imuSubsystem->getRotationZ();
+            // xRot = imuSubsystem->getRotationX();
+            // yRot = imuSubsystem->getRotationY();
+            // zRot = imuSubsystem->getRotationZ();
             std::cout << "IMU procedure initialized!" << std::endl;
         }
 
@@ -18,7 +29,18 @@ class IMUProcedure : public Procedure{
 
             float xRot = imuSubsystem->getRotationX();
 
-            std::cout << "IMU Rotation X: " << xRot << std::endl;
+            // For testing purposes
+            xRot = imuSubsystem->getRotationX();
+            xRot = imuSubsystem->getRotationX();
+            xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            float yRot = imuSubsystem->getRotationY();
+            float zRot = imuSubsystem->getRotationZ();
+
+            std::cout << std::fixed;
+            std::cout << std::setprecision(0);
+            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
         }
 
         void end() override {

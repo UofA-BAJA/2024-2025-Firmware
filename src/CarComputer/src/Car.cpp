@@ -38,13 +38,15 @@ Car::~Car(){
 void Car::execute(){
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 400;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 19;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
 
 
     // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
+
+    int i = 0;
 
     while(1){
         // req defines a time value required by nanosleep 
@@ -53,8 +55,17 @@ void Car::execute(){
         req.tv_nsec = cycleTimens;
         nanosleep(&req, (struct timespec *)NULL);
 
+        // if(i % 6 == 0){
+        // }
         procedureScheduler.execute();
+        canDispatcher->execute();
+
+        // procedureScheduler.execute();
+
+        i++;
     }
+
+
 
     // printing for other subsystems only works if you print something to the terminal...?
     std::cout << "";

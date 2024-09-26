@@ -8,3 +8,11 @@ IMUSubsystem::IMUSubsystem(CANDispatcher* canDispatcher){
 double IMUSubsystem::getRotationX(){
     return imu->getLatestRotationX();
 }
+
+double IMUSubsystem::getRotationY(){
+    return imu->getLatestRotationY();
+}
+
+double IMUSubsystem::getRotationZ(){
+    return imu->getLatestRotationZ();
+}
