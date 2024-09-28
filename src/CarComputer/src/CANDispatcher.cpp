@@ -88,7 +88,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     frame.data[0] = messageID;
 
     for(int i = 0; i < data.size(); i++){
-        std::cout << data.at(i) << std::endl;
+        // std::cout << data.at(i) << std::endl;
         frame.data[i+1] = data.at(i);
     }
 
