@@ -83,8 +83,8 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Prepare the CAN frame
     struct can_frame frame;                                             // The CAN frame to send to the CAN device
     frame.can_id = deviceID;                                            // CAN ID
-    frame.can_dlc = data.size();                                        // Data length
-
+    // dlc stands for data length code. It is plus one because we are sending the data and the callback
+    frame.can_dlc = data.size()+1;
     frame.data[0] = messageID;
 
     std::cout << data.size() << std::endl;

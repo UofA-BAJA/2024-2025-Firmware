@@ -22,7 +22,7 @@ float IMU::getLatestAccelerationZ(){
 float IMU::getLatestRotationX(){
 
     byte canID = Devices::IMU;
-    std::vector<byte> data = {0x01, 0x00};
+    std::vector<byte> data = {0x01};
 
 
     if(!canDispatcher){
@@ -61,7 +61,7 @@ void IMU::populateRotationY(can_frame frame){
 float IMU::getLatestRotationZ(){
 
     byte canID = Devices::IMU;
-    std::vector<byte> data = {0x03, 0x84};
+    std::vector<byte> data = {0x03};
 
 
     if(!canDispatcher){
