@@ -14,7 +14,7 @@
 
 class DataStorage : public Subsystem{
     public:
-        DataStorage(const char* path);
+        // DataStorage(const char* path);
         int getData();
         void storeData(int data);
 };

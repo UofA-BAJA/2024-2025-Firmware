@@ -87,9 +87,16 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     frame.data[0] = messageID;
 
+    std::cout << data.size() << std::endl;
+
     for(int i = 0; i < data.size(); i++){
         // std::cout << data.at(i) << std::endl;
         frame.data[i+1] = data.at(i);
+    }
+
+    for(int i = 0; i < data.size(); i++){
+        // std::cout << std::hex << std::setw(2) << data.at(i) << std::endl;
+        // std::cout << std::hex << std::setw(2) << (int)frame.data[i] << std::endl;
     }
 
     // Send the CAN frame
