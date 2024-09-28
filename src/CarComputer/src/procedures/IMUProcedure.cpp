@@ -30,16 +30,16 @@ class IMUProcedure : public Procedure{
             float xRot = imuSubsystem->getRotationX();
 
             // For testing purposes
-            xRot = imuSubsystem->getRotationX();
-            xRot = imuSubsystem->getRotationX();
-            xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
             float yRot = imuSubsystem->getRotationY();
             float zRot = imuSubsystem->getRotationZ();
 
             std::cout << std::fixed;
-            std::cout << std::setprecision(0);
+            std::cout << std::setprecision(2);
             std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
         }
 

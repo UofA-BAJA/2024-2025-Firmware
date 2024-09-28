@@ -9,8 +9,7 @@
 #include "Car.h"
 #include "CarContainer.h"
 
-int main(){
-    Car car = Car();
+int main(){    Car car = Car();
 
     return 0;
 }
