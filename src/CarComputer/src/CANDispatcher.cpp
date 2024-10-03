@@ -3,6 +3,23 @@
 
 CANDispatcher::CANDispatcher(const char* interface){
 
+    unsigned int microseconds = 1000000;
+
+
+    std::string canDownCommand = "sudo ip link set " + std::string(interface) + " down";
+    std::string canUpCommand = "sudo ip link set " + std::string(interface) + " up";
+
+    int result1 = std::system(canDownCommand.c_str());
+
+    if(result1 == 0){
+        std::cout << "Can down executed successfully" << std::endl;
+    }
+
+    int result2 = std::system(canUpCommand.c_str());
+
+    if(result2 == 0){
+        std::cout << "Can up executed successfully" << std::endl;
+    }
 
     can_socket_fd = openCANSocket(interface);
 
@@ -87,16 +104,8 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     frame.can_dlc = data.size()+1;
     frame.data[0] = messageID;
 
-    std::cout << data.size() << std::endl;
-
     for(int i = 0; i < data.size(); i++){
-        // std::cout << data.at(i) << std::endl;
         frame.data[i+1] = data.at(i);
-    }
-
-    for(int i = 0; i < data.size(); i++){
-        // std::cout << std::hex << std::setw(2) << data.at(i) << std::endl;
-        // std::cout << std::hex << std::setw(2) << (int)frame.data[i] << std::endl;
     }
 
     // Send the CAN frame
