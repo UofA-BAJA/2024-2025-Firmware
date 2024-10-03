@@ -17,6 +17,8 @@ class DataStorage {
         DataStorage(const char* path);
         int getData();
         void storeData(int data);
+    private:
+        void setupDatabase(const char* path);
 };
 
 

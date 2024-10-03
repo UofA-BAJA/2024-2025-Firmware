@@ -15,15 +15,18 @@
 CarContainer* carContainer;
 ProcedureScheduler* procedureScheduler;
 CANDispatcher* canDispatcher;
+DataStorage* dataStorage;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
     const char* can_interface = "can0";
+    const char* dataStoragePath = "/home/bajaelectrical";
 
+    dataStorage = new DataStorage(dataStoragePath);
     procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(can_interface);
-    carContainer = new CarContainer(procedureScheduler, canDispatcher);
+    carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
     procedureScheduler->receiveComCommand(Command::START_LOG);
 
     execute();

@@ -22,6 +22,7 @@ int main(){
 
     const char* fileName = "idk.db";
 
+    // Database handle for our sqlite database
     sqlite3* db;
 
     int exit = 0;
