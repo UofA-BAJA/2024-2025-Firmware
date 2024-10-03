@@ -12,17 +12,19 @@
 
 #include "Car.h"
 
-ProcedureScheduler procedureScheduler;
+CarContainer* carContainer;
+ProcedureScheduler* procedureScheduler;
 CANDispatcher* canDispatcher;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
-
     const char* can_interface = "can0";
+
+    procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(can_interface);
-    CarContainer carContainer = CarContainer(procedureScheduler, canDispatcher);
-    procedureScheduler.receiveComCommand(Command::START_LOG);
+    carContainer = new CarContainer(procedureScheduler, canDispatcher);
+    procedureScheduler->receiveComCommand(Command::START_LOG);
 
     execute();
 }
@@ -57,7 +59,7 @@ void Car::execute(){
 
         // if(i % 6 == 0){
         // }
-        procedureScheduler.execute();
+        procedureScheduler->execute();
         canDispatcher->execute();
 
         // procedureScheduler.execute();
@@ -76,6 +78,6 @@ void Car::init(){
 }
 
 void Car::end(){
-    procedureScheduler.end();
+    procedureScheduler->end();
     std::cout << "Car sucessfully destroyed\n";
 }

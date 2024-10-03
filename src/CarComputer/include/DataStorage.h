@@ -12,9 +12,9 @@
 
 #include "Subsystem.h"
 
-class DataStorage : public Subsystem{
+class DataStorage {
     public:
-        // DataStorage(const char* path);
+        DataStorage(const char* path);
         int getData();
         void storeData(int data);
 };

@@ -8,7 +8,7 @@
 
 class CarContainer{
     public:
-        CarContainer(ProcedureScheduler& procedureScheduler, CANDispatcher* canDispatcher);
+        CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher);
 };
 
 #endif

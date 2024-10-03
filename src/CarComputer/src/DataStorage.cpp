@@ -7,16 +7,16 @@
 #include "DataStorage.h"
 
 
-// DataStorage::DataStorage(const char* path){
-//     // Create a connection to our sqlite database stored 
-//     // on the SSD connected to the PI
+DataStorage::DataStorage(const char* path){
+    // Create a connection to our sqlite database stored 
+    // on the SSD connected to the PI
 
-//     sqlite3* db;
+    sqlite3* db;
 
-//     int exit = 0;
+    int exit = 0;
 
 
-// }
+}
 
 
 int i = 0;

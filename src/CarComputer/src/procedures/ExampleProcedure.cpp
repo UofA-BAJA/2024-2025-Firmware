@@ -1,14 +1,11 @@
 #include <iostream>
 #include <string>
 #include "Procedure.h"
-#include "DataStorage.h"
 
 class ExampleProcedure : public Procedure {
     public:
-        DataStorage exampleSubsystem;
 
-        ExampleProcedure(DataStorage &dataStorage){
-            exampleSubsystem = dataStorage;
+        ExampleProcedure(){
         }
         
         void init() override {
@@ -19,8 +16,6 @@ class ExampleProcedure : public Procedure {
             std::cout << "Example procedure execution: " << i << std::endl;
             i++;
 
-            exampleSubsystem.storeData(i);
-            exampleSubsystem.getData();
         }
 
         void end() override {
