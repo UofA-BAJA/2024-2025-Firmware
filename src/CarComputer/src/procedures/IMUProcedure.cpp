@@ -1,26 +1,20 @@
 #include "Procedure.h"
 #include "IMUSubsystem.h"
+#include "DataStorage.h"
 
 #include <iomanip>
 
 class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
+        DataStorage* dataStorage;
 
-        IMUProcedure(IMUSubsystem *imuSubsystem){
+        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
             this->imuSubsystem = imuSubsystem;
+            this->dataStorage = dataStorage;
         }
         
         void init() override {
-            // float xRot = imuSubsystem->getRotationX();
-            // float yRot = imuSubsystem->getRotationY();
-            // float zRot = imuSubsystem->getRotationZ();
-            // xRot = imuSubsystem->getRotationX();
-            // yRot = imuSubsystem->getRotationY();
-            // zRot = imuSubsystem->getRotationZ();
-            // xRot = imuSubsystem->getRotationX();
-            // yRot = imuSubsystem->getRotationY();
-            // zRot = imuSubsystem->getRotationZ();
             std::cout << "IMU procedure initialized!" << std::endl;
         }
 
@@ -37,6 +31,11 @@ class IMUProcedure : public Procedure{
             // xRot = imuSubsystem->getRotationX();
             float yRot = imuSubsystem->getRotationY();
             float zRot = imuSubsystem->getRotationZ();
+
+
+            dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
+            dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
+            dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);

@@ -31,9 +31,9 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
 
     // testProcedure = new TestProcedure(dataStorageSubsystem);
     imuSubsystem = new IMUSubsystem(canDispatcher);
-    imuProcedure = new IMUProcedure(imuSubsystem);
+    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage);
 
-    // procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
+    procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
 }

@@ -21,9 +21,12 @@ Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
     const char* can_interface = "can0";
-    const char* dataStoragePath = "/home/bajaelectrical";
+    const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
 
     dataStorage = new DataStorage(dataStoragePath);
+
+    dataStorage->startNewSession("Test session name O.o");
+
     procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(can_interface);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
@@ -51,7 +54,7 @@ void Car::execute(){
 
     // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
 
-    int i = 0;
+    float time = 0.0f;
 
     while(1){
         // req defines a time value required by nanosleep 
@@ -60,14 +63,12 @@ void Car::execute(){
         req.tv_nsec = cycleTimens;
         nanosleep(&req, (struct timespec *)NULL);
 
-        // if(i % 6 == 0){
-        // }
+        
         procedureScheduler->execute();
         canDispatcher->execute();
+        dataStorage->execute(time);
 
-        // procedureScheduler.execute();
-
-        i++;
+        time += cycleTime;
     }
 
 
