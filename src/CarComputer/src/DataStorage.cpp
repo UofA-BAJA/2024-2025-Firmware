@@ -44,6 +44,7 @@ void DataStorage::startNewSession(const char* sessionName){
 
     currentSessionID = sqlite3_last_insert_rowid(db);
 
+    sqlite3_finalize(statement);
 }
 
 
@@ -72,6 +73,7 @@ void DataStorage::endCurrentSession(){
     if(exit != SQLITE_DONE){
         std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
     }
+    sqlite3_finalize(statement);
 }
 
 
@@ -110,7 +112,7 @@ int DataStorage::getData(){
  *  Returns: None
  *
  */
-const char* insertData = "INSERT INTO Data (DataID, Timestamp, DataTypeID, Value) "
+const char* insertData = "INSERT OR IGNORE INTO Data (SessionID, Timestamp, DataTypeID, Value) "
                          "VALUES (?, ?, ?, ?)";
 
 
@@ -127,10 +129,12 @@ void DataStorage::storeData(float data, DataTypes dataType){
     }
 
     // Bind values to parameters
-    sqlite3_bind_double(statement, 1, currentSessionID);
+    sqlite3_bind_int(statement, 1, currentSessionID);
     sqlite3_bind_double(statement, 2, currentTimestamp);
-    sqlite3_bind_double(statement, 3, dataType);
+    sqlite3_bind_int(statement, 3, dataType);
     sqlite3_bind_double(statement, 4, data);
+
+    // std::cout << "Storing data with Timestamp: " << currentTimestamp << ", SessionID: " << currentSessionID << std::endl;
 
 
     exit = sqlite3_step(statement);
@@ -138,6 +142,7 @@ void DataStorage::storeData(float data, DataTypes dataType){
     if(exit != SQLITE_DONE){
         std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
     }
+    sqlite3_finalize(statement);
 
 }
 
@@ -211,12 +216,15 @@ void DataStorage::setupDatabase(const char* path){
 
     // Create Data Table
     const char* dataCreateTable = "CREATE TABLE IF NOT EXISTS Data("
-                      "DataID INTEGER,"
-                      "Timestamp REAL,"
-                      "DataTypeID INTEGER,"
-                      "Value REAL,"
-                      "FOREIGN KEY (DataID) REFERENCES Session(SessionID) ON DELETE CASCADE,"
-                      "FOREIGN KEY (DataTypeID) REFERENCES DataType(DataTypeID) ON DELETE CASCADE)";
+                                "SessionID INTEGER,"
+                                "Timestamp REAL,"
+                                "DataTypeID INTEGER,"
+                                "Value REAL,"
+                                "PRIMARY KEY (SessionID, Timestamp, DataTypeID),"
+                                "FOREIGN KEY (SessionID) REFERENCES Session(SessionID) ON DELETE CASCADE,"
+                                "FOREIGN KEY (DataTypeID) REFERENCES DataType(DataTypeID) ON DELETE NO ACTION"
+                                ");";
+
 
     exit = sqlite3_exec(db, dataCreateTable, NULL, 0, &messageError);
 
@@ -278,6 +286,7 @@ void DataStorage::setupDataTypes(){
         if(exit != SQLITE_DONE){
             std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
         }
+        sqlite3_finalize(statement);
     }
 }
 
