@@ -24,7 +24,7 @@ Car::Car() {
     const char* can_interface = "can0";
     const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
 
-    carLogger = new CarLogger();
+    CarLogger::Initialize("/home/bajaelectrical/car.log");
 
     dataStorage = new DataStorage(dataStoragePath);
     dataStorage->startNewSession("Test session name O.o");
@@ -70,12 +70,6 @@ void Car::execute(){
     steady_clock::time_point endTime;
 
     while(1){
-
-        auto test = duration_cast<nanoseconds>(steady_clock::now() - startTime).count();
-
-        // std::cout << test / 1000000.0 << std::endl;
-
-
         startTime = steady_clock::now();
         double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
 
@@ -101,6 +95,7 @@ void Car::execute(){
         }
         else{
             std::cout << "Please stop you're like genuinely killing the raspberry pi with how much work it's doing" << std::endl;
+            CarLogger::LogError("Car Computer cycle takes longer to compute than frequency");
         }
     }
 

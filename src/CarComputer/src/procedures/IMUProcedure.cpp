@@ -33,7 +33,6 @@ class IMUProcedure : public Procedure{
             float yRot = imuSubsystem->getRotationY();
             float zRot = imuSubsystem->getRotationZ();
 
-
             dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
             dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
             dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
