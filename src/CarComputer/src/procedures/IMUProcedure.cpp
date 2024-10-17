@@ -1,6 +1,7 @@
 #include "Procedure.h"
 #include "IMUSubsystem.h"
 #include "DataStorage.h"
+#include "CarLogger.h"
 
 #include <iomanip>
 
@@ -37,8 +38,8 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
             dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
 
-            std::cout << std::fixed;
-            std::cout << std::setprecision(2);
+            // std::cout << std::fixed;
+            // std::cout << std::setprecision(2);
             std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
         }
 

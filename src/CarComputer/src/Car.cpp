@@ -16,6 +16,7 @@ CarContainer* carContainer;
 ProcedureScheduler* procedureScheduler;
 CANDispatcher* canDispatcher;
 DataStorage* dataStorage;
+CarLogger* carLogger;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
@@ -23,14 +24,17 @@ Car::Car() {
     const char* can_interface = "can0";
     const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
 
-    dataStorage = new DataStorage(dataStoragePath);
+    carLogger = new CarLogger();
 
+    dataStorage = new DataStorage(dataStoragePath);
     dataStorage->startNewSession("Test session name O.o");
 
     procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(can_interface);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
     procedureScheduler->receiveComCommand(Command::START_LOG);
+
+    std::cout << "Car Sucessfully Initialized" << std::endl;
 
     execute();
 }
@@ -44,41 +48,68 @@ Car::~Car(){
 }
 
 void Car::execute(){
+
+    using namespace std::chrono;
+
+
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 15;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 50;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
 
 
     // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
+    
+    steady_clock::time_point absoluteStart;
+    absoluteStart = steady_clock::now();
 
-    float time = 0.0f;
+
+    steady_clock::time_point startTime;
+    steady_clock::time_point endTime;
 
     while(1){
-        // req defines a time value required by nanosleep 
-        struct timespec req = {0};
-        req.tv_sec = 0;
-        req.tv_nsec = cycleTimens;
-        nanosleep(&req, (struct timespec *)NULL);
 
-        
+        auto test = duration_cast<nanoseconds>(steady_clock::now() - startTime).count();
+
+        // std::cout << test / 1000000.0 << std::endl;
+
+
+        startTime = steady_clock::now();
+        double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
+
+        // std::cout << time / 1000000000L << std::setprecision(9) << std::endl;
+
         procedureScheduler->execute();
         canDispatcher->execute();
-        dataStorage->execute(time);
+        dataStorage->execute(time / 1000000000L);
 
-        time += cycleTime;
+        endTime = steady_clock::now();
+
+        double timeTaken = duration_cast<nanoseconds>(endTime - startTime).count();
+
+        // std::cout << timeTaken / 1000000.0 << std::setprecision(9) << std::endl;
+
+
+        if(timeTaken < cycleTimens){
+            // req defines a time value required by nanosleep 
+            struct timespec req = {0};
+            req.tv_sec = 0;
+            req.tv_nsec = cycleTimens - timeTaken;
+            nanosleep(&req, (struct timespec *)NULL);
+        }
+        else{
+            std::cout << "Please stop you're like genuinely killing the raspberry pi with how much work it's doing" << std::endl;
+        }
     }
-
-
 
     // printing for other subsystems only works if you print something to the terminal...?
     std::cout << "";
 }
 
 void Car::init(){
-    std::cout << "Car Sucessfully Initialized\n";
+    // std::cout << "Car Sucessfully Initialized\n";
 }
 
 void Car::end(){

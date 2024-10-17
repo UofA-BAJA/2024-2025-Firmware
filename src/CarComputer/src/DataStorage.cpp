@@ -15,7 +15,73 @@ DataStorage::DataStorage(const char* path){
     setupDatabase(path);
 
     setupDataTypes();
+
+    updateDBThread = std::thread(&DataStorage::updateDatabase, this);
+
 }
+
+
+void DataStorage::updateDatabase(){
+    const char* insertData = "INSERT OR IGNORE INTO Data (SessionID, Timestamp, DataTypeID, Value) "
+                            "VALUES (?, ?, ?, ?)";
+
+    char* messageError;
+    int exit;
+
+    while(true){
+        // insertCondition.wait(conditionalLock, [this] { return insertBuffer.size() > 20; });
+
+        std::unique_lock<std::mutex> lock(insertBufferMutex);
+
+        std::queue<dataValues> localInsertBuffer;
+        std::swap(localInsertBuffer, insertBuffer);
+        lock.unlock();
+
+
+        sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &messageError);
+
+
+        while(!localInsertBuffer.empty()){
+
+            dataValues data = localInsertBuffer.front();
+            localInsertBuffer.pop();
+
+
+            int exit = 0;
+
+            sqlite3_stmt *statement;
+
+            exit = sqlite3_prepare_v2(db, insertData, -1, &statement, nullptr);
+
+            if(exit){
+                std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+                return;
+            }
+
+            // Bind values to parameters
+            sqlite3_bind_int(statement, 1, data.currentSessionID);
+            sqlite3_bind_double(statement, 2, data.currentTimestamp);
+            sqlite3_bind_int(statement, 3, data.dataType);
+            sqlite3_bind_double(statement, 4, data.data);
+
+            // std::cout << "SessionID: " << data.currentSessionID << " DataType: " << data.dataType << " Timestamp: " << data.currentTimestamp << std::endl;
+
+            exit = sqlite3_step(statement);
+
+            if(exit != SQLITE_DONE){
+                std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
+            }
+            sqlite3_finalize(statement);
+        }
+
+        sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &messageError);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+}
+
+
 
 
 const char* insertSession = "INSERT INTO Session (Name) VALUES (?)";
@@ -112,37 +178,48 @@ int DataStorage::getData(){
  *  Returns: None
  *
  */
-const char* insertData = "INSERT OR IGNORE INTO Data (SessionID, Timestamp, DataTypeID, Value) "
-                         "VALUES (?, ?, ?, ?)";
+// const char* insertData = "INSERT OR IGNORE INTO Data (SessionID, Timestamp, DataTypeID, Value) "
+//                          "VALUES (?, ?, ?, ?)";
 
 
 void DataStorage::storeData(float data, DataTypes dataType){
-    int exit = 0;
+    // int exit = 0;
 
-    sqlite3_stmt *statement;
+    // sqlite3_stmt *statement;
 
-    exit = sqlite3_prepare_v2(db, insertData, -1, &statement, nullptr);
+    // exit = sqlite3_prepare_v2(db, insertData, -1, &statement, nullptr);
 
-    if(exit){
-        std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
-        return;
-    }
+    // if(exit){
+    //     std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+    //     return;
+    // }
 
-    // Bind values to parameters
-    sqlite3_bind_int(statement, 1, currentSessionID);
-    sqlite3_bind_double(statement, 2, currentTimestamp);
-    sqlite3_bind_int(statement, 3, dataType);
-    sqlite3_bind_double(statement, 4, data);
+    // // Bind values to parameters
+    // sqlite3_bind_int(statement, 1, currentSessionID);
+    // sqlite3_bind_double(statement, 2, currentTimestamp);
+    // sqlite3_bind_int(statement, 3, dataType);
+    // sqlite3_bind_double(statement, 4, data);
 
     // std::cout << "Storing data with Timestamp: " << currentTimestamp << ", SessionID: " << currentSessionID << std::endl;
 
 
-    exit = sqlite3_step(statement);
+    dataValues dataToStore;
+    dataToStore.currentSessionID = currentSessionID;
+    dataToStore.currentTimestamp = currentTimestamp;
+    dataToStore.dataType = dataType;
+    dataToStore.data = data;
 
-    if(exit != SQLITE_DONE){
-        std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
-    }
-    sqlite3_finalize(statement);
+
+    numDataInserts++;
+    std::lock_guard<std::mutex> lock (insertBufferMutex);
+    insertBuffer.push(dataToStore);
+
+    // exit = sqlite3_step(statement);
+
+    // if(exit != SQLITE_DONE){
+        // std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
+    // }
+    // sqlite3_finalize(statement);
 
 }
 
@@ -169,6 +246,9 @@ void DataStorage::setupDatabase(const char* path){
     
     char* messageError;
 
+    const char* threadingMode = "PRAGMA compile_options;";
+    sqlite3_exec(db, threadingMode, NULL, 0, &messageError);
+
     // We have to enable the foreign key constraint. This ensures we are setting 
     // all of the tables up correctly and will have the appropriate data.
     const char* enableForeignKeys = "PRAGMA foreign_keys = ON;";
@@ -179,6 +259,24 @@ void DataStorage::setupDatabase(const char* path){
         std::cerr << "Error Enabling Foreign Keys: " << messageError << std::endl;
         sqlite3_free(messageError);
     }
+
+    // const char* setJournalMode = "PRAGMA journal_mode = WAL;";
+
+    // exit = sqlite3_exec(db, setJournalMode, NULL, 0, &messageError);
+
+    // if(exit != SQLITE_OK){
+    //     std::cerr << "Error setting journal_mode: " << messageError << std::endl;
+    //     sqlite3_free(messageError);
+    // }
+
+    // const char* setSynchronous = "PRAGMA synchronous = NORMAL;";
+
+    // exit = sqlite3_exec(db, setSynchronous, NULL, 0, &messageError);
+
+    // if(exit != SQLITE_OK){
+    //     std::cerr << "Error setting synchronous: " << messageError << std::endl;
+    //     sqlite3_free(messageError);
+    // }
 
 
     const char* createSessionTable = "CREATE TABLE IF NOT EXISTS Session("
@@ -260,8 +358,14 @@ void DataStorage::setupDataTypes(){
     dataTypeName.push_back("CAR SPEED");
     dataTypeUnit.push_back("m/s");
 
+    /* I'm not entirely sure how the ON CONFLICT works, but we need to do this if we want to update the data types table. 
+     * The reason why is that all of the data in the data table has a foreign key that references this table, so if it's
+     * inserted or replaced every time it takes a ton of time to fix if the database is large (which it will be)
+     *
+     */ 
 
-    const char* insertDataType = "INSERT OR REPLACE INTO DataType (DataTypeID, DataTypeName, DataUnit) VALUES (?, ?, ?)";
+    const char* insertDataType = "INSERT INTO DataType (DataTypeID, DataTypeName, DataUnit) VALUES (?, ?, ?) "
+                                 "ON CONFLICT(DataTypeID) DO UPDATE SET DataTypeName=excluded.DataTypeName, DataUnit=excluded.DataUnit";
 
     for(int i = 0; i < dataTypesInDB.size(); i++){
         int exit = 0;
@@ -269,6 +373,7 @@ void DataStorage::setupDataTypes(){
         sqlite3_stmt *statement;
 
         exit = sqlite3_prepare_v2(db, insertDataType, -1, &statement, nullptr);
+
 
         if(exit){
             std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
@@ -289,6 +394,7 @@ void DataStorage::setupDataTypes(){
         sqlite3_finalize(statement);
     }
 }
+
 
 
     // enum DataRetrieval{

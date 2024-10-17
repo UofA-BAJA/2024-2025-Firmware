@@ -4,6 +4,8 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>
+#include <fstream>
+#include <string>
 
 class CarLogger{
 
@@ -12,10 +14,10 @@ class CarLogger{
         // This should only be called by the car.
         CarLogger();
 
-        void Log(const char* str);
-        void LogWarning(const char* str);
-        void LogError(const char* str);
-        void LogPanic(const char* str);
+        static void Log(const char* str);
+        static void LogWarning(const char* str);
+        static void LogError(const char* str);
+        static void LogPanic(const char* str);
 
     private:
         const char* logPath = "/home/bajaelectrical/car.log";
