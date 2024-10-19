@@ -13,6 +13,9 @@ class IMUProcedure : public Procedure{
         IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
+
+            this->frequency = 180;
+
         }
         
         void init() override {
@@ -37,8 +40,9 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
             dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
 
-            // std::cout << std::fixed;
-            // std::cout << std::setprecision(2);
+
+            std::cout << std::fixed;
+            std::cout << std::setprecision(2);
             std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
         }
 

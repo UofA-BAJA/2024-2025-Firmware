@@ -12,7 +12,6 @@
 #include <chrono>
 #include <cstdlib>
 
-#include "Car.h"
 #include "CarContainer.h"
 #include "ProcedureScheduler.h"
 #include "CANDispatcher.h"
@@ -20,7 +19,10 @@
 #include "DataStorage.h"
 #include "CarLogger.h"
 
+#include "Constants.h"
+
 class Car{
+
     public:
         Car();
         ~Car();

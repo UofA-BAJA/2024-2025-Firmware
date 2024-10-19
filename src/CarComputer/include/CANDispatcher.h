@@ -21,6 +21,8 @@
 
 #include <vector>
 
+#include "CarLogger.h"
+
 using byte = unsigned char;
 
 class CANDispatcher{
@@ -47,13 +49,14 @@ class CANDispatcher{
         std::map<byte, int> commandCycles;
         int cycleThreshold = 40;     // A command can be in queue for 5 cycles until it is considered dropped.
 
-
+        const char* interfaceName;
 
         std::mutex callbacks_mutex;
 
         int openCANSocket(const char* interface);
         void readCANInterface();
 
+        void resetCANInterface(const char* interface);
         int droppedCommands = 0;
 
 };

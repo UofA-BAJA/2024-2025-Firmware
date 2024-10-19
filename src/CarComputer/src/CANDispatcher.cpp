@@ -3,23 +3,9 @@
 
 CANDispatcher::CANDispatcher(const char* interface){
 
-    unsigned int microseconds = 1000000;
+    interfaceName = interface;
 
-
-    std::string canDownCommand = "sudo ip link set " + std::string(interface) + " down";
-    std::string canUpCommand = "sudo ip link set " + std::string(interface) + " up";
-
-    int result1 = std::system(canDownCommand.c_str());
-
-    if(result1 == 0){
-        std::cout << "Can down executed successfully" << std::endl;
-    }
-
-    int result2 = std::system(canUpCommand.c_str());
-
-    if(result2 == 0){
-        std::cout << "Can up executed successfully" << std::endl;
-    }
+    resetCANInterface(interfaceName);
 
     can_socket_fd = openCANSocket(interface);
 
@@ -110,8 +96,17 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     // Send the CAN frame
     if(write(can_socket_fd, &frame, sizeof(frame)) != sizeof(frame)){
-        std::cerr << "Error sending CAN frame: " << strerror(errno) << std::endl;
-        return;
+
+        std::string errorStr = strerror(errno);
+        std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
+
+
+        CarLogger::LogWarning("CAN Buffer filled");
+        if(!errorStr.compare("No buffer space available")){
+            resetCANInterface(interfaceName);
+        }
+
+        // exit(1);
     }
 
     // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
@@ -210,4 +205,25 @@ int CANDispatcher::openCANSocket(const char* interface){
     
 
     return socket_fd;
+}
+
+
+void CANDispatcher::resetCANInterface(const char* interface){
+
+
+    std::string canDownCommand = "sudo ip link set " + std::string(interface) + " down";
+    std::string canUpCommand = "sudo ip link set " + std::string(interface) + " up";
+
+    int result1 = std::system(canDownCommand.c_str());
+
+    if(result1 == 0){
+        std::cout << "Can down executed successfully" << std::endl;
+    }
+
+    int result2 = std::system(canUpCommand.c_str());
+
+    if(result2 == 0){
+        std::cout << "Can up executed successfully" << std::endl;
+    }
+
 }
