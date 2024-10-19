@@ -13,6 +13,8 @@
 #include <unistd.h>     // For close()
 #include <sys/ioctl.h>
 
+#include <iomanip>
+
 // For multithreading
 #include <thread>
 #include <mutex>
@@ -27,19 +29,26 @@ class CANDispatcher{
 
         CANDispatcher(const char* interface);
 
+        void execute();
+
         void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
 
     private:
-        const int MIN_UID_BOUND = 0;
-        const int MAX_UID_BOUND = 255;
+        const byte MIN_UID_BOUND = 0xA0;
+        const byte MAX_UID_BOUND = 0xFF;
 
         int can_socket_fd;
-        int currUID;
+        byte currUID;
 
         std::thread canReadingThread;
 
-        std::map<uint16_t, std::function<void(can_frame)>> callbacks;
-        std::map<int, uint16_t> currentDeviceCommands;
+        std::map<byte, std::function<void(can_frame)>> callbacks;
+        // Maps a command to the amount of cycles it has been waiting for a response
+        std::map<byte, int> commandCycles;
+        int cycleThreshold = 40;     // A command can be in queue for 5 cycles until it is considered dropped.
+
+
+
         std::mutex callbacks_mutex;
 
         int openCANSocket(const char* interface);

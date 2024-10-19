@@ -3,12 +3,49 @@
 
 CANDispatcher::CANDispatcher(const char* interface){
 
+    unsigned int microseconds = 1000000;
+
+
+    std::string canDownCommand = "sudo ip link set " + std::string(interface) + " down";
+    std::string canUpCommand = "sudo ip link set " + std::string(interface) + " up";
+
+    int result1 = std::system(canDownCommand.c_str());
+
+    if(result1 == 0){
+        std::cout << "Can down executed successfully" << std::endl;
+    }
+
+    int result2 = std::system(canUpCommand.c_str());
+
+    if(result2 == 0){
+        std::cout << "Can up executed successfully" << std::endl;
+    }
 
     can_socket_fd = openCANSocket(interface);
 
     currUID = MIN_UID_BOUND;
 
     canReadingThread = std::thread(&CANDispatcher::readCANInterface, this);
+}
+
+
+void CANDispatcher::execute(){
+    for(auto it = commandCycles.begin(); it != commandCycles.end();){
+        byte commandID = it->first;
+        commandCycles[commandID]++;
+
+        if(commandCycles[commandID] >= cycleThreshold){
+                droppedCommands++;
+
+                std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+                callbacks.erase(commandID);
+                commandCycles.erase(commandID);
+        }
+        else{
+            ++it;
+        }
+
+    }
 }
 
 /*
@@ -43,7 +80,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         return;
     }
 
-    uint16_t messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
+    byte messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
 
 
     // std::cout << currUID << std::endl;
@@ -54,17 +91,6 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     currUID = messageID;
 
-
-    // If the device already has a command, but hasn't responded, it can be considered a droped packet.
-    if(currentDeviceCommands.find(deviceID) != currentDeviceCommands.end()){
-        callbacks.erase(currentDeviceCommands[deviceID]);
-        droppedCommands++;
-
-        std::cout << "Dropped packet. Dropped packet count: " << droppedCommands << std::endl;
-    }
-    
-    currentDeviceCommands[deviceID] = messageID;
-    
     if(callbacks.find(messageID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
         return;
@@ -74,12 +100,11 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Prepare the CAN frame
     struct can_frame frame;                                             // The CAN frame to send to the CAN device
     frame.can_id = deviceID;                                            // CAN ID
-    frame.can_dlc = data.size();                                        // Data length
-
+    // dlc stands for data length code. It is plus one because we are sending the data and the callback
+    frame.can_dlc = data.size()+1;
     frame.data[0] = messageID;
 
     for(int i = 0; i < data.size(); i++){
-        std::cout << i << std::endl;
         frame.data[i+1] = data.at(i);
     }
 
@@ -92,7 +117,8 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
     std::lock_guard<std::mutex> lock(callbacks_mutex);
     callbacks[messageID] = callback;
-    std::cout << "CAN frame sent!" << std::endl;
+    commandCycles[currUID] = 0;
+    // std::cout << "CAN frame sent!" << std::endl;
 }
 
 /*
@@ -131,7 +157,7 @@ void CANDispatcher::readCANInterface(){
                 callbacks[callback_key](frame);
                 
                 callbacks.erase(callback_key);
-                currentDeviceCommands.erase(message_id);
+                commandCycles.erase(callback_key);
             }
         }
     }
@@ -180,6 +206,8 @@ int CANDispatcher::openCANSocket(const char* interface){
         close(socket_fd);
         exit(EXIT_FAILURE);
     }
+
+    
 
     return socket_fd;
 }

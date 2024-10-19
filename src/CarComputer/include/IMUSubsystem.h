@@ -8,6 +8,9 @@ class IMUSubsystem{
     public:
         IMUSubsystem(CANDispatcher* canDispatcher);
         double getRotationX();
+        double getRotationY();
+        double getRotationZ();
+
     private:
         IMU* imu;
 };

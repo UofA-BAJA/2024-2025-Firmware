@@ -27,8 +27,10 @@ void setup() {
     while(1);
   }
 
-    CAN.init_Mask(0, 0, 0x7FF);  // Set mask for filter 0 (standard 11-bit ID)
-    CAN.init_Filt(0, 0, 0x123);  // Accept messages with CAN ID 0x123
+
+  // I don't believe the masking is currently working.
+  CAN.init_Mask(0, 0, 0x7FF);  // Set mask for filter 0 (standard 11-bit ID)
+  CAN.init_Filt(0, 0, 0x123);  // Accept messages with CAN ID 0x123
 
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
@@ -54,46 +56,71 @@ void loop() {
       sensors_event_t event; 
       bno.getEvent(&event);
 
-      Serial.print("X: ");
-      Serial.print(event.orientation.x, 4);
-      Serial.println();
+      // Serial.print("X: ");
+      // Serial.print(event.orientation.x, 4);
+      // Serial.println();
 
-      byte data[sizeof event.orientation.x];
-
-      memcpy(data, &event.orientation.x, sizeof event.orientation.x);
-
-
-
-    long unsigned int rxId;
+    long unsigned int rxId = 0;
     unsigned char len = 0;
     unsigned char rxBuf[8];
 
-  // // Check for incoming CAN messages
-    if (CAN_MSGAVAIL == CAN.checkReceive()) {
+    rxBuf[0] = 0;
+    rxBuf[1] = 0;
+
+  // Check for incoming CAN messages
+    if(CAN_MSGAVAIL == CAN.checkReceive()) {
       CAN.readMsgBuf(&rxId, &len, rxBuf);  // Read message
-      Serial.print(">ID: ");
-      Serial.println(rxId, HEX);
+      // Serial.print(">ID: ");
+      // Serial.println(rxId, HEX);
 
       // for (int i = 0; i < len; i++) {
       //   Serial.print(">Data: ");
       //   Serial.println(rxBuf[i], HEX);
       // }
 
-      Serial.println("-------------------------");
+      // Serial.println("-------------------------");
+      if(rxBuf[1] == 0x01){
 
+        byte xData[sizeof event.orientation.x];
 
-      if(rxBuf[1] == 0xA4){
-
-        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,8,data);
+        memcpy(xData, &event.orientation.x, sizeof event.orientation.x);
+        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,xData);
 
         // if(sendMSG == CAN_OK){
-        //   Serial.println("Message Sent Successfully!");
+        //   Serial.println("Message Sent Successfully! Z");
         // } else {
         //   Serial.println("Error Sending Message...");
         // }
       }
+      else if(rxBuf[1] == 0x02){
 
+        byte yData[sizeof event.orientation.y];
+
+        memcpy(yData, &event.orientation.y, sizeof event.orientation.y);
+        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,yData);
+    
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully! Y");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
+      else if(rxBuf[1] == 0x03){
+
+        byte zData[sizeof event.orientation.z];
+
+        memcpy(zData, &event.orientation.z, sizeof event.orientation.z);
+        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,zData);
+
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully! Z");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
     }
+
+
         /* Get a new sensor event */ 
       
       /* Display the floating point data */

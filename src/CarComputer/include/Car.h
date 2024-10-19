@@ -9,7 +9,7 @@
 #define CAR_H
 
 #include <iostream>
-#include <time.h>
+#include <chrono>
 #include <cstdlib>
 
 #include "Car.h"
@@ -17,12 +17,13 @@
 #include "ProcedureScheduler.h"
 #include "CANDispatcher.h"
 #include "Procedure.h"
+#include "DataStorage.h"
+#include "CarLogger.h"
 
 class Car{
     public:
         Car();
         ~Car();
-        
 
     private:
         void init();

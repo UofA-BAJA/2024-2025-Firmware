@@ -10,7 +10,6 @@
 #include "Commands.h"
 
 #include "procedures/ExampleProcedure.cpp"
-#include "procedures/TestProcedure.cpp"
 #include "procedures/IMUProcedure.cpp"
 
 #include "DataStorage.h"
@@ -28,16 +27,13 @@
 IMUSubsystem* imuSubsystem;
 IMUProcedure* imuProcedure;
 
-// DataStorage dataStorageSubsystem;
-
-
-CarContainer::CarContainer(ProcedureScheduler& procedureScheduler, CANDispatcher* canDispatcher){
+CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage){
 
     // testProcedure = new TestProcedure(dataStorageSubsystem);
     imuSubsystem = new IMUSubsystem(canDispatcher);
-    imuProcedure = new IMUProcedure(imuSubsystem);
+    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage);
 
-    procedureScheduler.bindCommand(imuProcedure, Command::START_LOG);
+    procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
 }

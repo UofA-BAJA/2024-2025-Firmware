@@ -1,12 +1,18 @@
 #include "Procedure.h"
 #include "IMUSubsystem.h"
+#include "DataStorage.h"
+#include "CarLogger.h"
+
+#include <iomanip>
 
 class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
+        DataStorage* dataStorage;
 
-        IMUProcedure(IMUSubsystem *imuSubsystem){
+        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
             this->imuSubsystem = imuSubsystem;
+            this->dataStorage = dataStorage;
         }
         
         void init() override {
@@ -18,7 +24,22 @@ class IMUProcedure : public Procedure{
 
             float xRot = imuSubsystem->getRotationX();
 
-            std::cout << "IMU Rotation X: " << xRot << std::endl;
+            // For testing purposes
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            // xRot = imuSubsystem->getRotationX();
+            float yRot = imuSubsystem->getRotationY();
+            float zRot = imuSubsystem->getRotationZ();
+
+            dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
+            dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
+            dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
+
+            // std::cout << std::fixed;
+            // std::cout << std::setprecision(2);
+            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
         }
 
         void end() override {
