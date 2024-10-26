@@ -13,7 +13,7 @@
 
 class Procedure{
     public:
-        virtual std::string toString() {return "Implement please";}
+        virtual std::string toString() {return "Insert name of procedure here";}
         // All of these functions can be overridden.
         virtual void init() {;}
         virtual void execute() {;}

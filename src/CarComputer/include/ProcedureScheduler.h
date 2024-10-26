@@ -4,16 +4,16 @@
 #include <unordered_set>
 #include <unordered_map>
 #include "Commands.h"
-#include "procedures/Procedure.h"
+#include "Procedure.h"
 
 class ProcedureScheduler{
     public:
-        void init();
+        ProcedureScheduler();
         void execute();
         void end();
 
-        int bindCommand(Procedure* procedure, Command command);
-        int receiveComCommand(Command command);
+        void bindCommand(Procedure* procedure, Command command);
+        void receiveComCommand(Command command);
 
     private:
         std::unordered_map<Command, std::unordered_set<Procedure*>> totalProcedures;

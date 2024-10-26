@@ -6,32 +6,35 @@
  * Author: Matthew Larson
  */
 
-#include <iostream>
-#include <time.h>
-#include <cstdlib>
-#include "Car.h"
-#include "CarContainer.h"
-#include "ProcedureScheduler.h"
-
-
 // I'm not sure why I need this preprocessor, but this works...
 // https://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-includedhttps://stackoverflow.com/questions/68742519/why-cant-i-use-the-nanosleep-function-even-when-time-h-is-included
 #define _POSIX_C_SOURCE 199309L
 
+#include "Car.h"
 
-ProcedureScheduler procedureScheduler;
-
+CarContainer* carContainer;
+ProcedureScheduler* procedureScheduler;
+CANDispatcher* canDispatcher;
+DataStorage* dataStorage;
+CarLogger* carLogger;
 
 Car::Car() {
     // Init behavior that needs to be called before the subsystems start running.
     init();
+    const char* can_interface = "can0";
+    const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
 
-    CarContainer carContainer = CarContainer(procedureScheduler);
+    CarLogger::Initialize("/home/bajaelectrical/car.log");
 
-    procedureScheduler.init();
+    dataStorage = new DataStorage(dataStoragePath);
+    dataStorage->startNewSession("Test session name O.o");
 
-    procedureScheduler.receiveComCommand(Command::START_LOG);
+    procedureScheduler = new ProcedureScheduler();
+    canDispatcher = new CANDispatcher(can_interface);
+    carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
+    procedureScheduler->receiveComCommand(Command::START_LOG);
 
+    std::cout << "Car Sucessfully Initialized" << std::endl;
 
     execute();
 }
@@ -45,24 +48,55 @@ Car::~Car(){
 }
 
 void Car::execute(){
+
+    using namespace std::chrono;
+
+
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 200;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = 50;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
 
 
     // I'm not exactly sure if this is exactly what we want, but it "should" be good enough for now
+    
+    steady_clock::time_point absoluteStart;
+    absoluteStart = steady_clock::now();
+
+
+    steady_clock::time_point startTime;
+    steady_clock::time_point endTime;
 
     while(1){
-        // req defines a time value required by nanosleep 
-        struct timespec req = {0};
-        req.tv_sec = 0;
-        req.tv_nsec = cycleTimens;
-        nanosleep(&req, (struct timespec *)NULL);
+        startTime = steady_clock::now();
+        double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
 
-        procedureScheduler.execute();
+        // std::cout << time / 1000000000L << std::setprecision(9) << std::endl;
+
+        procedureScheduler->execute();
+        canDispatcher->execute();
+        dataStorage->execute(time / 1000000000L);
+
+        endTime = steady_clock::now();
+
+        double timeTaken = duration_cast<nanoseconds>(endTime - startTime).count();
+
+        // std::cout << timeTaken / 1000000.0 << std::setprecision(9) << std::endl;
+
+
+        if(timeTaken < cycleTimens){
+            // req defines a time value required by nanosleep 
+            struct timespec req = {0};
+            req.tv_sec = 0;
+            req.tv_nsec = cycleTimens - timeTaken;
+            nanosleep(&req, (struct timespec *)NULL);
+        }
+        else{
+            std::cout << "Please stop you're like genuinely killing the raspberry pi with how much work it's doing" << std::endl;
+            CarLogger::LogError("Car Computer cycle takes longer to compute than frequency");
+        }
     }
 
     // printing for other subsystems only works if you print something to the terminal...?
@@ -70,10 +104,10 @@ void Car::execute(){
 }
 
 void Car::init(){
-    std::cout << "Car Sucessfully Initialized\n";
+    // std::cout << "Car Sucessfully Initialized\n";
 }
 
 void Car::end(){
-    procedureScheduler.end();
+    procedureScheduler->end();
     std::cout << "Car sucessfully destroyed\n";
 }

@@ -10,9 +10,10 @@
 #include "Commands.h"
 
 #include "procedures/ExampleProcedure.cpp"
-#include "procedures/TestProcedure.cpp"
+#include "procedures/IMUProcedure.cpp"
 
-#include "subsystems/DataStorage.h"
+#include "DataStorage.h"
+#include "IMUSubsystem.h"
 
 /*
  * Here you create the subsystems and commands.
@@ -20,20 +21,19 @@
  * do anything.
 */
 
-ExampleProcedure* exampleProcedure;
-TestProcedure* testProcedure;
+// ExampleProcedure* exampleProcedure;
+// TestProcedure* testProcedure;
 
-DataStorage* dataStorage;
+IMUSubsystem* imuSubsystem;
+IMUProcedure* imuProcedure;
 
-CarContainer::CarContainer(ProcedureScheduler& procedureScheduler){
+CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage){
 
-    dataStorage = new DataStorage();
+    // testProcedure = new TestProcedure(dataStorageSubsystem);
+    imuSubsystem = new IMUSubsystem(canDispatcher);
+    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage);
 
-    exampleProcedure = new ExampleProcedure(*dataStorage);
-    testProcedure = new TestProcedure(*dataStorage);
-
-    procedureScheduler.bindCommand(exampleProcedure, Command::START_LOG);
-    procedureScheduler.bindCommand(testProcedure, Command::START_LOG);
+    procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
 
     std::cout << "Car Container Constructor called" << std::endl;
 }
