@@ -7,6 +7,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/src/CarComputer/src
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary
+        ${CMAKE_SOURCE_DIR}/src/DevLib/Dash/WrapperLibrary
         ${CMAKE_SOURCE_DIR}/src/CarComputer/include)
 
 
@@ -15,6 +16,7 @@ include_directories(
 
 # TEMPORARILY GRAB THE IMU LIBRARY
 file(GLOB TEMP_IMU ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary/*.cpp)
+file(GLOB TEMP_DASH ${CMAKE_SOURCE_DIR}/src/DevLib/Dash/WrapperLibrary/*.cpp)
 
 
 # Grab all the .cpp files in src
