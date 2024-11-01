@@ -36,18 +36,18 @@ class CANDispatcher{
         void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
 
     private:
-        const byte MIN_UID_BOUND = 0xA0;
-        const byte MAX_UID_BOUND = 0xFF;
+        const int MIN_UID_BOUND = 0x1000;         // Reserve the non extended ID's for all the other devices
+        const int MAX_UID_BOUND = 0xFFFFFF;
 
         int can_socket_fd;
-        byte currUID;
+        uint32_t currUID;
 
         std::thread canReadingThread;
 
-        std::map<byte, std::function<void(can_frame)>> callbacks;
+        std::map<uint32_t, std::function<void(can_frame)>> callbacks;
         // Maps a command to the amount of cycles it has been waiting for a response
-        std::map<byte, int> commandCycles;
-        int cycleThreshold = 40;     // A command can be in queue for 5 cycles until it is considered dropped.
+        std::map<uint32_t, int> commandCycles;
+        int cycleThreshold = 100;     // A command can be in queue for 100 cycles until it is considered dropped.
 
         const char* interfaceName;
 

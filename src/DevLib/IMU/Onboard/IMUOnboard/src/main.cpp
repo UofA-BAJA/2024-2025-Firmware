@@ -79,12 +79,17 @@ void loop() {
       // }
 
       // Serial.println("-------------------------");
-      if(rxBuf[1] == 0x01){
+      if(rxBuf[3] == 0x01){
 
         byte xData[sizeof event.orientation.x];
 
         memcpy(xData, &event.orientation.x, sizeof event.orientation.x);
-        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,xData);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, rxBuf, 3);
+
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, xData);
 
         // if(sendMSG == CAN_OK){
         //   Serial.println("Message Sent Successfully! Z");
@@ -92,12 +97,17 @@ void loop() {
         //   Serial.println("Error Sending Message...");
         // }
       }
-      else if(rxBuf[1] == 0x02){
+      else if(rxBuf[3] == 0x02){
 
         byte yData[sizeof event.orientation.y];
 
         memcpy(yData, &event.orientation.y, sizeof event.orientation.y);
-        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,yData);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, &rxBuf[0], 3);
+
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, yData);
     
         // if(sendMSG == CAN_OK){
         //   Serial.println("Message Sent Successfully! Y");
@@ -105,12 +115,16 @@ void loop() {
         //   Serial.println("Error Sending Message...");
         // }
       }
-      else if(rxBuf[1] == 0x03){
+      else if(rxBuf[3] == 0x03){
 
         byte zData[sizeof event.orientation.z];
 
         memcpy(zData, &event.orientation.z, sizeof event.orientation.z);
-        byte sendMSG = CAN.sendMsgBuf(rxBuf[0],0,4,zData);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, &rxBuf[0], 3);
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
         // if(sendMSG == CAN_OK){
         //   Serial.println("Message Sent Successfully! Z");

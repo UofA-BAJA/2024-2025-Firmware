@@ -16,8 +16,14 @@ CANDispatcher::CANDispatcher(const char* interface){
 
 
 void CANDispatcher::execute(){
+
+    std::cout << "Commands in cycle: " << commandCycles.size() << std::endl;
+
+    std::lock_guard<std::mutex> lock(callbacks_mutex);
+
     for(auto it = commandCycles.begin(); it != commandCycles.end();){
-        byte commandID = it->first;
+        uint32_t commandID = it->first;
+
         commandCycles[commandID]++;
 
         if(commandCycles[commandID] >= cycleThreshold){
@@ -43,7 +49,7 @@ void CANDispatcher::execute(){
  *           a response is received.
  *
  *  Pre-Condition:  There is a device on the CAN bus with ID deviceID; The size of the data
- *                  vector is 7 or less (subject to change to 6 soon...?)
+ *                  vector is 4 or less
  *
  *  Post-Condition: The data is successfully sent over the CAN bus to the device with deviceID;
  *                  When a message is received, the given callback function will be executed
@@ -58,15 +64,16 @@ void CANDispatcher::execute(){
  *  Returns: None
  *
  */
+
 void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback){
 
-    if(data.size() > 7){
+    if(data.size() > 4){
         
-        std::cerr << "Error: You are only allowed to send 7 bytes of data to CAN device." << std::endl;
+        std::cerr << "Error: You are only allowed to send 4 bytes of data to CAN device." << std::endl;
         return;
     }
 
-    byte messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
+    int messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
 
 
     // std::cout << currUID << std::endl;
@@ -77,7 +84,13 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     currUID = messageID;
 
-    if(callbacks.find(messageID) != callbacks.end()){
+
+    int callbackID[3];
+    callbackID[0] = (currUID >> 0) & 0xff;
+    callbackID[1] = (currUID >> 8) & 0xff;
+    callbackID[2] = (currUID >> 16) & 0xff;
+
+    if(callbacks.find(currUID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
         return;
     }
@@ -86,13 +99,31 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Prepare the CAN frame
     struct can_frame frame;                                             // The CAN frame to send to the CAN device
     frame.can_id = deviceID;                                            // CAN ID
-    // dlc stands for data length code. It is plus one because we are sending the data and the callback
-    frame.can_dlc = data.size()+1;
-    frame.data[0] = messageID;
+    // dlc stands for data length code. It is plus 3 because we are sending the data and the callback
+    frame.can_dlc = data.size()+3;
+    frame.data[0] = callbackID[0];
+    frame.data[1] = callbackID[1];
+    frame.data[2] = callbackID[2];
 
     for(int i = 0; i < data.size(); i++){
-        frame.data[i+1] = data.at(i);
+        frame.data[i+3] = data.at(i);
     }
+
+
+    /* 
+     * Note about extremely bizzare bug and the order of code execution:
+     *
+     * Very rarely, if we wrote to the can bus, the device would respond so quickly that
+     * callbacks map and commandCycles wouldn't have time to be written to. To fix this, 
+     * I just had to add them to those maps before the command is written over the can socket.
+     * That's why the three lines are called before the write and not after.
+     *    
+    */
+
+    // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
+    std::lock_guard<std::mutex> lock(callbacks_mutex);
+    callbacks[currUID] = callback;
+    commandCycles[currUID] = 0;
 
     // Send the CAN frame
     if(write(can_socket_fd, &frame, sizeof(frame)) != sizeof(frame)){
@@ -100,6 +131,9 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         std::string errorStr = strerror(errno);
         std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
 
+        // Erase what we just wrote from the callbacks and commandCycles
+        callbacks.erase(currUID);
+        commandCycles.erase(currUID);
 
         CarLogger::LogWarning("CAN Buffer filled");
         if(!errorStr.compare("No buffer space available")){
@@ -109,10 +143,6 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         // exit(1);
     }
 
-    // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
-    std::lock_guard<std::mutex> lock(callbacks_mutex);
-    callbacks[messageID] = callback;
-    commandCycles[currUID] = 0;
     // std::cout << "CAN frame sent!" << std::endl;
 }
 
@@ -140,19 +170,17 @@ void CANDispatcher::readCANInterface(){
         int nbytes = read(can_socket_fd, &frame, sizeof(struct can_frame));
 
         if(nbytes > 0){
-            uint16_t message_id = frame.can_id;
+            uint32_t messageID = frame.can_id & CAN_EFF_MASK; // Mask to get only the 29-bit ID
 
             std::lock_guard<std::mutex> lock(callbacks_mutex);
 
-            uint16_t callback_key = message_id;
-
             // Check to see if the can frame is actually meant for us.
-            if(callbacks.find(callback_key) != callbacks.end()){
+            if(callbacks.find(messageID) != callbacks.end()){
                 // Invoke the registered callback
-                callbacks[callback_key](frame);
+                callbacks[messageID](frame);
                 
-                callbacks.erase(callback_key);
-                commandCycles.erase(callback_key);
+                callbacks.erase(messageID);
+                commandCycles.erase(messageID);
             }
         }
     }
