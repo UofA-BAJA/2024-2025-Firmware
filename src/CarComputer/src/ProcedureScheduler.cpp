@@ -60,7 +60,6 @@ void ProcedureScheduler::execute(){
                 procedure->execute();
                 ++it;   // Only increment the iterator if we're not erasing anything.
             }
-
         }
     }
 

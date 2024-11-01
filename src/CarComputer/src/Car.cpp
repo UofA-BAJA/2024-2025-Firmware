@@ -86,7 +86,6 @@ void Car::execute(){
 
         // std::cout << timeTaken / 1000000.0 << std::setprecision(9) << std::endl;
 
-
         if(timeTaken < cycleTimens){
             // req defines a time value required by nanosleep 
             struct timespec req = {0};
