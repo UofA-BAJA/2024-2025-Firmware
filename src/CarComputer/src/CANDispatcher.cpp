@@ -16,9 +16,7 @@ CANDispatcher::CANDispatcher(const char* interface){
 
 
 void CANDispatcher::execute(){
-
-    std::cout << "Commands in cycle: " << commandCycles.size() << std::endl;
-
+    
     std::lock_guard<std::mutex> lock(callbacks_mutex);
 
     for(auto it = commandCycles.begin(); it != commandCycles.end();){
@@ -29,7 +27,7 @@ void CANDispatcher::execute(){
         if(commandCycles[commandID] >= cycleThreshold){
                 droppedCommands++;
 
-                std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+                // std::cout << "Commands Dropped: " << droppedCommands << std::endl;
                 callbacks.erase(commandID);
                 commandCycles.erase(commandID);
         }
@@ -90,6 +88,11 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     callbackID[1] = (currUID >> 8) & 0xff;
     callbackID[2] = (currUID >> 16) & 0xff;
 
+
+    std::lock_guard<std::mutex> lock(callbacks_mutex);
+
+
+    // This line doesn't seem to do anything at all.
     if(callbacks.find(currUID) != callbacks.end()){
         std::cerr << "Error: Sending CAN requests too fast! Slow down!" << std::endl;
         return;
@@ -121,7 +124,6 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     */
 
     // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
-    std::lock_guard<std::mutex> lock(callbacks_mutex);
     callbacks[currUID] = callback;
     commandCycles[currUID] = 0;
 
