@@ -56,6 +56,8 @@ void setup() {
 void loop() {
       sensors_event_t event; 
       bno.getEvent(&event);
+      sensors_event_t accelerationEvent;
+      bno.getEvent(&accelerationEvent, Adafruit_BNO055::VECTOR_LINEARACCEL);
 
       // Serial.print("X: ");
       // Serial.print(event.orientation.x, 4);
@@ -135,9 +137,9 @@ void loop() {
       }
       else if(rxBuf[3] == 0x04){
 
-        byte zData[sizeof event.acceleration.x];
+        byte zData[sizeof accelerationEvent.acceleration.x];
 
-        memcpy(zData, &event.acceleration.x, sizeof event.acceleration.x);
+        memcpy(zData, &accelerationEvent.acceleration.x, sizeof accelerationEvent.acceleration.x);
 
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
@@ -152,9 +154,9 @@ void loop() {
       }
       else if(rxBuf[3] == 0x05){
 
-        byte zData[sizeof event.acceleration.y];
+        byte zData[sizeof accelerationEvent.acceleration.y];
 
-        memcpy(zData, &event.acceleration.y, sizeof event.acceleration.y);
+        memcpy(zData, &accelerationEvent.acceleration.y, sizeof accelerationEvent.acceleration.y);
 
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
@@ -169,9 +171,9 @@ void loop() {
       }
       else if(rxBuf[3] == 0x06){
 
-        byte zData[sizeof event.acceleration.z];
+        byte zData[sizeof accelerationEvent.acceleration.z];
 
-        memcpy(zData, &event.acceleration.z, sizeof event.acceleration.z);
+        memcpy(zData, &accelerationEvent.acceleration.z, sizeof accelerationEvent.acceleration.z);
 
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
