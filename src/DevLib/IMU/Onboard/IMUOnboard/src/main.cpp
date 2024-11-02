@@ -5,6 +5,7 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 
+
 const int SPI_CS_PIN = 10;  // CS pin for the MCP2515
 MCP_CAN CAN(SPI_CS_PIN);    // Create CAN object on CS pin
 
@@ -132,6 +133,58 @@ void loop() {
         //   Serial.println("Error Sending Message...");
         // }
       }
+      else if(rxBuf[3] == 0x04){
+
+        byte zData[sizeof event.acceleration.x];
+
+        memcpy(zData, &event.acceleration.x, sizeof event.acceleration.x);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, &rxBuf[0], 3);
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
+
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully! A-X");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
+      else if(rxBuf[3] == 0x05){
+
+        byte zData[sizeof event.acceleration.y];
+
+        memcpy(zData, &event.acceleration.y, sizeof event.acceleration.y);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, &rxBuf[0], 3);
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
+
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully! A-Y");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
+      else if(rxBuf[3] == 0x06){
+
+        byte zData[sizeof event.acceleration.z];
+
+        memcpy(zData, &event.acceleration.z, sizeof event.acceleration.z);
+
+        unsigned long callbackID = 0;
+        // 3 bytes for the callback ID
+        memcpy(&callbackID, &rxBuf[0], 3);
+        byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
+
+        // if(sendMSG == CAN_OK){
+        //   Serial.println("Message Sent Successfully! A-Z");
+        // } else {
+        //   Serial.println("Error Sending Message...");
+        // }
+      }
+      
     }
 
 

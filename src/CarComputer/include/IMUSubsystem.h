@@ -10,6 +10,9 @@ class IMUSubsystem{
         double getRotationX();
         double getRotationY();
         double getRotationZ();
+        double getAccelerationX();
+        double getAccelerationY();
+        double getAccelerationZ();
 
     private:
         IMU* imu;

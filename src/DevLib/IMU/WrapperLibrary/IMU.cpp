@@ -7,15 +7,57 @@ IMU::IMU(CANDispatcher* canDispatcher){
 }
 
 float IMU::getLatestAccelerationX(){
+    byte canID = Devices::IMU;
+    std::vector<byte> data = {0x04};
+
+
+    if(!canDispatcher){
+        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    }
+
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationX(frame);});
+
     return accX;
 }
 
+void IMU::populateAccelerationX(can_frame frame){
+    memcpy(&accX, &frame.data, sizeof(accX));
+}
+
 float IMU::getLatestAccelerationY(){
+    byte canID = Devices::IMU;
+    std::vector<byte> data = {0x05};
+
+
+    if(!canDispatcher){
+        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    }
+
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationY(frame);});
+
     return accY;
 }
 
+void IMU::populateAccelerationY(can_frame frame){
+    memcpy(&accY, &frame.data, sizeof(accY));
+}
+
 float IMU::getLatestAccelerationZ(){
+    byte canID = Devices::IMU;
+    std::vector<byte> data = {0x06};
+
+
+    if(!canDispatcher){
+        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    }
+
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationZ(frame);});
+
     return accZ;
+}
+
+void IMU::populateAccelerationZ(can_frame frame){
+    memcpy(&accZ, &frame.data, sizeof(accZ));
 }
 
 
