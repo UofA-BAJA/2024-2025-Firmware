@@ -27,14 +27,14 @@ void CANDispatcher::execute(){
         if(commandCycles[commandID] >= cycleThreshold){
                 droppedCommands++;
 
-                // std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+                std::cout << "Commands Dropped: " << droppedCommands << std::endl;
                 callbacks.erase(commandID);
-                commandCycles.erase(commandID);
+                // Proper way to continue iterating over the map
+                it = commandCycles.erase(it);
         }
         else{
             ++it;
         }
-
     }
 }
 
@@ -71,7 +71,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         return;
     }
 
-    int messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
+    uint32_t messageID = currUID + 1;   // The unique messageID that the device will send back to the PI to perform a callback
 
 
     // std::cout << currUID << std::endl;
@@ -83,7 +83,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     currUID = messageID;
 
 
-    int callbackID[3];
+    byte callbackID[3];
     callbackID[0] = (currUID >> 0) & 0xff;
     callbackID[1] = (currUID >> 8) & 0xff;
     callbackID[2] = (currUID >> 16) & 0xff;
@@ -137,8 +137,8 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         callbacks.erase(currUID);
         commandCycles.erase(currUID);
 
-        CarLogger::LogWarning("CAN Buffer filled");
         if(!errorStr.compare("No buffer space available")){
+            CarLogger::LogWarning("CAN Buffer filled");
             resetCANInterface(interfaceName);
         }
 
@@ -166,7 +166,6 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 void CANDispatcher::readCANInterface(){
 
     struct can_frame frame;                     // The data read from the CAN bus will be stored here
-
     // Continuous loop to read from the CAN bus
     while(true){
         int nbytes = read(can_socket_fd, &frame, sizeof(struct can_frame));

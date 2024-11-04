@@ -354,6 +354,18 @@ void DataStorage::setupDataTypes(){
     dataTypeName.push_back("IMU ROTATION Z");
     dataTypeUnit.push_back("deg");
 
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_X);
+    dataTypeName.push_back("IMU ACCELERATION X");
+    dataTypeUnit.push_back("m/s^2");
+
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Y);
+    dataTypeName.push_back("IMU ACCELERATION Y");
+    dataTypeUnit.push_back("m/s^2");
+
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Z);
+    dataTypeName.push_back("IMU ACCELERATION Z");
+    dataTypeUnit.push_back("m/s^2");
+
     dataTypesInDB.push_back(DataTypes::CAR_SPEED);
     dataTypeName.push_back("CAR SPEED");
     dataTypeUnit.push_back("m/s");

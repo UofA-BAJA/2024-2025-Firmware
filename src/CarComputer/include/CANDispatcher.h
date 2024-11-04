@@ -44,9 +44,9 @@ class CANDispatcher{
 
         std::thread canReadingThread;
 
-        std::map<uint32_t, std::function<void(can_frame)>> callbacks;
+        std::unordered_map<uint32_t, std::function<void(can_frame)>> callbacks;
         // Maps a command to the amount of cycles it has been waiting for a response
-        std::map<uint32_t, int> commandCycles;
+        std::unordered_map<uint32_t, int> commandCycles;
         int cycleThreshold = 100;     // A command can be in queue for 100 cycles until it is considered dropped.
 
         const char* interfaceName;
