@@ -19,6 +19,7 @@ DataStorage* dataStorage;
 CarLogger* carLogger;
 
 Car::Car() {
+
     // Init behavior that needs to be called before the subsystems start running.
     init();
     const char* can_interface = "can0";
@@ -54,7 +55,7 @@ void Car::execute(){
 
     // ! WARNNING: not tested on raspberry pi. 
     // ! Does not work with frequency 1 for whatever reason...
-    int frequency = 50;   // CAN can go up to 1 Mhz or 1000000 hz
+    int frequency = BASE_CAR_FREQUENCY;   // CAN can go up to 1 Mhz or 1000000 hz
 
     float cycleTime = 1.0 / frequency;  // Length of time to sleep
     int cycleTimens = (int)(cycleTime * 1000000000L);
@@ -84,7 +85,6 @@ void Car::execute(){
         double timeTaken = duration_cast<nanoseconds>(endTime - startTime).count();
 
         // std::cout << timeTaken / 1000000.0 << std::setprecision(9) << std::endl;
-
 
         if(timeTaken < cycleTimens){
             // req defines a time value required by nanosleep 

@@ -1,10 +1,13 @@
 #ifndef PROCEDURESCHEDULER_H
 #define PROCEDURESCHEDULER_H
 
+#include <string>
 #include <unordered_set>
 #include <unordered_map>
 #include "Commands.h"
 #include "Procedure.h"
+#include "Constants.h"
+#include "CarLogger.h"
 
 class ProcedureScheduler{
     public:

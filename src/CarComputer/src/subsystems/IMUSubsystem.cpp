@@ -29,3 +29,15 @@ double IMUSubsystem::getRotationY(){
 double IMUSubsystem::getRotationZ(){
     return imu->getLatestRotationZ();
 }
+
+double IMUSubsystem::getAccelerationX(){
+    return imu->getLatestAccelerationX();
+}
+
+double IMUSubsystem::getAccelerationY(){
+    return imu->getLatestAccelerationY();
+}
+
+double IMUSubsystem::getAccelerationZ(){
+    return imu->getLatestAccelerationZ();
+}

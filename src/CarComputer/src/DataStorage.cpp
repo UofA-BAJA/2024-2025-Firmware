@@ -260,23 +260,23 @@ void DataStorage::setupDatabase(const char* path){
         sqlite3_free(messageError);
     }
 
-    // const char* setJournalMode = "PRAGMA journal_mode = WAL;";
+    const char* setJournalMode = "PRAGMA journal_mode = WAL;";
 
-    // exit = sqlite3_exec(db, setJournalMode, NULL, 0, &messageError);
+    exit = sqlite3_exec(db, setJournalMode, NULL, 0, &messageError);
 
-    // if(exit != SQLITE_OK){
-    //     std::cerr << "Error setting journal_mode: " << messageError << std::endl;
-    //     sqlite3_free(messageError);
-    // }
+    if(exit != SQLITE_OK){
+        std::cerr << "Error setting journal_mode: " << messageError << std::endl;
+        sqlite3_free(messageError);
+    }
 
-    // const char* setSynchronous = "PRAGMA synchronous = NORMAL;";
+    const char* setSynchronous = "PRAGMA synchronous = NORMAL;";
 
-    // exit = sqlite3_exec(db, setSynchronous, NULL, 0, &messageError);
+    exit = sqlite3_exec(db, setSynchronous, NULL, 0, &messageError);
 
-    // if(exit != SQLITE_OK){
-    //     std::cerr << "Error setting synchronous: " << messageError << std::endl;
-    //     sqlite3_free(messageError);
-    // }
+    if(exit != SQLITE_OK){
+        std::cerr << "Error setting synchronous: " << messageError << std::endl;
+        sqlite3_free(messageError);
+    }
 
 
     const char* createSessionTable = "CREATE TABLE IF NOT EXISTS Session("
@@ -353,6 +353,18 @@ void DataStorage::setupDataTypes(){
     dataTypesInDB.push_back(DataTypes::IMU_ROTATION_Z);
     dataTypeName.push_back("IMU ROTATION Z");
     dataTypeUnit.push_back("deg");
+
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_X);
+    dataTypeName.push_back("IMU ACCELERATION X");
+    dataTypeUnit.push_back("m/s^2");
+
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Y);
+    dataTypeName.push_back("IMU ACCELERATION Y");
+    dataTypeUnit.push_back("m/s^2");
+
+    dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Z);
+    dataTypeName.push_back("IMU ACCELERATION Z");
+    dataTypeUnit.push_back("m/s^2");
 
     dataTypesInDB.push_back(DataTypes::CAR_SPEED);
     dataTypeName.push_back("CAR SPEED");

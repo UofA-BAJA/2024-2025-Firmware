@@ -11,6 +11,9 @@
 #include <string>
 #include <iostream>
 
+
+#include "Constants.h"
+
 class Procedure{
     public:
         virtual std::string toString() {return "Insert name of procedure here";}
@@ -23,6 +26,8 @@ class Procedure{
 
         // When the condition inside this function is true, the procedure ends.
         virtual bool isFinished() {return false;}
+
+        int frequency = BASE_CAR_FREQUENCY;
 
 };
 

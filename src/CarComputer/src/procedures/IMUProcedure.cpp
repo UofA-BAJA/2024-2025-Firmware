@@ -13,6 +13,9 @@ class IMUProcedure : public Procedure{
         IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
+
+            this->frequency = 60;
+
         }
         
         void init() override {
@@ -22,24 +25,33 @@ class IMUProcedure : public Procedure{
         void execute() override {
             // std::cout << "IMU procedure execution"<< std::endl;
 
-            float xRot = imuSubsystem->getRotationX();
-
             // For testing purposes
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
+
+            float xRot = imuSubsystem->getRotationX();
             float yRot = imuSubsystem->getRotationY();
             float zRot = imuSubsystem->getRotationZ();
+
+            float xAccel = imuSubsystem->getAccelerationX();
+            float yAccel = imuSubsystem->getAccelerationY();
+            float zAccel = imuSubsystem->getAccelerationZ();
 
             dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
             dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
             dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
 
-            // std::cout << std::fixed;
-            // std::cout << std::setprecision(2);
+            dataStorage->storeData(xAccel, DataTypes::IMU_ACCELERATION_X);
+            dataStorage->storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
+            dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
+
+            std::cout << std::fixed;
+            std::cout << std::setprecision(2);
             std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {
