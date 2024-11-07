@@ -15,6 +15,7 @@ MCP_CAN CAN(CAN_CS_PIN); // CAN
 Servo speed;
 Servo rpm;
 
+
 // Variables
 
 void setup()
@@ -22,6 +23,7 @@ void setup()
   // <insert that default comment that gets generated with all arduino projects>
   Serial.begin(115200);
   Serial.println("Dash test r8");
+
 
   // Join I2C
   Wire.begin();
@@ -132,33 +134,4 @@ void loop()
   {
     Serial.println("WIRE TIMEOUT FLAG SET!!!");
   }
-  // delay();
-  // byte error = CAN.checkError();
-  // if (error == CAN_CTRLERROR)
-  // {
-  //   Serial.print("CAN CTRL ERROR -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_FAIL)
-  // {
-  //   Serial.print("CAN FAIL -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_FAILTX)
-  // {
-  //   Serial.print("CAN FAIL TX -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_OK)
-  // {
-  //   Serial.print("CAN OK (explicit) -- Error Register ");
-  //   Serial.println(error, BIN);
-  // }
-  // else
-  // {
-  //   Serial.print("Check Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // delay(10);
-  // Serial.println("-------------------------");
 }
