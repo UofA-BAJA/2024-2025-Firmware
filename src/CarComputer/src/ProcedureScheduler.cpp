@@ -36,17 +36,17 @@ void ProcedureScheduler::execute(){
 
             Procedure* procedure = *it;
 
-            if(procedure->frequency % 10 != 0){
-                std::string errorMsg = procedure->toString() + " frequency not a multiple of 10";
+            if(360 % procedure->frequency != 0){
+                std::string errorMsg = procedure->toString() + " frequency not a divisor of 360";
                 CarLogger::LogError(errorMsg.c_str());
                 ++it;
                 continue;
             }
 
-            int percentageOfBaseCarClock = (int)(((double) procedure->frequency / BASE_CAR_FREQUENCY) * 100);
+            // int percentageOfBaseCarClock = (int)(((double) procedure->frequency / BASE_CAR_FREQUENCY) * 100);
             // std::cout << percentageOfBaseCarClock << std::endl;
 
-            if(cycleCount % (BASE_CAR_FREQUENCY / (percentageOfBaseCarClock * (BASE_CAR_FREQUENCY / 100))) != 0) {
+            if(cycleCount % (BASE_CAR_FREQUENCY / procedure->frequency) != 0) {
                 ++it;
                 continue;
             }
