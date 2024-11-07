@@ -1,19 +1,21 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SparkFun_Alphanumeric_Display.h>
-#include <Servo.h>
+// #include <Servo.h>
 #include <mcp_can.h>
 #include <SPI.h>
+#include <Adafruit_LEDBackpack.h>
 
 // Constants
-const int CAN_CS_PIN = 10;
+const int CAN_CS_PIN = 5;
 
 // Devices
 HT16K33 display; // 14 segment
-HT16K33 display2;
+// HT16K33 display2;
 MCP_CAN CAN(CAN_CS_PIN); // CAN
-Servo speed;
-Servo rpm;
+// Servo speed;
+// Servo rpm;
+Adafruit_LEDBackpack ledMatrix = Adafruit_LEDBackpack();
 
 // Variables
 
@@ -23,41 +25,54 @@ void setup()
   Serial.begin(115200);
   Serial.println("Dash test r8");
 
+
   // Join I2C
   Wire.begin();
-  Wire.setWireTimeout(25000U, true);
+//   Wire.setWireTimeout(25000U, true);
 
   //---------------------------------------------------
 
   // initalize 14 segment and check for display acknowledge
-  if (display.begin(0x70, 0x71) == false)
+  if (display.begin(0x70, 0x71, 0x72, 0x73) == false)
   {
     Serial.println("At least one 14 segment from row 1 did not acknowledge!");
     // while (1)
     //   ;
   }
-  if (display2.begin(0x72, 0x73) == false)
-  {
-    Serial.println("At least one 14 segment from row 2 did not acknowledge!");
-    // while (1)
-    //   ;
-  }
+//   if (display2.begin(0x72, 0x73) == false)
+//   {
+//     Serial.println("At least one 14 segment from row 2 did not acknowledge!");
+//     // while (1)
+//     //   ;
+//   }
   Serial.println("Display setup complete.");
-  display.print("TEST R1");
-  display2.print("TEST R2");
+  display.print("TEST R1  AAAAAA");
+//   display2.print("TEST R2");
   // display.updateDisplay();
 
   //---------------------------------------------------
 
   // Initalize Servos
-  speed.attach(5);
-  rpm.attach(6);
+//   speed.attach(5);
+//   rpm.attach(6);
+
+  //---------------------------------------------------
+
+  //Initialize LED Matrix
+  if (ledMatrix.begin(0x74) == false)
+  {
+    Serial.println("LED Matrix Driver did not acknowledge!");
+    // while (1)
+    //   ;
+  }
+  ledMatrix.displaybuffer[5] = 0b0100001000000001;
+  ledMatrix.writeDisplay();
 
   //---------------------------------------------------
 
   // Initialize and join CAN
   display.print("CAN INIT");
-  byte canInitResult = CAN.begin(MCP_ANY, CAN_100KBPS, MCP_8MHZ);
+  byte canInitResult = CAN.begin(MCP_STDEXT, CAN_100KBPS, MCP_8MHZ);
 
   if (canInitResult == CAN_OK)
   {
@@ -86,8 +101,17 @@ void setup()
       ;
   }
 
-  CAN.init_Mask(0, 0, 0x7FF); // Set mask for filter 0 (standard 11-bit ID)
-  CAN.init_Filt(0, 0, 0x123); // Accept messages with CAN ID 0x123 (final ID TBD)
+  CAN.init_Mask(0, 1, 0x00000001); 
+  CAN.init_Filt(0, 1, 0x00000001);
+  CAN.init_Filt(1, 1, 0x00000001);
+  
+
+  CAN.init_Mask(1, 1, 0x00000001); 
+  CAN.init_Filt(2, 1, 0x00000001);
+  CAN.init_Filt(3, 1, 0x00000001);
+  CAN.init_Filt(4, 1, 0x00000001);
+  CAN.init_Filt(5, 1, 0x00000001);
+
 
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
@@ -96,14 +120,14 @@ void setup()
   display.print("INIT OK");
   delay(700);
   display.print("NO MSG");
-  display2.print("WAITING");
+//   display2.print("WAITING");
   Serial.println("Init Ok!");
 }
 
 void loop()
 {
   // Handle Can RX
-  long unsigned int rxId;
+  unsigned long rxId;
   unsigned char len = 0;
   unsigned char rxBuf[8];
 
@@ -113,11 +137,15 @@ void loop()
     while (CAN_MSGAVAIL == CAN.checkReceive())
     {
       CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
-      // Serial.print(">RX ID: ");
+      Serial.print(">RX ID: ");
 
-      // Serial.println(rxId, HEX);
-      display.print("RX");
-      display2.print(rxId);
+      Serial.println(rxId, HEX);
+    //   if(rxId > 1){
+        display.print(rxId);    
+    //   }
+      
+
+    //   display2.print(rxId);
 
       // for (int i = 0; i < len; i++)
       // {
@@ -128,37 +156,8 @@ void loop()
     // Serial.println(" reached end of buffer -------------------------");
   }
 
-  if (Wire.getWireTimeoutFlag())
-  {
-    Serial.println("WIRE TIMEOUT FLAG SET!!!");
-  }
-  // delay();
-  // byte error = CAN.checkError();
-  // if (error == CAN_CTRLERROR)
-  // {
-  //   Serial.print("CAN CTRL ERROR -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_FAIL)
-  // {
-  //   Serial.print("CAN FAIL -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_FAILTX)
-  // {
-  //   Serial.print("CAN FAIL TX -- Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // else if (error == CAN_OK)
-  // {
-  //   Serial.print("CAN OK (explicit) -- Error Register ");
-  //   Serial.println(error, BIN);
-  // }
-  // else
-  // {
-  //   Serial.print("Check Error Register: ");
-  //   Serial.println(error, BIN);
-  // }
-  // delay(10);
-  // Serial.println("-------------------------");
+//   if (Wire.getWireTimeoutFlag())
+//   {
+//     Serial.println("WIRE TIMEOUT FLAG SET!!!");
+//   }
 }
