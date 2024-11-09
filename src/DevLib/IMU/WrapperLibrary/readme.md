@@ -5,7 +5,6 @@ These instructions only needed to be followed one time per raspberry pi.
 
 https://www.beyondlogic.org/adding-can-controller-area-network-to-the-raspberry-pi/
 https://linuxjedi.co.uk/2021/12/01/making-a-can-bus-module-work-with-a-raspberry-pi/comment-page-1/
-https://www.beyondlogic.org/adding-can-controller-area-network-to-the-raspberry-pi/
 
 Arduino CAN library docs: https://github.com/coryjfowler/MCP_CAN_lib
 

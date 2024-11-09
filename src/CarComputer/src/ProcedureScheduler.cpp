@@ -43,9 +43,6 @@ void ProcedureScheduler::execute(){
                 continue;
             }
 
-            // int percentageOfBaseCarClock = (int)(((double) procedure->frequency / BASE_CAR_FREQUENCY) * 100);
-            // std::cout << percentageOfBaseCarClock << std::endl;
-
             if(cycleCount % (BASE_CAR_FREQUENCY / procedure->frequency) != 0) {
                 ++it;
                 continue;
