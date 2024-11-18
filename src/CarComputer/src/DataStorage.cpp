@@ -260,23 +260,23 @@ void DataStorage::setupDatabase(const char* path){
         sqlite3_free(messageError);
     }
 
-    // const char* setJournalMode = "PRAGMA journal_mode = WAL;";
+    const char* setJournalMode = "PRAGMA journal_mode = WAL;";
 
-    // exit = sqlite3_exec(db, setJournalMode, NULL, 0, &messageError);
+    exit = sqlite3_exec(db, setJournalMode, NULL, 0, &messageError);
 
-    // if(exit != SQLITE_OK){
-    //     std::cerr << "Error setting journal_mode: " << messageError << std::endl;
-    //     sqlite3_free(messageError);
-    // }
+    if(exit != SQLITE_OK){
+        std::cerr << "Error setting journal_mode: " << messageError << std::endl;
+        sqlite3_free(messageError);
+    }
 
-    // const char* setSynchronous = "PRAGMA synchronous = NORMAL;";
+    const char* setSynchronous = "PRAGMA synchronous = NORMAL;";
 
-    // exit = sqlite3_exec(db, setSynchronous, NULL, 0, &messageError);
+    exit = sqlite3_exec(db, setSynchronous, NULL, 0, &messageError);
 
-    // if(exit != SQLITE_OK){
-    //     std::cerr << "Error setting synchronous: " << messageError << std::endl;
-    //     sqlite3_free(messageError);
-    // }
+    if(exit != SQLITE_OK){
+        std::cerr << "Error setting synchronous: " << messageError << std::endl;
+        sqlite3_free(messageError);
+    }
 
 
     const char* createSessionTable = "CREATE TABLE IF NOT EXISTS Session("

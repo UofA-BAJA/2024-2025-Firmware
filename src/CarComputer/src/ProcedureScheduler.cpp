@@ -21,15 +21,35 @@ ProcedureScheduler::ProcedureScheduler(){
  *
  *  Returns: None
  */
+
+ulong cycleCount = 0;
+
 void ProcedureScheduler::execute(){
 
     for(auto keyValuePair : activeProcedures){
         
         auto& procedures = keyValuePair.second;  // Reference to the set of procedures
 
+
         // Use of an iterator is required, as we are removing elements from the set we are iterating over.
         for(auto it =  procedures.begin(); it != procedures.end(); ){
+
             Procedure* procedure = *it;
+
+            if(procedure->frequency % 10 != 0){
+                std::string errorMsg = procedure->toString() + " frequency not a multiple of 10";
+                CarLogger::LogError(errorMsg.c_str());
+                ++it;
+                continue;
+            }
+
+            int percentageOfBaseCarClock = (int)(((double) procedure->frequency / BASE_CAR_FREQUENCY) * 100);
+            // std::cout << percentageOfBaseCarClock << std::endl;
+
+            if(cycleCount % (BASE_CAR_FREQUENCY / (percentageOfBaseCarClock * (BASE_CAR_FREQUENCY / 100))) != 0) {
+                ++it;
+                continue;
+            }
 
             if(procedure->isFinished()){
                 procedure->end();
@@ -40,9 +60,10 @@ void ProcedureScheduler::execute(){
                 procedure->execute();
                 ++it;   // Only increment the iterator if we're not erasing anything.
             }
-
         }
     }
+
+    cycleCount++;
 }
 
 /*
