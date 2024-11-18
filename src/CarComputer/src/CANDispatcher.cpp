@@ -15,6 +15,7 @@ CANDispatcher::CANDispatcher(const char* interface){
 }
 
 
+
 void CANDispatcher::execute(){
     
     std::lock_guard<std::mutex> lock(callbacks_mutex);
@@ -28,6 +29,7 @@ void CANDispatcher::execute(){
                 droppedCommands++;
 
                 std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+                // std::cout << "Command Dropped: " << std::hex << commandID << std::endl;
                 callbacks.erase(commandID);
                 // Proper way to continue iterating over the map
                 it = commandCycles.erase(it);
