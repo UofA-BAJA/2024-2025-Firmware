@@ -59,16 +59,16 @@ void setup()
 
 void loop()
 {
-  // Handle Can RX
-  long unsigned int rxId;
-  unsigned char len = 0;
-  unsigned char rxBuf[8];
+  // // Handle Can RX
+  // long unsigned int rxId;
+  // unsigned char len = 0;
+  // unsigned char rxBuf[8];
 
 
-    while (CAN_MSGAVAIL == CAN.checkReceive())
-    {
-      CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
-    }
+  //   while (CAN_MSGAVAIL == CAN.checkReceive())
+  //   {
+  //     CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
+  //   }
 
 
  
