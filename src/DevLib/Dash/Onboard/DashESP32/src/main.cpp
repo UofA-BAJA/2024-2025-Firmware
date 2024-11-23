@@ -21,12 +21,15 @@ Adafruit_LEDBackpack ledMatrix = Adafruit_LEDBackpack();
 int lastSpeed = 0;
 int lastRPM = 0;
 int lastCVTTemp = 0;
+unsigned long lastTimeSeconds = 0;
+
+bool canRecentRX = false;
 
 void setup()
 {
   // <insert that default comment that gets generated with all arduino projects>
   Serial.begin(115200);
-  Serial.println("Dash test r8");
+  Serial.println("Dash test r10");
 
   // Join I2C
   Wire.begin();
@@ -50,7 +53,6 @@ void setup()
   Serial.println("Display setup complete.");
   display.print("TEST R1");
   display2.print("TEST R2");
-  display.updateDisplay();
 
   //---------------------------------------------------
 
@@ -67,6 +69,7 @@ void setup()
     // while (1)
     //   ;
   }
+  //displayBuffer[(C)0-5] = 0b[A15:A0]
   ledMatrix.displaybuffer[5] = 0b0000001100000000;
   ledMatrix.writeDisplay();
 
@@ -77,7 +80,7 @@ void setup()
   // Initialize and join CAN
   // display.print("CAN INIT");
   // display2.clear();
-  byte canInitResult = CAN.begin(MCP_STDEXT, CAN_100KBPS, MCP_8MHZ);
+  byte canInitResult = CAN.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ);
 
   if (canInitResult == CAN_OK)
   {
@@ -88,6 +91,7 @@ void setup()
 
     Serial.println("CAN Init Failed: CAN_FAILINIT");
     display.print("CAN FAIL");
+    display2.print("FAILINIT");
     while (1)
       ;
   }
@@ -95,6 +99,7 @@ void setup()
   {
     Serial.println("CAN Init Failed: CAN_FAILTX");
     display.print("CAN FAIL");
+    display2.print("FAIL TX");
     while (1)
       ;
   }
@@ -102,20 +107,30 @@ void setup()
   {
     Serial.println("CAN Init Failed: Unknown error");
     display.print("CAN FAIL");
+    display2.print("UNKNOWN");
     while (1)
       ;
   }
 
-  // CAN.init_Mask(0, 1, 0x00000001);
-  // CAN.init_Filt(0, 1, 0x00000001);
-  // CAN.init_Filt(1, 1, 0x00000001);
+  CAN.init_Mask(0, 1, 0xFFFFFFFF);
+  CAN.init_Filt(0, 1, 0x00000001);
+  CAN.init_Filt(1, 1, 0x00000001);
 
-  // CAN.init_Mask(1, 1, 0x00000001);
-  // CAN.init_Filt(2, 1, 0x00000001);
-  // CAN.init_Filt(3, 1, 0x00000001);
-  // CAN.init_Filt(4, 1, 0x00000001);
-  // CAN.init_Filt(5, 1, 0x00000001);
+  CAN.init_Mask(1, 1, 0xFFFFFFFF);
+  CAN.init_Filt(2, 1, 0x00000001);
+  CAN.init_Filt(3, 1, 0x00000001);
+  CAN.init_Filt(4, 1, 0x00000001);
+  CAN.init_Filt(5, 1, 0x00000001);
 
+//  CAN.init_Mask(0, 0, 0x7FF);
+//   CAN.init_Filt(0, 0, 0x001);
+//   CAN.init_Filt(1, 0, 0x001);
+
+//   CAN.init_Mask(1, 0, 0x7FF);
+//   CAN.init_Filt(2, 0, 0x001);
+//   CAN.init_Filt(3, 0, 0x001);
+//   CAN.init_Filt(4, 0, 0x001);
+//   CAN.init_Filt(5, 0, 0x001);
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
 
@@ -124,64 +139,51 @@ void setup()
   display.print("INIT OK");
   Serial.println("Init Ok!");
   delay(1500);
-  // display.print("WAITING");
-  // display2.print("FOR CAN");
-
-  
 }
 
 int num = 0;
-int underscore = 0;
 void loop()
 {
   // Handle Can RX
   unsigned long rxId;
   unsigned char len = 0;
   unsigned char rxBuf[8];
+  
   while (CAN_MSGAVAIL == CAN.checkReceive())
   {
     CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
-    // Serial.print(">RX ID: ");
-
-    // Serial.println(rxId, HEX);
-
-    // display.print(rxId);
-    // display2.print(rxId);
-    switch (rxBuf[1])
+    Serial.println(rxId, HEX);
+    switch (rxBuf[0])
     {
     case 0x01:
       // Speed
       // TODO: if multithreading, lock
-      lastSpeed = rxBuf[2];
+      memcpy(&lastSpeed, &rxBuf[1], len-1);
       break;
     case 0x02:
       // RPM
       // TODO: if multithreading, lock
-      lastRPM = rxBuf[2];
+      memcpy(&lastRPM, &rxBuf[1], len-1);
       break;
     case 0x03:
       // CVT Temp
       // TODO: if multithreading, lock
-      lastCVTTemp = rxBuf[2];
+      memcpy(&lastCVTTemp, &rxBuf[1], len-1);
+      break;
+    case 0x04:
+      // Timer (seconds)
+      memcpy(&lastTimeSeconds, &rxBuf[1], len-1);
       break;
     }
   }
   num++;
+
   //really should add this to a method cause it's just taking up room
-  if(num%6000==0){
-    underscore++;
-    if(underscore==1) display.print("CAN_");
-    else if(underscore==2) display.print("CAN _");
-    else if(underscore==3) display.print("CAN  _");
-    else if(underscore==4) display.print("CAN   _");
-    else if(underscore==5) display.print("CAN  _");
-    else if(underscore==6) {
-      display.print("CAN _");
-      underscore = 0;
-    }
+  if(num%6000==0 && !canRecentRX){
+    // canThrobber();
   }
 
-  //test led drive
+  //test led drive and servos
   if(num%20000==0){
     if(num%40000 == 0){
       ledMatrix.displaybuffer[5] = 0b0000001000000000;
@@ -203,7 +205,19 @@ void loop()
     display2.printf("%02u%02u  %02u", currentHours, currentMinutes%60, currentSeconds%60);  
     display2.colonOn();
   }
-  
-  
+}
 
+
+int underscore = 0;
+void canThrobber(){
+  underscore++;
+    if(underscore==1) display.print("CAN_");
+    else if(underscore==2) display.print("CAN _");
+    else if(underscore==3) display.print("CAN  _");
+    else if(underscore==4) display.print("CAN   _");
+    else if(underscore==5) display.print("CAN  _");
+    else if(underscore==6) {
+      display.print("CAN _");
+      underscore = 0;
+    }
 }
