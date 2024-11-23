@@ -104,6 +104,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Prepare the CAN frame
     struct can_frame frame;                                             // The CAN frame to send to the CAN device
     frame.can_id = deviceID;                                            // CAN ID
+    frame.can_id |= CAN_EFF_FLAG;
     // dlc stands for data length code. It is plus 3 because we are sending the data and the callback
     frame.can_dlc = data.size()+3;
     frame.data[0] = callbackID[0];
@@ -129,12 +130,15 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     callbacks[currUID] = callback;
     commandCycles[currUID] = 0;
 
+    ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
+
+    // std::cout << result << std::endl;
+
     // Send the CAN frame
-    if(write(can_socket_fd, &frame, sizeof(frame)) != sizeof(frame)){
+    if(result != sizeof(frame)){
 
         std::string errorStr = strerror(errno);
         std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
-
         // Erase what we just wrote from the callbacks and commandCycles
         callbacks.erase(currUID);
         commandCycles.erase(currUID);
@@ -146,8 +150,6 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
         // exit(1);
     }
-
-    // std::cout << "CAN frame sent!" << std::endl;
 }
 
 /*

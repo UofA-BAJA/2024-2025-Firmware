@@ -123,10 +123,10 @@ void loop()
 
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, xData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
       else if (rxBuf[3] == 0x02)
       {
@@ -138,15 +138,13 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, &rxBuf[0], 3);
-        Serial.print("Sent Y");
-        Serial.println(yRot);
 
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, yData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
       else if (rxBuf[3] == 0x03)
       {
@@ -160,10 +158,10 @@ void loop()
         memcpy(&callbackID, &rxBuf[0], 3);
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
       else if (rxBuf[3] == 0x04)
       {
@@ -177,10 +175,10 @@ void loop()
         memcpy(&callbackID, &rxBuf[0], 3);
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
       else if (rxBuf[3] == 0x05)
       {
@@ -194,10 +192,10 @@ void loop()
         memcpy(&callbackID, &rxBuf[0], 3);
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
       else if (rxBuf[3] == 0x06)
       {
@@ -211,10 +209,10 @@ void loop()
         memcpy(&callbackID, &rxBuf[0], 3);
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
-        if(sendMSG != CAN_OK){
-          Serial.print("Error Sending Message...");
-          Serial.println(sendMSG);
-        }
+        // if(sendMSG != CAN_OK){
+        //   Serial.print("Error Sending Message...");
+        //   Serial.println(sendMSG);
+        // }
       }
 
       xSemaphoreGive(bnoMutex);
