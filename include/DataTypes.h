@@ -18,4 +18,5 @@ enum DataTypes{
     IMU_ACCELERATION_X = 0x10C,
     IMU_ACCELERATION_Y = 0x10D,
     IMU_ACCELERATION_Z = 0x10E,
+    CVT_TEMP = 0x10F,
 };

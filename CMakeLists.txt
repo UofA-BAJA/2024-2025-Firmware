@@ -7,6 +7,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/src/CarComputer/src
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary
+        ${CMAKE_SOURCE_DIR}/src/DevLib/Temperature/WrapperLibrary
         ${CMAKE_SOURCE_DIR}/src/CarComputer/include)
 
 
@@ -15,6 +16,7 @@ include_directories(
 
 # TEMPORARILY GRAB THE IMU LIBRARY
 file(GLOB TEMP_IMU ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary/*.cpp)
+file(GLOB TEMP_TEMPERATURE ${CMAKE_SOURCE_DIR}/src/DevLib/Temperature/WrapperLibrary/*.cpp)
 
 
 # Grab all the .cpp files in src
@@ -24,7 +26,7 @@ file(GLOB_RECURSE SUBSYSTEM_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/subsys
 # Grab all the .cpp files in commands recursively
 file(GLOB_RECURSE PROCEDURE_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/procedures/*.cpp)
 
-set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${TEMP_IMU})
+set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${TEMP_IMU} ${TEMP_TEMPERATURE})
 
 add_executable(carComputer ${SOURCE_FILES})
 
