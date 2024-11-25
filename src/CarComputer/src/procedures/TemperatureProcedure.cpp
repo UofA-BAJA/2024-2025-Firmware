@@ -1,20 +1,20 @@
 #include "Procedure.h"
 #include "TemperatureSubsystem.h"
-//#include "DataStorage.h"
+#include "DataStorage.h"
 #include "CarLogger.h"
 
 #include <iomanip>
 
 class TemperatureProcedure : public Procedure{
     public:
-        TemperatureSubsystem* imuSubsystem;
+        TemperatureSubsystem* temperatureSubsystem;
         DataStorage* dataStorage;
 
         TemperatureProcedure(TemperatureSubsystem *temperatureSubsystem, DataStorage* dataStorage){
             this->temperatureSubsystem = temperatureSubsystem;
             this->dataStorage = dataStorage;
 
-            this->frequency = 60;
+            this->frequency = 1;
 
         }
         

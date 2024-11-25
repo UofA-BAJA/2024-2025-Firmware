@@ -17,10 +17,7 @@ class Temperature{
 
         float temperature = 0.0;
 
-        void populateTemperature(struct can_frame frame)
-
-
-
+        void populateTemperature(struct can_frame frame);
 };
 
 

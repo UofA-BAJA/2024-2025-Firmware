@@ -16,7 +16,6 @@ void setup()
 {
   Wire.begin();
   Serial.begin(115200);
-  printf_begin();
   mlx.begin();
 
   byte canInitResult = CAN.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ);
@@ -58,9 +57,6 @@ void setup()
   CAN.init_Filt(5, 1, 0x00000002);
 
 
-  // I don't believe the masking is currently working.
-  CAN.init_Mask(0, 0, 0x7FF); // Set mask for filter 0 (standard 11-bit ID)
-  CAN.init_Filt(0, 0, 0x123); // Accept messages with CAN ID 0x123
 
   // Set the MCP2515 to normal mode to start receiving CAN messages
   Serial.println("Setting CAN Normal");
@@ -89,7 +85,7 @@ void loop()
   // Check for incoming CAN messages
   while (CAN_MSGAVAIL == CAN.checkReceive())
   {
-      float onBoardTemp = mlx.readObjectTempC();
+      float onBoardTemp = mlx.readTemp();
       CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
       // Serial.print(">ID: ");
       // Serial.println(rxId, HEX);

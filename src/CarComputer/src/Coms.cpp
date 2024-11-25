@@ -45,7 +45,7 @@ void slave();   // prototype of the RX node's behavior
 struct timespec startTimer, endTimer;
 uint32_t getMicros(); // prototype to get elapsed time in microseconds
 
-int main(int argc, char** argv)
+int hahanotmain(int argc, char** argv)
 {
 
     // perform hardware check

@@ -10,7 +10,7 @@ class TemperatureSubsystem{
         double getTemperature();
 
     private:
-        Temperature* Temperature;
+        Temperature* temperature;
 };
 
 #endif

@@ -15,11 +15,11 @@ float Temperature::getLatestTemperature(){
         std::cerr << "Error: CANDispatcher is null!" << std::endl;
     }
 
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateRotationZ(frame);});
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateTemperature(frame);});
 
     return temperature;
 }
 
 void Temperature::populateTemperature(can_frame frame){
-    memcpy(&temp, &frame.data, sizeof(temperature));
+    memcpy(&temperature, &frame.data, sizeof(temperature));
 }
