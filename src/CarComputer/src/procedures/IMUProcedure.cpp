@@ -14,7 +14,7 @@ class IMUProcedure : public Procedure{
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
 
-            this->frequency = 360;
+            this->frequency = 20;
 
         }
         
