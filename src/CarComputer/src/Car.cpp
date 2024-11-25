@@ -22,7 +22,7 @@ Car::Car() {
 
     // Init behavior that needs to be called before the subsystems start running.
     init();
-    const char* can_interface = "can0";
+    const char* canInterface = "can0";
     const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
 
     CarLogger::Initialize("/home/bajaelectrical/car.log");
@@ -31,7 +31,7 @@ Car::Car() {
     dataStorage->startNewSession("Test session name O.o");
 
     procedureScheduler = new ProcedureScheduler();
-    canDispatcher = new CANDispatcher(can_interface);
+    canDispatcher = new CANDispatcher(canInterface);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
     procedureScheduler->receiveComCommand(Command::START_LOG);
 

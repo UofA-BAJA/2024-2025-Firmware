@@ -32,3 +32,4 @@ add_executable(carComputer ${SOURCE_FILES})
 # Make sure we can use multithreading
 target_link_libraries(carComputer PRIVATE pthread)
 target_link_libraries(carComputer PRIVATE sqlite3)
+target_link_libraries(carComputer PRIVATE rf24)
