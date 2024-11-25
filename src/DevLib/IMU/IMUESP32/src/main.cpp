@@ -26,7 +26,7 @@ void readBNO(void *pvParameters);
 void setup()
 {
   Serial.begin(115200);
-  byte canInitResult = CAN.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ);
+  byte canInitResult = CAN.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ);
 
   if (canInitResult == CAN_OK)
   {
@@ -54,9 +54,15 @@ void setup()
       ;
   }
 
-  // I don't believe the masking is currently working.
-  CAN.init_Mask(0, 0, 0x7FF); // Set mask for filter 0 (standard 11-bit ID)
-  CAN.init_Filt(0, 0, 0x123); // Accept messages with CAN ID 0x123
+  CAN.init_Mask(0, 1, 0xFFFFFFFF);
+  CAN.init_Filt(0, 1, 0x00000001);
+  CAN.init_Filt(1, 1, 0x00000001);
+
+  CAN.init_Mask(1, 1, 0xFFFFFFFF);
+  CAN.init_Filt(2, 1, 0x00000001);
+  CAN.init_Filt(3, 1, 0x00000001);
+  CAN.init_Filt(4, 1, 0x00000001);
+  CAN.init_Filt(5, 1, 0x00000001);
 
   // Set the MCP2515 to normal mode to start receiving CAN messages
   Serial.println("Setting CAN Normal");
@@ -120,7 +126,6 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, rxBuf, 3);
-
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, xData);
 
         if(sendMSG != CAN_OK){
@@ -138,8 +143,6 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, &rxBuf[0], 3);
-        Serial.print("Sent Y");
-        Serial.println(yRot);
 
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, yData);
 
@@ -175,6 +178,7 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, &rxBuf[0], 3);
+
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
         if(sendMSG != CAN_OK){
@@ -192,6 +196,7 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, &rxBuf[0], 3);
+
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
         if(sendMSG != CAN_OK){
@@ -209,6 +214,7 @@ void loop()
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
         memcpy(&callbackID, &rxBuf[0], 3);
+
         byte sendMSG = CAN.sendMsgBuf(callbackID, 1, 4, zData);
 
         if(sendMSG != CAN_OK){
