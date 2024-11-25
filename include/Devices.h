@@ -3,7 +3,8 @@
 
 
 enum Devices{
-    IMU = 0x001
+    IMU = 0x001,
+    CVT_TEMP = 0x002
 };
 
 #endif
