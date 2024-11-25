@@ -34,6 +34,7 @@ class CANDispatcher{
         void execute();
 
         void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
+        void sendCanCommand(int deviceID, std::vector<byte> data);
 
     private:
         const int MIN_UID_BOUND = 0x1000;         // Reserve the non extended ID's for all the other devices

@@ -104,6 +104,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     // Prepare the CAN frame
     struct can_frame frame;                                             // The CAN frame to send to the CAN device
     frame.can_id = deviceID;                                            // CAN ID
+    frame.can_id |= CAN_EFF_FLAG;
     // dlc stands for data length code. It is plus 3 because we are sending the data and the callback
     frame.can_dlc = data.size()+3;
     frame.data[0] = callbackID[0];
@@ -129,12 +130,15 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
     callbacks[currUID] = callback;
     commandCycles[currUID] = 0;
 
+    ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
+
+    // std::cout << result << std::endl;
+
     // Send the CAN frame
-    if(write(can_socket_fd, &frame, sizeof(frame)) != sizeof(frame)){
+    if(result != sizeof(frame)){
 
         std::string errorStr = strerror(errno);
         std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
-
         // Erase what we just wrote from the callbacks and commandCycles
         callbacks.erase(currUID);
         commandCycles.erase(currUID);
@@ -146,8 +150,64 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
         // exit(1);
     }
+}
 
-    // std::cout << "CAN frame sent!" << std::endl;
+/*
+ *  Method:  sendCanCommand
+ *
+ *  Purpose: Sends a CAN frame to a device connected to the CAN bus, where the data
+ *           represents a command that the device should respond to. 
+ * 
+ *  Pre-Condition:  There is a device on the CAN bus with ID deviceID; The size of the data
+ *                  vector is 4 or less
+ *
+ *  Post-Condition: The data is successfully sent over the CAN bus to the device with deviceID;
+ *
+ *  Parameters:
+ *          deviceID -- The ID of the device on the CAN bus to send the data to
+ *              
+ *          data -- The data to send to the device on the CAN bus that represents a command for the device
+ * 
+ *  Returns: None
+ *
+ */
+
+void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data){
+    //*****UNTESTED
+    if(data.size() > 4){
+        
+        std::cerr << "Error: You are only allowed to send 4 bytes of data to CAN device." << std::endl;
+        return;
+    }
+
+
+    // Prepare the CAN frame
+    struct can_frame frame;                                             // The CAN frame to send to the CAN device
+    frame.can_id = deviceID;                                            // CAN ID
+    frame.can_id |= CAN_EFF_FLAG;
+    // dlc stands for data length code. 
+    frame.can_dlc = data.size();
+    for(int i = 0; i < data.size(); i++){
+        frame.data[i] = data.at(i);
+    }
+    
+    // Send the CAN frame
+    ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
+
+    // std::cout << result << std::endl;
+    
+    if(result != sizeof(frame)){
+
+        std::string errorStr = strerror(errno);
+        std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
+
+        if(!errorStr.compare("No buffer space available")){
+            CarLogger::LogWarning("CAN Buffer filled");
+            resetCANInterface(interfaceName);
+        }
+
+        // exit(1);
+    }
 }
 
 /*
