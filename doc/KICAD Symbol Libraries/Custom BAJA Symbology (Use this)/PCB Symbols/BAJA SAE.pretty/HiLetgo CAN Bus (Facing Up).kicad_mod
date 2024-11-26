@@ -1,4 +1,4 @@
-(footprint "HiLetgo CAN Bus"
+(footprint "HiLetgo CAN Bus (Facing Up)"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -15,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "HiLetgo CAN Bus"
+	(property "Value" "HiLetgo CAN Bus (Facing Up)"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -78,6 +78,32 @@
 		(layer "F.SilkS")
 		(uuid "b8d7f351-e7ce-499b-b630-c3e8ef90c6bf")
 	)
+	(fp_text user "VCC"
+		(at -16.4 8.45 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "47163411-e998-4a19-bf60-1de3d191c3af")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "INT"
+		(at -16.4 -7.06 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "5e19d079-ff3c-4cc0-9396-bf3fa8d0a914")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
@@ -91,7 +117,7 @@
 		)
 	)
 	(pad "1" thru_hole circle
-		(at 17 -7.62)
+		(at -18.04 -7.59)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -100,7 +126,7 @@
 		(uuid "54e433a5-67a7-4e91-86f0-628a10f4a497")
 	)
 	(pad "2" thru_hole circle
-		(at 17 -5.08)
+		(at -18.04 -5.05)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -109,7 +135,7 @@
 		(uuid "8eec2d99-ec59-4347-a0c4-20fdb64c7b75")
 	)
 	(pad "3" thru_hole circle
-		(at 17 -2.54)
+		(at -18.04 -2.51)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -118,7 +144,7 @@
 		(uuid "7259f0f2-3880-41f8-867c-cd07a5381e07")
 	)
 	(pad "4" thru_hole circle
-		(at 17 0)
+		(at -18.04 0.03)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -127,7 +153,7 @@
 		(uuid "13c9fe31-e07e-4b41-8697-0e5189e7ecf2")
 	)
 	(pad "5" thru_hole circle
-		(at 17 2.54)
+		(at -18.04 2.57)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -136,7 +162,7 @@
 		(uuid "87368f0a-5cd7-4005-bc81-0af659b60645")
 	)
 	(pad "6" thru_hole circle
-		(at 17 5.08)
+		(at -18.04 5.11)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
@@ -145,7 +171,7 @@
 		(uuid "35546bea-19ac-4262-9b9b-dfdd46e8fb97")
 	)
 	(pad "7" thru_hole circle
-		(at 17 7.62)
+		(at -18.04 7.65)
 		(size 1.8 1.8)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
