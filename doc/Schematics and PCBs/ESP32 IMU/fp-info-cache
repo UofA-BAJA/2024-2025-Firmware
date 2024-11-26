@@ -1,4 +1,4 @@
-24205118272859313
+24206851187931279
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -21,7 +21,14 @@ CONN BARRIER STRIP 2CIRC
 0
 0
 BAJA SAE
-HiLetgo CAN Bus
+HiLetgo CAN Bus (Facing Down)
+
+
+0
+7
+7
+BAJA SAE
+HiLetgo CAN Bus (Facing Up)
 
 
 0
