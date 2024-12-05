@@ -17,6 +17,7 @@ ProcedureScheduler* procedureScheduler;
 CANDispatcher* canDispatcher;
 DataStorage* dataStorage;
 CarLogger* carLogger;
+Coms* coms;
 
 Car::Car() {
 
@@ -24,8 +25,9 @@ Car::Car() {
     init();
     const char* canInterface = "can0";
     const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
+    const char* logPath = "/home/bajaelectrical/car.log";
 
-    CarLogger::Initialize("/home/bajaelectrical/car.log");
+    CarLogger::Initialize(logPath);
 
     dataStorage = new DataStorage(dataStoragePath);
     dataStorage->startNewSession("Test session name O.o");
@@ -33,6 +35,8 @@ Car::Car() {
     procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(canInterface);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
+    coms = new Coms(procedureScheduler);
+
     procedureScheduler->receiveComCommand(Command::START_LOG);
 
     std::cout << "Car Sucessfully Initialized" << std::endl;
@@ -79,6 +83,7 @@ void Car::execute(){
         procedureScheduler->execute();
         canDispatcher->execute();
         dataStorage->execute(time / 1000000000L);
+        coms->execute(time / 1000000000L);
 
         endTime = steady_clock::now();
 

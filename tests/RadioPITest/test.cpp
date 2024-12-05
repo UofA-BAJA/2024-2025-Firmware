@@ -71,12 +71,7 @@ RadioState currentState = RadioState::RECEIVING;
 struct DataPacket{
     int streamMask;
     float timestamp;
-    float data1;
-    float data2;
-    float data3;
-    float data4;
-    float data5;
-    float data6;
+    float data[6];
 };
 
 
@@ -105,7 +100,6 @@ int main(int argc, char** argv)
     // an identifying device destination
 
 
-
     // radio.enableAckPayload();
 
     // save on transmission time by setting the radio to only transmit the
@@ -116,11 +110,14 @@ int main(int argc, char** argv)
     // Set the PA Level low to try preventing power supply related problems
     // because these examples are likely run with nodes in close proximity to
     // each other.
-    radio.setPALevel(RF24_PA_LOW); // RF24_PA_MAX is default.
+    radio.setPALevel(RF24_PA_HIGH); // RF24_PA_MAX is default.
 
+    radio.setDataRate(RF24_2MBPS);
+    radio.setAutoAck(false);
     // set the TX address of the RX node into the TX pipe
     radio.openWritingPipe(address[radioNumber]); // always uses pipe 0
 
+    radio.setRetries(0, 0);
     // set the RX address of the TX node into a RX pipe
     radio.openReadingPipe(1, address[!radioNumber]); // using pipe 1
 
@@ -135,7 +132,7 @@ int main(int argc, char** argv)
 
     while(true){
         execute();
-        delay(20);
+        // delay(1);
     }
 
     return 0;
