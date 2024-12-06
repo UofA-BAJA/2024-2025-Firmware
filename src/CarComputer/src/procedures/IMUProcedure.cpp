@@ -12,8 +12,17 @@ class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
         DataStorage* dataStorage;
-        LiveDataStream* xRotStream;
         Coms* coms;
+
+        LiveDataStream* xRotStream;
+        LiveDataStream* yRotStream;
+        LiveDataStream* zRotStream;
+        LiveDataStream* xAccStream;
+        LiveDataStream* yAccStream;
+        LiveDataStream* zAccStream;
+
+
+        LiveDataStream* testStream;
 
         IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
             this->imuSubsystem = imuSubsystem;
@@ -21,8 +30,23 @@ class IMUProcedure : public Procedure{
             this->coms = coms;
 
             xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
+            yRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Y);
+            zRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Z);
 
-            coms->AddNewStream(xRotStream);
+            xAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_X);
+            yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
+            zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
+
+            testStream = new LiveDataStream(DataTypes::RESERVE_28);
+
+            coms->addNewLiveDataStream(yRotStream);
+            coms->addNewLiveDataStream(xRotStream);
+            coms->addNewLiveDataStream(zRotStream);
+            coms->addNewLiveDataStream(xAccStream);
+            coms->addNewLiveDataStream(yAccStream);
+            coms->addNewLiveDataStream(zAccStream);
+
+            coms->addNewLiveDataStream(testStream);
 
             this->frequency = 20;
 
@@ -59,6 +83,14 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
 
             xRotStream->enqueue(xRot);
+            yRotStream->enqueue(yRot);
+            zRotStream->enqueue(zRot);
+
+            xAccStream->enqueue(xAccel);
+            yAccStream->enqueue(yAccel);
+            zAccStream->enqueue(zAccel);
+
+            testStream->enqueue(3.14159);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);

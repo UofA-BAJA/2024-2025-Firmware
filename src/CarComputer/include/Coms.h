@@ -41,7 +41,7 @@ class Coms{
     public:
         Coms(ProcedureScheduler* procedureScheduler);
 
-        void AddNewStream(LiveDataStream* stream);
+        void addNewLiveDataStream(LiveDataStream* stream);
 
         void execute(float timestamp);
 
@@ -60,6 +60,9 @@ class Coms{
         void transmitDatabase();
 
         void tryUpdateState();
+
+        const int maxPackets = 6;
+        void sortPackets(DataPacket packets[]);
 
         ProcedureScheduler* procedureScheduler;
         LiveDataStream* liveDataStreams[32];

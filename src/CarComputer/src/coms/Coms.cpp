@@ -130,15 +130,11 @@ void Coms::radioTransmit(){
 }
 
 void Coms::transmitLiveData(){
-        // There might be more modes for transmitting
-        // Right now I can think of the database transmit mode and live data stream transmit mode
-
         // The car can have 32 streams.
         // Each packet can store 6 data values (Look at data packet struct in header file)
         // ceil(32 / 6) = 6, so there are at most 6 structs we can send in one cycle
         // hence: the array size of 6
 
-        int maxPackets = 6;
         DataPacket packets[maxPackets];
 
         std::unique_lock<std::mutex> lock(dataStreamMutex);
@@ -149,6 +145,10 @@ void Coms::transmitLiveData(){
 
         // Procedure to encode a live data packet
         int currPacket = -1;
+
+
+        // liveDataStream array MUST be sorted using the data types as the key. This sorting logic is handled when
+        // inserting a new stream.
 
         for(int i = 0; i < liveStreamCount; i++){
 
@@ -236,7 +236,41 @@ void Coms::tryUpdateState(){
     }
 }
 
-void Coms::AddNewStream(LiveDataStream* stream){
-    liveDataStreams[liveStreamCount] = stream;
+
+/*
+*  Method: addNewLiveDataStream
+*
+*  Purpose:  Adds a new stream to the list of streams that will be sent over the radio
+*
+*  Pre-condition: stream is not null
+*
+*  Post-condition: stream is added to the list of live streams; The array of streams is sorted 
+*  using a the stream data type as a key.
+*
+*  Parameters:
+*      LiveDataStream* stream -- a stream to read and send the data over coms 
+*
+*  Returns:  None
+*
+*/
+void Coms::addNewLiveDataStream(LiveDataStream* stream){
+
+    if(stream == nullptr){
+        return;
+    }
+
+    // Insertion sort using stream.getDataType() as a key
+    DataTypes streamDataType = stream->getDataType();
+    
+    int i = liveStreamCount;
+
+    while(i > 0 && liveDataStreams[i - 1]->getDataType() > streamDataType){
+
+        // Shift the pointer
+        liveDataStreams[i] = liveDataStreams[i - 1];
+        i--;
+    }
+
+    liveDataStreams[i] = stream;
     liveStreamCount++;
 }
