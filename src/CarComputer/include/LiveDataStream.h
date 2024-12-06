@@ -11,8 +11,9 @@ class LiveDataStream{
     public:
         LiveDataStream(DataTypes dataType);
 
-        void Enqueue(float data);
-        float Dequeue();
+        void enqueue(float data);
+        float dequeue();
+        bool dataInQueue();
 
         DataTypes getDataType();
 

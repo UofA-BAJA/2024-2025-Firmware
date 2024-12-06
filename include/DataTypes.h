@@ -1,5 +1,6 @@
 
-
+#ifndef DATATYPES_H
+#define DATATYPES_H
 
 // The hex code associated with the data type
 
@@ -43,3 +44,5 @@ enum DataTypes{
     RESERVE_32
     // Do not add more data types! Replace one of the reserved slots with it!
 };
+
+#endif

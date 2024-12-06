@@ -34,8 +34,8 @@ Car::Car() {
 
     procedureScheduler = new ProcedureScheduler();
     canDispatcher = new CANDispatcher(canInterface);
-    carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage);
     coms = new Coms(procedureScheduler);
+    carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage, coms);
 
     procedureScheduler->receiveComCommand(Command::START_LOG);
 

@@ -66,7 +66,7 @@ enum RadioState{
     RECEIVING
 };
 
-RadioState currentState = RadioState::RECEIVING;
+RadioState currentState = RadioState::TRANSMITTING;
 
 struct DataPacket{
     int streamMask;
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 
     // to use different addresses on a pair of radios, we need a variable to
     // uniquely identify which address this radio will use to transmit
-    bool radioNumber = 0; // 0 uses address[0] to transmit, 1 uses address[1] to transmit
+    bool radioNumber = 1; // 0 uses address[0] to transmit, 1 uses address[1] to transmit
 
     // print example's name
     cout << argv[0] << endl;
@@ -112,12 +112,9 @@ int main(int argc, char** argv)
     // each other.
     radio.setPALevel(RF24_PA_HIGH); // RF24_PA_MAX is default.
 
-    radio.setDataRate(RF24_2MBPS);
-    radio.setAutoAck(false);
     // set the TX address of the RX node into the TX pipe
     radio.openWritingPipe(address[radioNumber]); // always uses pipe 0
 
-    radio.setRetries(0, 0);
     // set the RX address of the TX node into a RX pipe
     radio.openReadingPipe(1, address[!radioNumber]); // using pipe 1
 

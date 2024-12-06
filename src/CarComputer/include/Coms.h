@@ -6,6 +6,8 @@
 #include "LiveDataStream.h"
 #include "CarLogger.h"
 
+#include <iostream>
+
 // For multithreading
 #include <mutex>
 #include <thread>
@@ -44,14 +46,10 @@ class Coms{
         void execute(float timestamp);
 
     private:
-
         const bool RADIO_ACTIVE = true;
-        // This radio should only be accessed from the radioThread
-        // We do not want a mutex to protect it, as it would bee very slow
-        // and defeat the purpose of multithreading
-        RF24 radio(CE_PIN, CSN_PIN);
-        RadioState currentRadioState = RadioState::RECEIVING;
-        PitCommandState currentPitCommandState = PitCommandState::IDLE;
+
+        RadioState currentRadioState = RadioState::TRANSMITTING;
+        PitCommandState currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
 
         float currTimestamp;
         void executeRadio();

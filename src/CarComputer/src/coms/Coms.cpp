@@ -36,18 +36,23 @@
 
 #include "Coms.h"
 
+#include <bitset>
 // To look at the example linux implementation for the nrf24l01, look at the RF24 github:
 // https://github.com/nRF24/RF24/tree/master
 // Specifically, this file:
 // https://github.com/nRF24/RF24/blob/master/examples_linux/gettingstarted.cpp
 
 
-
 #define CSN_PIN 1
 #define CE_PIN 22
 
+// This radio should only be accessed from the radioThread
+// We do not want a mutex to protect it, as it would bee very slow
+// and defeat the purpose of multithreading
+RF24 radio(CE_PIN, CSN_PIN);
 
 Coms::Coms(ProcedureScheduler* procedureScheduler){
+    
     this->procedureScheduler = procedureScheduler;
 
     radioThread = std::thread(&Coms::executeRadio, this);
@@ -61,6 +66,22 @@ void Coms::execute(float timestamp){
 }
 
 void Coms::executeRadio(){
+
+    // perform hardware check
+    if (!radio.begin()) {
+        std::cout << "radio hardware is not responding!!" << std::endl;
+        return; // quit now
+    }
+
+    // to use different addresses on a pair of radios, we need a variable to
+    // uniquely identify which address this radio will use to transmit
+    bool radioNumber = 1; // 0 uses address[0] to transmit, 1 uses address[1] to transmit
+    uint8_t address[2][6] = {"1Node", "2Node"};
+    radio.setPayloadSize(32); // float datatype occupies 4 bytes
+    radio.setPALevel(RF24_PA_HIGH); // RF24_PA_MAX is default.
+    radio.openWritingPipe(address[radioNumber]); // always uses pipe 0
+    radio.openReadingPipe(1, address[!radioNumber]); // using pipe 1
+
 
     // If RADIO_ACTIVE is true, this thread will run the entire time the car is on
     while(RADIO_ACTIVE){
@@ -129,11 +150,13 @@ void Coms::transmitLiveData(){
         // Procedure to encode a live data packet
         int currPacket = -1;
 
-        for(int i = 0; i < 32; i++){
+        for(int i = 0; i < liveStreamCount; i++){
+
 
             if(i % maxPackets == 0){
                 currPacket++;
             }
+            
 
             if(liveDataStreams[i] == nullptr){
                 // Something went wrong with assigning the live data stream.
@@ -141,11 +164,20 @@ void Coms::transmitLiveData(){
                 continue;
             }
 
+            if(!liveDataStreams[i]->dataInQueue()){
+                continue;
+            }
+
             // The range of getDataType() should be from 0 to 31. This is described in the packet
             // description of the live data stream packets.
             packets[currPacket].streamMask |= 1 << liveDataStreams[i]->getDataType();
             packets[currPacket].timestamp = currTimestamp;
-            packets[currPacket].data[i % maxPackets] = liveDataStreams[i]->Dequeue();
+            packets[currPacket].data[i % maxPackets] = liveDataStreams[i]->dequeue();
+
+
+            // std::bitset<32> x(packets[currPacket].streamMask);
+
+            // std::cout << x << std::endl;
         }
 
         lock.unlock();

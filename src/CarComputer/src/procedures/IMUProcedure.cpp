@@ -2,6 +2,9 @@
 #include "IMUSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
+#include "Coms.h"
+
+#include "LiveDataStream.h"
 
 #include <iomanip>
 
@@ -9,10 +12,17 @@ class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
         DataStorage* dataStorage;
+        LiveDataStream* xRotStream;
+        Coms* coms;
 
-        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
+        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
+            this->coms = coms;
+
+            xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
+
+            coms->AddNewStream(xRotStream);
 
             this->frequency = 20;
 
@@ -47,6 +57,8 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(xAccel, DataTypes::IMU_ACCELERATION_X);
             dataStorage->storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
             dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
+
+            xRotStream->enqueue(xRot);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
