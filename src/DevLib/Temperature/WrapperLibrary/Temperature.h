@@ -14,9 +14,11 @@ class Temperature{
         float getLatestTemperature();
     private:
         CANDispatcher* canDispatcher;
+        const double minimumRepeatThreshold;
 
         float temperature = 0.0;
-
+        double lastTemperatureTime = 0.0;
+       
         void populateTemperature(struct can_frame frame);
 };
 
