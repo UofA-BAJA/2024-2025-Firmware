@@ -48,7 +48,7 @@ class Coms{
     private:
         const bool RADIO_ACTIVE = true;
 
-        RadioState currentRadioState = RadioState::TRANSMITTING;
+        RadioState currentRadioState = RadioState::RECEIVING;
         PitCommandState currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
 
         float currTimestamp;

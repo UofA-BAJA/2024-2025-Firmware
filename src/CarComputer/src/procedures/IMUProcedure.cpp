@@ -22,7 +22,7 @@ class IMUProcedure : public Procedure{
         LiveDataStream* zAccStream;
 
 
-        LiveDataStream* testStream;
+        // LiveDataStream* testStream;
 
         IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
             this->imuSubsystem = imuSubsystem;
@@ -37,7 +37,7 @@ class IMUProcedure : public Procedure{
             yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
             zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
 
-            testStream = new LiveDataStream(DataTypes::RESERVE_28);
+            // testStream = new LiveDataStream(DataTypes::RESERVE_28);
 
             coms->addNewLiveDataStream(yRotStream);
             coms->addNewLiveDataStream(xRotStream);
@@ -46,9 +46,9 @@ class IMUProcedure : public Procedure{
             coms->addNewLiveDataStream(yAccStream);
             coms->addNewLiveDataStream(zAccStream);
 
-            coms->addNewLiveDataStream(testStream);
+            // coms->addNewLiveDataStream(testStream);
 
-            this->frequency = 20;
+            this->frequency = 120;
 
         }
         
@@ -90,12 +90,12 @@ class IMUProcedure : public Procedure{
             yAccStream->enqueue(yAccel);
             zAccStream->enqueue(zAccel);
 
-            testStream->enqueue(3.14159);
+            // testStream->enqueue(3.14159);
 
-            std::cout << std::fixed;
-            std::cout << std::setprecision(2);
-            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            // std::cout << std::fixed;
+            // std::cout << std::setprecision(2);
+            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {
