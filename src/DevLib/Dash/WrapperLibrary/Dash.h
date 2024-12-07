@@ -13,11 +13,11 @@ public:
     void sendCVTTemp(float cvtTemp);
     void sendTimeSeconds(unsigned long seconds);
     void setIndicatorLights(uint16_t lightState);
-
+    // for testing only
+    void sendIMURotX(float rotX);
 
 private:
     CANDispatcher *canDispatcher;
-
 }
 
 #endif

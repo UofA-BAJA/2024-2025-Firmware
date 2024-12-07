@@ -5,6 +5,22 @@ Dash::Dash(CANDispatcher *canDispatcher)
     this->canDispatcher = canDispatcher;
 }
 
+
+// FOR TESTING PURPOSES ONLY, if we actually manage to run this
+void Dash::sendIMURotX(float rotX)
+{
+    byte canID = Devices::Dash;
+    std::vector<byte> data = {0x45, rotX};
+
+    if (!canDispatcher)
+    {
+        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    }
+
+    canDispatcher->sendCanCommand(canID, data);
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
+}
+
 // Sends latest speed information to the Dash
 void Dash::sendSpeed(float speed)
 {
@@ -19,7 +35,7 @@ void Dash::sendSpeed(float speed)
         std::cerr << "Error: CANDispatcher is null!" << std::endl;
     }
 
-    canDispatcher->sendCanCommand(canID, data);
+    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
 }
 
 // Sends latest RPM information to the Dash
