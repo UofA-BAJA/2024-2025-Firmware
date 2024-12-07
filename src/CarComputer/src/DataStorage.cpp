@@ -178,30 +178,8 @@ int DataStorage::getData(){
  *  Returns: None
  *
  */
-// const char* insertData = "INSERT OR IGNORE INTO Data (SessionID, Timestamp, DataTypeID, Value) "
-//                          "VALUES (?, ?, ?, ?)";
-
 
 void DataStorage::storeData(float data, DataTypes dataType){
-    // int exit = 0;
-
-    // sqlite3_stmt *statement;
-
-    // exit = sqlite3_prepare_v2(db, insertData, -1, &statement, nullptr);
-
-    // if(exit){
-    //     std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
-    //     return;
-    // }
-
-    // // Bind values to parameters
-    // sqlite3_bind_int(statement, 1, currentSessionID);
-    // sqlite3_bind_double(statement, 2, currentTimestamp);
-    // sqlite3_bind_int(statement, 3, dataType);
-    // sqlite3_bind_double(statement, 4, data);
-
-    // std::cout << "Storing data with Timestamp: " << currentTimestamp << ", SessionID: " << currentSessionID << std::endl;
-
 
     dataValues dataToStore;
     dataToStore.currentSessionID = currentSessionID;
@@ -213,14 +191,6 @@ void DataStorage::storeData(float data, DataTypes dataType){
     numDataInserts++;
     std::lock_guard<std::mutex> lock (insertBufferMutex);
     insertBuffer.push(dataToStore);
-
-    // exit = sqlite3_step(statement);
-
-    // if(exit != SQLITE_DONE){
-        // std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
-    // }
-    // sqlite3_finalize(statement);
-
 }
 
 

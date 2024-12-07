@@ -18,6 +18,7 @@
 #include "Procedure.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
+#include "Coms.h"
 
 #include "Constants.h"
 

@@ -32,14 +32,14 @@ IMUProcedure* imuProcedure;
 TemperatureSubsystem* temperatureSubsystem;
 TemperatureProcedure* temperatureProcedure;
 
-CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage){
+CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
 
     // testProcedure = new TestProcedure(dataStorageSubsystem);
     imuSubsystem = new IMUSubsystem(canDispatcher);
-    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage);
+    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
 
     temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
-    temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage);
+    temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
 
     procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
     procedureScheduler->bindCommand(temperatureProcedure, Command::START_LOG);

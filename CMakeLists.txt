@@ -25,8 +25,10 @@ file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/*.cpp)
 file(GLOB_RECURSE SUBSYSTEM_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/subsystems/*.cpp)
 # Grab all the .cpp files in commands recursively
 file(GLOB_RECURSE PROCEDURE_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/procedures/*.cpp)
+# Grab all the .cpp files in coms recursively
+file(GLOB_RECURSE COMS_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/coms/*.cpp)
 
-set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${TEMP_IMU} ${TEMP_TEMPERATURE})
+set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${COMS_FILES} ${TEMP_IMU} ${TEMP_TEMPERATURE})
 
 add_executable(carComputer ${SOURCE_FILES})
 
