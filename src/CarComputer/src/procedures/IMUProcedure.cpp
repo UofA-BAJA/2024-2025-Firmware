@@ -48,7 +48,7 @@ class IMUProcedure : public Procedure{
 
             // coms->addNewLiveDataStream(testStream);
 
-            this->frequency = 120;
+            this->frequency = 20;
 
         }
         

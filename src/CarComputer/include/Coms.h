@@ -6,6 +6,8 @@
 #include "LiveDataStream.h"
 #include "CarLogger.h"
 
+#include "Commands.h"
+
 #include <iostream>
 
 // For multithreading
@@ -25,11 +27,6 @@ class Coms{
         float data[6];
     };
 
-    // State machine yay
-    enum RadioState{
-        TRANSMITTING,
-        RECEIVING
-    };
 
     enum PitCommandState{
         IDLE,
@@ -48,16 +45,15 @@ class Coms{
     private:
         const bool RADIO_ACTIVE = true;
 
-        RadioState currentRadioState = RadioState::RECEIVING;
-        PitCommandState currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
+        PitCommandState currentPitCommandState = PitCommandState::IDLE;
 
         float currTimestamp;
         void executeRadio();
-        void radioReceive();
         void radioTransmit();
 
         void transmitLiveData();
         void transmitDatabase();
+        void idle();
 
         void tryUpdateState();
 

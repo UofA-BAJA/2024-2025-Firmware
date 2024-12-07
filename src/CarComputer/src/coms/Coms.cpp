@@ -75,74 +75,69 @@ void Coms::executeRadio(){
 
     // to use different addresses on a pair of radios, we need a variable to
     // uniquely identify which address this radio will use to transmit
-    bool radioNumber = 0; // 0 uses address[0] to transmit, 1 uses address[1] to transmit
+    bool radioNumber = 1; // 0 uses address[0] to transmit, 1 uses address[1] to transmit
     uint8_t address[2][6] = {"1Node", "2Node"};
     radio.setPayloadSize(32); // float datatype occupies 4 bytes
     radio.setPALevel(RF24_PA_HIGH); // RF24_PA_MAX is default.
 
     // radio.setRetries(0, 0);
-
+    radio.enableDynamicPayloads();
     radio.enableAckPayload();
 
     radio.openWritingPipe(address[radioNumber]); // always uses pipe 0
     radio.openReadingPipe(1, address[!radioNumber]); // using pipe 1
 
-    radio.startListening();
+    radio.stopListening();
 
 
     // If RADIO_ACTIVE is true, this thread will run the entire time the car is on
     while(RADIO_ACTIVE){
 
-        if(currentRadioState == RadioState::RECEIVING){
-            radioReceive();
-        }
-        else if(currentRadioState == RadioState::TRANSMITTING){
-            radioTransmit();
-        }
+        radioTransmit();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
 
 
-void Coms::radioReceive(){
-
-    // Idk if there will be many types of receiving. I guess maybe we might need to send a 
-    // stream of data from the pit to the car...?
-
-    // TODO: Packet format from pit still to be determine, for now assume that any packet received means "live data transmit"
-    uint8_t pipe;
-
-    int payload[32];
-
-        std::cout << "Receiving mode" <<std::endl;
-
-    while (radio.available(&pipe)) {                     // is there a payload? get the pipe number that received it
-
-        std::cout << "Received payload" <<std::endl;
-
-        uint8_t bytes = radio.getPayloadSize();          // get the size of the payload
-        radio.read(&payload, bytes);                     // fetch payload from FIFO
-        // cout << "Received " << (unsigned int)bytes;      // print the size of the payload
-        // cout << " bytes on pipe " << (unsigned int)pipe; // print the pipe number
-        // cout << ": " << packetsReceived << endl;                 // print the payload's value
-
-        int ackPayload[] = {1};
-
-        radio.writeAckPayload(pipe, ackPayload, 1);
-
-
-        tryUpdateState();
-    }
-}
-
 void Coms::radioTransmit(){
-    if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
+    if(currentPitCommandState == PitCommandState::IDLE){
+        idle();
+    }
+    else if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
         transmitLiveData();
     }
     else if(currentPitCommandState == PitCommandState::DATABASE_TRANSMIT){
         transmitDatabase();
     }
+
+
+    // Received command from pit!
+    if(radio.isAckPayloadAvailable()){
+
+
+        int ackData;
+
+        radio.read(&ackData, 1);
+
+        if(ackData == Command::START_LOG){
+            procedureScheduler->receiveComCommand(Command::START_LOG);
+
+            currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
+        }
+
+
+        // std::bitset<32> x(ackData);
+
+        std::cout << ackData << std::endl;
+    }
+
+}
+
+int thingy[] = {1};
+
+void Coms::idle(){
+    bool report = radio.write(&thingy, sizeof(thingy));
 }
 
 void Coms::transmitLiveData(){
@@ -211,7 +206,7 @@ void Coms::transmitLiveData(){
             bool report = radio.write(&packets[i], sizeof(packets[i]));
 
             if(report){
-                tryUpdateState();       // Check to see if we received a payload from the car, update state if neccesary
+
             }
             else{
                 // Transmission "failed" (it just means there's no acknowledgement)
@@ -228,35 +223,6 @@ void Coms::transmitDatabase(){
     // I am currently not sure if I should do this by sending the raw data, or
     // somehow encoding the entire database and sending it over. Most likely though,
     // we only want to send one session at a time (probably the current one)
-}
-
-
-void Coms::tryUpdateState(){
-
-    if(currentRadioState == RadioState::RECEIVING){
-
-        currentRadioState = RadioState::TRANSMITTING;
-
-        radio.stopListening();
-
-    }
-    else if(currentRadioState == RadioState::TRANSMITTING){
-
-        // If we are transmitting we need to read the acknowledgement packet
-        // which stores the command from the pit
-
-        if(radio.isAckPayloadAvailable()){
-
-            int ackData[1];
-
-            radio.read(&ackData, sizeof(ackData));
-
-            std::cout << "Acknowledgement Packet Received" << std::endl;
-            currentRadioState = RadioState::RECEIVING;
-            radio.startListening();
-        }
-
-    }
 }
 
 

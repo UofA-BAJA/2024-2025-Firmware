@@ -37,7 +37,7 @@ Car::Car() {
     coms = new Coms(procedureScheduler);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage, coms);
 
-    procedureScheduler->receiveComCommand(Command::START_LOG);
+    procedureScheduler->receiveComCommand(Command::DEFAULT_CAR_START);
 
     std::cout << "Car Sucessfully Initialized" << std::endl;
 
