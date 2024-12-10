@@ -20,6 +20,7 @@ class IMU{
         float getLatestAccelerationZ();
     private:
         CANDispatcher* canDispatcher;
+        const double minimumRepeatThreshold;
 
         float rotX = 0;
         float rotY = 0;
@@ -28,6 +29,14 @@ class IMU{
         float accX = 0;
         float accY = 0;
         float accZ = 0;
+
+        double lastRotXTime = 0.0;
+        double lastRotYTime = 0.0;
+        double lastRotZTime = 0.0;
+
+        double lastAccXTime = 0.0;
+        double lastAccYTime = 0.0;
+        double lastAccZTime = 0.0;
 
         void populateRotationX(struct can_frame frame);
         void populateRotationY(struct can_frame frame);
