@@ -21,7 +21,7 @@ class TemperatureProcedure : public Procedure{
             this->dataStorage = dataStorage;
             this->coms = coms;
 
-            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMP);
+            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
 
             coms->addNewLiveDataStream(temperatureStream);
 

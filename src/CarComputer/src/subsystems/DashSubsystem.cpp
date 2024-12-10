@@ -1,6 +1,6 @@
 #include "DashSubsystem.h"
 
-DashSubsystem:::DashSubsystem(CANDispatcher* canDispatcher){
+DashSubsystem::DashSubsystem(CANDispatcher* canDispatcher){
     dash = new Dash(canDispatcher);
 }
 
@@ -13,7 +13,7 @@ void DashSubsystem::sendRPM(float rpm){
 }
 
 void DashSubsystem::sendCVTTemp(float cvtTemp){
-    dash->sendCTVTemp(cvtTemp);
+    dash->sendCVTTemp(cvtTemp);
 }
 
 void DashSubsystem::sendTimeSeconds(unsigned long seconds){

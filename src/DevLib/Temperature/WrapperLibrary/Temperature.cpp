@@ -13,20 +13,19 @@ float Temperature::getLatestTemperature(){
     //If this is being called quicker than the minimum repeat threshold, don't send a new CAN command
     steady_clock::time_point now = steady_clock::now();
     double timeDifference = duration_cast<milliseconds>(now-lastTemperatureTime).count();
+
     if(timeDifference > minimumRepeatThreshold){
         byte canID = Devices::CVT_TEMP;
         std::vector<byte> data = {0x01};
-
 
         if(!canDispatcher){
           std::cerr << "Error: CANDispatcher is null!" << std::endl;
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateTemperature(frame);});
-        lastTemperatureTime = duration_cast<milliseconds>(now).count();
+        lastTemperatureTime = now;
     }
     
-
     return temperature;
 }
 

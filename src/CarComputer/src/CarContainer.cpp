@@ -51,7 +51,5 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
     procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
 
-    dashS
-
     std::cout << "Car Container Constructor called" << std::endl;
 }

@@ -24,7 +24,7 @@ float IMU::getLatestAccelerationX(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationX(frame);});
-        lastAccXTime = duration_cast<milliseconds>(now).count();
+        lastAccXTime = now;
     }
     return accX;
 }
@@ -49,7 +49,7 @@ float IMU::getLatestAccelerationY(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationY(frame);});
-        lastAccYTime = duration_cast<milliseconds>(now).count();
+        lastAccYTime = now;
     }
     return accY;
 }
@@ -74,7 +74,7 @@ float IMU::getLatestAccelerationZ(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateAccelerationZ(frame);});
-        lastAccZTime = duration_cast<milliseconds>(now).count();
+        lastAccZTime = now;
     }
     return accZ;
 }
@@ -100,7 +100,7 @@ float IMU::getLatestRotationX(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateRotationX(frame);});
-        lastRotXTime = duration_cast<milliseconds>(now).count();
+        lastRotXTime = now;
     }
     return rotX;
 }
@@ -126,7 +126,7 @@ float IMU::getLatestRotationY(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateRotationY(frame);});
-        lastRotYTime = duration_cast<milliseconds>(now).count();
+        lastRotYTime = now;
     }
     return rotY;
 }
@@ -151,7 +151,7 @@ float IMU::getLatestRotationZ(){
         }
 
         canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateRotationZ(frame);});
-        lastRotZTime = duration_cast<milliseconds>(now).count();
+        lastRotZTime = now;
     }
     return rotZ;
 }

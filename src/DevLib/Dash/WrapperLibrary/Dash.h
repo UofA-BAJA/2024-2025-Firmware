@@ -2,6 +2,8 @@
 #define DASH_H
 
 #include "CANDispatcher.h"
+#include "Devices.h"
+
 
 class Dash
 {
@@ -18,6 +20,7 @@ public:
 
 private:
     CANDispatcher *canDispatcher;
-}
+
+};
 
 #endif

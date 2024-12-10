@@ -29,4 +29,4 @@ class DashProcedure : public Procedure{
     std::string toString() override {
             return "Dash Procedure";
         }
-}
+};

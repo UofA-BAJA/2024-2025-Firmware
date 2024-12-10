@@ -6,28 +6,13 @@ Dash::Dash(CANDispatcher *canDispatcher)
 }
 
 
-// FOR TESTING PURPOSES ONLY, if we actually manage to run this
-void Dash::sendIMURotX(float rotX)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data = {0x45, rotX};
-
-    if (!canDispatcher)
-    {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
-    }
-
-    canDispatcher->sendCanCommand(canID, data);
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
-}
-
 // Sends latest speed information to the Dash
 void Dash::sendSpeed(float speed)
 {
-    byte canID = Devices::Dash;
+    byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, speed, sizeof(float));
+    memcpy(data.data()+1, &speed, sizeof(float));
     data[0] = 0x01;
 
     if (!canDispatcher)
@@ -41,10 +26,10 @@ void Dash::sendSpeed(float speed)
 // Sends latest RPM information to the Dash
 void Dash::sendRPM(float rpm)
 {
-    byte canID = Devices::Dash;
+    byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, rpm, sizeof(float));
+    memcpy(data.data()+1, &rpm, sizeof(float));
     data[0] = 0x02;
 
     if (!canDispatcher)
@@ -58,10 +43,10 @@ void Dash::sendRPM(float rpm)
 // Sends latest CVT Temp information to the Dash
 void Dash::sendCVTTemp(float cvtTemp)
 {
-    byte canID = Devices::Dash;
+    byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, cvtTemp, sizeof(float));
+    memcpy(data.data()+1, &cvtTemp, sizeof(float));
     data[0] = 0x03;
     
 
@@ -76,10 +61,10 @@ void Dash::sendCVTTemp(float cvtTemp)
 // Sends latest Time Elapsed information to the Dash
 void Dash::sendTimeSeconds(unsigned long seconds)
 {
-    byte canID = Devices::Dash;
+    byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, seconds, sizeof(unsigned long));
+    memcpy(data.data()+1, &seconds, sizeof(unsigned long));
     data[0] = 0x04;
 
     if (!canDispatcher)
@@ -91,12 +76,12 @@ void Dash::sendTimeSeconds(unsigned long seconds)
 }
 
 // Sends new indicator light state to the Dash
-void Dash::sendTimeSeconds(uint16_t lightState)
+void Dash::setIndicatorLights(uint16_t lightState)
 {
-    byte canID = Devices::Dash;
+    byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, lightState, sizeof(uint16_t));
+    memcpy(data.data()+1, &lightState, sizeof(uint16_t));
     data[0] = 0x05;
 
     if (!canDispatcher)
