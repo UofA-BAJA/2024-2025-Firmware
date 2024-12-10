@@ -11,10 +11,14 @@
 
 #include "procedures/ExampleProcedure.cpp"
 #include "procedures/IMUProcedure.cpp"
+#include "procedures/DashProcedure.cpp"
 #include "procedures/TemperatureProcedure.cpp"
 
 #include "DataStorage.h"
+
 #include "IMUSubsystem.h"
+#include "DashSubsystem.h"
+
 #include "TemperatureSubsystem.h"
 
 /*
@@ -28,6 +32,9 @@
 
 IMUSubsystem* imuSubsystem;
 IMUProcedure* imuProcedure;
+
+DashSubsystem* dashSubsystem;
+DashProcedure* dashProcedure;
 
 TemperatureSubsystem* temperatureSubsystem;
 TemperatureProcedure* temperatureProcedure;
@@ -43,6 +50,8 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
 
     procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
+
+    dashS
 
     std::cout << "Car Container Constructor called" << std::endl;
 }

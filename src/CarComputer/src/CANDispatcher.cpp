@@ -174,9 +174,9 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
 void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data){
     //*****UNTESTED
-    if(data.size() > 4){
+    if(data.size() > 8){
         
-        std::cerr << "Error: You are only allowed to send 4 bytes of data to CAN device." << std::endl;
+        std::cerr << "Error: You are only allowed to send 8 bytes of data to CAN device." << std::endl;
         return;
     }
 
