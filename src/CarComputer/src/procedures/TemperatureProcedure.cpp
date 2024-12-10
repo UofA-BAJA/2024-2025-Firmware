@@ -51,7 +51,7 @@ class TemperatureProcedure : public Procedure{
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
-            std::cout << "CVT Temperature: " << cvt_temperature << std::endl;
+            // std::cout << "CVT Temperature: " << cvt_temperature << std::endl;
         }
 
         void end() override {

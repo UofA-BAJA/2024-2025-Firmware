@@ -41,7 +41,7 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
     temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
     temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
 
-    procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
+    procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
 
     std::cout << "Car Container Constructor called" << std::endl;
