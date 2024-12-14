@@ -20,8 +20,16 @@ void Dash::sendSpeed(float speed)
         std::cerr << "Error: CANDispatcher is null!" << std::endl;
     }
 
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
+    canDispatcher->sendCanCommand(canID, data);
 }
+
+
+void Dash::iWantToDie(float help){
+
+    std::cout << "HELLLLPPP" << std::endl;
+
+}
+
 
 // Sends latest RPM information to the Dash
 void Dash::sendRPM(float rpm)

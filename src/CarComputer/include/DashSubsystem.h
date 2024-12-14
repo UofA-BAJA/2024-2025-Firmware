@@ -4,7 +4,8 @@
 #include "Dash.h"
 #include "CANDispatcher.h"
 
-class DashSubsystem{
+
+class DashSubsystem {
     public:
         DashSubsystem(CANDispatcher* canDispatcher);
         void sendSpeed(float speed);
@@ -16,7 +17,6 @@ class DashSubsystem{
 
     private:
         Dash* dash;    
-        uint16_t indicatorLightState = 0;
 };
 
 

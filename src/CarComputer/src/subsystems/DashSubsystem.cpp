@@ -5,14 +5,19 @@ DashSubsystem::DashSubsystem(CANDispatcher* canDispatcher){
 }
 
 void DashSubsystem::sendSpeed(float speed){
-    dash->sendSpeed(speed);
+
+    // dash->sendSpeed(speed);
 }
 
 void DashSubsystem::sendRPM(float rpm){
-    dash->sendRPM(rpm);
+
+    dash->iWantToDie(3.14159);
+
+    // dash->sendRPM(rpm);
 }
 
 void DashSubsystem::sendCVTTemp(float cvtTemp){
+
     dash->sendCVTTemp(cvtTemp);
 }
 
@@ -21,6 +26,5 @@ void DashSubsystem::sendTimeSeconds(unsigned long seconds){
 }
 
 void DashSubsystem::setIndicatorLights(uint16_t lightState){
-    indicatorLightState = lightState;
     dash->setIndicatorLights(lightState);
 }

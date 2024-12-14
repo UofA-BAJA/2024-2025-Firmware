@@ -56,6 +56,8 @@ DashProcedure* dashProcedure;
 TemperatureSubsystem* temperatureSubsystem;
 TemperatureProcedure* temperatureProcedure;
 
+#include "Dash.h"
+
 CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
 
 
@@ -66,12 +68,14 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
     temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
     temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
 
+
+    dashSubsystem = new DashSubsystem(canDispatcher);
+    dashProcedure = new DashProcedure(dashSubsystem);
+
     procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
 
-
-
-
+    procedureScheduler->bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
 
     CarLogger::Log("Car Started");
     std::cout << "Car Container Constructor called" << std::endl;

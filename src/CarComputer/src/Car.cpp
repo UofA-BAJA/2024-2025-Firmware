@@ -135,5 +135,5 @@ void Car::init(){
 
 void Car::end(){
     procedureScheduler->end();
-    std::cout << "Car sucessfully destroyed\n";
+    std::cout << "Car sucessfully destroyed" << std::endl;
 }

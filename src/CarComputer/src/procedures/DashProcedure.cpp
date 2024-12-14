@@ -3,35 +3,38 @@
 #include "DashSubsystem.h"
 
 class DashProcedure : public Procedure{
-    DashSubsystem* dashSubsystem;
-    float testSpeed = 0.0f;
-    float testRPM = 00.0f;
-    DashProcedure(DashSubsystem *DashSubsystem){
-        this->dashSubsystem = dashSubsystem;
-        this->frequency = 2;
-    }
+    public:
+        DashSubsystem* dashSubsystem;
+        float testSpeed = 0.0f;
+        float testRPM = 00.0f;
 
-    void init() override{
-        std::cout << "Dash Procedure Initialized" << std::endl;
-    }
+        DashProcedure(DashSubsystem *DashSubsystem){
+            this->dashSubsystem = dashSubsystem;
+            this->frequency = 2;
+        }
 
-    void execute() override {
-        testSpeed += 0.5f;
-        testRPM += 0.5f;
-        dashSubsystem->sendRPM(testRPM);
-        dashSubsystem->sendSpeed(testSpeed);
-    }
+        void init() override{
+            std::cout << "Dash Procedure Initialized" << std::endl;
+        }
 
-    void end() override {
-        testSpeed = 0.0f;
-        testRPM = 0.0f;
-    }
+        void execute() override {
+            testSpeed += 0.5f;
+            testRPM += 0.5f;
+            dashSubsystem->sendRPM(testRPM);
+            dashSubsystem->sendSpeed(testSpeed);
+        }
 
-    bool isFinished() override {
-        return false;
-    }
+        void end() override {
+            testSpeed = 0.0f;
+            testRPM = 0.0f;
+        }
 
-    std::string toString() override {
-        return "Dash Procedure";
-    }
+        bool isFinished() override {
+            return false;
+        }
+
+        std::string toString() override {
+            return "Dash Procedure";
+        }
+    private:
 };

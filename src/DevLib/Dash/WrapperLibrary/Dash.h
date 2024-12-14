@@ -7,19 +7,19 @@
 
 class Dash
 {
-public:
-    Dash(CANDispatcher *canDispatcher);
+    public:
+        Dash(CANDispatcher *canDispatcher);
 
-    void sendSpeed(float speed);
-    void sendRPM(float rpm);
-    void sendCVTTemp(float cvtTemp);
-    void sendTimeSeconds(unsigned long seconds);
-    void setIndicatorLights(uint16_t lightState);
-    // for testing only
-    void sendIMURotX(float rotX);
+        void sendSpeed(float speed);
+        void sendRPM(float rpm);
+        void sendCVTTemp(float cvtTemp);
+        void sendTimeSeconds(unsigned long seconds);
+        void setIndicatorLights(uint16_t lightState);
 
-private:
-    CANDispatcher *canDispatcher;
+        void iWantToDie(float help);
+
+    private:
+        CANDispatcher *canDispatcher;
 
 };
 
