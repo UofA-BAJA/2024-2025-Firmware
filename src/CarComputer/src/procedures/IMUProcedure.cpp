@@ -22,8 +22,6 @@ class IMUProcedure : public Procedure{
         LiveDataStream* zAccStream;
 
 
-        // LiveDataStream* testStream;
-
         IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
@@ -37,16 +35,12 @@ class IMUProcedure : public Procedure{
             yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
             zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
 
-            // testStream = new LiveDataStream(DataTypes::RESERVE_28);
-
             coms->addNewLiveDataStream(yRotStream);
             coms->addNewLiveDataStream(xRotStream);
             coms->addNewLiveDataStream(zRotStream);
             coms->addNewLiveDataStream(xAccStream);
             coms->addNewLiveDataStream(yAccStream);
             coms->addNewLiveDataStream(zAccStream);
-
-            // coms->addNewLiveDataStream(testStream);
 
             this->frequency = 20;
 
@@ -57,14 +51,6 @@ class IMUProcedure : public Procedure{
         }
 
         void execute() override {
-            // std::cout << "IMU procedure execution"<< std::endl;
-
-            // For testing purposes
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
 
             float xRot = imuSubsystem->getRotationX();
             float yRot = imuSubsystem->getRotationY();
@@ -89,8 +75,6 @@ class IMUProcedure : public Procedure{
             xAccStream->enqueue(xAccel);
             yAccStream->enqueue(yAccel);
             zAccStream->enqueue(zAccel);
-
-            // testStream->enqueue(3.14159);
 
             // std::cout << std::fixed;
             // std::cout << std::setprecision(2);

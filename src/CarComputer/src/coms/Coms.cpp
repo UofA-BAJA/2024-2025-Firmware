@@ -26,8 +26,7 @@
  *      Coms(ProcedureScheduler* procedureScheduler) -- initializes fields
  *      and begins the thread that runs the radio hardware 
  *
- *  Class Methods:  [List the names, arguments, and return types of all
- *                   public class methods.]
+ *  Class Methods:  None
  *
  *  Inst. Methods:  [List the names, arguments, and return types of all
  *                   public instance methods.]
@@ -90,12 +89,14 @@ void Coms::executeRadio(){
     radio.stopListening();
 
 
+    int waitTimems = (1.0 / RADIO_CLOCK_FREQUENCY) * 1000;
     // If RADIO_ACTIVE is true, this thread will run the entire time the car is on
     while(RADIO_ACTIVE){
 
         radioTransmit();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(waitTimems));
     }
 }
 
@@ -134,7 +135,7 @@ void Coms::radioTransmit(){
 
 }
 
-int thingy[] = {1};
+int thingy[] = {-1};
 
 void Coms::idle(){
     bool report = radio.write(&thingy, sizeof(thingy));
@@ -250,6 +251,14 @@ void Coms::addNewLiveDataStream(LiveDataStream* stream){
 
     // Insertion sort using stream.getDataType() as a key
     DataTypes streamDataType = stream->getDataType();
+
+    if(streamDataType >= MAX_LIVE_DATA_STREAMS){
+
+        std::string errorStr("Not allowed to have more than " + std::to_string(MAX_LIVE_DATA_STREAMS) + " live data streams!");
+
+        CarLogger::LogError(errorStr.c_str());
+        return;
+    }
     
     int i = liveStreamCount;
 

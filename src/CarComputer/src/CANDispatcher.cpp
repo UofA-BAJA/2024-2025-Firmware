@@ -28,7 +28,7 @@ void CANDispatcher::execute(){
         if(commandCycles[commandID] >= cycleThreshold){
                 droppedCommands++;
 
-                // std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+                std::cout << "Commands Dropped: " << droppedCommands << std::endl;
                 // std::cout << "Command Dropped: " << std::hex << commandID << std::endl;
                 callbacks.erase(commandID);
                 // Proper way to continue iterating over the map
