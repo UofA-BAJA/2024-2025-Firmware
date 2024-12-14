@@ -4,10 +4,11 @@
 
 class DashProcedure : public Procedure{
     DashSubsystem* dashSubsystem;
-
+    float testSpeed = 0.0f;
+    float testRPM = 00.0f;
     DashProcedure(DashSubsystem *DashSubsystem){
         this->dashSubsystem = dashSubsystem;
-        this->frequency = 5;
+        this->frequency = 2;
     }
 
     void init() override{
@@ -15,11 +16,15 @@ class DashProcedure : public Procedure{
     }
 
     void execute() override {
-        
+        testSpeed += 0.5f;
+        testRPM += 0.5f;
+        dashSubsystem->sendRPM(testRPM);
+        dashSubsystem->sendSpeed(testSpeed);
     }
 
     void end() override {
-
+        testSpeed = 0.0f;
+        testRPM = 0.0f;
     }
 
     bool isFinished() override {
@@ -27,6 +32,6 @@ class DashProcedure : public Procedure{
     }
 
     std::string toString() override {
-            return "Dash Procedure";
-        }
+        return "Dash Procedure";
+    }
 };
