@@ -34,7 +34,7 @@ bool role = false;  // true = TX role, false = RX role
 // For this example, we'll be using a payload containing
 // a single float number that will be incremented
 // on every successful transmission
-float payload = 0.0;
+int payload[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
 void setup() {
 
@@ -72,7 +72,7 @@ void setup() {
 
   // save on transmission time by setting the radio to only transmit the
   // number of bytes we need to transmit a float
-  radio.setPayloadSize(sizeof(payload));  // float datatype occupies 4 bytes
+  radio.setPayloadSize(32);  // float datatype occupies 4 bytes
 
   // set the TX address of the RX node into the TX pipe
   radio.openWritingPipe(address[radioNumber]);  // always uses pipe 0
@@ -100,22 +100,22 @@ void loop() {
     // This device is a TX node
 
     unsigned long start_timer = micros();                // start the timer
-    bool report = radio.write(&payload, sizeof(float));  // transmit & save the report
+    bool report = radio.write(&payload, 32);  // transmit & save the report
     unsigned long end_timer = micros();                  // end the timer
 
     if (report) {
-      Serial.print(F("Transmission successful! "));  // payload was delivered
-      Serial.print(F("Time to transmit = "));
-      Serial.print(end_timer - start_timer);  // print the timer result
-      Serial.print(F(" us. Sent: "));
-      Serial.println(payload);  // print payload sent
-      payload += 0.01;          // increment float payload
+      // Serial.print(F("Transmission successful! "));  // payload was delivered
+      // Serial.print(F("Time to transmit = "));
+      // Serial.print(end_timer - start_timer);  // print the timer result
+      // Serial.print(F(" us. Sent: "));
+      // Serial.println(payload);  // print payload sent
+      // payload += 0.01;          // increment float payload
     } else {
       Serial.println(F("Transmission failed or timed out"));  // payload was not delivered
     }
 
     // to make this example readable in the serial monitor
-    delay(100);  // slow transmissions down by 1 second
+    // delay(10);  // slow transmissions down by 1 second
 
   } else {
     // This device is a RX node
@@ -129,7 +129,7 @@ void loop() {
       Serial.print(F(" bytes on pipe "));
       Serial.print(pipe);  // print the pipe number
       Serial.print(F(": "));
-      Serial.println(payload);  // print the payload's value
+      // Serial.println(payload);  // print the payload's value
     }
   }  // role
 

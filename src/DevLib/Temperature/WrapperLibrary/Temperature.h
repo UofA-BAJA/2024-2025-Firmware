@@ -14,9 +14,11 @@ class Temperature{
         float getLatestTemperature();
     private:
         CANDispatcher* canDispatcher;
+        double minimumRepeatThreshold;
 
         float temperature = 0.0;
-
+        std::chrono::steady_clock::time_point lastTemperatureTime;
+       
         void populateTemperature(struct can_frame frame);
 };
 

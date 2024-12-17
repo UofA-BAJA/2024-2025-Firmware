@@ -2,6 +2,9 @@
 #include "IMUSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
+#include "Coms.h"
+
+#include "LiveDataStream.h"
 
 #include <iomanip>
 
@@ -9,10 +12,35 @@ class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
         DataStorage* dataStorage;
+        Coms* coms;
 
-        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage){
+        LiveDataStream* xRotStream;
+        LiveDataStream* yRotStream;
+        LiveDataStream* zRotStream;
+        LiveDataStream* xAccStream;
+        LiveDataStream* yAccStream;
+        LiveDataStream* zAccStream;
+
+
+        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
+            this->coms = coms;
+
+            xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
+            yRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Y);
+            zRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Z);
+
+            xAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_X);
+            yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
+            zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
+
+            coms->addNewLiveDataStream(yRotStream);
+            coms->addNewLiveDataStream(xRotStream);
+            coms->addNewLiveDataStream(zRotStream);
+            coms->addNewLiveDataStream(xAccStream);
+            coms->addNewLiveDataStream(yAccStream);
+            coms->addNewLiveDataStream(zAccStream);
 
             this->frequency = 20;
 
@@ -23,14 +51,6 @@ class IMUProcedure : public Procedure{
         }
 
         void execute() override {
-            // std::cout << "IMU procedure execution"<< std::endl;
-
-            // For testing purposes
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
 
             float xRot = imuSubsystem->getRotationX();
             float yRot = imuSubsystem->getRotationY();
@@ -48,10 +68,18 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
             dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
 
-            std::cout << std::fixed;
-            std::cout << std::setprecision(2);
-            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            xRotStream->enqueue(xRot);
+            yRotStream->enqueue(yRot);
+            zRotStream->enqueue(zRot);
+
+            xAccStream->enqueue(xAccel);
+            yAccStream->enqueue(yAccel);
+            zAccStream->enqueue(zAccel);
+
+            // std::cout << std::fixed;
+            // std::cout << std::setprecision(2);
+            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {

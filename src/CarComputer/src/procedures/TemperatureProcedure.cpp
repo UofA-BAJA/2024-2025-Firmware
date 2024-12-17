@@ -2,6 +2,8 @@
 #include "TemperatureSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
+#include "LiveDataStream.h"
+#include "Coms.h"
 
 #include <iomanip>
 
@@ -9,10 +11,19 @@ class TemperatureProcedure : public Procedure{
     public:
         TemperatureSubsystem* temperatureSubsystem;
         DataStorage* dataStorage;
+        Coms* coms;
 
-        TemperatureProcedure(TemperatureSubsystem *temperatureSubsystem, DataStorage* dataStorage){
+        LiveDataStream* temperatureStream;
+
+
+        TemperatureProcedure(TemperatureSubsystem *temperatureSubsystem, DataStorage* dataStorage, Coms* coms){
             this->temperatureSubsystem = temperatureSubsystem;
             this->dataStorage = dataStorage;
+            this->coms = coms;
+
+            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
+
+            coms->addNewLiveDataStream(temperatureStream);
 
             this->frequency = 1;
 
@@ -34,11 +45,13 @@ class TemperatureProcedure : public Procedure{
 
             float cvt_temperature = temperatureSubsystem->getTemperature();
 
+            temperatureStream->enqueue(cvt_temperature);
+
             //dataStorage->storeData(temperature, DataTypes::TEMPERATURE);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
-            std::cout << "CVT Temperature: " << cvt_temperature << std::endl;
+            // std::cout << "CVT Temperature: " << cvt_temperature << std::endl;
         }
 
         void end() override {

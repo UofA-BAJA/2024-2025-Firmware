@@ -1,3 +1,32 @@
+/*
+ *
+ *  Class: ProcedureScheduler
+ *
+ *         Author:  Matthew Larson
+ *
+ *        Purpose:  Handles the initialization, execution, and ending of procedures that
+ *        are bound to commands.
+ *
+ *  Inherits From:  None
+ *
+ *     Interfaces:  None
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *      Constants:  None
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *   Constructors:  ProcedureScheduler() -- does nothing right now
+ *
+ *  Class Methods:  [List the names, arguments, and return types of all
+ *                   public class methods.]
+ *
+ * Inst. Methods:  [List the names, arguments, and return types of all
+ *                   public instance methods.]
+ *
+*/
+
 
 #include "ProcedureScheduler.h"
 
@@ -15,7 +44,7 @@ ProcedureScheduler::ProcedureScheduler(){
  *  Pre-Condition: None
  * 
  *  Post-Condition: All active procedures are executed; If the procedure should be terminated, 
- *                  it is ended;
+ *                  it is ended; The procedures are run at their selected frequency
  * 
  *  Parameters: None
  *
