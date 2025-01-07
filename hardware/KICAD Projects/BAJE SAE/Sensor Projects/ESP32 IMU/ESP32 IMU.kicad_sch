@@ -2435,6 +2435,16 @@
 		)
 		(uuid dc601c6c-b358-4022-9057-c411c86954b4)
 	)
+	(text "TO DO\n\n- Measure CAN bus so it hangs off board properly\n- Make sure IO is all on same side of board\n- Figure out why power regulation no worky\n- Add revision to silkscreen"
+		(exclude_from_sim no)
+		(at 60.96 144.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "06ff486b-9b15-4053-b66b-7caf3271a924")
+	)
 	(text "IMU"
 		(exclude_from_sim no)
 		(at 119.38 92.71 0)
