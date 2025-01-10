@@ -1692,10 +1692,6 @@
 		(uuid "13d09509-a405-4554-80e9-fb312be033f0")
 	)
 	(no_connect
-		(at 158.75 123.19)
-		(uuid "14e6ee1f-dab4-4d18-a782-8e38588389d8")
-	)
-	(no_connect
 		(at 82.55 102.87)
 		(uuid "1b4f83b0-95be-472d-9dd6-b557966d9344")
 	)
@@ -1823,7 +1819,17 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 54.61) (xy 236.22 54.61)
+			(xy 194.31 54.61) (xy 196.85 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bcd5b83-96e0-4b0f-bc42-8812e0a96d25")
+	)
+	(wire
+		(pts
+			(xy 193.04 52.07) (xy 196.85 52.07)
 		)
 		(stroke
 			(width 0)
@@ -1843,16 +1849,6 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 57.15) (xy 236.22 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e681872-4947-47b6-a605-c309494f59f6")
-	)
-	(wire
-		(pts
 			(xy 142.24 76.2) (xy 142.24 77.47)
 		)
 		(stroke
@@ -1860,6 +1856,16 @@
 			(type default)
 		)
 		(uuid "9a776a60-5239-45a7-9f37-8e0fe03eb325")
+	)
+	(wire
+		(pts
+			(xy 158.75 123.19) (xy 161.29 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7fa447f-f54f-456d-b6db-d788fc701374")
 	)
 	(rectangle
 		(start 117.6708 94.326)
@@ -1886,8 +1892,20 @@
 		(uuid 588c656b-b709-421e-894c-c834c8416b88)
 	)
 	(rectangle
+		(start 179.07 67.31)
+		(end 211.76 82.6616)
+		(stroke
+			(width 0)
+			(type dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid a8453103-5acd-49f3-8a35-3826f9a60c32)
+	)
+	(rectangle
 		(start 179.4 45.6084)
-		(end 253.242 80.7032)
+		(end 212.09 60.96)
 		(stroke
 			(width 0)
 			(type dot)
@@ -1909,16 +1927,6 @@
 		)
 		(uuid dc601c6c-b358-4022-9057-c411c86954b4)
 	)
-	(text "TO DO\n\n- Measure CAN bus so it hangs off board properly\n- Make sure IO is all on same side of board\n- Figure out why power regulation no worky\n- Add revision to silkscreen"
-		(exclude_from_sim no)
-		(at 60.96 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "06ff486b-9b15-4053-b66b-7caf3271a924")
-	)
 	(text "IMU"
 		(exclude_from_sim no)
 		(at 119.38 92.71 0)
@@ -1929,9 +1937,19 @@
 		)
 		(uuid "42c48871-0619-4d3d-a89d-f44e46b77917")
 	)
-	(text "Power Regulation"
+	(text "Socket"
 		(exclude_from_sim no)
-		(at 187.96 44.45 0)
+		(at 181.864 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "58c59a6f-be48-4a67-a28f-733cf68301ee")
+	)
+	(text "Power"
+		(exclude_from_sim no)
+		(at 182.118 44.196 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1948,6 +1966,16 @@
 			)
 		)
 		(uuid "a537cd1f-1323-43e2-bac5-1dcfedc44a44")
+	)
+	(text "ESP-32 Socketed with \nESS-119-T-03"
+		(exclude_from_sim no)
+		(at 195.58 75.184 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "def84437-4d15-49f9-a0ba-f26193306294")
 	)
 	(text "CAN Bus"
 		(exclude_from_sim no)
@@ -2049,7 +2077,7 @@
 	)
 	(global_label "+5v"
 		(shape output)
-		(at 226.06 54.61 180)
+		(at 193.04 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2059,7 +2087,7 @@
 		)
 		(uuid "0e0eea5f-1c8c-4e5f-b708-f9d35a5d1664")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.3253 54.61 0)
+			(at 186.3053 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2104,6 +2132,28 @@
 		(uuid "27d4db14-0051-4c5d-85fc-9dde72fdb5bc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 35.1753 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 194.31 54.61 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5e0bddab-a7cf-49e3-86b9-dfbff4617f31")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.4543 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2333,6 +2383,28 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape input)
+		(at 161.29 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d611b0de-e316-4807-818f-73f9f25bacfd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 168.1457 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SDA"
 		(shape input)
 		(at 128.27 115.57 180)
@@ -2401,7 +2473,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 241.3 54.61 0)
+		(at 201.93 52.07 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2410,7 +2482,7 @@
 		(fields_autoplaced yes)
 		(uuid "29d8a7e3-f887-4e29-889a-9d1471ff2a68")
 		(property "Reference" "J1"
-			(at 243.84 54.6099 0)
+			(at 204.47 52.0699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2419,7 +2491,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 243.84 57.1499 0)
+			(at 204.47 54.6099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2428,7 +2500,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical"
-			(at 241.3 54.61 0)
+			(at 201.93 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2437,7 +2509,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 241.3 54.61 0)
+			(at 201.93 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2446,7 +2518,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 241.3 54.61 0)
+			(at 201.93 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2922,72 +2994,6 @@
 			(project ""
 				(path "/7db5226c-054a-443a-bdfe-e8f86c4e465d"
 					(reference "UNIT_2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 236.22 59.69 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b330605e-694c-4b73-b911-4b0920d9cf78")
-		(property "Reference" "#PWR09"
-			(at 236.22 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 236.22 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 236.22 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 236.22 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 236.22 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "487238d4-0ff1-4b8c-b2ce-3bf0c77518fa")
-		)
-		(instances
-			(project ""
-				(path "/7db5226c-054a-443a-bdfe-e8f86c4e465d"
-					(reference "#PWR09")
 					(unit 1)
 				)
 			)
