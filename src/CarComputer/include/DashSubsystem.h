@@ -11,7 +11,7 @@ class DashSubsystem {
         void sendSpeed(float speed);
         void sendRPM(float rpm);
         void sendCVTTemp(float cvtTemp);
-        void sendTimeSeconds(unsigned long seconds);
+        void sendTimeSeconds(float seconds);
         void setIndicatorLights(uint16_t lightState);
 
     private:

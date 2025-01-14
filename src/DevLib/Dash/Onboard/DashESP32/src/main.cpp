@@ -164,21 +164,18 @@ void loop()
   //   }
   // }
 
-  // if(num%2000==0){
-  //   unsigned long currentSeconds = millis()/1000;
-  //   unsigned long currentMinutes = currentSeconds/60;
-  //   unsigned long currentHours = currentSeconds/3600;
-  //   display2.printf("%02u%02u  %02u", currentHours, currentMinutes%60, currentSeconds%60);  
-  //   display2.colonOn();
-  // }
+    
   if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-    display.printf("SPD %5.1f", lastSpeed);
-    display.decimalOn();
-    display2.printf("RPM %4.0f", lastRPM);
+    unsigned long currentSeconds = millis()/1000;
+    unsigned long currentMinutes = currentSeconds/60;
+    unsigned long currentHours = currentSeconds/3600;
+    display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, currentSeconds%60);  
+    display.colonOn();
+    display2.printf("IMUX%4.0f", lastRPM);
     xSemaphoreGive(canMutex);
   }
   // Serial.printf("SPD %4.1f \n", lastSpeed);
-  delay(100);
+  delay(200);
 }
 
 
@@ -208,7 +205,7 @@ void readCAN(void *pvParameters){
         switch (rxBuf[0])
         {
           case 0x01:
-            // Speed
+            // Speedds
             memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
             break;
           case 0x02:
@@ -221,7 +218,7 @@ void readCAN(void *pvParameters){
             break;
           case 0x04:
             // Timer (seconds)
-            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(unsigned long));
+            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(float));
             break;
         }
         xSemaphoreGive(canMutex);

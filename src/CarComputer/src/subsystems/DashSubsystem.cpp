@@ -2,12 +2,10 @@
 
 DashSubsystem::DashSubsystem(CANDispatcher* canDispatcher){
     this->dash = new Dash(canDispatcher);
-
 }
 
 
 void DashSubsystem::sendSpeed(float speed){
-
     dash->sendSpeed(speed);
 }
 
@@ -20,7 +18,7 @@ void DashSubsystem::sendCVTTemp(float cvtTemp){
     dash->sendCVTTemp(cvtTemp);
 }
 
-void DashSubsystem::sendTimeSeconds(unsigned long seconds){
+void DashSubsystem::sendTimeSeconds(float seconds){
     dash->sendTimeSeconds(seconds);
 }
 

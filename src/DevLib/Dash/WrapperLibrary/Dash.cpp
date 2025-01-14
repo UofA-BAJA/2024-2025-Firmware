@@ -59,7 +59,7 @@ void Dash::sendCVTTemp(float cvtTemp)
 }
 
 // Sends latest Time Elapsed information to the Dash
-void Dash::sendTimeSeconds(unsigned long seconds)
+void Dash::sendTimeSeconds(float seconds)
 {
     byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
