@@ -106,8 +106,9 @@ void Car::execute(){
 
         procedureScheduler->execute();
         canDispatcher->execute();
-        dataStorage->execute(time / 1000000000L);
-        coms->execute(time / 1000000000L);
+        Car::time = time / 1000000000L;
+        dataStorage->execute(Car::time);
+        coms->execute(Car::time);
 
         endTime = steady_clock::now();
 

@@ -1,29 +1,28 @@
 #include "Procedure.h"
 #include "CarLogger.h"
 #include "DashSubsystem.h"
+#include "IMUSubsystem.h"
+#include "Car.h"
 
 class DashProcedure : public Procedure{
     public:
 
         DashSubsystem* dashSubsystem;
-        float testSpeed = 0.0f;
-        float testRPM = 00.0f;
+        IMUSubsystem* imuSubsystem;
 
-        DashProcedure(DashSubsystem* dashSubsystem){
+        DashProcedure(DashSubsystem* dashSubsystem, IMUSubsystem* imuSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->frequency = 2;
         }
 
         void init() override{
             std::cout << "Dash Procedure Initialized" << std::endl;
-            dashSubsystem->sendRPM(testSpeed);
+            // dashSubsystem->sendRPM(testSpeed);
         }
 
         void execute() override {
-            testSpeed += 0.5f;
-            testRPM += 0.5f;
-            dashSubsystem->sendRPM(testRPM);
-            dashSubsystem->sendSpeed(testSpeed);
+            dashSubsystem->sendRPM(imuSubsystem->getRotationX());
+            dashSubsystem->sendTimeSeconds(Car::time);
         }
 
         void end() override {
