@@ -209,19 +209,19 @@ void readCAN(void *pvParameters){
         {
           case 0x01:
             // Speed
-            memcpy(&lastSpeed, &rxBuf[1], len-1);
+            memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
             break;
           case 0x02:
             // RPM
-            memcpy(&lastRPM, &rxBuf[1], len-1);
+            memcpy(&lastRPM, &rxBuf[1], sizeof(float));
             break;
           case 0x03:
             // CVT Temp
-            memcpy(&lastCVTTemp, &rxBuf[1], len-1);
+            memcpy(&lastCVTTemp, &rxBuf[1], sizeof(float));
             break;
           case 0x04:
             // Timer (seconds)
-            memcpy(&lastTimeSeconds, &rxBuf[1], len-1);
+            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(unsigned long));
             break;
         }
         xSemaphoreGive(canMutex);
