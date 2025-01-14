@@ -25,6 +25,7 @@
 class Car{
 
     public:
+        static float time;
         Car();
         ~Car();
 

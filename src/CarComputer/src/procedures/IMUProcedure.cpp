@@ -42,7 +42,7 @@ class IMUProcedure : public Procedure{
             coms->addNewLiveDataStream(yAccStream);
             coms->addNewLiveDataStream(zAccStream);
 
-            this->frequency = 20;
+            this->frequency = 60;
 
         }
         
@@ -76,10 +76,10 @@ class IMUProcedure : public Procedure{
             yAccStream->enqueue(yAccel);
             zAccStream->enqueue(zAccel);
 
-            // std::cout << std::fixed;
-            // std::cout << std::setprecision(2);
-            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            std::cout << std::fixed;
+            std::cout << std::setprecision(2);
+            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {

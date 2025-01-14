@@ -16,7 +16,7 @@ class DashProcedure : public Procedure{
 
         void init() override{
             std::cout << "Dash Procedure Initialized" << std::endl;
-            dashSubsystem->sendRPM(testSpeed);
+            // dashSubsystem->sendRPM(testSpeed);
         }
 
         void execute() override {
