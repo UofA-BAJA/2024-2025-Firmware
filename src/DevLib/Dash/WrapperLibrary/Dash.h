@@ -16,7 +16,6 @@ class Dash
         void sendTimeSeconds(unsigned long seconds);
         void setIndicatorLights(uint16_t lightState);
 
-        void iWantToDie(float help);
 
     private:
         CANDispatcher *canDispatcher;

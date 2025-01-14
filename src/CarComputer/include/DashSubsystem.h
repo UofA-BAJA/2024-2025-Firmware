@@ -13,10 +13,9 @@ class DashSubsystem {
         void sendCVTTemp(float cvtTemp);
         void sendTimeSeconds(unsigned long seconds);
         void setIndicatorLights(uint16_t lightState);
-    
 
     private:
-        Dash* dash;    
+        Dash* dash;
 };
 
 

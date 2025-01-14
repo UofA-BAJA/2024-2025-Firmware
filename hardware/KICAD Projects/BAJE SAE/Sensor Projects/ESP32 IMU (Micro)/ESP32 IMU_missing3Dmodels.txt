@@ -1,0 +1,9 @@
+### Missing 3D models - created on 2025-01-08 19:44
+### Printed by checking_3D_models plugin
+Board file: C:\Users\larso\Dev\Baja SAE\2024-2025-Firmware\hardware\KICAD Projects\BAJE SAE\Sensor Projects\ESP32 IMU (Micro)\ESP32 IMU.kicad_pcb
+3D missing models written to:
+C:\Users\larso\Dev\Baja SAE\2024-2025-Firmware\hardware\KICAD Projects\BAJE SAE\Sensor Projects\ESP32 IMU (Micro)\ESP32 IMU_missing3Dmodels.txt
+-------
+-------
+NUM of 3D missing models:0
+checked extensions ['.stp', '.step', '.stpZ']

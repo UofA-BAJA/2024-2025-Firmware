@@ -4,17 +4,19 @@
 
 class DashProcedure : public Procedure{
     public:
+
         DashSubsystem* dashSubsystem;
         float testSpeed = 0.0f;
         float testRPM = 00.0f;
 
-        DashProcedure(DashSubsystem *DashSubsystem){
+        DashProcedure(DashSubsystem* dashSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->frequency = 2;
         }
 
         void init() override{
             std::cout << "Dash Procedure Initialized" << std::endl;
+            // dashSubsystem->sendRPM(testSpeed);
         }
 
         void execute() override {

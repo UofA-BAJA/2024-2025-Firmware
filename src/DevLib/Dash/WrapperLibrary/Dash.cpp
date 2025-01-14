@@ -1,7 +1,6 @@
 #include "Dash.h"
 
-Dash::Dash(CANDispatcher *canDispatcher)
-{
+Dash::Dash(CANDispatcher *canDispatcher){
     this->canDispatcher = canDispatcher;
 }
 
@@ -21,13 +20,6 @@ void Dash::sendSpeed(float speed)
     }
 
     canDispatcher->sendCanCommand(canID, data);
-}
-
-
-void Dash::iWantToDie(float help){
-
-    std::cout << "HELLLLPPP" << std::endl;
-
 }
 
 

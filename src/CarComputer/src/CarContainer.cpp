@@ -36,31 +36,10 @@
 #include "Commands.h"
 #include "CarLogger.h"
 
-#include "procedures/IMUProcedure.cpp"
-#include "procedures/DashProcedure.cpp"
-#include "procedures/TemperatureProcedure.cpp"
-
-#include "IMUSubsystem.h"
-#include "DashSubsystem.h"
-#include "TemperatureSubsystem.h"
-
 #include "DataStorage.h"
 
 
-IMUSubsystem* imuSubsystem;
-IMUProcedure* imuProcedure;
-
-DashSubsystem* dashSubsystem;
-DashProcedure* dashProcedure;
-
-TemperatureSubsystem* temperatureSubsystem;
-TemperatureProcedure* temperatureProcedure;
-
-#include "Dash.h"
-
 CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
-
-
 
     imuSubsystem = new IMUSubsystem(canDispatcher);
     imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
@@ -68,14 +47,13 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
     temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
     temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
 
-
     dashSubsystem = new DashSubsystem(canDispatcher);
     dashProcedure = new DashProcedure(dashSubsystem);
 
     procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
-
     procedureScheduler->bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
+
 
     CarLogger::Log("Car Started");
     std::cout << "Car Container Constructor called" << std::endl;
