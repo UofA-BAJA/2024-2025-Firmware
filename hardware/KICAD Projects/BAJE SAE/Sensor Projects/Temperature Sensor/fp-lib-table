@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Footprints")(type "KiCad")(uri "C:/Users/larso/Dev/Baja SAE/2024-2025-Firmware/hardware/KICAD Symbol Libraries/full libraries/SparkFun-KiCad-Libraries-main/Footprints.pretty")(options "")(descr ""))
+)
