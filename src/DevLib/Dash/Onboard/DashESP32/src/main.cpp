@@ -145,9 +145,23 @@ void loop()
 {
   num++;
 
-  // if(num%6000==0 && !canRecentRX){
-  //   // canThrobber();
-  // }
+  if(num%10==0 && !canRecentRX){
+    if(num%20 == 0){
+      display.clear();
+    }else{
+      display.print("NO CAN");
+    }
+  }
+  if(canRecentRX){
+    if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+      unsigned long currentMinutes = lastTimeSeconds/60;
+      unsigned long currentHours = lastTimeSeconds/3600;
+      display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%260);  
+      display.colonOn();
+      display2.printf("IMUX%4.0f", lastRPM);
+      xSemaphoreGive(canMutex);
+    }
+  }
 
   //test led drive and servos
   // if(num%20000==0){
@@ -164,40 +178,18 @@ void loop()
   //   }
   // }
 
-    
-  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-    unsigned long currentSeconds = millis()/1000;
-    unsigned long currentMinutes = currentSeconds/60;
-    unsigned long currentHours = currentSeconds/3600;
-    display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, currentSeconds%60);  
-    display.colonOn();
-    display2.printf("IMUX%4.0f", lastRPM);
-    xSemaphoreGive(canMutex);
-  }
-  // Serial.printf("SPD %4.1f \n", lastSpeed);
-  delay(200);
+
+  delay(50);
 }
 
 
-int underscore = 0;
-void canThrobber(){
-  underscore++;
-    if(underscore==1) display.print("CAN_");
-    else if(underscore==2) display.print("CAN _");
-    else if(underscore==3) display.print("CAN  _");
-    else if(underscore==4) display.print("CAN   _");
-    else if(underscore==5) display.print("CAN  _");
-    else if(underscore==6) {
-      display.print("CAN _");
-      underscore = 0;
-    }
-}
 
 void readCAN(void *pvParameters){
   // Handle Can RX
   unsigned long rxId;
   unsigned char len = 0;
   unsigned char rxBuf[8];
+  unsigned long cyclesWithoutRx = 0;
   while(true){
     while (CAN_MSGAVAIL == CAN.checkReceive()) {
       CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
@@ -223,7 +215,12 @@ void readCAN(void *pvParameters){
         }
         xSemaphoreGive(canMutex);
       }
-      
+      canRecentRX = true;
+      cyclesWithoutRx = 0;
+    }
+    cyclesWithoutRx++;
+    if(cyclesWithoutRx > 150){
+      canRecentRX = false;
     }
     delay(20);
   }
