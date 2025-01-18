@@ -22,6 +22,8 @@
 
 #include "Constants.h"
 
+#include "CarTime.h"
+
 class Car{
 
     public:
