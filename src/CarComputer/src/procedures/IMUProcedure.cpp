@@ -3,7 +3,6 @@
 #include "DataStorage.h"
 #include "CarLogger.h"
 #include "Coms.h"
-
 #include "LiveDataStream.h"
 
 #include <iomanip>
@@ -78,6 +77,7 @@ class IMUProcedure : public Procedure{
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
+
             std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
             std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
