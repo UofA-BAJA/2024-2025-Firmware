@@ -158,7 +158,8 @@ void loop()
       unsigned long currentHours = lastTimeSeconds/3600;
       display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%260);  
       display.colonOn();
-      display2.printf("IMUX%4.0f", lastRPM);
+      display2.printf("CVT %4.0f", lastCVTTemp);
+      // display2.printf("IMUX%4.0f", lastRPM);
       xSemaphoreGive(canMutex);
     }
   }
