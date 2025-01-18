@@ -64,7 +64,7 @@ void Dash::sendTimeSeconds(float seconds)
     byte canID = Devices::DASH;
     std::vector<byte> data(8, 0);
 
-    memcpy(data.data()+1, &seconds, sizeof(unsigned long));
+    memcpy(data.data()+1, &seconds, sizeof(float));
     data[0] = 0x04;
 
     if (!canDispatcher)

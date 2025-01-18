@@ -1,8 +1,9 @@
 #include "Procedure.h"
 #include "CarLogger.h"
-#include "DashSubsystem.h"
 #include "IMUSubsystem.h"
-#include "Car.h"
+#include "DashSubsystem.h"
+
+
 
 class DashProcedure : public Procedure{
     public:
@@ -12,7 +13,8 @@ class DashProcedure : public Procedure{
 
         DashProcedure(DashSubsystem* dashSubsystem, IMUSubsystem* imuSubsystem){
             this->dashSubsystem = dashSubsystem;
-            this->frequency = 2;
+            this->imuSubsystem = imuSubsystem;
+            this->frequency = 20;
         }
 
         void init() override{
@@ -22,12 +24,12 @@ class DashProcedure : public Procedure{
 
         void execute() override {
             dashSubsystem->sendRPM(imuSubsystem->getRotationX());
-            dashSubsystem->sendTimeSeconds(Car::time);
+            // dashSubsystem->sendTimeSeconds(Car::time);
         }
 
         void end() override {
-            testSpeed = 0.0f;
-            testRPM = 0.0f;
+            // testSpeed = 0.0f;
+            // testRPM = 0.0f;
         }
 
         bool isFinished() override {

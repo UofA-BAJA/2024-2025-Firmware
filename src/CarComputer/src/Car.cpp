@@ -60,6 +60,7 @@ Car::Car() {
     canDispatcher = new CANDispatcher(canInterface);
     coms = new Coms(procedureScheduler);
     carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage, coms);
+    // time = 0;
 
     procedureScheduler->receiveComCommand(Command::DEFAULT_CAR_START);
 
@@ -106,9 +107,9 @@ void Car::execute(){
 
         procedureScheduler->execute();
         canDispatcher->execute();
-        Car::time = time / 1000000000L;
-        dataStorage->execute(Car::time);
-        coms->execute(Car::time);
+        // Car::time = time / 1000000000L;
+        dataStorage->execute(time / 1000000000L);
+        coms->execute(time / 1000000000L);
 
         endTime = steady_clock::now();
 
