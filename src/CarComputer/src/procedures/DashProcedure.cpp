@@ -1,7 +1,8 @@
 #include "Procedure.h"
 #include "CarLogger.h"
-#include "IMUSubsystem.h"
+#include "TemperatureSubsystem.h"
 #include "DashSubsystem.h"
+#include "CarTime.h"
 
 
 
@@ -9,11 +10,11 @@ class DashProcedure : public Procedure{
     public:
 
         DashSubsystem* dashSubsystem;
-        IMUSubsystem* imuSubsystem;
+        TemperatureSubsystem* temperatureSubsystem;
 
-        DashProcedure(DashSubsystem* dashSubsystem, IMUSubsystem* imuSubsystem){
+        DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem temperatureSubsystem){
             this->dashSubsystem = dashSubsystem;
-            this->imuSubsystem = imuSubsystem;
+            this->temperatureSubsystem = temperatureSubsystem;
             this->frequency = 20;
         }
 
@@ -23,8 +24,8 @@ class DashProcedure : public Procedure{
         }
 
         void execute() override {
-            dashSubsystem->sendRPM(imuSubsystem->getRotationX());
-            // dashSubsystem->sendTimeSeconds(Car::time);
+            dashSubsystem->sendCVTTemp(temperatureSubsystem->getTemperature());
+            dashSubsystem->sendTimeSeconds(CarTime::getCurrentTimeSeconds());
         }
 
         void end() override {
