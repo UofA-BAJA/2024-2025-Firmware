@@ -1971,39 +1971,6 @@
 			(uuid "951ac4de-8260-43ac-8be6-b24f8f574ec9")
 			(members "6481afe3-9e6c-4b17-b734-6a8a82ae9fd9")
 		)
-		(model "/Users/connor/dev/baja sae/2024-2025-Firmware/hardware/3D models/KICAD/ESP32-DEVKITC-32D.step"
-			(offset
-				(xyz -0.5 -1 7)
-			)
-			(scale
-				(xyz 0.9 1.1 1)
-			)
-			(rotate
-				(xyz 90 180 180)
-			)
-		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x19_P2.54mm_Vertical.step"
-			(offset
-				(xyz 11 19 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x19_P2.54mm_Vertical.step"
-			(offset
-				(xyz -11.5 19 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint "BAJA SAE:HiLetgo CAN Bus (Facing Up)"
 		(layer "B.Cu")
@@ -2214,17 +2181,6 @@
 			(pintype "input")
 			(solder_mask_margin 0.102)
 			(uuid "79012650-b6d2-497e-a590-6021ec6b73ff")
-		)
-		(model "C:/Users/larso/Dev/3D models/KICAD/4646 BNO055 Stemma.step"
-			(offset
-				(xyz -21 -14.5 4.5)
-			)
-			(scale
-				(xyz 1.1 2 0.7)
-			)
-			(rotate
-				(xyz 0 180 90)
-			)
 		)
 	)
 	(footprint "BAJA SAE:MODULE_2472"
@@ -2778,17 +2734,6 @@
 			(pintype "bidirectional+no_connect")
 			(solder_mask_margin 0.102)
 			(uuid "6016eae1-3d75-4bc5-9e84-3c576fd43da7")
-		)
-		(model "C:/Users/larso/Dev/3D models/KICAD/4646 BNO055 Stemma.step"
-			(offset
-				(xyz -12.5 -10.5 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
 		)
 	)
 	(gr_rect
