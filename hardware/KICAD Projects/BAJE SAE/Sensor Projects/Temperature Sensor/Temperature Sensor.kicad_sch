@@ -1885,6 +1885,16 @@
 	)
 	(wire
 		(pts
+			(xy 93.98 143.51) (xy 92.71 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22919d49-e0ff-40d0-b6ae-ccd3e70088df")
+	)
+	(wire
+		(pts
 			(xy 138.43 93.98) (xy 152.4 93.98)
 		)
 		(stroke
@@ -2184,8 +2194,8 @@
 		(uuid 95cb487e-baff-4905-b76a-3931433d0f32)
 	)
 	(rectangle
-		(start 197.2308 79.6376)
-		(end 229.9208 94.9892)
+		(start 118.2368 108.5936)
+		(end 218.186 123.9452)
 		(stroke
 			(width 0)
 			(type dot)
@@ -2343,9 +2353,9 @@
 		)
 		(uuid "6e381435-c2af-4fd1-bfa5-ba5fec44049d")
 	)
-	(text "ESP-32 Socketed with \nESS-119-T-03"
+	(text "Nano socketed with \nHWS16130\nhttp://www.peconnectors.com/sockets-sip-machined/\nhws16130/?utm_source=googleads&vt_keyword=&gad_source=\n1&gbraid=0AAAAAD-J6wRIeL1mScc81doEXt4u-oFxN&gclid=Cj0KC\nQiA4rK8BhD7ARIsAFe5LXJCXX4yoeMSgdYYrUZ8CYCOGg6YWjx-KireWWb9vicOqA-PgvhT3uIaAs8kEALw_wcB"
 		(exclude_from_sim no)
-		(at 214.376 87.884 0)
+		(at 168.91 116.84 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2385,7 +2395,7 @@
 	)
 	(text "Socket"
 		(exclude_from_sim no)
-		(at 200.66 78.74 0)
+		(at 121.666 107.696 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2623,7 +2633,7 @@
 	)
 	(global_label "High"
 		(shape input)
-		(at 92.71 143.51 0)
+		(at 93.98 143.51 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2633,7 +2643,7 @@
 		)
 		(uuid "840a2a57-1008-4396-8c5b-a16de65432cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 99.9285 143.51 0)
+			(at 101.1985 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
