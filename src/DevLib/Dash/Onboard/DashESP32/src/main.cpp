@@ -7,6 +7,8 @@
 #include <Adafruit_LEDBackpack.h>
 
 void readCAN(void *pvParameters);
+void displayCVTTemp();
+void displayTime();
 
 // Constants
 const int CAN_CS_PIN = 5;
@@ -26,6 +28,7 @@ float lastSpeed = 0;
 float lastRPM = 0;
 float lastCVTTemp = 0;
 unsigned long lastTimeSeconds = 0;
+u_int16_t indicatorLightState = 0;
 
 bool canRecentRX = false;
 
@@ -44,14 +47,10 @@ void setup()
   if (display.begin(0x70, 0x71) == false)
   {
     Serial.println("At least one 14 segment from row 1 did not acknowledge!");
-    // while (1)
-    //   ;
   }
   if (display2.begin(0x72, 0x73) == false)
   {
     Serial.println("At least one 14 segment from row 2 did not acknowledge!");
-    // while (1)
-    //   ;
   }
   Serial.println("Display setup complete.");
   display.print("WELCOME");
@@ -156,7 +155,7 @@ void loop()
     if(xSemaphoreTake(canMutex, portMAX_DELAY)){
       unsigned long currentMinutes = lastTimeSeconds/60;
       unsigned long currentHours = lastTimeSeconds/3600;
-      display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%260);  
+      display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%60);  
       display.colonOn();
       display2.printf("CVT %4.0f", lastCVTTemp);
       // display2.printf("IMUX%4.0f", lastRPM);
@@ -195,10 +194,17 @@ void readCAN(void *pvParameters){
     while (CAN_MSGAVAIL == CAN.checkReceive()) {
       CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
       if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+        // Serial.print(">RX Data: ");
+        // for (int i = 0; i < len; i++)
+        // {
+        //   Serial.print(rxBuf[i], HEX);
+        //   Serial.print(" ");
+        // }
+        Serial.println();
         switch (rxBuf[0])
         {
           case 0x01:
-            // Speedds
+            // Speed
             memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
             break;
           case 0x02:
@@ -211,7 +217,13 @@ void readCAN(void *pvParameters){
             break;
           case 0x04:
             // Timer (seconds)
-            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(float));
+            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(unsigned long));
+            break;
+          case 0x05:
+            // Indicator Lights
+            memcpy(&indicatorLightState, &rxBuf[1], sizeof(u_int16_t));
+            ledMatrix.displaybuffer[5] = indicatorLightState;
+            ledMatrix.writeDisplay();
             break;
         }
         xSemaphoreGive(canMutex);
@@ -226,4 +238,12 @@ void readCAN(void *pvParameters){
     delay(20);
   }
   
+}
+
+void displayCVTTemp(){
+
+}
+
+void displayTime(){
+
 }
