@@ -2405,9 +2405,9 @@
 		)
 	)
 	(gr_arc
-		(start 158.47 59.75)
-		(mid 159.368026 60.121974)
-		(end 159.74 61.02)
+		(start 158.48 59.728026)
+		(mid 159.378026 60.1)
+		(end 159.75 60.998026)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -2427,10 +2427,9 @@
 		(uuid "1f7f6ef7-1181-428c-b933-da998214ab04")
 	)
 	(gr_arc
-		(start 129.258026 61.018026)
-		(mid 129.629993 60.119993)
-		(end 130.528026 59.748026)
-		(locked yes)
+		(start 129.25 60.998026)
+		(mid 129.621967 60.099993)
+		(end 130.52 59.728026)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -2439,9 +2438,18 @@
 		(uuid "2c08ce70-f9ff-4a28-affa-6f5b16f304b2")
 	)
 	(gr_line
-		(start 130.53 59.75)
-		(end 158.47 59.75)
-		(locked yes)
+		(start 159.75 60.998026)
+		(end 159.75 61.19)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "5236b406-f5f9-4f26-b9e8-04750af85c08")
+	)
+	(gr_line
+		(start 130.66 59.728026)
+		(end 158.48 59.728026)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -2462,7 +2470,7 @@
 	)
 	(gr_line
 		(start 130.52 133.064)
-		(end 158.5 133.064)
+		(end 158.25 133.064)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -2471,8 +2479,18 @@
 		(uuid "b996b8b5-718e-49d3-a8d3-0724ce860363")
 	)
 	(gr_line
+		(start 130.52 59.728026)
+		(end 130.66 59.728026)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "c50dd0f6-dd96-417f-8009-764da77d23b3")
+	)
+	(gr_line
 		(start 159.75 131.794)
-		(end 159.74 61.02)
+		(end 159.75 61.19)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -2481,7 +2499,7 @@
 		(uuid "cdc40750-aab0-4e9b-932f-7691dd408244")
 	)
 	(gr_line
-		(start 129.26 61.02)
+		(start 129.25 61)
 		(end 129.25 131.794)
 		(stroke
 			(width 0.05)
@@ -2534,8 +2552,18 @@
 		(layer "Edge.Cuts")
 		(uuid "ef35f8b9-40d7-40da-8b02-b7e4adedeed1")
 	)
+	(gr_line
+		(start 158.48 133.064)
+		(end 158.25 133.064)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "ef427de7-01ff-4b9e-9f7e-3d98d8eab58e")
+	)
 	(gr_text "16 SCK"
-		(at 134.75 79.5 0)
+		(at 136 79.5 0)
 		(layer "F.SilkS")
 		(uuid "0afa199f-8a7c-4b85-9efa-ce3de158ebcb")
 		(effects
@@ -2641,39 +2669,6 @@
 			)
 			(justify left bottom)
 		)
-	)
-	(dimension
-		(type aligned)
-		(layer "F.Fab")
-		(uuid "a9460697-e306-446c-8de5-966c76e02e9f")
-		(pts
-			(xy 129.25 61.5) (xy 159.74 61.5)
-		)
-		(height -9)
-		(gr_text "30.4900 mm"
-			(at 144.495 51.35 0)
-			(layer "F.Fab")
-			(uuid "a9460697-e306-446c-8de5-966c76e02e9f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(format
-			(prefix "")
-			(suffix "")
-			(units 3)
-			(units_format 1)
-			(precision 4)
-		)
-		(style
-			(thickness 0.1)
-			(arrow_length 1.27)
-			(text_position_mode 0)
-			(extension_height 0.58642)
-			(extension_offset 0.5) keep_text_aligned)
 	)
 	(segment
 		(start 142.5 97)

@@ -2015,6 +2015,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 71.12) (xy 102.87 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7cbb898-54ae-480c-accf-99683c155a92")
+	)
+	(wire
+		(pts
 			(xy 55.88 71.12) (xy 58.42 71.12)
 		)
 		(stroke
@@ -2092,6 +2102,16 @@
 			(type default)
 		)
 		(uuid "d1298078-780e-4382-9b8b-e589d935ed3d")
+	)
+	(wire
+		(pts
+			(xy 102.87 67.31) (xy 100.33 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dad4080c-b7c5-4f95-8906-97a5514d22e3")
 	)
 	(polyline
 		(pts
@@ -2432,6 +2452,28 @@
 			)
 		)
 		(uuid "e449d581-80c4-470c-908f-d8d1a5d64fac")
+	)
+	(global_label "GND"
+		(shape input)
+		(at 100.33 67.31 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "08a38621-af5c-4709-8ef4-0615f8abcf39")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 93.4743 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(global_label "+5v"
 		(shape output)
@@ -3717,6 +3759,73 @@
 			(project ""
 				(path "/74467775-d059-4e20-8fe4-b429e963843c"
 					(reference "UNIT_1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Simulation_SPICE:0")
+		(at 102.87 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f506684f-0bfd-4871-90e9-57c336557d86")
+		(property "Reference" "#GND04"
+			(at 102.87 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 102.87 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
+			(at 102.87 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "0V reference potential for simulation"
+			(at 102.87 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0f64bc37-7417-4a1e-88b5-29d6aec4ea59")
+		)
+		(instances
+			(project "Temperature Sensor"
+				(path "/74467775-d059-4e20-8fe4-b429e963843c"
+					(reference "#GND04")
 					(unit 1)
 				)
 			)
