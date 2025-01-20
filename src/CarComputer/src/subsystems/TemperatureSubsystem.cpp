@@ -4,6 +4,6 @@ TemperatureSubsystem::TemperatureSubsystem(CANDispatcher* canDispatcher){
     temperature = new Temperature(canDispatcher);
 }
 
-double TemperatureSubsystem::getTemperature(){
+float TemperatureSubsystem::getTemperature(){
     return temperature->getLatestTemperature();
 }

@@ -5,7 +5,7 @@ CANDispatcher::CANDispatcher(const char* interface){
 
     interfaceName = interface;
 
-    resetCANInterface(interfaceName);
+    // resetCANInterface(interfaceName);
 
     can_socket_fd = openCANSocket(interface);
 

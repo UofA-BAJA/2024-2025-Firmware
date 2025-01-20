@@ -48,9 +48,9 @@ CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher
     temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
 
     dashSubsystem = new DashSubsystem(canDispatcher);
-    dashProcedure = new DashProcedure(dashSubsystem, imuSubsystem);
+    dashProcedure = new DashProcedure(dashSubsystem, temperatureSubsystem);
 
-    procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+    // procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
 

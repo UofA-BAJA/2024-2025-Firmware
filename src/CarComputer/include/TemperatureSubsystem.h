@@ -7,7 +7,7 @@
 class TemperatureSubsystem{
     public:
         TemperatureSubsystem(CANDispatcher* canDispatcher);
-        double getTemperature();
+        float getTemperature();
 
     private:
         Temperature* temperature;

@@ -12,10 +12,10 @@ class DashProcedure : public Procedure{
         DashSubsystem* dashSubsystem;
         TemperatureSubsystem* temperatureSubsystem;
 
-        DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem temperatureSubsystem){
+        DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem* temperatureSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->temperatureSubsystem = temperatureSubsystem;
-            this->frequency = 20;
+            this->frequency = 10;
         }
 
         void init() override{
@@ -24,12 +24,13 @@ class DashProcedure : public Procedure{
         }
 
         void execute() override {
-            dashSubsystem->sendCVTTemp(temperatureSubsystem->getTemperature());
+            float breh = temperatureSubsystem->getTemperature();
+            // std::cout << "CVT Temperature from dash: " << breh << std::endl;
+            dashSubsystem->sendCVTTemp(breh);
             dashSubsystem->sendTimeSeconds(CarTime::getCurrentTimeSeconds());
         }
 
         void end() override {
-            // testSpeed = 0.0f;
             // testRPM = 0.0f;
         }
 
