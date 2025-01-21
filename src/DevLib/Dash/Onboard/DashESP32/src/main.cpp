@@ -28,7 +28,7 @@ float lastSpeed = 0;
 float lastRPM = 0;
 float lastCVTTemp = 0;
 unsigned long lastTimeSeconds = 0;
-u_int16_t indicatorLightState = 0;
+uint16_t indicatorLightState = 0;
 
 bool canRecentRX = false;
 
@@ -148,6 +148,7 @@ void loop()
     if(num%20 == 0){
       display.clear();
     }else{
+     
       display.print("NO CAN");
     }
   }
@@ -221,7 +222,7 @@ void readCAN(void *pvParameters){
             break;
           case 0x05:
             // Indicator Lights
-            memcpy(&indicatorLightState, &rxBuf[1], sizeof(u_int16_t));
+            memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
             ledMatrix.displaybuffer[5] = indicatorLightState;
             ledMatrix.writeDisplay();
             break;
@@ -232,8 +233,10 @@ void readCAN(void *pvParameters){
       cyclesWithoutRx = 0;
     }
     cyclesWithoutRx++;
-    if(cyclesWithoutRx > 150){
+    if(cyclesWithoutRx == 150){
       canRecentRX = false;
+      ledMatrix.displaybuffer[5] = indicatorLightState | 1;
+      ledMatrix.writeDisplay();
     }
     delay(20);
   }

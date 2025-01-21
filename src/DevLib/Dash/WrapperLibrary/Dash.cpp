@@ -2,6 +2,7 @@
 
 Dash::Dash(CANDispatcher *canDispatcher){
     this->canDispatcher = canDispatcher;
+    this->indicatorLightState = 0;
 }
 
 
@@ -9,7 +10,7 @@ Dash::Dash(CANDispatcher *canDispatcher){
 void Dash::sendSpeed(float speed)
 {
     byte canID = Devices::DASH;
-    std::vector<byte> data(8, 0);
+    std::vector<byte> data(sizeof(float)+1, 0);
 
     memcpy(data.data()+1, &speed, sizeof(float));
     data[0] = 0x01;
@@ -27,7 +28,7 @@ void Dash::sendSpeed(float speed)
 void Dash::sendRPM(float rpm)
 {
     byte canID = Devices::DASH;
-    std::vector<byte> data(8, 0);
+    std::vector<byte> data(sizeof(float)+1, 0);
 
     memcpy(data.data()+1, &rpm, sizeof(float));
     data[0] = 0x02;
@@ -44,7 +45,7 @@ void Dash::sendRPM(float rpm)
 void Dash::sendCVTTemp(float cvtTemp)
 {
     byte canID = Devices::DASH;
-    std::vector<byte> data(8, 0);
+    std::vector<byte> data(sizeof(float)+1, 0);
 
     memcpy(data.data()+1, &cvtTemp, sizeof(float));
     data[0] = 0x03;
@@ -62,7 +63,7 @@ void Dash::sendCVTTemp(float cvtTemp)
 void Dash::sendTimeSeconds(float seconds)
 {
     byte canID = Devices::DASH;
-    std::vector<byte> data(8, 0);
+    std::vector<byte> data(sizeof(unsigned long)+1, 0);
     unsigned long sendSeconds = (unsigned long)seconds;
     memcpy(data.data()+1, &sendSeconds, sizeof(unsigned long));
     data[0] = 0x04;
@@ -75,13 +76,29 @@ void Dash::sendTimeSeconds(float seconds)
     canDispatcher->sendCanCommand(canID, data);
 }
 
-// Sends new indicator light state to the Dash
+// Sets new indicator light state, all indicator lights at once 
+// Each bit represents 1 light, least significant is light 0
 void Dash::setIndicatorLights(uint16_t lightState)
 {
-    byte canID = Devices::DASH;
-    std::vector<byte> data(8, 0);
+    this->indicatorLightState = lightState;
+}
 
-    memcpy(data.data()+1, &lightState, sizeof(uint16_t));
+// Sets new indicator light state for a specific indicator light
+void Dash::setSpecificIndicatorLight(IndicatorLights light, bool state){
+    if(state){
+        this->indicatorLightState = this->indicatorLightState | 1 << light;
+    }else{
+        this->indicatorLightState = this->indicatorLightState & ~(1 << light);
+    }
+} 
+
+// Sends the current indicator light state in the wrapper library to the dash
+// This should ONLY be called by the dash procedure at the end of its cycle
+void Dash::sendIndicatorLightState(){
+    byte canID = Devices::DASH;
+    std::vector<byte> data(sizeof(uint16_t)+1, 0);
+
+    memcpy(data.data()+1, &this->indicatorLightState, sizeof(uint16_t));
     data[0] = 0x05;
 
     if (!canDispatcher)

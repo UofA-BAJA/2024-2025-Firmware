@@ -1,9 +1,18 @@
 #include "TemperatureSubsystem.h"
+#include "CarLogger.h"
 
 TemperatureSubsystem::TemperatureSubsystem(CANDispatcher* canDispatcher){
-    temperature = new Temperature(canDispatcher);
+    temperatureDevice = new Temperature(canDispatcher);
 }
 
 float TemperatureSubsystem::getTemperature(){
-    return temperature->getLatestTemperature();
+    float temperature = temperatureDevice->getLatestTemperature();
+    if(temperature > 50) isHot = true;
+    else isHot = false;
+    return temperature;
 }
+
+bool TemperatureSubsystem::isHot(){
+    return isHot;
+}
+

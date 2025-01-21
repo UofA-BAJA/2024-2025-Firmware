@@ -14,7 +14,6 @@ void DashSubsystem::sendRPM(float rpm){
 }
 
 void DashSubsystem::sendCVTTemp(float cvtTemp){
-
     dash->sendCVTTemp(cvtTemp);
 }
 
@@ -24,4 +23,12 @@ void DashSubsystem::sendTimeSeconds(float seconds){
 
 void DashSubsystem::setIndicatorLights(uint16_t lightState){
     dash->setIndicatorLights(lightState);
+}
+
+void DashSubsystem::setSpecificIndicatorLight(Dash::IndicatorLights light, bool state){
+    dash->setSpecifcIndicatorLight(light, state);
+}
+
+void DashSubsystem::sendIndicatorLightState(){
+    dash->sendIndicatorLightState();
 }

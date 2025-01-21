@@ -11,11 +11,12 @@ class DashProcedure : public Procedure{
 
         DashSubsystem* dashSubsystem;
         TemperatureSubsystem* temperatureSubsystem;
+        
 
         DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem* temperatureSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->temperatureSubsystem = temperatureSubsystem;
-            this->frequency = 10;
+            this->frequency = 3;
         }
 
         void init() override{
@@ -25,13 +26,17 @@ class DashProcedure : public Procedure{
 
         void execute() override {
             float breh = temperatureSubsystem->getTemperature();
-            // std::cout << "CVT Temperature from dash: " << breh << std::endl;
             dashSubsystem->sendCVTTemp(breh);
+            if(temperatureSubsystem->isHot()){
+                dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
+            }else{
+                dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);
+            }
             dashSubsystem->sendTimeSeconds(CarTime::getCurrentTimeSeconds());
+            dashSubsystem->sendIndicatorLightState();
         }
 
         void end() override {
-            // testRPM = 0.0f;
         }
 
         bool isFinished() override {

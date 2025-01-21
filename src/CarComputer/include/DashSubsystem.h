@@ -13,6 +13,8 @@ class DashSubsystem {
         void sendCVTTemp(float cvtTemp);
         void sendTimeSeconds(float seconds);
         void setIndicatorLights(uint16_t lightState);
+        void setSpecificIndicatorLight(Dash::IndicatorLights light, bool state);
+        void sendIndicatorLightState();
 
     private:
         Dash* dash;
