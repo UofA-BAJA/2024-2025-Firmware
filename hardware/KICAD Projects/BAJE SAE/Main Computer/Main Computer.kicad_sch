@@ -233,8 +233,8 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "J"
-				(at 0 1.524 0)
+			(property "Reference" "J1"
+				(at 8.89 3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -242,14 +242,14 @@
 				)
 			)
 			(property "Value" "Pi 5 GPIO HEADER"
-				(at 9.398 -27.432 0)
+				(at 8.89 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical"
 				(at -6.35 0 0)
 				(effects
 					(font
@@ -279,7 +279,7 @@
 			(symbol "Pi_5_GPIO_0_1"
 				(rectangle
 					(start -10.16 -1.27)
-					(end 27.94 -57.15)
+					(end 27.94 -54.61)
 					(stroke
 						(width 0)
 						(type default)
@@ -1603,6 +1603,167 @@
 				)
 			)
 		)
+		(symbol "Device:R_Potentiometer_Trim"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RV"
+				(at -4.445 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_Potentiometer_Trim"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Trim-potentiometer"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "resistor variable trimpot trimmer"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Potentiometer*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_Potentiometer_Trim_0_1"
+				(polyline
+					(pts
+						(xy 1.524 0.762) (xy 1.524 -0.762)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 1.524 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 1.016 2.54)
+					(end -1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_Potentiometer_Trim_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "RF:NRF24L01_Breakout"
 			(pin_names
 				(offset 1.016)
@@ -2011,7 +2172,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 78.74) (xy 187.96 78.74)
+			(xy 163.83 76.2) (xy 171.45 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2031,7 +2192,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 129.54) (xy 115.57 130.81)
+			(xy 177.8 121.92) (xy 177.8 123.19)
 		)
 		(stroke
 			(width 0)
@@ -2041,7 +2202,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 76.2) (xy 187.96 76.2)
+			(xy 163.83 73.66) (xy 171.45 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2061,7 +2222,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 67.31) (xy 181.61 67.31)
+			(xy 165.1 64.77) (xy 171.45 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2101,7 +2262,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 81.28) (xy 187.96 81.28)
+			(xy 163.83 78.74) (xy 171.45 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2111,7 +2272,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 73.66) (xy 187.96 73.66)
+			(xy 163.83 71.12) (xy 171.45 71.12)
 		)
 		(stroke
 			(width 0)
@@ -2141,7 +2302,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 64.77) (xy 181.61 64.77)
+			(xy 163.83 62.23) (xy 171.45 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2163,7 +2324,7 @@
 	)
 	(rectangle
 		(start 154.0448 57.0384)
-		(end 219.71 86.7012)
+		(end 203.2 82.55)
 		(stroke
 			(width 0)
 			(type dot)
@@ -2172,6 +2333,18 @@
 			(type none)
 		)
 		(uuid 5f573fdf-8ee4-4b81-9c17-6ecfe99ecb24)
+	)
+	(rectangle
+		(start 153.67 90.17)
+		(end 209.55 127)
+		(stroke
+			(width 0)
+			(type dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 6062702a-96fc-498f-b942-4ddb16531850)
 	)
 	(rectangle
 		(start 24.6212 93.86)
@@ -23204,7 +23377,7 @@
 	)
 	(global_label "High"
 		(shape input)
-		(at 173.99 81.28 180)
+		(at 163.83 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23214,7 +23387,7 @@
 		)
 		(uuid "060b1231-bd54-4e34-90b2-b162b3021e87")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 166.7715 81.28 0)
+			(at 156.6115 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23226,7 +23399,7 @@
 	)
 	(global_label "Low"
 		(shape input)
-		(at 173.99 73.66 180)
+		(at 163.83 71.12 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23236,7 +23409,7 @@
 		)
 		(uuid "0dcd7d7b-e2ce-4f71-813d-dfe78ecb32d0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.4972 73.66 0)
+			(at 157.3372 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23292,7 +23465,7 @@
 	)
 	(global_label "+5v"
 		(shape output)
-		(at 173.99 64.77 180)
+		(at 163.83 62.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23302,7 +23475,7 @@
 		)
 		(uuid "1efc1d39-074c-4bc7-93e4-1bca93b4365d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.2553 64.77 0)
+			(at 157.0953 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23336,7 +23509,7 @@
 	)
 	(global_label "SO"
 		(shape input)
-		(at 102.87 109.22 180)
+		(at 165.1 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23346,7 +23519,7 @@
 		)
 		(uuid "394c73a1-d937-44de-9371-7aacef8b2969")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 97.3448 109.22 0)
+			(at 159.5748 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23446,7 +23619,7 @@
 	)
 	(global_label "Low"
 		(shape input)
-		(at 173.99 78.74 180)
+		(at 163.83 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23456,7 +23629,7 @@
 		)
 		(uuid "4fc474e4-43fb-4184-b663-ab5cfeac36ba")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.4972 78.74 0)
+			(at 157.3372 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23490,7 +23663,7 @@
 	)
 	(global_label "High"
 		(shape input)
-		(at 173.99 76.2 180)
+		(at 163.83 73.66 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23500,7 +23673,7 @@
 		)
 		(uuid "76e8ed40-ab46-42fa-b7d7-fdad7ce0ed16")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 166.7715 76.2 0)
+			(at 156.6115 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23556,7 +23729,7 @@
 	)
 	(global_label "SCK"
 		(shape input)
-		(at 102.87 111.76 180)
+		(at 165.1 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23566,7 +23739,7 @@
 		)
 		(uuid "a4ca3473-67b7-46db-8817-e8e85a076e4a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.1353 111.76 0)
+			(at 158.3653 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23600,7 +23773,7 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 175.26 67.31 180)
+		(at 165.1 64.77 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23610,7 +23783,7 @@
 		)
 		(uuid "c2bfa209-8e1e-4b6e-82d5-8a3a91a59e47")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 168.4043 67.31 0)
+			(at 158.2443 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23732,7 +23905,7 @@
 	)
 	(global_label "SI"
 		(shape input)
-		(at 102.87 106.68 180)
+		(at 165.1 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23742,7 +23915,7 @@
 		)
 		(uuid "f9bfa84f-ff08-473d-b357-a9752dd94b82")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 98.0705 106.68 0)
+			(at 160.3005 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23858,7 +24031,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 186.69 64.77 0)
+		(at 176.53 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23867,7 +24040,7 @@
 		(fields_autoplaced yes)
 		(uuid "1307e1c2-733a-495d-ba50-5f7e01091652")
 		(property "Reference" "J3"
-			(at 189.23 64.7699 0)
+			(at 179.07 62.2299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23876,7 +24049,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02"
-			(at 189.23 67.3099 0)
+			(at 179.07 64.7699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23886,7 +24059,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Wire:SolderWire-0.75sqmm_1x02_P4.8mm_D1.25mm_OD2.3mm"
-			(at 186.69 64.77 0)
+			(at 176.53 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23895,7 +24068,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 186.69 64.77 0)
+			(at 176.53 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23904,7 +24077,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 186.69 64.77 0)
+			(at 176.53 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24019,8 +24192,81 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Potentiometer_Trim")
+		(at 123.19 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "57d4781a-2741-476d-b779-2f6c0bdad600")
+		(property "Reference" "RV1"
+			(at 120.65 105.4099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "R_Potentiometer_Trim"
+			(at 120.65 107.9499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 123.19 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 123.19 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Trim-potentiometer"
+			(at 123.19 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e1dd8910-1d64-46ba-ad86-bc234ed7ba0b")
+		)
+		(pin "2"
+			(uuid "8ed4f344-0633-4074-87e9-f45885f9fa6d")
+		)
+		(pin "3"
+			(uuid "4a51c799-2178-49be-86f7-4acce69b391a")
+		)
+		(instances
+			(project ""
+				(path "/34ed1785-5142-4033-9af8-31e0ad1e0321"
+					(reference "RV1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "RF:NRF24L01_Breakout")
-		(at 115.57 114.3 0)
+		(at 177.8 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24029,7 +24275,7 @@
 		(fields_autoplaced yes)
 		(uuid "8325db80-f67b-48c7-ada4-2d5480b3a4ee")
 		(property "Reference" "U1"
-			(at 125.73 113.0299 0)
+			(at 187.96 105.4099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24038,7 +24284,7 @@
 			)
 		)
 		(property "Value" "NRF24L01_Breakout"
-			(at 125.73 115.5699 0)
+			(at 187.96 107.9499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24047,7 +24293,7 @@
 			)
 		)
 		(property "Footprint" "RF_Module:nRF24L01_Breakout"
-			(at 119.38 99.06 0)
+			(at 181.61 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24058,7 +24304,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.nordicsemi.com/eng/content/download/2730/34105/file/nRF24L01_Product_Specification_v2_0.pdf"
-			(at 115.57 116.84 0)
+			(at 177.8 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24067,7 +24313,7 @@
 			)
 		)
 		(property "Description" "Ultra low power 2.4GHz RF Transceiver, Carrier PCB"
-			(at 115.57 114.3 0)
+			(at 177.8 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24110,7 +24356,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:0")
-		(at 115.57 130.81 0)
+		(at 177.8 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24119,7 +24365,7 @@
 		(fields_autoplaced yes)
 		(uuid "c4508e0c-b299-4399-9e30-72c8d27a07d9")
 		(property "Reference" "#GND02"
-			(at 115.57 135.89 0)
+			(at 177.8 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24128,7 +24374,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 115.57 128.27 0)
+			(at 177.8 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24137,7 +24383,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 115.57 130.81 0)
+			(at 177.8 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24146,7 +24392,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 115.57 140.97 0)
+			(at 177.8 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24155,7 +24401,7 @@
 			)
 		)
 		(property "Description" "0V reference potential for simulation"
-			(at 115.57 138.43 0)
+			(at 177.8 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24426,7 +24672,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
-		(at 193.04 76.2 0)
+		(at 176.53 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24435,7 +24681,7 @@
 		(fields_autoplaced yes)
 		(uuid "ee6684ce-c616-4b3b-8500-552ea91e8425")
 		(property "Reference" "J4"
-			(at 195.58 76.1999 0)
+			(at 179.07 73.6599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24444,7 +24690,7 @@
 			)
 		)
 		(property "Value" "CAN to outer connector"
-			(at 195.58 78.7399 0)
+			(at 179.07 76.1999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24453,7 +24699,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Wire:SolderWire-0.1sqmm_1x04_P3.6mm_D0.4mm_OD1mm"
-			(at 193.04 76.2 0)
+			(at 176.53 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24462,7 +24708,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 193.04 76.2 0)
+			(at 176.53 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24471,7 +24717,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 193.04 76.2 0)
+			(at 176.53 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
