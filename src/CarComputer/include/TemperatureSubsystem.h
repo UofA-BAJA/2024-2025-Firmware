@@ -8,11 +8,11 @@ class TemperatureSubsystem{
     public:
         TemperatureSubsystem(CANDispatcher* canDispatcher);
         float getTemperature();
-        bool TemperatureSubsystem::isHot();
+        bool isHot();
 
     private:
         Temperature* temperatureDevice;
-        bool isHot = false;
+        bool isCVTHot = false;
 };
 
 #endif
