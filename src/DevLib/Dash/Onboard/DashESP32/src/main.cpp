@@ -27,10 +27,10 @@ SemaphoreHandle_t canMutex = NULL;
 float lastSpeed = 0;
 float lastRPM = 0;
 float lastCVTTemp = 0;
-unsigned long lastTimeSeconds = 0;
+float lastTimeSeconds = 0;
 uint16_t indicatorLightState = 0;
 
-bool canRecentRX = false;
+bool canRecentRX = true;
 
 void setup()
 {
@@ -121,6 +121,8 @@ void setup()
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
 
+  
+
   // Create mutex (absolutely insane comment)
   canMutex = xSemaphoreCreateMutex();
 
@@ -137,110 +139,95 @@ void setup()
   display.print("INIT OK");
   Serial.println("Init Ok!");
   delay(1500);
+
 }
 
-int num = 0;
+
+unsigned long lastCANRx = 0;
 void loop()
 {
-  num++;
-
-  if(num%10==0 && !canRecentRX){
-    if(num%20 == 0){
-      display.clear();
-    }else{
-     
-      display.print("NO CAN");
-    }
-  }
-  if(canRecentRX){
+  unsigned long rxId;
+  unsigned char len = 0;
+  unsigned char rxBuf[8];
+  
+  while (CAN_MSGAVAIL == CAN.checkReceive()) {
+    CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
+    // Serial.println(rxId, HEX);
     if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-      unsigned long currentMinutes = lastTimeSeconds/60;
-      unsigned long currentHours = lastTimeSeconds/3600;
-      display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%60);  
-      display.colonOn();
-      display2.printf("CVT %4.0f", lastCVTTemp);
-      // display2.printf("IMUX%4.0f", lastRPM);
+      // Serial.print(">RX Data: ");
+      // for (int i = 0; i < len; i++)
+      // {
+      //   Serial.print(rxBuf[i], HEX);
+      //   Serial.print(" ");
+      // } 
+      switch (rxBuf[0])
+      {
+        case 0x01:
+          // Speed
+          memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
+          break;
+        case 0x02:
+          // RPM
+          memcpy(&lastRPM, &rxBuf[1], sizeof(float));
+          break;
+        case 0x03:
+          // CVT Temp
+          memcpy(&lastCVTTemp, &rxBuf[1], sizeof(float));
+          break;
+        case 0x04:
+          // Timer (seconds)
+          memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(float));
+          break;
+        case 0x05:
+          // Indicator Lights
+          memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
+          break;
+      }
       xSemaphoreGive(canMutex);
+      canRecentRX = true;
+      lastCANRx = millis();
     }
   }
-
-  //test led drive and servos
-  // if(num%20000==0){
-  //   if(num%40000 == 0){
-  //     ledMatrix.displaybuffer[5] = 0b0000001000000000;
-  //     ledMatrix.writeDisplay();
-  //     speed.write(20);
-  //     rpm.write(120);
-  //   }else{
-  //     ledMatrix.displaybuffer[5] = 0b0000000100000000;
-  //     ledMatrix.writeDisplay();
-  //     speed.write(120);
-  //     rpm.write(20);
-  //   }
-  // }
-
-
-  delay(50);
+  
+  if(millis()-lastCANRx > 2000){
+      canRecentRX = false;
+      ledMatrix.displaybuffer[5] = indicatorLightState | 1;
+      ledMatrix.writeDisplay();
+  }
 }
 
 
 
 void readCAN(void *pvParameters){
-  // Handle Can RX
-  unsigned long rxId;
-  unsigned char len = 0;
-  unsigned char rxBuf[8];
-  unsigned long cyclesWithoutRx = 0;
+  delay(1500);
+  int num = 0;
   while(true){
-    while (CAN_MSGAVAIL == CAN.checkReceive()) {
-      CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
-      if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-        // Serial.print(">RX Data: ");
-        // for (int i = 0; i < len; i++)
-        // {
-        //   Serial.print(rxBuf[i], HEX);
-        //   Serial.print(" ");
-        // }
-        Serial.println();
-        switch (rxBuf[0])
-        {
-          case 0x01:
-            // Speed
-            memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
-            break;
-          case 0x02:
-            // RPM
-            memcpy(&lastRPM, &rxBuf[1], sizeof(float));
-            break;
-          case 0x03:
-            // CVT Temp
-            memcpy(&lastCVTTemp, &rxBuf[1], sizeof(float));
-            break;
-          case 0x04:
-            // Timer (seconds)
-            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(unsigned long));
-            break;
-          case 0x05:
-            // Indicator Lights
-            memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
-            ledMatrix.displaybuffer[5] = indicatorLightState;
-            ledMatrix.writeDisplay();
-            break;
-        }
-        xSemaphoreGive(canMutex);
+    num++;
+    if(num%8==0 && !canRecentRX){
+      if(num%16 == 0){
+        display.clear();
+      }else{
+        display.print("NO CAN");
       }
-      canRecentRX = true;
-      cyclesWithoutRx = 0;
     }
-    cyclesWithoutRx++;
-    if(cyclesWithoutRx == 150){
-      canRecentRX = false;
-      ledMatrix.displaybuffer[5] = indicatorLightState | 1;
-      ledMatrix.writeDisplay();
+    if(canRecentRX){
+      if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+        unsigned long realSeconds = (unsigned long)lastTimeSeconds;
+        float tempCVTTemp = lastCVTTemp;
+        uint16_t tempIndicatorLights = indicatorLightState;
+        xSemaphoreGive(canMutex);
+        unsigned long currentMinutes = lastTimeSeconds/60;
+        unsigned long currentHours = lastTimeSeconds/3600;
+        display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, realSeconds%60);  
+        display.colonOn();
+        display2.printf("CVT %4.0f", tempCVTTemp);
+        // display2.printf("IMUX%4.0f", lastRPM);
+        ledMatrix.displaybuffer[5] = tempIndicatorLights;
+        ledMatrix.writeDisplay();
+      }
     }
-    delay(20);
-  }
-  
+    delay(100);
+  } 
 }
 
 void displayCVTTemp(){
