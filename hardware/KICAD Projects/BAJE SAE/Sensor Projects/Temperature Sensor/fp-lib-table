@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "Footprints")(type "KiCad")(uri "C:/Users/larso/Dev/Baja SAE/2024-2025-Firmware/hardware/KICAD Symbol Libraries/full libraries/SparkFun-KiCad-Libraries-main/Footprints.pretty")(options "")(descr ""))
   (lib (name "0_Baja_Final")(type "KiCad")(uri "/Users/connor/dev/baja sae/2024-2025-Firmware/hardware/KICAD Symbol Libraries/Footprints /0_Baja_Final.pretty")(options "")(descr ""))
+  (lib (name "0_nano")(type "KiCad")(uri "${KIPRJMOD}/0_nano.pretty")(options "")(descr ""))
 )
