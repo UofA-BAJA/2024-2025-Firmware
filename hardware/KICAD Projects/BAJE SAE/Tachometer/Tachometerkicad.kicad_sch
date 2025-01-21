@@ -5,6 +5,420 @@
 	(uuid "d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5")
 	(paper "A4")
 	(lib_symbols
+		(symbol "0_3362P-1-103:3362P-1-103"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "VR"
+				(at -10.1818 2.5465 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "3362P-1-103"
+				(at -10.1645 -7.6423 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "3362P-1-103:TRIM_3362P-1-103"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MF" "Bourns"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Description_1" "\n                        \n                            TRIMMER - 1/4in SQ ST CERMET | Bourns 3362P-1-103\n                        \n"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Package" "3362P-1 Bourns Inc."
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendation"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "PARTREV" "08/26/10"
+				(at 1.27 10.922 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/3362P-1-103/Bourns/view-part/?ref=snap"
+				(at 4.318 8.128 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MP" "3362P-1-103"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/3362P-1-103/Bourns/view-part/?ref=eda"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "3362P-1-103_0_0"
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -4.572 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.699 -2.032) (xy -2.159 -2.032)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 0) (xy -3.81 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 1.016) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.429 -2.667) (xy -3.429 -1.397)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.429 -1.397) (xy -2.159 -2.032)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -1.27 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.159 -2.032) (xy -3.429 -2.667)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.016) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 1.27 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy -1.27 -2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.016) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 3.81 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 1.016) (xy 4.572 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.572 0) (xy 5.08 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -10.16 0 0)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "0_Baja_Final:HiLetgo_CAN_BUS"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2323,141 +2737,6 @@
 				)
 			)
 		)
-		(symbol "Device:R_Variable"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 2.54 -2.54 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "R_Variable"
-				(at -2.54 -1.27 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at -1.778 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Variable resistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "R res resistor variable potentiometer rheostat"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_Variable_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 1.524) (xy 2.54 2.54) (xy 1.524 2.54) (xy 2.54 2.54) (xy -2.032 -2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_Variable_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Simulation_SPICE:0"
 			(power)
 			(pin_numbers hide)
@@ -3064,10 +3343,10 @@
 		(at 215.9 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "283f9a71-d08c-4a1f-9a3b-f071b812603d")
+		(uuid "6af6c831-bb8b-4dca-8f3a-d972cf300f5a")
 	)
 	(junction
-		(at 54.61 66.04)
+		(at 81.28 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6e902cb7-2965-4db5-8e75-e5232948a979")
@@ -3101,7 +3380,7 @@
 		(uuid "1146ef10-b195-4da4-9704-aa86b323e5bc")
 	)
 	(no_connect
-		(at 41.91 73.66)
+		(at 68.58 73.66)
 		(uuid "13ee47b9-9149-4f29-9e69-42cd6c465318")
 	)
 	(no_connect
@@ -3125,7 +3404,7 @@
 		(uuid "2ba9f07f-5e4d-4211-bbb8-73a399516ab6")
 	)
 	(no_connect
-		(at 44.45 73.66)
+		(at 71.12 73.66)
 		(uuid "3b872b42-42f5-4bbb-91e3-247d4600a24c")
 	)
 	(no_connect
@@ -3190,23 +3469,13 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 53.34) (xy 39.37 58.42)
+			(xy 66.04 53.34) (xy 66.04 58.42)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "02ba9cea-615b-4386-bfdd-cd98410c37c9")
-	)
-	(wire
-		(pts
-			(xy 30.48 68.58) (xy 34.29 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05d91c70-7163-4bde-9269-7caf8dbfa4ac")
 	)
 	(wire
 		(pts
@@ -3230,6 +3499,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 57.15) (xy 57.15 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12b72a07-b50c-459e-a1c1-a50eaac1d2a3")
+	)
+	(wire
+		(pts
 			(xy -87.63 91.44) (xy -73.66 91.44)
 		)
 		(stroke
@@ -3240,7 +3519,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 63.5) (xy 34.29 63.5)
+			(xy 55.88 57.15) (xy 57.15 57.15)
 		)
 		(stroke
 			(width 0)
@@ -3260,7 +3539,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 66.04) (xy 54.61 66.04)
+			(xy 76.2 66.04) (xy 81.28 66.04)
 		)
 		(stroke
 			(width 0)
@@ -3280,7 +3559,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 73.66) (xy 39.37 76.2)
+			(xy 66.04 73.66) (xy 66.04 76.2)
 		)
 		(stroke
 			(width 0)
@@ -3380,7 +3659,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 73.66) (xy 54.61 76.2)
+			(xy 81.28 73.66) (xy 81.28 76.2)
 		)
 		(stroke
 			(width 0)
@@ -3397,6 +3676,26 @@
 			(type default)
 		)
 		(uuid "44794072-647b-4873-b8b5-8f8a4dfbbbec")
+	)
+	(wire
+		(pts
+			(xy 55.88 57.15) (xy 55.88 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48fe093b-4ccb-46ee-9292-f786f997a0da")
+	)
+	(wire
+		(pts
+			(xy 57.15 63.5) (xy 60.96 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aec681e-edce-4161-a4ad-e49c799ff161")
 	)
 	(wire
 		(pts
@@ -3420,7 +3719,7 @@
 	)
 	(wire
 		(pts
-			(xy 19.05 68.58) (xy 22.86 68.58)
+			(xy 19.05 68.58) (xy 30.48 68.58)
 		)
 		(stroke
 			(width 0)
@@ -3457,6 +3756,16 @@
 			(type default)
 		)
 		(uuid "6e91a44a-befc-4eda-8003-d267544342f9")
+	)
+	(wire
+		(pts
+			(xy 215.9 88.9) (xy 223.52 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "764d9d11-a80c-4b9d-852b-223f29a5b36d")
 	)
 	(wire
 		(pts
@@ -3608,6 +3917,16 @@
 		)
 		(uuid "a1846fe5-f1b1-48ed-927c-0742169e86e0")
 	)
+	(wire
+		(pts
+			(xy 50.8 68.58) (xy 60.96 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a263a30d-3554-4d7b-a484-09a34b771dd6")
+	)
 	(polyline
 		(pts
 			(xy -99.06 49.53) (xy -81.28 49.53)
@@ -3650,6 +3969,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 76.2) (xy 40.64 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a93e0feb-e6cd-4ede-ad8a-6652c6e3633a")
+	)
+	(wire
+		(pts
 			(xy 107.95 158.75) (xy 107.95 166.37)
 		)
 		(stroke
@@ -3687,16 +4016,6 @@
 			(type default)
 		)
 		(uuid "af5fb5fe-f5e4-4317-9fe9-12566b2870a0")
-	)
-	(wire
-		(pts
-			(xy 215.9 88.9) (xy 223.52 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b34dcebe-4d51-4233-b29b-b5de754ed683")
 	)
 	(wire
 		(pts
@@ -3770,7 +4089,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 66.04) (xy 59.69 66.04)
+			(xy 81.28 66.04) (xy 86.36 66.04)
 		)
 		(stroke
 			(width 0)
@@ -3897,6 +4216,16 @@
 			(type default)
 		)
 		(uuid "f22c7f6f-5523-4c4d-8a78-0d3167c6ca3d")
+	)
+	(wire
+		(pts
+			(xy 55.88 55.88) (xy 50.8 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f49abaa2-f035-430f-aaaf-07bcfe9cbd53")
 	)
 	(wire
 		(pts
@@ -4494,7 +4823,7 @@
 	)
 	(global_label "Comparator input"
 		(shape input)
-		(at 30.48 63.5 180)
+		(at 50.8 55.88 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4504,7 +4833,7 @@
 		)
 		(uuid "54a39429-9f17-4cfe-acb7-a8bb483432b4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 10.7433 63.5 0)
+			(at 31.0633 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4978,7 +5307,7 @@
 	)
 	(global_label "+5v"
 		(shape input)
-		(at 39.37 53.34 180)
+		(at 66.04 53.34 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4988,7 +5317,7 @@
 		)
 		(uuid "f84635ff-5319-42af-8a3a-3ce6cf6fa8d8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 32.6353 53.34 0)
+			(at 59.3053 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5000,7 +5329,7 @@
 	)
 	(global_label "555 input"
 		(shape input)
-		(at 59.69 66.04 0)
+		(at 86.36 66.04 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5010,7 +5339,7 @@
 		)
 		(uuid "fddffd12-4490-41d4-a02b-2e51375bb6e2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.0488 66.04 0)
+			(at 98.7188 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5048,7 +5377,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P5.08mm_Vertical_AnodeUp"
 			(at 73.66 38.1 0)
 			(effects
 				(font
@@ -5314,6 +5643,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 208.28 88.9 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "300685ab-5e0f-4d73-80d0-a75f221b96fe")
+		(property "Reference" "R11"
+			(at 208.28 82.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 208.28 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
+			(at 208.28 90.678 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 208.28 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "57d46232-72a2-4d35-9e08-22c4a6e3bf65")
+		)
+		(pin "2"
+			(uuid "48c045f7-6a1e-48b4-adbc-12e4d72bca05")
+		)
+		(instances
+			(project "Tachometerkicad"
+				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
 		(at -74.93 80.01 0)
 		(unit 1)
@@ -5468,7 +5865,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
+		(property "Value" "10microferret"
 			(at 201.93 93.9799 0)
 			(effects
 				(font
@@ -5477,7 +5874,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 199.0852 96.52 0)
 			(effects
 				(font
@@ -5848,8 +6245,78 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 215.9 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "49075b3d-bec3-43f2-8f8b-b6157905a550")
+		(property "Reference" "C2"
+			(at 219.71 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10microferret"
+			(at 219.71 93.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+			(at 216.8652 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 215.9 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "93614330-81f3-471e-a436-22f7724b3207")
+		)
+		(pin "2"
+			(uuid "f675c9b2-9d1e-40b8-a1ea-44bb7444ba98")
+		)
+		(instances
+			(project "Tachometerkicad"
+				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Amplifier_Operational:TL071")
-		(at 41.91 66.04 0)
+		(at 68.58 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5858,7 +6325,7 @@
 		(fields_autoplaced yes)
 		(uuid "5575d9ab-4f84-45d0-b1b6-4c74b2a9f354")
 		(property "Reference" "U2"
-			(at 50.8 59.7214 0)
+			(at 77.47 59.7214 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5866,15 +6333,15 @@
 			)
 		)
 		(property "Value" "TL071"
-			(at 50.8 62.2614 0)
+			(at 77.47 62.2614 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 43.18 64.77 0)
+		(property "Footprint" "Package_DIP:DIP-8_W7.62mm"
+			(at 69.85 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5883,7 +6350,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf"
-			(at 45.72 62.23 0)
+			(at 72.39 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5892,7 +6359,7 @@
 			)
 		)
 		(property "Description" "Single Low-Noise JFET-Input Operational Amplifiers, DIP-8/SOIC-8"
-			(at 41.91 66.04 0)
+			(at 68.58 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5934,25 +6401,25 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 207.01 63.5 90)
+		(lib_id "Simulation_SPICE:0")
+		(at 40.64 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "704180b1-b4d7-43a2-a257-ab7584a27d32")
-		(property "Reference" "C3"
-			(at 207.01 55.88 90)
+		(uuid "64bbb532-8664-4902-a2c3-5a87696a0a67")
+		(property "Reference" "#GND013"
+			(at 40.64 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Value" "C"
-			(at 207.01 58.42 90)
+		(property "Value" "0"
+			(at 43.18 79.502 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5960,7 +6427,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 62.5348 0)
+			(at 40.64 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5968,8 +6435,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 207.01 63.5 0)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
+			(at 40.64 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5977,8 +6444,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 207.01 63.5 0)
+		(property "Description" "0V reference potential for simulation"
+			(at 40.64 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5987,15 +6454,183 @@
 			)
 		)
 		(pin "1"
-			(uuid "892ef363-b066-4351-b383-3992650def49")
-		)
-		(pin "2"
-			(uuid "ca71e051-e405-4293-a9fa-12c6ccac1c6c")
+			(uuid "54ef10f7-2f0a-4513-b6ba-0b7d2adde453")
 		)
 		(instances
-			(project "Tachometerkicad"
+			(project ""
 				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
-					(reference "C3")
+					(reference "#GND013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "0_3362P-1-103:3362P-1-103")
+		(at 40.64 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6697ee40-7211-4df7-b137-4e607206e432")
+		(property "Reference" "VR1"
+			(at 47.498 75.946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3362P-1-103"
+			(at 51.816 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "3362P-1-103:TRIM_3362P-1-103"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" "Bourns"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" "\n                        \n                            TRIMMER - 1/4in SQ ST CERMET | Bourns 3362P-1-103\n                        \n"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" "3362P-1 Bourns Inc."
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" "None"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendation"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" "08/26/10"
+			(at 41.91 57.658 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/3362P-1-103/Bourns/view-part/?ref=snap"
+			(at 44.958 60.452 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" "3362P-1-103"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/3362P-1-103/Bourns/view-part/?ref=eda"
+			(at 40.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c10b7e08-f90f-443e-a8eb-dd2f2aed61ec")
+		)
+		(pin "3"
+			(uuid "3988aa69-8eb6-4b4a-a6ed-b9b2bdd5e27c")
+		)
+		(pin "2"
+			(uuid "0272553b-11f1-4fe3-8821-8d340592901f")
+		)
+		(instances
+			(project ""
+				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
+					(reference "VR1")
 					(unit 1)
 				)
 			)
@@ -6095,7 +6730,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D6.0mm_W4.4mm_P5.00mm"
 			(at 202.8952 33.02 0)
 			(effects
 				(font
@@ -6163,7 +6798,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Wire:SolderWire-0.75sqmm_1x02_P4.8mm_D1.25mm_OD2.3mm"
 			(at 29.21 38.1 0)
 			(effects
 				(font
@@ -6363,7 +6998,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92L_Inline"
 			(at 171.45 34.29 0)
 			(effects
 				(font
@@ -6436,144 +7071,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 215.9 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a1463dab-a8f0-4f56-94c0-93dfd47f8d9f")
-		(property "Reference" "C2"
-			(at 219.71 91.4399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "C"
-			(at 219.71 93.9799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 216.8652 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 215.9 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6bb8e814-7453-4ca6-b84c-5730bb2eff00")
-		)
-		(pin "2"
-			(uuid "6ed781bd-0b35-404e-aebd-cce70ff545df")
-		)
-		(instances
-			(project "Tachometerkicad"
-				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
-					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 208.28 88.9 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a1950b62-2489-41d4-a83b-155c1d10b268")
-		(property "Reference" "R6"
-			(at 208.28 82.55 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R"
-			(at 208.28 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 208.28 90.678 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 208.28 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 208.28 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1f169c91-60ae-4184-8949-5dc6418316ef")
-		)
-		(pin "2"
-			(uuid "199e792b-87d3-4adf-8c1d-cfef90218efa")
-		)
-		(instances
-			(project "Tachometerkicad"
-				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 190.5 88.9 90)
 		(unit 1)
@@ -6591,7 +7088,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10k"
 			(at 190.5 85.09 90)
 			(effects
 				(font
@@ -6599,7 +7096,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
 			(at 190.5 90.678 90)
 			(effects
 				(font
@@ -6669,7 +7166,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P5.08mm_Vertical_AnodeUp"
 			(at 86.36 38.1 0)
 			(effects
 				(font
@@ -6730,73 +7227,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Variable")
-		(at 26.67 68.58 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b0211c54-95f7-44ac-83ad-ff8cac12390b")
-		(property "Reference" "R4"
-			(at 19.558 72.39 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R_Variable"
-			(at 27.178 72.644 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 26.67 70.358 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 26.67 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Variable resistor"
-			(at 26.67 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0ad1035c-16c8-47d6-8321-ea252c74a4df")
-		)
-		(pin "2"
-			(uuid "56b67246-f39a-4a15-82b0-99cff9e58758")
-		)
-		(instances
-			(project ""
-				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 95.25 34.29 90)
 		(unit 1)
@@ -6814,7 +7244,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "470"
 			(at 95.25 30.48 90)
 			(effects
 				(font
@@ -6822,7 +7252,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal"
 			(at 95.25 36.068 90)
 			(effects
 				(font
@@ -6849,6 +7279,24 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Device" "R"
+			(at 95.25 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 95.25 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "cc0c44c1-82a2-4212-990e-21877324c1f6")
 		)
@@ -6865,12 +7313,80 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 238.76 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b27015da-0e7d-4f64-b0bc-7e4efe3db62f")
+		(property "Reference" "R6"
+			(at 238.76 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "430"
+			(at 238.76 59.69 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
+			(at 238.76 65.278 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 238.76 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 238.76 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "799501b5-7e5a-461b-86c9-b6323759a4d4")
+		)
+		(pin "2"
+			(uuid "54f8069a-13a8-4fdd-8567-43299d243c3d")
+		)
+		(instances
+			(project "Tachometerkicad"
+				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x06")
 		(at -76.2 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b79ad638-f6e0-44db-80ee-3403078e46cc")
@@ -6948,74 +7464,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 238.76 63.5 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b803bdff-bcc2-4532-80a9-e211cc282332")
-		(property "Reference" "R9"
-			(at 238.76 57.15 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R"
-			(at 238.76 59.69 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 238.76 61.722 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 238.76 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 238.76 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b226a0d2-7f5c-4972-8a8e-c755d5542305")
-		)
-		(pin "2"
-			(uuid "b120cf9a-7b18-409c-9873-b354e87a5994")
-		)
-		(instances
-			(project "Tachometerkicad"
-				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
-					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 228.6 63.5 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7032,7 +7480,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "430"
 			(at 228.6 59.69 90)
 			(effects
 				(font
@@ -7040,7 +7488,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
 			(at 228.6 65.278 90)
 			(effects
 				(font
@@ -7235,7 +7683,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:0")
-		(at 54.61 76.2 0)
+		(at 81.28 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7243,7 +7691,7 @@
 		(dnp no)
 		(uuid "cf176e56-6c12-4a15-aa13-20cfa147a3a0")
 		(property "Reference" "#GND08"
-			(at 54.61 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7252,7 +7700,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 51.816 77.216 0)
+			(at 78.486 77.216 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7260,7 +7708,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 54.61 76.2 0)
+			(at 81.28 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7269,7 +7717,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 54.61 86.36 0)
+			(at 81.28 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7278,7 +7726,7 @@
 			)
 		)
 		(property "Description" "0V reference potential for simulation"
-			(at 54.61 83.82 0)
+			(at 81.28 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7300,7 +7748,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:0")
-		(at 39.37 76.2 0)
+		(at 66.04 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7308,7 +7756,7 @@
 		(dnp no)
 		(uuid "d0c1f68d-2514-4f18-95c7-f03212a1aaca")
 		(property "Reference" "#GND07"
-			(at 39.37 81.28 0)
+			(at 66.04 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7317,7 +7765,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 36.576 77.216 0)
+			(at 63.246 77.216 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7325,7 +7773,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 39.37 76.2 0)
+			(at 66.04 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7334,7 +7782,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 39.37 86.36 0)
+			(at 66.04 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7343,7 +7791,7 @@
 			)
 		)
 		(property "Description" "0V reference potential for simulation"
-			(at 39.37 83.82 0)
+			(at 66.04 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7432,7 +7880,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 54.61 69.85 0)
+		(at 81.28 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7441,7 +7889,7 @@
 		(fields_autoplaced yes)
 		(uuid "d47ca943-b071-4ce1-b15b-7500b78ac557")
 		(property "Reference" "R10"
-			(at 57.15 68.5799 0)
+			(at 83.82 68.5799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7449,8 +7897,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
-			(at 57.15 71.1199 0)
+		(property "Value" "10k"
+			(at 83.82 71.1199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7458,8 +7906,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 52.832 69.85 90)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
+			(at 79.502 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7468,7 +7916,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 54.61 69.85 0)
+			(at 81.28 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7477,7 +7925,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 54.61 69.85 0)
+			(at 81.28 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7518,7 +7966,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "2k"
 			(at 218.44 59.69 90)
 			(effects
 				(font
@@ -7526,7 +7974,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical"
 			(at 218.44 65.278 90)
 			(effects
 				(font
@@ -7716,7 +8164,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10"
 			(at 63.5 30.48 90)
 			(effects
 				(font
@@ -7724,7 +8172,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal"
 			(at 63.5 36.068 90)
 			(effects
 				(font
@@ -7767,6 +8215,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 207.01 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fcdb6fe6-ad4a-4b63-9efe-8a43d8f079db")
+		(property "Reference" "C3"
+			(at 207.01 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10microferret"
+			(at 203.454 58.674 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+			(at 210.82 62.5348 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 207.01 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 207.01 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d8237d57-11c1-4cb0-9471-0e5f2cad7b10")
+		)
+		(pin "2"
+			(uuid "1052f980-81bd-4d82-beea-8b4c48ed89c4")
+		)
+		(instances
+			(project "Tachometerkicad"
+				(path "/d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 110.49 22.86 0)
 		(unit 1)
@@ -7785,7 +8300,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1k"
 			(at 113.03 24.1299 0)
 			(effects
 				(font
@@ -7794,7 +8309,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal"
 			(at 108.712 22.86 90)
 			(effects
 				(font
