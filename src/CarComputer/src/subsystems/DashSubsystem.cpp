@@ -26,7 +26,7 @@ void DashSubsystem::setIndicatorLights(uint16_t lightState){
 }
 
 void DashSubsystem::setSpecificIndicatorLight(Dash::IndicatorLights light, bool state){
-    dash->setSpecifcIndicatorLight(light, state);
+    dash->setSpecificIndicatorLight(light, state);
 }
 
 void DashSubsystem::sendIndicatorLightState(){

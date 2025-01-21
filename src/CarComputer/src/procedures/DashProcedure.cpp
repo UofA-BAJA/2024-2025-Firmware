@@ -16,7 +16,7 @@ class DashProcedure : public Procedure{
         DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem* temperatureSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->temperatureSubsystem = temperatureSubsystem;
-            this->frequency = 3;
+            this->frequency = 5;
         }
 
         void init() override{

@@ -7,12 +7,12 @@ TemperatureSubsystem::TemperatureSubsystem(CANDispatcher* canDispatcher){
 
 float TemperatureSubsystem::getTemperature(){
     float temperature = temperatureDevice->getLatestTemperature();
-    if(temperature > 50) isHot = true;
-    else isHot = false;
+    if(temperature > 40) isCVTHot = true;
+    else isCVTHot = false;
     return temperature;
 }
 
 bool TemperatureSubsystem::isHot(){
-    return isHot;
+    return isCVTHot;
 }
 
