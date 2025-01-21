@@ -8,15 +8,6 @@
 class Dash
 {
     public:
-        Dash(CANDispatcher *canDispatcher);
-        void sendSpeed(float speed);
-        void sendRPM(float rpm);
-        void sendCVTTemp(float cvtTemp);
-        void sendTimeSeconds(float seconds);
-        void setIndicatorLights(uint16_t lightState);
-        void setSpecificIndicatorLight(IndicatorLights light, bool state);
-        void sendIndicatorLightState();
-
         enum IndicatorLights{
             CAN_ERR = 0, //this is really only here to reserve it, the Pi shouldn't be lighting this one up
             LIGHT_1,
@@ -34,7 +25,17 @@ class Dash
             LIGHT_13,
             LIGHT_14,
             LIGHT_15
-        }
+        };
+        Dash(CANDispatcher *canDispatcher);
+        void sendSpeed(float speed);
+        void sendRPM(float rpm);
+        void sendCVTTemp(float cvtTemp);
+        void sendTimeSeconds(float seconds);
+        void setIndicatorLights(uint16_t lightState);
+        void setSpecificIndicatorLight(IndicatorLights light, bool state);
+        void sendIndicatorLightState();
+
+        
 
     private:
         CANDispatcher *canDispatcher;

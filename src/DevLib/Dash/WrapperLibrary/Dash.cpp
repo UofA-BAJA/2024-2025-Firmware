@@ -63,11 +63,11 @@ void Dash::sendCVTTemp(float cvtTemp)
 void Dash::sendTimeSeconds(float seconds)
 {
     byte canID = Devices::DASH;
-    std::vector<byte> data(sizeof(unsigned long)+1, 0);
-    unsigned long sendSeconds = (unsigned long)seconds;
-    memcpy(data.data()+1, &sendSeconds, sizeof(unsigned long));
+    std::vector<byte> data(sizeof(float)+1, 0);
+    
+    memcpy(data.data()+1, &seconds, sizeof(float));
     data[0] = 0x04;
-
+    
     if (!canDispatcher)
     {
         std::cerr << "Error: CANDispatcher is null!" << std::endl;
