@@ -31,6 +31,7 @@ void CANDispatcher::execute(){
                 std::cout << "Commands Dropped: " << droppedCommands << std::endl;
                 // std::cout << "Command Dropped: " << std::hex << commandID << std::endl;
                 callbacks.erase(commandID);
+                destinations.erase(commandID);
                 // Proper way to continue iterating over the map
                 it = commandCycles.erase(it);
         }
@@ -65,7 +66,7 @@ void CANDispatcher::execute(){
  *
  */
 
-void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback){
+void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, void* destination, std::function<void(can_frame, void*)> callback){
 
     if(data.size() > 4){
         
@@ -128,6 +129,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
 
     // Now when we receive a CAN frame with ID of message ID, we will trigger the callback.
     callbacks[currUID] = callback;
+    destinations[currUID] = destination;
     commandCycles[currUID] = 0;
 
     ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
@@ -141,6 +143,7 @@ void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, std::fu
         std::cerr << "Error sending CAN frame: " << errorStr << std::endl;
         // Erase what we just wrote from the callbacks and commandCycles
         callbacks.erase(currUID);
+        destinations.erase(currUID);
         commandCycles.erase(currUID);
 
         if(!errorStr.compare("No buffer space available")){
@@ -239,10 +242,11 @@ void CANDispatcher::readCANInterface(){
 
             // Check to see if the can frame is actually meant for us.
             if(callbacks.find(messageID) != callbacks.end()){
-                // Invoke the registered callback
-                callbacks[messageID](frame);
+                // Invoke the registered callback and pass the destination variable
+                callbacks[messageID](frame, destinations[messageID]);
                 
                 callbacks.erase(messageID);
+                destinations.erase(messageID);
                 commandCycles.erase(messageID);
             }
         }
