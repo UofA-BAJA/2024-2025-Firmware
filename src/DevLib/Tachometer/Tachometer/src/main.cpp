@@ -93,6 +93,7 @@ while (CAN_MSGAVAIL == CAN.checkReceive())
         
         memcpy(engineRPMData, &engineRPM, sizeof engineRPM);
 
+        Serial.println(engineRPM);
 
         unsigned long callbackID = 0;
         // 3 bytes for the callback ID
@@ -134,10 +135,10 @@ float getRPM(){
     rpm += 1279.5 * voltage;
     rpm += - 210.92;
 
-    
+    return rpm;
     // Output the result to the Serial Monitor
-    Serial.print("Voltage: ");
-    Serial.print(voltage, 2);  // Print voltage with 2 decimal places
-    Serial.print(" V, RPM: ");
-    Serial.println(rpm, 2);  // Print RPM with 2 decimal places
+    // Serial.print("Voltage: ");
+    // Serial.print(voltage, 2);  // Print voltage with 2 decimal places
+    // Serial.print(" V, RPM: ");
+    // Serial.println(rpm, 2);  // Print RPM with 2 decimal places
 }
