@@ -32,23 +32,17 @@
 #include <iostream>
 
 #include "CarContainer.h"
-#include "Car.h"
-#include "Commands.h"
-#include "CarLogger.h"
-
-#include "DataStorage.h"
-
 
 CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
 
     imuSubsystem = new IMUSubsystem(canDispatcher);
     imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
 
-    temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
-    temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
+    drivetrainSubsystem = new DrivetrainSubsystem(canDispatcher);
+    temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
 
     dashSubsystem = new DashSubsystem(canDispatcher);
-    dashProcedure = new DashProcedure(dashSubsystem, temperatureSubsystem);
+    dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
 
     procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
     procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);

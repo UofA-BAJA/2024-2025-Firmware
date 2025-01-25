@@ -1,6 +1,6 @@
 #include "Procedure.h"
 #include "CarLogger.h"
-#include "TemperatureSubsystem.h"
+#include "DrivetrainSubsystem.h"
 #include "DashSubsystem.h"
 #include "CarTime.h"
 
@@ -10,12 +10,12 @@ class DashProcedure : public Procedure{
     public:
 
         DashSubsystem* dashSubsystem;
-        TemperatureSubsystem* temperatureSubsystem;
+        DrivetrainSubsystem* drivetrainSubsystem;
         
 
-        DashProcedure(DashSubsystem* dashSubsystem, TemperatureSubsystem* temperatureSubsystem){
+        DashProcedure(DashSubsystem* dashSubsystem, DrivetrainSubsystem* drivetrainSubsystem){
             this->dashSubsystem = dashSubsystem;
-            this->temperatureSubsystem = temperatureSubsystem;
+            this->drivetrainSubsystem = drivetrainSubsystem;
             this->frequency = 5;
         }
 
@@ -25,9 +25,9 @@ class DashProcedure : public Procedure{
         }
 
         void execute() override {
-            float breh = temperatureSubsystem->getTemperature();
+            float breh = drivetrainSubsystem->getCVTTemperature();
             dashSubsystem->sendCVTTemp(breh);
-            if(temperatureSubsystem->isHot()){
+            if(drivetrainSubsystem->isCVTHot()){
                 dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
             }else{
                 dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);

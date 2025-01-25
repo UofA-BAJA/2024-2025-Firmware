@@ -1,5 +1,5 @@
 #include "Procedure.h"
-#include "TemperatureSubsystem.h"
+#include "DrivetrainSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
 #include "LiveDataStream.h"
@@ -9,15 +9,15 @@
 
 class TemperatureProcedure : public Procedure{
     public:
-        TemperatureSubsystem* temperatureSubsystem;
+        DrivetrainSubsystem* drivetrainSubsystem;
         DataStorage* dataStorage;
         Coms* coms;
 
         LiveDataStream* temperatureStream;
 
 
-        TemperatureProcedure(TemperatureSubsystem *temperatureSubsystem, DataStorage* dataStorage, Coms* coms){
-            this->temperatureSubsystem = temperatureSubsystem;
+        TemperatureProcedure(DrivetrainSubsystem *drivetrainSubsystem, DataStorage* dataStorage, Coms* coms){
+            this->drivetrainSubsystem = drivetrainSubsystem;
             this->dataStorage = dataStorage;
             this->coms = coms;
 
@@ -43,7 +43,7 @@ class TemperatureProcedure : public Procedure{
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
 
-            float cvt_temperature = temperatureSubsystem->getTemperature();
+            float cvt_temperature = drivetrainSubsystem->getCVTTemperature();
 
             temperatureStream->enqueue(cvt_temperature);
 

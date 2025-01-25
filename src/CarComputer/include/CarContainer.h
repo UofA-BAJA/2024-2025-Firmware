@@ -1,11 +1,13 @@
 #ifndef CARCONTAINER_H
 #define CARCONTAINER_H
 
+#include "Car.h"
 #include "ProcedureScheduler.h"
 #include "CANDispatcher.h"
 #include "DataStorage.h"
 #include "Coms.h"
-
+#include "Commands.h"
+#include "CarLogger.h"
 
 #include "procedures/IMUProcedure.cpp"
 #include "procedures/DashProcedure.cpp"
@@ -13,7 +15,7 @@
 
 #include "DashSubsystem.h"
 #include "IMUSubsystem.h"
-#include "TemperatureSubsystem.h"
+#include "DrivetrainSubsystem.h"
 
 // class Car;
 
@@ -27,7 +29,7 @@ class CarContainer{
         DashSubsystem* dashSubsystem;
         DashProcedure* dashProcedure;
 
-        TemperatureSubsystem* temperatureSubsystem;
+        DrivetrainSubsystem* drivetrainSubsystem;
         TemperatureProcedure* temperatureProcedure;
 
 

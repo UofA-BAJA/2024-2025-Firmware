@@ -8,7 +8,7 @@
 
 enum Command{
     START_LOG = 100,              // Starts recording data and realtime transmission
-    END_LOG = 1,                // Stops recording data and realtime transmission
+    END_LOG = 101,                // Stops recording data and realtime transmission
     RETRIEVE = 2,               // Sends the logs to the Pit Computer
     // We don't talk about 3
     EMERGENCY_STOP = 4,         // Not sure if we'll ever use this one

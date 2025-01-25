@@ -126,6 +126,9 @@ void Coms::radioTransmit(){
 
             currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
         }
+        else if(ackData == Command::END_LOG){
+            currentPitCommandState = PitCommandState::IDLE;
+        }
 
 
         // std::bitset<32> x(ackData);

@@ -9,6 +9,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary
         ${CMAKE_SOURCE_DIR}/src/DevLib/Dash/WrapperLibrary
         ${CMAKE_SOURCE_DIR}/src/DevLib/Temperature/WrapperLibrary
+        ${CMAKE_SOURCE_DIR}/src/DevLib/Tachometer/WrapperLibrary
         ${CMAKE_SOURCE_DIR}/src/CarComputer/include)
 
 
@@ -19,6 +20,7 @@ include_directories(
 file(GLOB TEMP_IMU ${CMAKE_SOURCE_DIR}/src/DevLib/IMU/WrapperLibrary/*.cpp)
 file(GLOB TEMP_DASH ${CMAKE_SOURCE_DIR}/src/DevLib/Dash/WrapperLibrary/*.cpp)
 file(GLOB TEMP_TEMPERATURE ${CMAKE_SOURCE_DIR}/src/DevLib/Temperature/WrapperLibrary/*.cpp)
+file(GLOB TEMP_TACHOMETER ${CMAKE_SOURCE_DIR}/src/DevLib/Tachometer/WrapperLibrary/*.cpp)
 
 
 # Grab all the .cpp files in src
@@ -30,7 +32,7 @@ file(GLOB_RECURSE PROCEDURE_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/proced
 # Grab all the .cpp files in coms recursively
 file(GLOB_RECURSE COMS_FILES ${CMAKE_SOURCE_DIR}/src/CarComputer/src/coms/*.cpp)
 
-set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${COMS_FILES} ${TEMP_IMU} ${TEMP_TEMPERATURE} ${TEMP_DASH})
+set(SOURCE_FILES ${SRC_FILES} ${SUBSYSTEM_FILES} ${PROCEDURE_FILES} ${COMS_FILES} ${TEMP_IMU} ${TEMP_TEMPERATURE} ${TEMP_DASH} ${TEMP_TACHOMETER})
 
 add_executable(carComputer ${SOURCE_FILES})
 

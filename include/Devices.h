@@ -8,7 +8,8 @@ enum Devices
 {
     IMU = 0x001,
     CVT_TEMP = 0x002,
-    DASH = 0x003
+    DASH = 0x003,
+    TACHOMETER = 0x04
 };
 
 }
