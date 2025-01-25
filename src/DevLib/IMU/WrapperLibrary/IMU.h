@@ -5,15 +5,15 @@
 #include "CANDevice.h"
 #include "functional"
 // #include "linux/can.h"
+// #include "Devices.h"
+
 
 #include <chrono>
 
 class IMU : CANDevice {
 
     public:
-        IMU(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
-
-        }
+        IMU(CANDispatcher* canDispatcher);
 
         float getLatestRotationX();
         float getLatestRotationY();

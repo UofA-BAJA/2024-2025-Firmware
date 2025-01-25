@@ -1,7 +1,7 @@
 #include "CANDevice.h"
 
 
-void CANDevice::sendCanCommand(Devices deviceID, byte commandByte, void* receivedData){
+void CANDevice::sendCanCommand(Device::Devices deviceID, byte commandByte, void* receivedData){
 
     using namespace std::chrono;
 
@@ -43,7 +43,7 @@ void CANDevice::populateValue(can_frame frame, void* destination){
 
 
 
-void CANDevice::sendCanCommand(Devices deviceID, byte commandByte){
+void CANDevice::sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData){
 
     using namespace std::chrono;
 
@@ -62,14 +62,12 @@ void CANDevice::sendCanCommand(Devices deviceID, byte commandByte){
 
     if(timeDifference > minimumRepeatThreshold){
         byte canID = deviceID;
-        std::vector<byte> data = {commandByte};
-
 
         if(!m_canDispatcher){
             std::cerr << "Error: CANDispatcher is null!" << std::endl;
         }
 
-        m_canDispatcher->sendCanCommand(canID, data);
+        m_canDispatcher->sendCanCommand(canID, rawData);
         activeCommandTimes[deviceCommandKey] = now;
     }
 }

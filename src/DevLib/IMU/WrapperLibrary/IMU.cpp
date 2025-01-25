@@ -28,42 +28,45 @@
  *
 */
 
-#include "Devices.h"
 #include "IMU.h"
-#include "Constants.h"
+
+
+IMU::IMU(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
+
+}
 
 float IMU::getLatestAccelerationX(){
 
-    sendCanCommand(Devices::IMU, 0x04, &accX);
+    sendCanCommand(Device::IMU, 0x04, &accX);
     return accX;
 
 }
 
 float IMU::getLatestAccelerationY(){
 
-    sendCanCommand(Devices::IMU, 0x05, &accY);
+    sendCanCommand(Device::IMU, 0x05, &accY);
     return accY;
 
 }
 
 float IMU::getLatestAccelerationZ(){
 
-    sendCanCommand(Devices::IMU, 0x06, &accZ);
+    sendCanCommand(Device::IMU, 0x06, &accZ);
     return accZ;
 
 }
 
 float IMU::getLatestRotationX(){
-    sendCanCommand(Devices::IMU, 0x01, &rotX);
+    sendCanCommand(Device::IMU, 0x01, &rotX);
     return rotX;
 }
 
 float IMU::getLatestRotationY(){
-    sendCanCommand(Devices::IMU, 0x02, &rotY);
+    sendCanCommand(Device::IMU, 0x02, &rotY);
     return rotY;
 }
 
 float IMU::getLatestRotationZ(){
-    sendCanCommand(Devices::IMU, 0x03, &rotZ);
+    sendCanCommand(Device::IMU, 0x03, &rotZ);
     return rotZ;
 }

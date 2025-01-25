@@ -29,12 +29,10 @@ class CANDevice{
         }
 
     protected:
-        void sendCanCommand(Devices deviceID, byte commandByte, void* receivedData);
-        void sendCanCommand(Devices deviceID, byte commandByte);
+        void sendCanCommand(Device::Devices deviceID, byte commandByte, void* receivedData);
+        void sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData);
 
 };
-
-
 
 
 #endif
