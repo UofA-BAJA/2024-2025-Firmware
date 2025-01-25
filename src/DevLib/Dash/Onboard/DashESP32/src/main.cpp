@@ -7,8 +7,8 @@
 #include <Adafruit_LEDBackpack.h>
 
 void readCAN(void *pvParameters);
-void displayCVTTemp();
-void displayTime();
+void displayCVTTemp(HT16K33 disp);
+void displayTime(HT16K33 disp);
 
 // Constants
 const int CAN_CS_PIN = 5;
@@ -121,7 +121,7 @@ void setup()
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
 
-  
+  pinMode(12, INPUT_PULLUP);
 
   // Create mutex (absolutely insane comment)
   canMutex = xSemaphoreCreateMutex();
@@ -188,7 +188,7 @@ void loop()
       lastCANRx = millis();
     }
   }
-  
+
   if(millis()-lastCANRx > 2000){
       canRecentRX = false;
       ledMatrix.displaybuffer[5] = indicatorLightState | 1;
@@ -212,28 +212,38 @@ void readCAN(void *pvParameters){
     }
     if(canRecentRX){
       if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-        unsigned long realSeconds = (unsigned long)lastTimeSeconds;
-        float tempCVTTemp = lastCVTTemp;
         uint16_t tempIndicatorLights = indicatorLightState;
         xSemaphoreGive(canMutex);
-        unsigned long currentMinutes = lastTimeSeconds/60;
-        unsigned long currentHours = lastTimeSeconds/3600;
-        display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, realSeconds%60);  
-        display.colonOn();
-        display2.printf("CVT %4.0f", tempCVTTemp);
-        // display2.printf("IMUX%4.0f", lastRPM);
         ledMatrix.displaybuffer[5] = tempIndicatorLights;
-        ledMatrix.writeDisplay();
+        ledMatrix.writeDisplay(); 
+        if(digitalRead(12) == HIGH){
+          displayCVTTemp(display);
+        }else{
+          displayTime(display);
+        }
+        displayTime(display2);
+        
       }
     }
     delay(100);
   } 
 }
 
-void displayCVTTemp(){
-
+void displayCVTTemp(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    float tempCVTTemp = lastCVTTemp;
+    xSemaphoreGive(canMutex);
+    disp.printf("CVT %4.0f", tempCVTTemp);
+  }
 }
 
-void displayTime(){
-
+void displayTime(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    unsigned long realSeconds = (unsigned long)lastTimeSeconds;
+    xSemaphoreGive(canMutex);
+    unsigned long currentMinutes = lastTimeSeconds/60;
+    unsigned long currentHours = lastTimeSeconds/3600;
+    disp.printf("%02u%02u  %02u", currentHours, currentMinutes%60, realSeconds%60);  
+    disp.colonOn();
+  }
 }
