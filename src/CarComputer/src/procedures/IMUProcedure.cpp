@@ -41,7 +41,7 @@ class IMUProcedure : public Procedure{
             coms->addNewLiveDataStream(yAccStream);
             coms->addNewLiveDataStream(zAccStream);
 
-            this->frequency = 10;
+            this->frequency = 30;
 
         }
         
@@ -58,6 +58,7 @@ class IMUProcedure : public Procedure{
             float xAccel = imuSubsystem->getAccelerationX();
             float yAccel = imuSubsystem->getAccelerationY();
             float zAccel = imuSubsystem->getAccelerationZ();
+
 
             dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
             dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
@@ -78,8 +79,8 @@ class IMUProcedure : public Procedure{
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
 
-            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {

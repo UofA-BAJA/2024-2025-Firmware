@@ -33,7 +33,7 @@ class CANDispatcher{
 
         void execute();
 
-        void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
+        void sendCanCommand(int deviceID, std::vector<byte> data, void* destination, std::function<void(can_frame, void*)> callback);
         void sendCanCommand(int deviceID, std::vector<byte> data);
 
     private:
@@ -45,7 +45,8 @@ class CANDispatcher{
 
         std::thread canReadingThread;
 
-        std::unordered_map<uint32_t, std::function<void(can_frame)>> callbacks;
+        std::unordered_map<uint32_t, std::function<void(can_frame, void*)>> callbacks;
+        std::unordered_map<uint32_t, void*> destinations;
         // Maps a command to the amount of cycles it has been waiting for a response
         std::unordered_map<uint32_t, int> commandCycles;
         int cycleThreshold = 100;     // A command can be in queue for 100 cycles until it is considered dropped.

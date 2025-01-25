@@ -1,11 +1,10 @@
 #ifndef DASH_H
 #define DASH_H
 
-#include "CANDispatcher.h"
+#include "CANDevice.h"
 #include "Devices.h"
 
-
-class Dash
+class Dash : CANDevice
 {
     public:
         enum IndicatorLights{
@@ -34,11 +33,9 @@ class Dash
         void setIndicatorLights(uint16_t lightState);
         void setSpecificIndicatorLight(IndicatorLights light, bool state);
         void sendIndicatorLightState();
-
         
 
     private:
-        CANDispatcher *canDispatcher;
         uint16_t indicatorLightState;
 
 };
