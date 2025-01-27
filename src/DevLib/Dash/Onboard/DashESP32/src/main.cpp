@@ -260,8 +260,12 @@ void writeDisplays(void *pvParameters){
     if(num%8==0 && !tempCANRecentRX){
       if(num%16 == 0){
         display.clear();
+        rpm.write(0);
+        speed.write(0);
       }else{
         display.print("NO CAN");
+        rpm.write(172);
+        speed.write(172);
       }
     }
 
@@ -336,8 +340,8 @@ void writeDisplays(void *pvParameters){
         xSemaphoreGive(canMutex);
         ledMatrix.displaybuffer[5] = tempIndicatorLights;
         ledMatrix.writeDisplay(); 
-        speed.write((tempSpeed/40)*180);
-        rpm.write((tempRPM/4000)*180);
+        speed.write((tempSpeed/40.0)*172.0);
+        rpm.write((tempRPM/4000.0)*172.0);
       }
     }
     delay(100);
