@@ -60,12 +60,13 @@ void CANDispatcher::execute(){
  *              
  *          data -- The data to send to the device on the CAN bus that represents a command for the device
  * 
+ *          destination -- The pointer to the data that the callback will write to
+ * 
  *          callback -- A function to be executed once the device responds with data
  *
  *  Returns: None
  *
  */
-
 void CANDispatcher::sendCanCommand(int deviceID, std::vector<byte> data, void* destination, std::function<void(can_frame, void*)> callback){
 
     if(data.size() > 4){

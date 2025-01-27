@@ -5,7 +5,6 @@
 #include "CarTime.h"
 
 
-
 class DashProcedure : public Procedure{
     public:
 
@@ -16,7 +15,7 @@ class DashProcedure : public Procedure{
         DashProcedure(DashSubsystem* dashSubsystem, DrivetrainSubsystem* drivetrainSubsystem){
             this->dashSubsystem = dashSubsystem;
             this->drivetrainSubsystem = drivetrainSubsystem;
-            this->frequency = 5;
+            this->frequency = 1;
         }
 
         void init() override{
@@ -25,8 +24,7 @@ class DashProcedure : public Procedure{
         }
 
         void execute() override {
-            float breh = drivetrainSubsystem->getCVTTemperature();
-            dashSubsystem->sendCVTTemp(breh);
+            dashSubsystem->sendCVTTemp(drivetrainSubsystem->getCVTTemperature());
             if(drivetrainSubsystem->isCVTHot()){
                 dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
             }else{
@@ -34,6 +32,10 @@ class DashProcedure : public Procedure{
             }
             dashSubsystem->sendTimeSeconds(CarTime::getCurrentTimeSeconds());
             dashSubsystem->sendIndicatorLightState();
+
+            // dashSubsystem->sendRPM(drivetrainSubsystem->getEngineRPM());
+            dashSubsystem->sendRPM(rand() % 4000);
+            dashSubsystem->sendSpeed(rand() % 40);
         }
 
         void end() override {
