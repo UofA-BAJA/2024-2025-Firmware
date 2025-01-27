@@ -1,3 +1,31 @@
+/*
+ *
+ *  Class: CANDevice 
+ *
+ *         Author: Matthew Larson  
+ *
+ *        Purpose: 
+ *
+ *  Inherits From: None
+ *
+ *     Interfaces: None
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *      Constants:  
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *   Constructors:  CANDevice(CANDispatcher*) -- Takes the CANDispatcher to be used. 
+ *                      Also sets the minimum threshold for a callback-type command to be repeated based on Constants::BASE_CAR_FREQUENCY
+ *
+ *  Class Methods:  None
+ *
+ *  Inst. Methods:  void sendCanCommand(Device::Devices deviceID, byte commandByte, void* recievedData) -- send CAN command with callback to populate recievedData
+ *                  void sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData) -- send CAN command with raw data (no callback)
+ *
+*/
+
 #include "CANDevice.h"
 
 
