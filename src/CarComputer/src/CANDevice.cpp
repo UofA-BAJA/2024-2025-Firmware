@@ -21,9 +21,9 @@
  *
  *  Class Methods:  None
  *
- *  Inst. Methods:  void sendCanCommand(Device::Devices deviceID, byte commandByte, void* recievedData) -- send CAN command with callback to populate recievedData
- *                  void sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData) -- send CAN command with raw data (no callback)
- *        (private) void populateValue(can_frame frame, void* destination) -- populate destination with the CAN frame's data, should only be called by a callback
+ *  Inst. Methods:  void sendCanCommand(deviceID, commandByte, recievedData) -- send CAN command with callback to populate recievedData
+ *                  void sendCanCommand(deviceID, commandByte, rawData) -- send CAN command with raw data (no callback)
+ *        (private) void populateValue(frame, destination) -- populate destination with the CAN frame's data, should only be called by a callback
  *
 */
 
@@ -31,15 +31,16 @@
 
 
 /*
-*   Method: sendCanCommand (Callback version)
+*   Method: sendCanCommand (Callback overload)
 *
 *   Purpose: Send CAN command to a device with a callback to populate data
 *
-*   Pre-conditions:  There is a device on the CAN bus with ID deviceID.
-*                    commandByte is a valid command for the device.
-*                    recievedData is the correct data type for the data to be recieved.
+*   Pre-conditions:  There is a device on the CAN bus with ID deviceID;
+*                    commandByte is a valid command for the device;
+*                    recievedData is the correct data type for the data to be recieved
 *   
-*   Post-condition:  The CAN command is sent to the device with the given deviceID. When the data is recieved, recievedData is populated.  
+*   Post-condition:  The CAN command is sent to the device with the given deviceID. When the data is recieved,
+*   receivedData is populated with the callback data
 *
 *   @param deviceID: The CAN ID of the device to send the command to
 *   @param commandByte: The byte representing the type of the data to request from the device
@@ -103,7 +104,7 @@ void CANDevice::populateValue(can_frame frame, void* destination){
 
 
 /*
-*   Method: sendCanCommand (No callback version)
+*   Method: sendCanCommand (No callback overload)
 *
 *   Purpose: Send CAN command to a device with data. The device cannot return anything.
 *   
@@ -113,7 +114,8 @@ void CANDevice::populateValue(can_frame frame, void* destination){
 *   Post-condition: The CAN command is sent to the device with the given deviceID.  
 *
 *   @param deviceID: The CAN ID of the device to send the command to
-*   @param commandByte: The byte representing the type of the data being sent to the device. **USED FOR TRACKING ONLY - YOU MUST INCLUDE AN IDENTIFYING BYTE IN rawData IF ONE IS NEEDED BY THE DEVICE**
+*   @param commandByte: The byte representing the type of the data being sent to the device.
+*   **USED FOR TRACKING ONLY - YOU MUST INCLUDE AN IDENTIFYING BYTE IN rawData IF ONE IS NEEDED BY THE DEVICE**
 *   @param rawData: The data to send to the device. At most 8 bytes.    
 *
 *   @returns None
