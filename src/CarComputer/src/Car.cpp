@@ -21,11 +21,11 @@
  *
  *   Constructors:  Car()
  *
- *  Class Methods:  [List the names, arguments, and return types of all
- *                   public class methods.]
+ *  Class Methods:  None
  *
- * Inst. Methods:  [List the names, arguments, and return types of all
- *                   public instance methods.]
+ *  Inst. Methods:  void execute() -- Runs the main car loop; calls the various subsystems
+ *                  void init() -- Placeholder for tasks that need to happen before the subsystems start 
+ *                  void end() -- Stops the procedureScheduler 
  *
 */
 
@@ -43,6 +43,21 @@ DataStorage* dataStorage;
 CarLogger* carLogger;
 Coms* coms;
 
+/*
+*  Method: car() 
+*
+*  Purpose: Constructs the car object; initializes car logger, procedure scheduler, CAN dispatcher, coms, and carContainer; 
+            starts main car loop.
+*
+*  Pre-condition: The car loop hasn't already been started.
+*
+*  Post-condition: The car loop is started
+*
+*  @param none
+*
+*  @returns none 
+*
+*/
 Car::Car() {
 
     // Init behavior that needs to be called before the subsystems start running.
@@ -69,7 +84,20 @@ Car::Car() {
     execute();
 }
 
-
+/*
+*  Method: ~car() 
+*
+*  Purpose: Calls end(); Destructs the car object
+*
+*  Pre-condition: None
+*
+*  Post-condition: The car object is destroyed
+*
+*  @param none
+*
+*  @returns none 
+*
+*/
 Car::~Car(){
     // Later on we'll probably call this function as a command from the pit. Actually, 
     // the car should theoretically never be destroyed unless the program quits, which
@@ -77,6 +105,21 @@ Car::~Car(){
     end();
 }
 
+/*
+*  Method: execute
+*
+*  Purpose: Main loop for running the car; executes proceedure scheduler, CAN dispatcher, coms, data logging;
+            maintains a stable loop frequency
+*
+*  Pre-condition: 
+*
+*  Post-condition: The method enters an infinite loop to execute everything at BASE_CAR_FREQUENCY.
+*
+*  @param none
+*
+*  @returns none 
+*
+*/
 void Car::execute(){
 
     using namespace std::chrono;
@@ -131,10 +174,38 @@ void Car::execute(){
     }
 }
 
+/*
+*  Method: init
+*
+*  Purpose: Placeholder for tasks that need to happen before the subsystems start 
+*
+*  Pre-condition: None
+*
+*  Post-condition:
+*
+*  @param none
+*
+*  @returns none 
+*
+*/
 void Car::init(){
     // std::cout << "Car Sucessfully Initialized\n";
 }
 
+/*
+*  Method: end
+*
+*  Purpose: Stops the procedureScheduler 
+*
+*  Pre-condition: None
+*
+*  Post-condition: 
+*
+*  @param none
+*
+*  @returns none 
+*
+*/
 void Car::end(){
     procedureScheduler->end();
     std::cout << "Car sucessfully destroyed" << std::endl;

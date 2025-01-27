@@ -1,14 +1,14 @@
 /*
-*  Method 
+*  Method: 
 *
 *  Purpose:  
 *
 *  Pre-condition:  
 *
+*  Post-condition:
 *
-*  Parameters:
-*      parameter_name -- 
+*  @param parameter_name: 
 *
-*  Returns:  
+*  @returns  
 *
 */

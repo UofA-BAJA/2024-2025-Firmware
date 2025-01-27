@@ -4,7 +4,8 @@
  *
  *         Author:  Matthew Larson  
  *
- *        Purpose: 
+ *        Purpose:  Class for wrapper libraries to inherit from to help perform CAN communication to their devices;
+ *                  Handles interaction with the CANDispatcher; handles spam protection (each command can only send once per car cycle);
  *
  *  Inherits From:  None
  *
