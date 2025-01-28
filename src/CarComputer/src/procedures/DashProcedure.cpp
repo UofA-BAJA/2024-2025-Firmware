@@ -4,6 +4,8 @@
 #include "DashSubsystem.h"
 #include "CarTime.h"
 
+namespace BajawildcatRacing
+{
 
 class DashProcedure : public Procedure{
     public:
@@ -50,3 +52,5 @@ class DashProcedure : public Procedure{
         }
     private:
 };
+
+}

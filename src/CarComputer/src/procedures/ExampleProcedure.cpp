@@ -2,6 +2,9 @@
 #include <string>
 #include "Procedure.h"
 
+namespace BajaWildcatRacing
+{
+
 class ExampleProcedure : public Procedure {
     public:
 
@@ -36,3 +39,6 @@ class ExampleProcedure : public Procedure {
         int i = 1000;
 
 };
+
+}
+

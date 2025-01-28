@@ -8,22 +8,28 @@
 #include "Temperature.h"
 #include "Tachometer.h"
 
-class DrivetrainSubsystem{
-    public:
+namespace BajaWildcatRacing
+{
+    
+    class DrivetrainSubsystem{
+        public:
 
-        DrivetrainSubsystem(CANDispatcher* canDispatcher);
+            DrivetrainSubsystem(CANDispatcher* canDispatcher);
 
-        float getCVTTemperature();
-        bool isCVTHot();
+            float getCVTTemperature();
+            bool isCVTHot();
 
-        float getEngineRPM();
+            float getEngineRPM();
 
-    private:
-        Tachometer* tachometer;
+        private:
+            Tachometer* tachometer;
 
-        Temperature* cvtTemperature;
-        bool cvtIsHot = false;
+            Temperature* cvtTemperature;
+            bool cvtIsHot = false;
 
-};
+    };
+
+}
+
 
 #endif

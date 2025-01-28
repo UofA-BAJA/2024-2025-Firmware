@@ -17,23 +17,32 @@
 #include "IMUSubsystem.h"
 #include "DrivetrainSubsystem.h"
 
-// class Car;
+namespace BajaWildcatRacing
+{
 
-class CarContainer{
-    public:
-        CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms);
-    private:
-        IMUSubsystem* imuSubsystem;
-        IMUProcedure* imuProcedure;
+    class CarContainer{
+        public:
+            CarContainer(
+                         ProcedureScheduler* procedureScheduler,
+                         CANDispatcher* canDispatcher,
+                         DataStorage* dataStorage,
+                         Coms* coms
+                        );
+        private:
+            IMUSubsystem* imuSubsystem;
+            IMUProcedure* imuProcedure;
 
-        DashSubsystem* dashSubsystem;
-        DashProcedure* dashProcedure;
+            DashSubsystem* dashSubsystem;
+            DashProcedure* dashProcedure;
 
-        DrivetrainSubsystem* drivetrainSubsystem;
-        TemperatureProcedure* temperatureProcedure;
+            DrivetrainSubsystem* drivetrainSubsystem;
+            TemperatureProcedure* temperatureProcedure;
 
 
 
-};
+    };
+
+}
+
 
 #endif

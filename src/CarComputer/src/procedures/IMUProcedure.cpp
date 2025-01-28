@@ -7,6 +7,9 @@
 
 #include <iomanip>
 
+namespace BajaWildcatRacing
+{
+
 class IMUProcedure : public Procedure{
     public:
         IMUSubsystem* imuSubsystem;
@@ -98,3 +101,5 @@ class IMUProcedure : public Procedure{
 
     private:
 };
+
+}
