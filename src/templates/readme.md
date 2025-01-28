@@ -1,1 +1,0 @@
-Please use these templates for your commenting. Comment every single class, header, and method. 
