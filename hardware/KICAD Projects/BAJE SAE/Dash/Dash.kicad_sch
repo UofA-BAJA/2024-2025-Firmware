@@ -305,77 +305,6 @@
 				)
 			)
 		)
-		(symbol "Dash-eagle-import:FIDUCIAL"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Footprint" "Dash:FIDUCIAL_1MM"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "For use by pick and place machines to calibrate the vision/machine, 1mm\n\nBy microbuilder.eu"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "FIDUCIAL_1_0"
-				(circle
-					(center 0 0)
-					(radius 2.54)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-		)
 		(symbol "Dash-eagle-import:GND"
 			(power)
 			(exclude_from_sim no)
@@ -1135,88 +1064,6 @@
 								(size 1.27 1.27)
 							)
 						)
-					)
-				)
-			)
-		)
-		(symbol "Dash-eagle-import:MOUNTINGHOLE2.5"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Footprint" "Dash:MOUNTINGHOLE_2.5_PLATED"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Mounting Hole\n\nFor #2 screws (0.086\"/2.18mm width, 0.094\"/2.4mm hole) use 2.5mm"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "MOUNTINGHOLE2.5_1_0"
-				(circle
-					(center 0 0)
-					(radius 1.905)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 2.54)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
 					)
 				)
 			)
@@ -2058,26 +1905,26 @@
 		)
 	)
 	(junction
-		(at 119.38 72.39)
+		(at 100.33 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "69a6ef57-9dda-4449-9efb-0a3dca58df82")
 	)
 	(junction
-		(at 165.1 120.65)
+		(at 146.05 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6a6c2f29-8293-449f-8491-bd5cd37eb28e")
 	)
 	(junction
-		(at 101.6 143.51)
+		(at 82.55 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "93fab5ad-1a6d-4125-a198-27b2acca500b")
 	)
 	(wire
 		(pts
-			(xy 101.6 143.51) (xy 104.14 143.51)
+			(xy 82.55 130.81) (xy 85.09 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2087,7 +1934,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 72.39) (xy 177.8 72.39)
+			(xy 168.91 59.69) (xy 158.75 59.69)
 		)
 		(stroke
 			(width 0.1524)
@@ -2097,7 +1944,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 95.25) (xy 187.96 95.25)
+			(xy 146.05 82.55) (xy 168.91 82.55)
 		)
 		(stroke
 			(width 0.1524)
@@ -2107,7 +1954,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 140.97) (xy 198.12 140.97)
+			(xy 168.91 128.27) (xy 179.07 128.27)
 		)
 		(stroke
 			(width 0.1524)
@@ -2117,7 +1964,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 151.13) (xy 101.6 151.13)
+			(xy 77.47 138.43) (xy 82.55 138.43)
 		)
 		(stroke
 			(width 0.1524)
@@ -2127,7 +1974,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 72.39) (xy 119.38 72.39)
+			(xy 107.95 59.69) (xy 100.33 59.69)
 		)
 		(stroke
 			(width 0.1524)
@@ -2137,7 +1984,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 85.09) (xy 114.3 80.01)
+			(xy 95.25 72.39) (xy 95.25 67.31)
 		)
 		(stroke
 			(width 0.1524)
@@ -2147,7 +1994,7 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 148.59) (xy 187.96 148.59)
+			(xy 186.69 135.89) (xy 168.91 135.89)
 		)
 		(stroke
 			(width 0.1524)
@@ -2157,7 +2004,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 143.51) (xy 101.6 135.89)
+			(xy 82.55 130.81) (xy 82.55 123.19)
 		)
 		(stroke
 			(width 0.1524)
@@ -2167,7 +2014,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 143.51) (xy 187.96 143.51)
+			(xy 181.61 130.81) (xy 168.91 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2177,7 +2024,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 123.19) (xy 165.1 123.19)
+			(xy 168.91 110.49) (xy 146.05 110.49)
 		)
 		(stroke
 			(width 0.1524)
@@ -2187,7 +2034,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 135.89) (xy 63.5 135.89)
+			(xy 54.61 123.19) (xy 44.45 123.19)
 		)
 		(stroke
 			(width 0.1524)
@@ -2197,7 +2044,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 97.79) (xy 187.96 97.79)
+			(xy 146.05 85.09) (xy 168.91 85.09)
 		)
 		(stroke
 			(width 0.1524)
@@ -2207,7 +2054,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 146.05) (xy 203.2 107.95)
+			(xy 184.15 133.35) (xy 184.15 95.25)
 		)
 		(stroke
 			(width 0.1524)
@@ -2217,7 +2064,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 143.51) (xy 101.6 143.51)
+			(xy 77.47 130.81) (xy 82.55 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2227,7 +2074,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 102.87) (xy 208.28 151.13)
+			(xy 189.23 90.17) (xy 189.23 138.43)
 		)
 		(stroke
 			(width 0.1524)
@@ -2237,7 +2084,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 151.13) (xy 63.5 151.13)
+			(xy 54.61 138.43) (xy 44.45 138.43)
 		)
 		(stroke
 			(width 0.1524)
@@ -2247,7 +2094,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 87.63) (xy 187.96 87.63)
+			(xy 146.05 74.93) (xy 168.91 74.93)
 		)
 		(stroke
 			(width 0.1524)
@@ -2257,7 +2104,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 82.55) (xy 187.96 82.55)
+			(xy 146.05 69.85) (xy 168.91 69.85)
 		)
 		(stroke
 			(width 0.1524)
@@ -2267,7 +2114,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 143.51) (xy 83.82 143.51)
+			(xy 67.31 130.81) (xy 64.77 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2277,7 +2124,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 151.13) (xy 187.96 151.13)
+			(xy 189.23 138.43) (xy 168.91 138.43)
 		)
 		(stroke
 			(width 0.1524)
@@ -2287,7 +2134,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 143.51) (xy 73.66 143.51)
+			(xy 44.45 130.81) (xy 54.61 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2297,7 +2144,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 92.71) (xy 187.96 92.71)
+			(xy 146.05 80.01) (xy 168.91 80.01)
 		)
 		(stroke
 			(width 0.1524)
@@ -2307,7 +2154,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 90.17) (xy 187.96 90.17)
+			(xy 146.05 77.47) (xy 168.91 77.47)
 		)
 		(stroke
 			(width 0.1524)
@@ -2317,7 +2164,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 85.09) (xy 114.3 85.09)
+			(xy 115.57 72.39) (xy 95.25 72.39)
 		)
 		(stroke
 			(width 0.1524)
@@ -2327,7 +2174,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 138.43) (xy 187.96 138.43)
+			(xy 146.05 125.73) (xy 168.91 125.73)
 		)
 		(stroke
 			(width 0.1524)
@@ -2337,7 +2184,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 151.13) (xy 86.36 151.13)
+			(xy 64.77 138.43) (xy 67.31 138.43)
 		)
 		(stroke
 			(width 0.1524)
@@ -2347,7 +2194,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 151.13) (xy 101.6 143.51)
+			(xy 82.55 138.43) (xy 82.55 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2357,7 +2204,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 135.89) (xy 165.1 135.89)
+			(xy 168.91 123.19) (xy 146.05 123.19)
 		)
 		(stroke
 			(width 0.1524)
@@ -2367,7 +2214,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 74.93) (xy 127 74.93)
+			(xy 115.57 62.23) (xy 107.95 62.23)
 		)
 		(stroke
 			(width 0.1524)
@@ -2377,7 +2224,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 140.97) (xy 198.12 113.03)
+			(xy 179.07 128.27) (xy 179.07 100.33)
 		)
 		(stroke
 			(width 0.1524)
@@ -2387,7 +2234,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 100.33) (xy 187.96 100.33)
+			(xy 146.05 87.63) (xy 168.91 87.63)
 		)
 		(stroke
 			(width 0.1524)
@@ -2397,7 +2244,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 128.27) (xy 165.1 128.27)
+			(xy 168.91 115.57) (xy 146.05 115.57)
 		)
 		(stroke
 			(width 0.1524)
@@ -2407,7 +2254,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 69.85) (xy 177.8 69.85)
+			(xy 168.91 57.15) (xy 158.75 57.15)
 		)
 		(stroke
 			(width 0.1524)
@@ -2417,7 +2264,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 146.05) (xy 203.2 146.05)
+			(xy 168.91 133.35) (xy 184.15 133.35)
 		)
 		(stroke
 			(width 0.1524)
@@ -2427,7 +2274,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 120.65) (xy 114.3 120.65)
+			(xy 146.05 107.95) (xy 95.25 107.95)
 		)
 		(stroke
 			(width 0.1524)
@@ -2437,7 +2284,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 59.69) (xy 187.96 67.31)
+			(xy 168.91 46.99) (xy 168.91 54.61)
 		)
 		(stroke
 			(width 0.1524)
@@ -2447,7 +2294,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 135.89) (xy 83.82 135.89)
+			(xy 67.31 123.19) (xy 64.77 123.19)
 		)
 		(stroke
 			(width 0.1524)
@@ -2457,7 +2304,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 130.81) (xy 165.1 130.81)
+			(xy 168.91 118.11) (xy 146.05 118.11)
 		)
 		(stroke
 			(width 0.1524)
@@ -2467,7 +2314,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 133.35) (xy 165.1 133.35)
+			(xy 168.91 120.65) (xy 146.05 120.65)
 		)
 		(stroke
 			(width 0.1524)
@@ -2477,7 +2324,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 118.11) (xy 187.96 118.11)
+			(xy 176.53 105.41) (xy 168.91 105.41)
 		)
 		(stroke
 			(width 0.1524)
@@ -2487,7 +2334,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 74.93) (xy 187.96 74.93)
+			(xy 146.05 62.23) (xy 168.91 62.23)
 		)
 		(stroke
 			(width 0.1524)
@@ -2497,7 +2344,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 80.01) (xy 187.96 80.01)
+			(xy 146.05 67.31) (xy 168.91 67.31)
 		)
 		(stroke
 			(width 0.1524)
@@ -2507,7 +2354,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 82.55) (xy 119.38 82.55)
+			(xy 115.57 69.85) (xy 100.33 69.85)
 		)
 		(stroke
 			(width 0.1524)
@@ -2517,7 +2364,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 74.93) (xy 127 72.39)
+			(xy 107.95 62.23) (xy 107.95 59.69)
 		)
 		(stroke
 			(width 0.1524)
@@ -2527,7 +2374,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 102.87) (xy 208.28 102.87)
+			(xy 146.05 90.17) (xy 189.23 90.17)
 		)
 		(stroke
 			(width 0.1524)
@@ -2537,7 +2384,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 138.43) (xy 134.62 138.43)
+			(xy 110.49 125.73) (xy 115.57 125.73)
 		)
 		(stroke
 			(width 0.1524)
@@ -2547,7 +2394,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 125.73) (xy 187.96 125.73)
+			(xy 146.05 113.03) (xy 168.91 113.03)
 		)
 		(stroke
 			(width 0.1524)
@@ -2557,7 +2404,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 120.65) (xy 114.3 143.51)
+			(xy 95.25 107.95) (xy 95.25 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2567,7 +2414,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 110.49) (xy 200.66 110.49)
+			(xy 146.05 97.79) (xy 181.61 97.79)
 		)
 		(stroke
 			(width 0.1524)
@@ -2577,7 +2424,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 105.41) (xy 205.74 105.41)
+			(xy 146.05 92.71) (xy 186.69 92.71)
 		)
 		(stroke
 			(width 0.1524)
@@ -2587,7 +2434,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 77.47) (xy 187.96 77.47)
+			(xy 146.05 64.77) (xy 168.91 64.77)
 		)
 		(stroke
 			(width 0.1524)
@@ -2597,7 +2444,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 85.09) (xy 187.96 85.09)
+			(xy 146.05 72.39) (xy 168.91 72.39)
 		)
 		(stroke
 			(width 0.1524)
@@ -2607,7 +2454,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 135.89) (xy 96.52 135.89)
+			(xy 82.55 123.19) (xy 77.47 123.19)
 		)
 		(stroke
 			(width 0.1524)
@@ -2617,7 +2464,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 143.51) (xy 109.22 143.51)
+			(xy 95.25 130.81) (xy 90.17 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2627,7 +2474,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 107.95) (xy 165.1 107.95)
+			(xy 184.15 95.25) (xy 146.05 95.25)
 		)
 		(stroke
 			(width 0.1524)
@@ -2637,7 +2484,7 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 105.41) (xy 205.74 148.59)
+			(xy 186.69 92.71) (xy 186.69 135.89)
 		)
 		(stroke
 			(width 0.1524)
@@ -2647,7 +2494,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 110.49) (xy 200.66 143.51)
+			(xy 181.61 97.79) (xy 181.61 130.81)
 		)
 		(stroke
 			(width 0.1524)
@@ -2657,7 +2504,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 113.03) (xy 165.1 113.03)
+			(xy 179.07 100.33) (xy 146.05 100.33)
 		)
 		(stroke
 			(width 0.1524)
@@ -2667,7 +2514,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 69.85) (xy 119.38 72.39)
+			(xy 100.33 57.15) (xy 100.33 59.69)
 		)
 		(stroke
 			(width 0.1524)
@@ -2677,7 +2524,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 120.65) (xy 187.96 120.65)
+			(xy 146.05 107.95) (xy 168.91 107.95)
 		)
 		(stroke
 			(width 0.1524)
@@ -2686,7 +2533,7 @@
 		(uuid "fc88a2e1-041c-4971-aade-3381c5165fe7")
 	)
 	(label "CATH4"
-		(at 170.18 130.81 0)
+		(at 151.13 118.11 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2697,7 +2544,7 @@
 		(uuid "000802cf-c5ad-4095-81f7-8474de916b39")
 	)
 	(label "ANOD11"
-		(at 170.18 102.87 0)
+		(at 151.13 90.17 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2708,7 +2555,7 @@
 		(uuid "01a22b04-c71c-4129-a076-0e446cb18a64")
 	)
 	(label "CATH1"
-		(at 170.18 123.19 0)
+		(at 151.13 110.49 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2719,7 +2566,7 @@
 		(uuid "03be3b92-b179-42c8-8416-ca4c36c8564d")
 	)
 	(label "ANOD9"
-		(at 170.18 97.79 0)
+		(at 151.13 85.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2730,7 +2577,7 @@
 		(uuid "0dea0bd9-8fba-4a52-976e-8a069b55860a")
 	)
 	(label "ANOD8"
-		(at 170.18 95.25 0)
+		(at 151.13 82.55 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2741,7 +2588,7 @@
 		(uuid "13ea0a74-a127-4c26-b576-08f64c5ddf5b")
 	)
 	(label "SCL"
-		(at 124.46 82.55 0)
+		(at 105.41 69.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2752,7 +2599,7 @@
 		(uuid "15c3091d-cbf5-4e04-aab4-74150cb40896")
 	)
 	(label "ANOD14"
-		(at 170.18 110.49 0)
+		(at 151.13 97.79 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2763,7 +2610,7 @@
 		(uuid "16327d4c-953d-4903-a673-1ab9041bc76c")
 	)
 	(label "CATH2"
-		(at 170.18 125.73 0)
+		(at 151.13 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2774,7 +2621,7 @@
 		(uuid "388dd70b-ef1d-4f41-99ea-46107ce50532")
 	)
 	(label "ANOD7"
-		(at 170.18 92.71 0)
+		(at 151.13 80.01 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2785,7 +2632,7 @@
 		(uuid "43d2dae4-96bd-4741-a597-e393cf0f0a0a")
 	)
 	(label "SDA"
-		(at 177.8 69.85 0)
+		(at 158.75 57.15 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2796,7 +2643,7 @@
 		(uuid "4aed0dd3-0da4-48fe-8314-ac9a189b1b67")
 	)
 	(label "ANOD15"
-		(at 170.18 113.03 0)
+		(at 151.13 100.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2807,7 +2654,7 @@
 		(uuid "51ab646a-f199-46d0-a2ab-754feb24e06c")
 	)
 	(label "CATH6"
-		(at 170.18 135.89 0)
+		(at 151.13 123.19 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2818,7 +2665,7 @@
 		(uuid "567dd546-cd3e-46f6-a6d8-9b317b3b659b")
 	)
 	(label "ANOD5"
-		(at 170.18 87.63 0)
+		(at 151.13 74.93 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2829,7 +2676,7 @@
 		(uuid "60efb835-dc39-47d2-ae91-a972cf70a80d")
 	)
 	(label "ANOD6"
-		(at 170.18 90.17 0)
+		(at 151.13 77.47 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2840,7 +2687,7 @@
 		(uuid "65756cdf-7096-4b22-b672-8a139b14e17a")
 	)
 	(label "SCL"
-		(at 177.8 72.39 0)
+		(at 158.75 59.69 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2851,7 +2698,7 @@
 		(uuid "70217617-c311-4f7e-b09b-251e00762008")
 	)
 	(label "A0"
-		(at 170.18 80.01 0)
+		(at 151.13 67.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2862,7 +2709,7 @@
 		(uuid "778542b6-3ce1-43f8-a469-5751898c0b95")
 	)
 	(label "CATH0"
-		(at 170.18 120.65 0)
+		(at 151.13 107.95 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2873,7 +2720,7 @@
 		(uuid "805d4f08-8de0-45e3-bdac-33953283d9d4")
 	)
 	(label "ANOD12"
-		(at 170.18 105.41 0)
+		(at 151.13 92.71 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2884,7 +2731,7 @@
 		(uuid "815e72b3-7a86-4cb3-a5a7-f4208cd511d2")
 	)
 	(label "ANOD4"
-		(at 170.18 85.09 0)
+		(at 151.13 72.39 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2895,7 +2742,7 @@
 		(uuid "836c877a-874b-47c8-a2d3-1d21605b1bb9")
 	)
 	(label "SDA"
-		(at 124.46 85.09 0)
+		(at 105.41 72.39 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2906,7 +2753,7 @@
 		(uuid "83fe4a27-4c09-4df3-ab05-8a26db375329")
 	)
 	(label "CATH3"
-		(at 170.18 128.27 0)
+		(at 151.13 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2917,7 +2764,7 @@
 		(uuid "84684fdf-b0ad-4a01-b42a-5e41b97dbddf")
 	)
 	(label "CATH5"
-		(at 170.18 133.35 0)
+		(at 151.13 120.65 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2928,7 +2775,7 @@
 		(uuid "98574f28-79b8-4ec0-af7b-01e2030c9250")
 	)
 	(label "A0"
-		(at 63.5 135.89 0)
+		(at 44.45 123.19 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2939,7 +2786,7 @@
 		(uuid "b2c9595b-5e1f-445a-9a13-acc08612a6c3")
 	)
 	(label "A2"
-		(at 63.5 151.13 0)
+		(at 44.45 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2950,7 +2797,7 @@
 		(uuid "b651d865-0e66-49f4-b56d-48444f3ede72")
 	)
 	(label "ANOD3"
-		(at 170.18 82.55 0)
+		(at 151.13 69.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2961,7 +2808,7 @@
 		(uuid "b6bc8261-4fdd-45b3-9565-ea23a8d94438")
 	)
 	(label "ANOD10"
-		(at 170.18 100.33 0)
+		(at 151.13 87.63 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2972,7 +2819,7 @@
 		(uuid "c07c029d-0b88-4e72-b681-3b338ccbe452")
 	)
 	(label "ANOD13"
-		(at 170.18 107.95 0)
+		(at 151.13 95.25 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2983,7 +2830,7 @@
 		(uuid "d6661aaf-a3b3-4f07-a8e7-dd8a14cf3f0b")
 	)
 	(label "A2"
-		(at 170.18 74.93 0)
+		(at 151.13 62.23 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2994,7 +2841,7 @@
 		(uuid "dab710bf-1c1c-41b9-b809-1d6c57d1c27a")
 	)
 	(label "A1"
-		(at 170.18 77.47 0)
+		(at 151.13 64.77 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3005,7 +2852,7 @@
 		(uuid "ee758e79-816d-4485-b7c0-2d47f2e111aa")
 	)
 	(label "A1"
-		(at 63.5 143.51 0)
+		(at 44.45 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3016,7 +2863,7 @@
 		(uuid "f1db1810-347a-42f3-aa79-f58b32c6ab6f")
 	)
 	(label "CATH7"
-		(at 170.18 138.43 0)
+		(at 151.13 125.73 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3027,71 +2874,8 @@
 		(uuid "fcfcf3d9-0255-4e8d-be7a-b471697fc38d")
 	)
 	(symbol
-		(lib_id "Dash-eagle-import:MOUNTINGHOLE2.5")
-		(at 147.32 46.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1646a42a-eeb3-42df-9b69-6b845d3b6609")
-		(property "Reference" "U$3"
-			(at 147.32 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "MOUNTINGHOLE2.5"
-			(at 147.32 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Dash:MOUNTINGHOLE_2.5_PLATED"
-			(at 147.32 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 147.32 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 147.32 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "Dash"
-				(path "/be3b78f4-ad13-4888-8462-4871f60e9240"
-					(reference "U$3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Dash-eagle-import:VDD")
-		(at 119.38 67.31 0)
+		(at 100.33 54.61 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3100,7 +2884,7 @@
 		(dnp no)
 		(uuid "20f9f740-76ea-4d63-87a9-c27ed21d45e8")
 		(property "Reference" "#VDD03"
-			(at 119.38 67.31 0)
+			(at 100.33 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3109,7 +2893,7 @@
 			)
 		)
 		(property "Value" "VDD"
-			(at 121.92 69.85 90)
+			(at 102.87 57.15 90)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3118,7 +2902,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 119.38 67.31 0)
+			(at 100.33 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3127,7 +2911,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 119.38 67.31 0)
+			(at 100.33 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3136,7 +2920,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 119.38 67.31 0)
+			(at 100.33 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3158,7 +2942,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:DIODESOD-323F")
-		(at 106.68 143.51 180)
+		(at 87.63 130.81 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3166,7 +2950,7 @@
 		(dnp no)
 		(uuid "2a581d95-9504-4227-b3b4-cdfa3a4dae67")
 		(property "Reference" "D1"
-			(at 109.22 146.05 0)
+			(at 90.17 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.0795)
@@ -3175,7 +2959,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 109.22 139.7 0)
+			(at 90.17 127 0)
 			(effects
 				(font
 					(size 1.27 1.0795)
@@ -3184,7 +2968,7 @@
 			)
 		)
 		(property "Footprint" "Dash:SOD-323F"
-			(at 106.68 143.51 0)
+			(at 87.63 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3193,7 +2977,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 106.68 143.51 0)
+			(at 87.63 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3202,7 +2986,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 106.68 143.51 0)
+			(at 87.63 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3226,71 +3010,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Dash-eagle-import:MOUNTINGHOLE2.5")
-		(at 132.08 46.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2e60904e-ed16-427b-a3b9-f6fee13e55b8")
-		(property "Reference" "U$1"
-			(at 132.08 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "MOUNTINGHOLE2.5"
-			(at 132.08 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Dash:MOUNTINGHOLE_2.5_PLATED"
-			(at 132.08 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 132.08 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 132.08 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "Dash"
-				(path "/be3b78f4-ad13-4888-8462-4871f60e9240"
-					(reference "U$1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Dash-eagle-import:R-US_R0805")
-		(at 91.44 143.51 180)
+		(at 72.39 130.81 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3298,7 +3019,7 @@
 		(dnp no)
 		(uuid "343932d6-5b7b-436b-856d-7978566c2f34")
 		(property "Reference" "R2"
-			(at 95.25 145.0086 0)
+			(at 76.2 132.3086 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3307,7 +3028,7 @@
 			)
 		)
 		(property "Value" "47K"
-			(at 95.25 140.208 0)
+			(at 76.2 127.508 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3316,7 +3037,7 @@
 			)
 		)
 		(property "Footprint" "Dash:R0805"
-			(at 91.44 143.51 0)
+			(at 72.39 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3325,7 +3046,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 143.51 0)
+			(at 72.39 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3334,7 +3055,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 91.44 143.51 0)
+			(at 72.39 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3359,7 +3080,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:R-US_R0805")
-		(at 114.3 74.93 270)
+		(at 95.25 62.23 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3367,7 +3088,7 @@
 		(dnp no)
 		(uuid "3a62af1c-f3b0-468b-8ed0-9fb344edf172")
 		(property "Reference" "R4"
-			(at 115.7986 71.12 0)
+			(at 96.7486 58.42 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3376,7 +3097,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 110.998 71.12 0)
+			(at 91.948 58.42 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3385,7 +3106,7 @@
 			)
 		)
 		(property "Footprint" "Dash:R0805"
-			(at 114.3 74.93 0)
+			(at 95.25 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3394,7 +3115,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 74.93 0)
+			(at 95.25 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3403,7 +3124,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 114.3 74.93 0)
+			(at 95.25 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3428,7 +3149,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:C-USC0805")
-		(at 96.52 102.87 0)
+		(at 77.47 90.17 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3436,7 +3157,7 @@
 		(dnp no)
 		(uuid "3bedeb65-b014-44cf-9eba-955a8508e24c")
 		(property "Reference" "C1"
-			(at 97.536 102.235 0)
+			(at 78.486 89.535 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3445,7 +3166,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 97.536 107.061 0)
+			(at 78.486 94.361 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3454,7 +3175,7 @@
 			)
 		)
 		(property "Footprint" "Dash:C0805"
-			(at 96.52 102.87 0)
+			(at 77.47 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3463,7 +3184,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 96.52 102.87 0)
+			(at 77.47 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3472,7 +3193,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 96.52 102.87 0)
+			(at 77.47 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3497,7 +3218,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:HT16K33_SOP28")
-		(at 149.86 100.33 0)
+		(at 130.81 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3505,7 +3226,7 @@
 		(dnp no)
 		(uuid "44657372-48ab-44f9-b6df-39e5dc19e62b")
 		(property "Reference" "U1"
-			(at 137.16 59.69 0)
+			(at 118.11 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.0795)
@@ -3514,7 +3235,7 @@
 			)
 		)
 		(property "Value" "28-SOIC"
-			(at 137.16 143.51 0)
+			(at 118.11 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.0795)
@@ -3522,8 +3243,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Dash:SOP28_300MIL"
-			(at 149.86 100.33 0)
+		(property "Footprint" "BAJA SAE:Adafruit HT16K33 breakout"
+			(at 130.81 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3532,7 +3253,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 149.86 100.33 0)
+			(at 130.81 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3541,7 +3262,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 149.86 100.33 0)
+			(at 130.81 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3643,71 +3364,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Dash-eagle-import:FIDUCIAL")
-		(at 147.32 146.05 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5e8822c1-cab3-4760-9296-68528bfc019a")
-		(property "Reference" "U$4"
-			(at 147.32 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "FIDUCIAL"
-			(at 147.32 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Dash:FIDUCIAL_1MM"
-			(at 147.32 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 147.32 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 147.32 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "Dash"
-				(path "/be3b78f4-ad13-4888-8462-4871f60e9240"
-					(reference "U$4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Dash-eagle-import:SOLDERJUMPERREFLOW_NOPASTE")
-		(at 78.74 135.89 180)
+		(at 59.69 123.19 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3715,7 +3373,7 @@
 		(dnp no)
 		(uuid "6662a7b4-cac6-4a12-a416-0db3b6d53c38")
 		(property "Reference" "A1"
-			(at 81.28 138.43 0)
+			(at 62.23 125.73 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3724,7 +3382,7 @@
 			)
 		)
 		(property "Value" "SOLDERJUMPERREFLOW_NOPASTE"
-			(at 81.28 132.08 0)
+			(at 62.23 119.38 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3734,7 +3392,7 @@
 			)
 		)
 		(property "Footprint" "Dash:SOLDERJUMPER_REFLOW_NOPASTE"
-			(at 78.74 135.89 0)
+			(at 59.69 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3743,7 +3401,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 135.89 0)
+			(at 59.69 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3752,7 +3410,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 135.89 0)
+			(at 59.69 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3777,7 +3435,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:R-US_R0805")
-		(at 91.44 135.89 180)
+		(at 72.39 123.19 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3785,7 +3443,7 @@
 		(dnp no)
 		(uuid "68829ed5-8098-4e5b-a240-9425b3c8c682")
 		(property "Reference" "R1"
-			(at 95.25 137.3886 0)
+			(at 76.2 124.6886 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3794,7 +3452,7 @@
 			)
 		)
 		(property "Value" "47K"
-			(at 95.25 132.588 0)
+			(at 76.2 119.888 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3803,7 +3461,7 @@
 			)
 		)
 		(property "Footprint" "Dash:R0805"
-			(at 91.44 135.89 0)
+			(at 72.39 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3812,7 +3470,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 135.89 0)
+			(at 72.39 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3821,7 +3479,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 91.44 135.89 0)
+			(at 72.39 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3845,71 +3503,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Dash-eagle-import:FIDUCIAL")
-		(at 144.78 153.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "75e27b83-0c26-4c77-b8ba-d3db210ad4c9")
-		(property "Reference" "U$2"
-			(at 144.78 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "FIDUCIAL"
-			(at 144.78 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Dash:FIDUCIAL_1MM"
-			(at 144.78 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 144.78 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 144.78 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "Dash"
-				(path "/be3b78f4-ad13-4888-8462-4871f60e9240"
-					(reference "U$2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Dash-eagle-import:R-US_R0805")
-		(at 119.38 77.47 270)
+		(at 100.33 64.77 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3917,7 +3512,7 @@
 		(dnp no)
 		(uuid "762ae5da-59ca-4e92-a3c7-eccbf38ca580")
 		(property "Reference" "R5"
-			(at 120.8786 73.66 0)
+			(at 101.8286 60.96 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3926,7 +3521,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 116.078 73.66 0)
+			(at 97.028 60.96 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -3935,7 +3530,7 @@
 			)
 		)
 		(property "Footprint" "Dash:R0805"
-			(at 119.38 77.47 0)
+			(at 100.33 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3944,7 +3539,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 119.38 77.47 0)
+			(at 100.33 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3953,7 +3548,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 119.38 77.47 0)
+			(at 100.33 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3978,7 +3573,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:VDD")
-		(at 96.52 97.79 0)
+		(at 77.47 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3986,7 +3581,7 @@
 		(dnp no)
 		(uuid "7dca987f-4dfa-4e1a-bf80-1de67dbc54e3")
 		(property "Reference" "#VDD01"
-			(at 96.52 97.79 0)
+			(at 77.47 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3995,7 +3590,7 @@
 			)
 		)
 		(property "Value" "VDD"
-			(at 93.98 100.33 90)
+			(at 74.93 87.63 90)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4004,7 +3599,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 96.52 97.79 0)
+			(at 77.47 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4013,7 +3608,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 96.52 97.79 0)
+			(at 77.47 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4022,7 +3617,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 96.52 97.79 0)
+			(at 77.47 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4044,7 +3639,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:SOLDERJUMPERREFLOW_NOPASTE")
-		(at 78.74 151.13 180)
+		(at 59.69 138.43 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4052,7 +3647,7 @@
 		(dnp no)
 		(uuid "a228f61c-112f-4b4b-8cac-ea1e2b600b11")
 		(property "Reference" "A3"
-			(at 81.28 153.67 0)
+			(at 62.23 140.97 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4061,7 +3656,7 @@
 			)
 		)
 		(property "Value" "SOLDERJUMPERREFLOW_NOPASTE"
-			(at 81.28 147.32 0)
+			(at 62.23 134.62 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4071,7 +3666,7 @@
 			)
 		)
 		(property "Footprint" "Dash:SOLDERJUMPER_REFLOW_NOPASTE"
-			(at 78.74 151.13 0)
+			(at 59.69 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4080,7 +3675,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 151.13 0)
+			(at 59.69 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4089,7 +3684,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 151.13 0)
+			(at 59.69 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4114,7 +3709,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:GND")
-		(at 129.54 140.97 0)
+		(at 110.49 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4122,7 +3717,7 @@
 		(dnp no)
 		(uuid "aaa3b289-bcc8-43cb-98a1-9606daba45d3")
 		(property "Reference" "#GND02"
-			(at 129.54 140.97 0)
+			(at 110.49 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4131,7 +3726,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 127 143.51 0)
+			(at 107.95 130.81 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4140,7 +3735,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 129.54 140.97 0)
+			(at 110.49 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4149,7 +3744,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 129.54 140.97 0)
+			(at 110.49 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4158,7 +3753,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 129.54 140.97 0)
+			(at 110.49 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4179,71 +3774,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Dash-eagle-import:FIDUCIAL")
-		(at 152.4 153.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b238de42-9326-44ee-b64d-d425c82e6824")
-		(property "Reference" "U$5"
-			(at 152.4 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "FIDUCIAL"
-			(at 152.4 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Dash:FIDUCIAL_1MM"
-			(at 152.4 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 152.4 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 152.4 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "Dash"
-				(path "/be3b78f4-ad13-4888-8462-4871f60e9240"
-					(reference "U$5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Dash-eagle-import:SOLDERJUMPERREFLOW_NOPASTE")
-		(at 78.74 143.51 180)
+		(at 59.69 130.81 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4251,7 +3783,7 @@
 		(dnp no)
 		(uuid "b4e1cd5a-2562-4449-b8eb-f8047e1252b9")
 		(property "Reference" "A2"
-			(at 81.28 146.05 0)
+			(at 62.23 133.35 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4260,7 +3792,7 @@
 			)
 		)
 		(property "Value" "SOLDERJUMPERREFLOW_NOPASTE"
-			(at 81.28 139.7 0)
+			(at 62.23 127 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4270,7 +3802,7 @@
 			)
 		)
 		(property "Footprint" "Dash:SOLDERJUMPER_REFLOW_NOPASTE"
-			(at 78.74 143.51 0)
+			(at 59.69 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4279,7 +3811,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 143.51 0)
+			(at 59.69 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4288,7 +3820,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 143.51 0)
+			(at 59.69 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4313,7 +3845,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:PINHD-1X14-CB")
-		(at 190.5 133.35 0)
+		(at 171.45 120.65 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4321,7 +3853,7 @@
 		(dnp no)
 		(uuid "bb4e13bf-8632-4896-894c-7e423f3fa99e")
 		(property "Reference" "JP2"
-			(at 184.15 114.935 0)
+			(at 165.1 102.235 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4330,7 +3862,7 @@
 			)
 		)
 		(property "Value" "PINHD-1X14-CB"
-			(at 184.15 156.21 0)
+			(at 165.1 143.51 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4340,7 +3872,7 @@
 			)
 		)
 		(property "Footprint" "Dash:1X14-CB"
-			(at 190.5 133.35 0)
+			(at 171.45 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4349,7 +3881,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 133.35 0)
+			(at 171.45 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4358,7 +3890,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 190.5 133.35 0)
+			(at 171.45 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4419,7 +3951,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:VDD")
-		(at 187.96 57.15 0)
+		(at 168.91 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4427,7 +3959,7 @@
 		(dnp no)
 		(uuid "c2c268da-42e3-415c-8dd0-87847b3b418c")
 		(property "Reference" "#VDD04"
-			(at 187.96 57.15 0)
+			(at 168.91 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4436,7 +3968,7 @@
 			)
 		)
 		(property "Value" "VDD"
-			(at 185.42 59.69 90)
+			(at 166.37 46.99 90)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4445,7 +3977,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 187.96 57.15 0)
+			(at 168.91 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4454,7 +3986,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 187.96 57.15 0)
+			(at 168.91 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4463,7 +3995,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 187.96 57.15 0)
+			(at 168.91 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4485,7 +4017,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:GND")
-		(at 195.58 120.65 0)
+		(at 176.53 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4493,7 +4025,7 @@
 		(dnp no)
 		(uuid "c82034ca-1ccc-4c73-bafc-472b54279791")
 		(property "Reference" "#GND03"
-			(at 195.58 120.65 0)
+			(at 176.53 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4502,7 +4034,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 193.04 123.19 0)
+			(at 173.99 110.49 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4511,7 +4043,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 120.65 0)
+			(at 176.53 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4520,7 +4052,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 120.65 0)
+			(at 176.53 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4529,7 +4061,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 195.58 120.65 0)
+			(at 176.53 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4551,7 +4083,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:PINHD-1X14-CB")
-		(at 190.5 85.09 0)
+		(at 171.45 72.39 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4560,7 +4092,7 @@
 		(dnp no)
 		(uuid "ca71b487-9f31-4cd2-a83f-ee6bff0a8bc7")
 		(property "Reference" "JP1"
-			(at 184.15 103.505 0)
+			(at 165.1 90.805 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4569,7 +4101,7 @@
 			)
 		)
 		(property "Value" "PINHD-1X14-CB"
-			(at 184.15 62.23 0)
+			(at 165.1 49.53 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4579,7 +4111,7 @@
 			)
 		)
 		(property "Footprint" "Dash:1X14-CB"
-			(at 190.5 85.09 0)
+			(at 171.45 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4588,7 +4120,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 85.09 0)
+			(at 171.45 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4597,7 +4129,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 190.5 85.09 0)
+			(at 171.45 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4658,7 +4190,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:R-US_R0805")
-		(at 91.44 151.13 180)
+		(at 72.39 138.43 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4666,7 +4198,7 @@
 		(dnp no)
 		(uuid "dc3e9646-3154-4445-8337-fe2661c5a43d")
 		(property "Reference" "R3"
-			(at 95.25 152.6286 0)
+			(at 76.2 139.9286 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4675,7 +4207,7 @@
 			)
 		)
 		(property "Value" "47K"
-			(at 95.25 147.828 0)
+			(at 76.2 135.128 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4684,7 +4216,7 @@
 			)
 		)
 		(property "Footprint" "Dash:R0805"
-			(at 91.44 151.13 0)
+			(at 72.39 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4693,7 +4225,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 151.13 0)
+			(at 72.39 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4702,7 +4234,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 91.44 151.13 0)
+			(at 72.39 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4727,7 +4259,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:GND")
-		(at 96.52 110.49 0)
+		(at 77.47 97.79 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4735,7 +4267,7 @@
 		(dnp no)
 		(uuid "ec2897fc-0712-4fdd-bae9-bce1b75b35e1")
 		(property "Reference" "#GND01"
-			(at 96.52 110.49 0)
+			(at 77.47 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4744,7 +4276,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 93.98 113.03 0)
+			(at 74.93 100.33 0)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4753,7 +4285,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 96.52 110.49 0)
+			(at 77.47 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4762,7 +4294,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 96.52 110.49 0)
+			(at 77.47 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4771,7 +4303,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 96.52 110.49 0)
+			(at 77.47 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4793,7 +4325,7 @@
 	)
 	(symbol
 		(lib_id "Dash-eagle-import:VDD")
-		(at 114.3 67.31 0)
+		(at 95.25 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4801,7 +4333,7 @@
 		(dnp no)
 		(uuid "f37a3fd1-bb3c-46f5-b22e-4bb82b999adf")
 		(property "Reference" "#VDD02"
-			(at 114.3 67.31 0)
+			(at 95.25 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4810,7 +4342,7 @@
 			)
 		)
 		(property "Value" "VDD"
-			(at 111.76 69.85 90)
+			(at 92.71 57.15 90)
 			(effects
 				(font
 					(size 1.778 1.5113)
@@ -4819,7 +4351,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 114.3 67.31 0)
+			(at 95.25 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4828,7 +4360,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 67.31 0)
+			(at 95.25 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4837,7 +4369,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 114.3 67.31 0)
+			(at 95.25 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
