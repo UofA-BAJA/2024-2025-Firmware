@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "0_Custom")(type "KiCad")(uri "${KIPRJMOD}/0_Custom.kicad_sym")(options "")(descr ""))
+  (lib (name "Dash-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/Dash-eagle-import.kicad_sym")(options "")(descr ""))
+)
