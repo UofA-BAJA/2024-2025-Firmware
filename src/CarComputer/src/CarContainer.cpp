@@ -35,6 +35,7 @@
 
 namespace BajaWildcatRacing
 {
+
     CarContainer::CarContainer(
                                ProcedureScheduler* procedureScheduler, 
                                CANDispatcher* canDispatcher,

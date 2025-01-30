@@ -31,6 +31,17 @@ namespace BajaWildcatRacing
             void init();
             void execute();
             void end();
+
+            const char* canInterface = "can0";
+            const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
+            const char* logPath = "/home/bajaelectrical/car.log";
+
+            CarContainer carContainer;
+            ProcedureScheduler procedureScheduler;
+            CANDispatcher canDispatcher;
+            DataStorage dataStorage;
+            Coms coms;
+
     };
 
 }

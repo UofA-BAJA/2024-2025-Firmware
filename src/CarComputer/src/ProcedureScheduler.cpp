@@ -58,7 +58,7 @@ namespace BajaWildcatRacing
 
     void ProcedureScheduler::execute(){
 
-        for(auto keyValuePair : activeProcedures){
+        for(const auto& keyValuePair : activeProcedures){
             
             auto& procedures = keyValuePair.second;  // Reference to the set of procedures
 
@@ -112,7 +112,7 @@ namespace BajaWildcatRacing
         // ! We're going to get a bug here! We need to do this the way it's done in the 
         // ! execute method above. (The bug will be a )
         for(auto keyValuePair : activeProcedures){
-            for(auto procedure : activeProcedures[keyValuePair.first]){
+            for(const auto& procedure : activeProcedures[keyValuePair.first]){
                 procedure->end();
                 activeProcedures[keyValuePair.first].erase(procedure);
             }
@@ -158,7 +158,7 @@ namespace BajaWildcatRacing
     void ProcedureScheduler::receiveComCommand(Command command){
 
         // Iterates through all the procedures bounded to command
-        for(auto procedure : totalProcedures[command]){
+        for(const auto& procedure : totalProcedures[command]){
 
             // If the procedure is already active, then obviously we don't want to activate it again, right...?
             if(activeProcedures[command].find(procedure) == activeProcedures[command].end()){

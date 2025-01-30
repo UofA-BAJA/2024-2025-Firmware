@@ -15,6 +15,8 @@
 #include <mutex>
 #include <thread>
 #include <chrono> // I believe this is used for the sleep function in the executeRadio loop
+#include <bitset> // No idea what this is for, but I think it's important for something
+
 
 // Radio library
 #include <RF24/RF24.h>
@@ -46,6 +48,12 @@ namespace BajaWildcatRacing
             void execute(float timestamp);
 
         private:
+
+            // This radio should only be accessed from the radioThread
+            // We do not want a mutex to protect it, as it would bee very slow
+            // and defeat the purpose of multithreading
+            RF24 radio;
+
             const bool RADIO_ACTIVE = true;
 
             PitCommandState currentPitCommandState = PitCommandState::IDLE;

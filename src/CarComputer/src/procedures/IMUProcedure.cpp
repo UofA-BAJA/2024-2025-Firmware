@@ -16,26 +16,25 @@ class IMUProcedure : public Procedure{
         DataStorage* dataStorage;
         Coms* coms;
 
-        LiveDataStream* xRotStream;
-        LiveDataStream* yRotStream;
-        LiveDataStream* zRotStream;
-        LiveDataStream* xAccStream;
-        LiveDataStream* yAccStream;
-        LiveDataStream* zAccStream;
+        LiveDataStream xRotStream;
+        LiveDataStream yRotStream;
+        LiveDataStream zRotStream;
+        LiveDataStream xAccStream;
+        LiveDataStream yAccStream;
+        LiveDataStream zAccStream;
 
 
-        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms){
+        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms)
+        : xRotStream(DataTypes::IMU_ROTATION_X)
+        , yRotStream(DataTypes::IMU_ROTATION_Y)
+        , zRotStream(DataTypes::IMU_ROTATION_Z)
+        , xAccStream(DataTypes::IMU_ACCELERATION_X)
+        , yAccStream(DataTypes::IMU_ACCELERATION_Y)
+        , zAccStream(DataTypes::IMU_ACCELERATION_Z)
+        {
             this->imuSubsystem = imuSubsystem;
             this->dataStorage = dataStorage;
             this->coms = coms;
-
-            xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
-            yRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Y);
-            zRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Z);
-
-            xAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_X);
-            yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
-            zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
 
             coms->addNewLiveDataStream(yRotStream);
             coms->addNewLiveDataStream(xRotStream);
@@ -71,13 +70,13 @@ class IMUProcedure : public Procedure{
             dataStorage->storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
             dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
 
-            xRotStream->enqueue(xRot);
-            yRotStream->enqueue(yRot);
-            zRotStream->enqueue(zRot);
+            xRotStream.enqueue(xRot);
+            yRotStream.enqueue(yRot);
+            zRotStream.enqueue(zRot);
 
-            xAccStream->enqueue(xAccel);
-            yAccStream->enqueue(yAccel);
-            zAccStream->enqueue(zAccel);
+            xAccStream.enqueue(xAccel);
+            yAccStream.enqueue(yAccel);
+            zAccStream.enqueue(zAccel);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);

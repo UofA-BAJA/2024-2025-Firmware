@@ -35,7 +35,6 @@
 
 #include "Coms.h"
 
-#include <bitset>
 // To look at the example linux implementation for the nrf24l01, look at the RF24 github:
 // https://github.com/nRF24/RF24/tree/master
 // Specifically, this file:
@@ -48,12 +47,9 @@
 namespace BajaWildcatRacing
 {
 
-    // This radio should only be accessed from the radioThread
-    // We do not want a mutex to protect it, as it would bee very slow
-    // and defeat the purpose of multithreading
-    RF24 radio(CE_PIN, CSN_PIN);
-
-    Coms::Coms(ProcedureScheduler* procedureScheduler){
+    Coms::Coms(ProcedureScheduler* procedureScheduler)
+    : radio(CE_PIN, CSN_PIN)
+    {
         
         this->procedureScheduler = procedureScheduler;
 
