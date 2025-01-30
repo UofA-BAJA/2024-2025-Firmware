@@ -9,19 +9,24 @@
 #include "Constants.h"
 #include "CarLogger.h"
 
-class ProcedureScheduler{
-    public:
-        ProcedureScheduler();
-        void execute();
-        void end();
+namespace BajaWildcatRacing
+{
 
-        void bindCommand(Procedure* procedure, Command command);
-        void receiveComCommand(Command command);
+    class ProcedureScheduler{
+        public:
+            ProcedureScheduler();
+            void execute();
+            void end();
 
-    private:
-        std::unordered_map<Command, std::unordered_set<Procedure*>> totalProcedures;
-        std::unordered_map<Command, std::unordered_set<Procedure*>> activeProcedures;
+            void bindCommand(Procedure* procedure, Command command);
+            void receiveComCommand(Command command);
 
-};
+        private:
+            std::unordered_map<Command, std::unordered_set<Procedure*>> totalProcedures;
+            std::unordered_map<Command, std::unordered_set<Procedure*>> activeProcedures;
+
+    };
+
+}
 
 #endif

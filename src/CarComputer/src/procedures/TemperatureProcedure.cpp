@@ -7,6 +7,9 @@
 
 #include <iomanip>
 
+namespace BajaWildcatRacing
+{
+
 class TemperatureProcedure : public Procedure{
     public:
         DrivetrainSubsystem* drivetrainSubsystem;
@@ -69,3 +72,5 @@ class TemperatureProcedure : public Procedure{
 
     private:
 };
+
+}

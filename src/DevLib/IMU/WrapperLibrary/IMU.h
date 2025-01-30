@@ -10,28 +10,34 @@
 
 #include <chrono>
 
-class IMU : CANDevice {
+namespace BajaWildcatRacing
+{
 
-    public:
-        IMU(CANDispatcher* canDispatcher);
+    class IMU : CANDevice {
 
-        float getLatestRotationX();
-        float getLatestRotationY();
-        float getLatestRotationZ();
+        public:
+            IMU(CANDispatcher* canDispatcher);
 
-        float getLatestAccelerationX();
-        float getLatestAccelerationY();
-        float getLatestAccelerationZ();
-    private:
+            float getLatestRotationX();
+            float getLatestRotationY();
+            float getLatestRotationZ();
 
-        float rotX = 0;
-        float rotY = 0;
-        float rotZ = 0;
+            float getLatestAccelerationX();
+            float getLatestAccelerationY();
+            float getLatestAccelerationZ();
+        private:
 
-        float accX = 0;
-        float accY = 0;
-        float accZ = 0;
-};
+            float rotX = 0;
+            float rotY = 0;
+            float rotZ = 0;
+
+            float accX = 0;
+            float accY = 0;
+            float accZ = 0;
+    };
+
+}
+
 
 
 #endif

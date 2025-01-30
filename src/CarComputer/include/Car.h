@@ -1,10 +1,3 @@
-/* 
- * Defines all of the subsystems on the car
- * 
- * 
- * Author: Matthew Larson
- */
-
 #ifndef CAR_H
 #define CAR_H
 
@@ -24,17 +17,23 @@
 
 #include "CarTime.h"
 
-class Car{
+namespace BajaWildcatRacing
+{
 
-    public:
-        // static float time;
-        Car();
-        ~Car();
+    class Car{
 
-    private:
-        void init();
-        void execute();
-        void end();
-};
+        public:
+            // static float time;
+            Car();
+            ~Car();
+
+        private:
+            void init();
+            void execute();
+            void end();
+    };
+
+}
+
 
 #endif

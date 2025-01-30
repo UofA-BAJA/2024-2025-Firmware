@@ -30,43 +30,47 @@
 
 #include "IMU.h"
 
+namespace BajaWildcatRacing
+{
 
-IMU::IMU(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
+    IMU::IMU(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
 
-}
+    }
 
-float IMU::getLatestAccelerationX(){
+    float IMU::getLatestAccelerationX(){
 
-    sendCanCommand(Device::IMU, 0x04, &accX);
-    return accX;
+        sendCanCommand(Device::IMU, 0x04, &accX);
+        return accX;
 
-}
+    }
 
-float IMU::getLatestAccelerationY(){
+    float IMU::getLatestAccelerationY(){
 
-    sendCanCommand(Device::IMU, 0x05, &accY);
-    return accY;
+        sendCanCommand(Device::IMU, 0x05, &accY);
+        return accY;
 
-}
+    }
 
-float IMU::getLatestAccelerationZ(){
+    float IMU::getLatestAccelerationZ(){
 
-    sendCanCommand(Device::IMU, 0x06, &accZ);
-    return accZ;
+        sendCanCommand(Device::IMU, 0x06, &accZ);
+        return accZ;
 
-}
+    }
 
-float IMU::getLatestRotationX(){
-    sendCanCommand(Device::IMU, 0x01, &rotX);
-    return rotX;
-}
+    float IMU::getLatestRotationX(){
+        sendCanCommand(Device::IMU, 0x01, &rotX);
+        return rotX;
+    }
 
-float IMU::getLatestRotationY(){
-    sendCanCommand(Device::IMU, 0x02, &rotY);
-    return rotY;
-}
+    float IMU::getLatestRotationY(){
+        sendCanCommand(Device::IMU, 0x02, &rotY);
+        return rotY;
+    }
 
-float IMU::getLatestRotationZ(){
-    sendCanCommand(Device::IMU, 0x03, &rotZ);
-    return rotZ;
+    float IMU::getLatestRotationZ(){
+        sendCanCommand(Device::IMU, 0x03, &rotZ);
+        return rotZ;
+    }
+
 }
