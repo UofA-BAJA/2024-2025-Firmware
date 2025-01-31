@@ -33,7 +33,7 @@
 namespace BajaWildcatRacing
 {
 
-    IMU::IMU(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
+    IMU::IMU(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
 
     }
 

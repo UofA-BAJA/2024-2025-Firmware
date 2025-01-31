@@ -47,12 +47,11 @@
 namespace BajaWildcatRacing
 {
 
-    Coms::Coms(ProcedureScheduler* procedureScheduler)
+    Coms::Coms(ProcedureScheduler& procedureScheduler)
     : radio(CE_PIN, CSN_PIN)
+    , procedureScheduler(procedureScheduler)
     {
         
-        this->procedureScheduler = procedureScheduler;
-
         radioThread = std::thread(&Coms::executeRadio, this);
     }
 
@@ -121,7 +120,7 @@ namespace BajaWildcatRacing
             radio.read(&ackData, 1);
 
             if(ackData == Command::START_LOG){
-                procedureScheduler->receiveComCommand(Command::START_LOG);
+                procedureScheduler.receiveComCommand(Command::START_LOG);
 
                 currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
             }

@@ -3,14 +3,15 @@
 namespace BajaWildcatRacing
 {
 
-    DrivetrainSubsystem::DrivetrainSubsystem(CANDispatcher* canDispatcher){
-        cvtTemperature = new Temperature(canDispatcher);
-        tachometer = new Tachometer(canDispatcher);
+    DrivetrainSubsystem::DrivetrainSubsystem(CANDispatcher& canDispatcher)
+    : cvtTemperature(canDispatcher)
+    , tachometer(canDispatcher)
+    {
 
     }
 
     float DrivetrainSubsystem::getCVTTemperature(){
-        float temperature = cvtTemperature->getLatestTemperature();
+        float temperature = cvtTemperature.getLatestTemperature();
         if(temperature > 40) cvtIsHot = true;
         else cvtIsHot = false;
         return temperature;
@@ -21,7 +22,7 @@ namespace BajaWildcatRacing
     }
 
     float DrivetrainSubsystem::getEngineRPM(){
-        return tachometer->getEngineRPM();
+        return tachometer.getEngineRPM();
     }
 
 }

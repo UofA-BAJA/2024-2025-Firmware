@@ -41,7 +41,7 @@ namespace BajaWildcatRacing
 
 
         public:
-            Coms(ProcedureScheduler* procedureScheduler);
+            Coms(ProcedureScheduler& procedureScheduler);
 
             void addNewLiveDataStream(LiveDataStream* stream);
 
@@ -71,7 +71,7 @@ namespace BajaWildcatRacing
             const int maxPackets = 6;
             void sortPackets(DataPacket packets[]);
 
-            ProcedureScheduler* procedureScheduler;
+            ProcedureScheduler& procedureScheduler;
             LiveDataStream* liveDataStreams[32];
 
             int liveStreamCount = 0;

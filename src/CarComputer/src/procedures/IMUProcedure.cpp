@@ -12,36 +12,37 @@ namespace BajaWildcatRacing
 
 class IMUProcedure : public Procedure{
     public:
-        IMUSubsystem* imuSubsystem;
-        DataStorage* dataStorage;
-        Coms* coms;
+        IMUSubsystem& imuSubsystem;
+        DataStorage& dataStorage;
+        Coms& coms;
 
-        LiveDataStream xRotStream;
-        LiveDataStream yRotStream;
-        LiveDataStream zRotStream;
-        LiveDataStream xAccStream;
-        LiveDataStream yAccStream;
-        LiveDataStream zAccStream;
+        LiveDataStream* xRotStream;
+        LiveDataStream* yRotStream;
+        LiveDataStream* zRotStream;
+        LiveDataStream* xAccStream;
+        LiveDataStream* yAccStream;
+        LiveDataStream* zAccStream;
 
 
-        IMUProcedure(IMUSubsystem *imuSubsystem, DataStorage* dataStorage, Coms* coms)
-        : xRotStream(DataTypes::IMU_ROTATION_X)
-        , yRotStream(DataTypes::IMU_ROTATION_Y)
-        , zRotStream(DataTypes::IMU_ROTATION_Z)
-        , xAccStream(DataTypes::IMU_ACCELERATION_X)
-        , yAccStream(DataTypes::IMU_ACCELERATION_Y)
-        , zAccStream(DataTypes::IMU_ACCELERATION_Z)
+        IMUProcedure(IMUSubsystem& imuSubsystem, DataStorage& dataStorage, Coms& coms)
+        : imuSubsystem(imuSubsystem)
+        , dataStorage(dataStorage)
+        , coms(coms)
         {
-            this->imuSubsystem = imuSubsystem;
-            this->dataStorage = dataStorage;
-            this->coms = coms;
+            
+            xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
+            yRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Y);
+            zRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Z);
+            xAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_X);
+            yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
+            zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
 
-            coms->addNewLiveDataStream(yRotStream);
-            coms->addNewLiveDataStream(xRotStream);
-            coms->addNewLiveDataStream(zRotStream);
-            coms->addNewLiveDataStream(xAccStream);
-            coms->addNewLiveDataStream(yAccStream);
-            coms->addNewLiveDataStream(zAccStream);
+            coms.addNewLiveDataStream(yRotStream);
+            coms.addNewLiveDataStream(xRotStream);
+            coms.addNewLiveDataStream(zRotStream);
+            coms.addNewLiveDataStream(xAccStream);
+            coms.addNewLiveDataStream(yAccStream);
+            coms.addNewLiveDataStream(zAccStream);
 
             this->frequency = 30;
 
@@ -53,30 +54,30 @@ class IMUProcedure : public Procedure{
 
         void execute() override {
 
-            float xRot = imuSubsystem->getRotationX();
-            float yRot = imuSubsystem->getRotationY();
-            float zRot = imuSubsystem->getRotationZ();
+            float xRot = imuSubsystem.getRotationX();
+            float yRot = imuSubsystem.getRotationY();
+            float zRot = imuSubsystem.getRotationZ();
 
-            float xAccel = imuSubsystem->getAccelerationX();
-            float yAccel = imuSubsystem->getAccelerationY();
-            float zAccel = imuSubsystem->getAccelerationZ();
+            float xAccel = imuSubsystem.getAccelerationX();
+            float yAccel = imuSubsystem.getAccelerationY();
+            float zAccel = imuSubsystem.getAccelerationZ();
 
 
-            dataStorage->storeData(xRot, DataTypes::IMU_ROTATION_X);
-            dataStorage->storeData(yRot, DataTypes::IMU_ROTATION_Y);
-            dataStorage->storeData(zRot, DataTypes::IMU_ROTATION_Z);
+            dataStorage.storeData(xRot, DataTypes::IMU_ROTATION_X);
+            dataStorage.storeData(yRot, DataTypes::IMU_ROTATION_Y);
+            dataStorage.storeData(zRot, DataTypes::IMU_ROTATION_Z);
 
-            dataStorage->storeData(xAccel, DataTypes::IMU_ACCELERATION_X);
-            dataStorage->storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
-            dataStorage->storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
+            dataStorage.storeData(xAccel, DataTypes::IMU_ACCELERATION_X);
+            dataStorage.storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
+            dataStorage.storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
 
-            xRotStream.enqueue(xRot);
-            yRotStream.enqueue(yRot);
-            zRotStream.enqueue(zRot);
+            xRotStream->enqueue(xRot);
+            yRotStream->enqueue(yRot);
+            zRotStream->enqueue(zRot);
 
-            xAccStream.enqueue(xAccel);
-            yAccStream.enqueue(yAccel);
-            zAccStream.enqueue(zAccel);
+            xAccStream->enqueue(xAccel);
+            yAccStream->enqueue(yAccel);
+            zAccStream->enqueue(zAccel);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);

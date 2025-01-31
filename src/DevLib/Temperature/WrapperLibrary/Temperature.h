@@ -12,7 +12,7 @@ namespace BajaWildcatRacing
     class Temperature : CANDevice{
 
         public:
-            Temperature(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
+            Temperature(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
 
             }
 

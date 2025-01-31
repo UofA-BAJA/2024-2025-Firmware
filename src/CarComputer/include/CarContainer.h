@@ -23,19 +23,19 @@ namespace BajaWildcatRacing
         
         public:
             CarContainer(
-                         ProcedureScheduler* procedureScheduler,
-                         CANDispatcher* canDispatcher,
-                         DataStorage* dataStorage,
-                         Coms* coms
+                         ProcedureScheduler& procedureScheduler,
+                         CANDispatcher& canDispatcher,
+                         DataStorage& dataStorage,
+                         Coms& coms
                         );
         private:
-            IMUSubsystem* imuSubsystem;
+            IMUSubsystem imuSubsystem;
             IMUProcedure* imuProcedure;
 
-            DashSubsystem* dashSubsystem;
+            DashSubsystem dashSubsystem;
             DashProcedure* dashProcedure;
 
-            DrivetrainSubsystem* drivetrainSubsystem;
+            DrivetrainSubsystem drivetrainSubsystem;
             TemperatureProcedure* temperatureProcedure;
 
 

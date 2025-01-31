@@ -9,7 +9,7 @@ namespace BajaWildcatRacing
 
     class IMUSubsystem{
         public:
-            IMUSubsystem(CANDispatcher* canDispatcher);
+            IMUSubsystem(CANDispatcher& canDispatcher);
             double getRotationX();
             double getRotationY();
             double getRotationZ();
@@ -18,7 +18,7 @@ namespace BajaWildcatRacing
             double getAccelerationZ();
 
         private:
-            IMU* imu;
+            IMU imu;
     };
 
 }

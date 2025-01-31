@@ -14,7 +14,7 @@ namespace BajaWildcatRacing
     class DrivetrainSubsystem{
         public:
 
-            DrivetrainSubsystem(CANDispatcher* canDispatcher);
+            DrivetrainSubsystem(CANDispatcher& canDispatcher);
 
             float getCVTTemperature();
             bool isCVTHot();
@@ -22,9 +22,9 @@ namespace BajaWildcatRacing
             float getEngineRPM();
 
         private:
-            Tachometer* tachometer;
+            Tachometer tachometer;
 
-            Temperature* cvtTemperature;
+            Temperature cvtTemperature;
             bool cvtIsHot = false;
 
     };

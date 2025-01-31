@@ -16,7 +16,7 @@ namespace BajaWildcatRacing
     class CANDevice{
 
         private:
-            CANDispatcher* m_canDispatcher;
+            CANDispatcher& m_canDispatcher;
             double minimumRepeatThreshold;
 
             std::unordered_map<uint16_t, std::chrono::steady_clock::time_point> activeCommandTimes;
@@ -26,7 +26,7 @@ namespace BajaWildcatRacing
 
 
         public:
-            CANDevice(CANDispatcher* canDispatcher) : m_canDispatcher(canDispatcher){
+            CANDevice(CANDispatcher& canDispatcher) : m_canDispatcher(canDispatcher){
                 this->minimumRepeatThreshold = 1/BASE_CAR_FREQUENCY * 1000;
             }
 
