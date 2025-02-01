@@ -9,7 +9,7 @@ namespace BajaWildcatRacing
 
     class DashSubsystem {
         public:
-            DashSubsystem(CANDispatcher* canDispatcher);
+            DashSubsystem(CANDispatcher& canDispatcher);
             void sendSpeed(float speed);
             void sendRPM(float rpm);
             void sendCVTTemp(float cvtTemp);
@@ -19,7 +19,7 @@ namespace BajaWildcatRacing
             void sendIndicatorLightState();
 
         private:
-            Dash* dash;
+            Dash dash;
     };
     
 }

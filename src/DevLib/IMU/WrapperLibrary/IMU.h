@@ -16,7 +16,7 @@ namespace BajaWildcatRacing
     class IMU : CANDevice {
 
         public:
-            IMU(CANDispatcher* canDispatcher);
+            IMU(CANDispatcher& canDispatcher);
 
             float getLatestRotationX();
             float getLatestRotationY();

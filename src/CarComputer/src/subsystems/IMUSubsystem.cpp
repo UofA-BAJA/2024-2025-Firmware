@@ -4,8 +4,9 @@
 namespace BajaWildcatRacing
 {
 
-    IMUSubsystem::IMUSubsystem(CANDispatcher* canDispatcher){
-        imu = new IMU(canDispatcher);
+    IMUSubsystem::IMUSubsystem(CANDispatcher& canDispatcher) : imu(canDispatcher) {
+
+
     }
 
     /*
@@ -23,27 +24,27 @@ namespace BajaWildcatRacing
     *
     */
     double IMUSubsystem::getRotationX(){
-        return imu->getLatestRotationX();
+        return imu.getLatestRotationX();
     }
 
     double IMUSubsystem::getRotationY(){
-        return imu->getLatestRotationY();
+        return imu.getLatestRotationY();
     }
 
     double IMUSubsystem::getRotationZ(){
-        return imu->getLatestRotationZ();
+        return imu.getLatestRotationZ();
     }
 
     double IMUSubsystem::getAccelerationX(){
-        return imu->getLatestAccelerationX();
+        return imu.getLatestAccelerationX();
     }
 
     double IMUSubsystem::getAccelerationY(){
-        return imu->getLatestAccelerationY();
+        return imu.getLatestAccelerationY();
     }
 
     double IMUSubsystem::getAccelerationZ(){
-        return imu->getLatestAccelerationZ();
+        return imu.getLatestAccelerationZ();
     }
 
 }

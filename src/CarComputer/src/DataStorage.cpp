@@ -14,6 +14,7 @@ namespace BajaWildcatRacing
 
         updateDBThread = std::thread(&DataStorage::updateDatabase, this);
 
+        std::cout << "Data Storage initialized" << std::endl;
     }
 
 

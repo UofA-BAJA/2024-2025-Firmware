@@ -39,12 +39,7 @@
 namespace BajaWildcatRacing
 {
 
-    CarContainer* carContainer;
-    ProcedureScheduler* procedureScheduler;
-    CANDispatcher* canDispatcher;
-    DataStorage* dataStorage;
-    CarLogger* carLogger;
-    Coms* coms;
+
 
     /*
     *  Method: car() 
@@ -61,26 +56,23 @@ namespace BajaWildcatRacing
     *  @returns none 
     *
     */
-    Car::Car() {
+    Car::Car() 
+    : dataStorage(dataStoragePath)
+    , procedureScheduler()
+    , canDispatcher(canInterface)
+    , coms(procedureScheduler)
+    , carContainer(procedureScheduler, canDispatcher, dataStorage, coms)
+
+    {
 
         // Init behavior that needs to be called before the subsystems start running.
         init();
-        const char* canInterface = "can0";
-        const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
-        const char* logPath = "/home/bajaelectrical/car.log";
 
         CarLogger::Initialize(logPath);
 
-        dataStorage = new DataStorage(dataStoragePath);
-        dataStorage->startNewSession("Test session name O.o");
+        dataStorage.startNewSession("Test session name O.o");
 
-        procedureScheduler = new ProcedureScheduler();
-        canDispatcher = new CANDispatcher(canInterface);
-        coms = new Coms(procedureScheduler);
-        carContainer = new CarContainer(procedureScheduler, canDispatcher, dataStorage, coms);
-        // time = 0;
-
-        procedureScheduler->receiveComCommand(Command::DEFAULT_CAR_START);
+        procedureScheduler.receiveComCommand(Command::DEFAULT_CAR_START);
 
         std::cout << "Car Sucessfully Initialized" << std::endl;
 
@@ -151,11 +143,11 @@ namespace BajaWildcatRacing
 
             // std::cout << time / 1000000000L << std::setprecision(9) << std::endl;
 
-            procedureScheduler->execute();
-            canDispatcher->execute();
+            procedureScheduler.execute();
+            canDispatcher.execute();
             CarTime::setCurrentTimeSeconds(time / 1000000000L);
-            dataStorage->execute(CarTime::getCurrentTimeSeconds());
-            coms->execute(CarTime::getCurrentTimeSeconds());
+            dataStorage.execute(CarTime::getCurrentTimeSeconds());
+            coms.execute(CarTime::getCurrentTimeSeconds());
 
             endTime = steady_clock::now();
 
@@ -210,7 +202,7 @@ namespace BajaWildcatRacing
     *
     */
     void Car::end(){
-        procedureScheduler->end();
+        procedureScheduler.end();
         std::cout << "Car sucessfully destroyed" << std::endl;
     }
 

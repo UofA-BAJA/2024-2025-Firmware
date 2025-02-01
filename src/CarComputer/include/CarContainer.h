@@ -1,7 +1,6 @@
 #ifndef CARCONTAINER_H
 #define CARCONTAINER_H
 
-#include "Car.h"
 #include "ProcedureScheduler.h"
 #include "CANDispatcher.h"
 #include "DataStorage.h"
@@ -21,21 +20,22 @@ namespace BajaWildcatRacing
 {
 
     class CarContainer{
+        
         public:
             CarContainer(
-                         ProcedureScheduler* procedureScheduler,
-                         CANDispatcher* canDispatcher,
-                         DataStorage* dataStorage,
-                         Coms* coms
+                         ProcedureScheduler& procedureScheduler,
+                         CANDispatcher& canDispatcher,
+                         DataStorage& dataStorage,
+                         Coms& coms
                         );
         private:
-            IMUSubsystem* imuSubsystem;
+            IMUSubsystem imuSubsystem;
             IMUProcedure* imuProcedure;
 
-            DashSubsystem* dashSubsystem;
+            DashSubsystem dashSubsystem;
             DashProcedure* dashProcedure;
 
-            DrivetrainSubsystem* drivetrainSubsystem;
+            DrivetrainSubsystem drivetrainSubsystem;
             TemperatureProcedure* temperatureProcedure;
 
 

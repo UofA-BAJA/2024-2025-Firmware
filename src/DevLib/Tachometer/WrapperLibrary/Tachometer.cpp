@@ -5,7 +5,7 @@
 namespace BajaWildcatRacing
 {
 
-    Tachometer::Tachometer(CANDispatcher* canDispatcher) : CANDevice(canDispatcher) {
+    Tachometer::Tachometer(CANDispatcher& canDispatcher) : CANDevice(canDispatcher) {
 
     }
 

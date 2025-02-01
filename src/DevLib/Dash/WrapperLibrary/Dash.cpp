@@ -4,7 +4,7 @@
 namespace BajaWildcatRacing
 {
 
-    Dash::Dash(CANDispatcher *canDispatcher) : CANDevice(canDispatcher){
+    Dash::Dash(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
         indicatorLightState = 0;
     }
 

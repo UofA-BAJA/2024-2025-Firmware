@@ -10,7 +10,7 @@ namespace BajaWildcatRacing
 
         public:
 
-            Tachometer(CANDispatcher* candispatcher);
+            Tachometer(CANDispatcher& candispatcher);
 
             float getEngineRPM();
 

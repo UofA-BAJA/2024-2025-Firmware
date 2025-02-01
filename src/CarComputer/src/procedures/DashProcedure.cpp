@@ -11,13 +11,14 @@ namespace BajaWildcatRacing
 
         public:
 
-            DashSubsystem* dashSubsystem;
-            DrivetrainSubsystem* drivetrainSubsystem;
+            DashSubsystem& dashSubsystem;
+            DrivetrainSubsystem& drivetrainSubsystem;
             
 
-            DashProcedure(DashSubsystem* dashSubsystem, DrivetrainSubsystem* drivetrainSubsystem){
-                this->dashSubsystem = dashSubsystem;
-                this->drivetrainSubsystem = drivetrainSubsystem;
+            DashProcedure(DashSubsystem& dashSubsystem, DrivetrainSubsystem& drivetrainSubsystem)
+            : dashSubsystem(dashSubsystem)
+            , drivetrainSubsystem(drivetrainSubsystem)
+            {
                 this->frequency = 1;
             }
 
@@ -27,18 +28,18 @@ namespace BajaWildcatRacing
             }
 
             void execute() override {
-                dashSubsystem->sendCVTTemp(drivetrainSubsystem->getCVTTemperature());
-                if(drivetrainSubsystem->isCVTHot()){
-                    dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
+                dashSubsystem.sendCVTTemp(drivetrainSubsystem.getCVTTemperature());
+                if(drivetrainSubsystem.isCVTHot()){
+                    dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
                 }else{
-                    dashSubsystem->setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);
+                    dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);
                 }
-                dashSubsystem->sendTimeSeconds(CarTime::getCurrentTimeSeconds());
-                dashSubsystem->sendIndicatorLightState();
+                dashSubsystem.sendTimeSeconds(CarTime::getCurrentTimeSeconds());
+                dashSubsystem.sendIndicatorLightState();
 
-                // dashSubsystem->sendRPM(drivetrainSubsystem->getEngineRPM());
-                dashSubsystem->sendRPM(rand() % 4000);
-                dashSubsystem->sendSpeed(rand() % 40);
+                // dashSubsystem.sendRPM(drivetrainSubsystem->getEngineRPM());
+                dashSubsystem.sendRPM(rand() % 4000);
+                dashSubsystem.sendSpeed(rand() % 40);
             }
 
             void end() override {
