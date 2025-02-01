@@ -7,12 +7,14 @@ namespace BajaWildcatRacing
     sqlite3* db;
 
 
-    DataStorage::DataStorage(const char* path){
+    DataStorage::DataStorage(const char* path)
+    : updateDBThread(&DataStorage::updateDatabase, this)
+    {
         setupDatabase(path);
 
         setupDataTypes();
 
-        updateDBThread = std::thread(&DataStorage::updateDatabase, this);
+        // updateDBThread = std::thread(&DataStorage::updateDatabase, this);
 
         std::cout << "Data Storage initialized" << std::endl;
     }

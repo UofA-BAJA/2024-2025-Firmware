@@ -100,16 +100,17 @@ namespace BajaWildcatRacing
 
 
     void Coms::radioTransmit(){
-        if(currentPitCommandState == PitCommandState::IDLE){
-            idle();
-        }
-        else if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
-            transmitLiveData();
-        }
-        else if(currentPitCommandState == PitCommandState::DATABASE_TRANSMIT){
-            transmitDatabase();
-        }
+        // if(currentPitCommandState == PitCommandState::IDLE){
+        //     idle();
+        // }
+        // else if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
+        //     transmitLiveData();
+        // }
+        // else if(currentPitCommandState == PitCommandState::DATABASE_TRANSMIT){
+        //     transmitDatabase();
+        // }
 
+            idle();
 
         // Received command from pit!
         if(radio.isAckPayloadAvailable()){
@@ -120,7 +121,7 @@ namespace BajaWildcatRacing
             radio.read(&ackData, 1);
 
             if(ackData == Command::START_LOG){
-                procedureScheduler.receiveComCommand(Command::START_LOG);
+                // procedureScheduler.receiveComCommand(Command::START_LOG);
 
                 currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
             }
@@ -128,6 +129,9 @@ namespace BajaWildcatRacing
                 currentPitCommandState = PitCommandState::IDLE;
             }
 
+            std::lock_guard<std::mutex> lock(procedureSchedulerMutex);
+
+            procedureScheduler.receiveComCommand((Command)ackData);
 
             // std::bitset<32> x(ackData);
 
@@ -199,6 +203,7 @@ namespace BajaWildcatRacing
             // Now we need to send all of the packets that actually have data.
             // Easy way to tell if it has data is if the stream mask != 0
 
+            int packetsSent = 0;
             for(int i = 0; i < maxPackets; i++){
 
                 if(packets[i].streamMask == 0){
@@ -206,6 +211,7 @@ namespace BajaWildcatRacing
                 }
 
                 bool report = radio.write(&packets[i], sizeof(packets[i]));
+                packetsSent++;
 
                 if(report){
 
@@ -216,6 +222,10 @@ namespace BajaWildcatRacing
                     // But it still might be possible to transmit to the car.
                     // Hence, in here we should just keep transmitting what we have, hoping that the pit is receiving.
                 }
+            }
+
+            if(packetsSent == 0){
+                bool report = radio.write(&thingy, sizeof(thingy));
             }
 
     }

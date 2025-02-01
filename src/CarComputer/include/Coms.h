@@ -77,6 +77,7 @@ namespace BajaWildcatRacing
             int liveStreamCount = 0;
 
             std::mutex timestampMutex;
+            std::mutex procedureSchedulerMutex;
 
 
 

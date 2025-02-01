@@ -16,7 +16,7 @@ class TemperatureProcedure : public Procedure{
         DataStorage& dataStorage;
         Coms& coms;
 
-        LiveDataStream* temperatureStream;
+        // LiveDataStream* temperatureStream;
 
 
         TemperatureProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
@@ -25,9 +25,9 @@ class TemperatureProcedure : public Procedure{
         , coms(coms)
         {
 
-            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
+            // temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
 
-            coms.addNewLiveDataStream(temperatureStream);
+            // coms.addNewLiveDataStream(temperatureStream);
 
             this->frequency = 1;
 
@@ -38,18 +38,10 @@ class TemperatureProcedure : public Procedure{
         }
 
         void execute() override {
-            // std::cout << "IMU procedure execution"<< std::endl;
-
-            // For testing purposes
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
 
             float cvt_temperature = drivetrainSubsystem.getCVTTemperature();
 
-            temperatureStream->enqueue(cvt_temperature);
+            // temperatureStream->enqueue(cvt_temperature);
 
             //dataStorage->storeData(temperature, DataTypes::TEMPERATURE);
 
