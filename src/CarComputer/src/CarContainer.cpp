@@ -46,17 +46,24 @@ namespace BajaWildcatRacing
     , dashSubsystem(canDispatcher)
     {
 
-        imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
 
-        temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
 
-        dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
+        // temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
 
-        procedureScheduler.bindCommand(new IMUProcedure(imuSubsystem, dataStorage, coms), Command::RETRIEVE);
+        // dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
 
-        procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+        // procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
         // procedureScheduler.bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
         // procedureScheduler.bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
+
+    
+
+        // Method 1 (Memory unsafe):
+        imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
+        procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+
+        // Method 2 (Memory safe):
+        procedureScheduler.bindCommand<IMUProcedure>(Command::DEFAULT_CAR_START, imuSubsystem, dataStorage, coms);
 
 
         CarLogger::Log("Car Started");
