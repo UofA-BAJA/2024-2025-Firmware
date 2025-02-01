@@ -52,6 +52,8 @@ namespace BajaWildcatRacing
 
         dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
 
+        procedureScheduler.bindCommand(new IMUProcedure(imuSubsystem, dataStorage, coms), Command::RETRIEVE);
+
         procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
         // procedureScheduler.bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
         // procedureScheduler.bindCommand(dashProcedure, Command::DEFAULT_CAR_START);

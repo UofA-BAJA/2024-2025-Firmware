@@ -129,16 +129,26 @@ namespace BajaWildcatRacing
     * 
     *  Post-Condition: The procedure is successfully bound to the corresponding command; 
     * 
-    *  Parameters:
-    *          procedure -- The procedure to bind
+    * @param procedure -- The procedure to bind
+    * @param command -- The command to bind the procedure to
     *
-    *          command -- The command to bind the procedure to
-    *
-    *  Returns: None
+    *  @returns None
     *
     */
-    void ProcedureScheduler::bindCommand(Procedure* procedure, Command command){
+    void ProcedureScheduler::bindCommand(std::unique_ptr<Procedure> procedure, Command command){
         totalProcedures[command].insert(procedure);
+    }
+
+
+    template <typename ProcedureType, typename... Args>
+    void ProcedureScheduler::bindCommand(Command command, Args... args){
+
+        // Compile-time check to ensure ProcedureType inherits from Procedure (taken from Mr. Chat)
+        static_assert(std::is_base_of_v<Procedure, ProcedureType>, "ProcedureType must derive from Procedure");
+
+        ProcedureType newProcedure = new Procedure(args);   // This should work to create the new procedure
+        // all we have to do now is store this information somewhere to be able to call it later. 
+
     }
 
     /*
@@ -150,10 +160,10 @@ namespace BajaWildcatRacing
     * 
     *  Post-Condition: All procedures bound to command are activated;
     * 
-    *  Parameters:
-    *          command -- The command sent from the pit computer to the Raspberry PI
+    * 
+    *  @param command -- The command sent from the pit computer to the Raspberry PI
     *
-    *  Returns: None
+    *  @returns None
     */
     void ProcedureScheduler::receiveComCommand(Command command){
 
