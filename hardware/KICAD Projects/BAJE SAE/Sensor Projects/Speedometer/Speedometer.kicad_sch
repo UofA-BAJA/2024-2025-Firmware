@@ -4265,6 +4265,16 @@
 		)
 		(uuid "08e2431e-6e8c-4e35-96f4-49f7a9524855")
 	)
+	(label "Rect"
+		(at 139.7 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "091144b9-dfea-46bd-9829-2e88865aa7e8")
+	)
 	(label "NE555_Out"
 		(at 187.96 111.76 180)
 		(effects
@@ -4275,6 +4285,36 @@
 		)
 		(uuid "0f5ee81a-3421-45fe-a6b8-3d2a74f60f92")
 	)
+	(label "Diff"
+		(at 113.03 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "34ac6749-c06e-4f88-8277-5ebf8e55aa79")
+	)
+	(label "DIS{slash}THR"
+		(at 191.77 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c4ef9ba-308b-4b55-b142-a5c41f09174f")
+	)
+	(label "Filter1"
+		(at 208.28 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "74b1750c-737e-4ede-b5d5-128ca615fe05")
+	)
 	(label "Nano_Input"
 		(at 246.38 111.76 0)
 		(effects
@@ -4284,6 +4324,36 @@
 			(justify left bottom)
 		)
 		(uuid "cfb5b112-5d59-489d-9454-5f45e8544841")
+	)
+	(label "Hall_Out"
+		(at 82.55 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dd110c1f-3dc0-4b63-97ea-05b038d09ef6")
+	)
+	(label "Filter2"
+		(at 226.06 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f904092b-6d4d-47e0-a92a-91b1dc4a11b1")
+	)
+	(label "CV"
+		(at 151.13 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc36adc5-72ac-4fcb-999b-4e1ccfe1a422")
 	)
 	(global_label "GND"
 		(shape input)
