@@ -4,6 +4,13 @@
 	(generator_version "8.0")
 	(uuid "d32b6a5f-c7f0-4229-a4f9-b1dde9133fa5")
 	(paper "A4")
+	(title_block
+		(title "Baja Speedometer ")
+		(date "2025-02-02")
+		(rev "v1")
+		(company "University of Arizona")
+		(comment 1 "Jack Tanner")
+	)
 	(lib_symbols
 		(symbol "0_3362P-1-103:3362P-1-103"
 			(pin_names
@@ -4647,7 +4654,7 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 54.61) (xy 27.94 54.61)
+			(xy 30.48 26.67) (xy 26.67 26.67)
 		)
 		(stroke
 			(width 0)
@@ -4677,7 +4684,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 57.15) (xy 35.56 57.15)
+			(xy 26.67 29.21) (xy 34.29 29.21)
 		)
 		(stroke
 			(width 0)
@@ -5107,7 +5114,7 @@
 	)
 	(global_label "Possitive"
 		(shape input)
-		(at 31.75 54.61 0)
+		(at 30.48 26.67 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5117,7 +5124,7 @@
 		)
 		(uuid "078d4565-dd0f-4535-aa16-cdc579d37e10")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 43.2019 54.61 0)
+			(at 41.9319 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5217,7 +5224,7 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 35.56 57.15 0)
+		(at 34.29 29.21 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5227,7 +5234,7 @@
 		)
 		(uuid "1792f59d-4552-433e-8d40-23f844eafb30")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 42.4157 57.15 0)
+			(at 41.1457 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6125,7 +6132,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 95.25 34.29 0)
+		(at 100.33 26.67 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6134,7 +6141,7 @@
 		(fields_autoplaced yes)
 		(uuid "21b8fea2-ac60-484e-bb67-9929d1cefe93")
 		(property "Reference" "R9"
-			(at 97.79 33.0199 0)
+			(at 102.87 25.3999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6143,7 +6150,7 @@
 			)
 		)
 		(property "Value" "R_US"
-			(at 97.79 35.5599 0)
+			(at 102.87 27.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6152,7 +6159,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 96.266 34.544 90)
+			(at 101.346 26.924 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6161,7 +6168,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 95.25 34.29 0)
+			(at 100.33 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6170,7 +6177,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 95.25 34.29 0)
+			(at 100.33 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6330,16 +6337,15 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized_US")
-		(at 60.96 55.88 0)
+		(at 30.48 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "309c5688-868c-4dd8-9c55-d019ed656aa9")
 		(property "Reference" "C5"
-			(at 64.77 53.9749 0)
+			(at 34.29 64.1349 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6348,7 +6354,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 64.77 56.5149 0)
+			(at 34.29 66.6749 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6357,7 +6363,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 55.88 0)
+			(at 30.48 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6366,7 +6372,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 60.96 55.88 0)
+			(at 30.48 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6375,7 +6381,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor, US symbol"
-			(at 60.96 55.88 0)
+			(at 30.48 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7448,7 +7454,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 22.86 57.15 180)
+		(at 21.59 29.21 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7457,7 +7463,7 @@
 		(fields_autoplaced yes)
 		(uuid "7f8273ed-d6ee-4f5e-95e7-858c334af508")
 		(property "Reference" "J1"
-			(at 22.86 48.26 0)
+			(at 21.59 20.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7465,7 +7471,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02"
-			(at 22.86 50.8 0)
+			(at 21.59 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7473,7 +7479,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Wire:SolderWire-0.75sqmm_1x02_P4.8mm_D1.25mm_OD2.3mm"
-			(at 22.86 57.15 0)
+			(at 21.59 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7482,7 +7488,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 22.86 57.15 0)
+			(at 21.59 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7491,7 +7497,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 22.86 57.15 0)
+			(at 21.59 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7516,7 +7522,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 88.9 30.48 90)
+		(at 88.9 25.4 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7525,7 +7531,7 @@
 		(fields_autoplaced yes)
 		(uuid "824d2881-a989-4145-a6fb-e448991052a8")
 		(property "Reference" "D3"
-			(at 92.71 30.7974 90)
+			(at 92.71 25.7174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7534,7 +7540,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 92.71 33.3374 90)
+			(at 92.71 28.2574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7543,7 +7549,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 88.9 30.48 0)
+			(at 88.9 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7552,7 +7558,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 88.9 30.48 0)
+			(at 88.9 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7561,7 +7567,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 88.9 30.48 0)
+			(at 88.9 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8917,7 +8923,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized_US")
-		(at 72.39 55.88 0)
+		(at 41.91 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8925,7 +8931,7 @@
 		(dnp no)
 		(uuid "db65b4ea-e547-4d77-981d-9e43a74bbf72")
 		(property "Reference" "C6"
-			(at 76.2 53.086 0)
+			(at 45.72 63.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8934,7 +8940,7 @@
 			)
 		)
 		(property "Value" "10nF"
-			(at 76.2 56.5149 0)
+			(at 45.72 66.6749 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8943,7 +8949,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 72.39 55.88 0)
+			(at 41.91 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8952,7 +8958,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 72.39 55.88 0)
+			(at 41.91 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8961,7 +8967,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor, US symbol"
-			(at 72.39 55.88 0)
+			(at 41.91 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
