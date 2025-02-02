@@ -431,7 +431,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Tachometerkicad.kicad_pro",
+    "filename": "Speedometer.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -452,6 +452,40 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 14,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power_5V",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(255, 0, 0)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 8
+      },
+      {
+        "bus_width": 14,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power_GND",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(0, 0, 0)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 8
       }
     ],
     "meta": {
@@ -459,7 +493,52 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Power_5V",
+        "pattern": "5V"
+      },
+      {
+        "netclass": "Power_GND",
+        "pattern": "GND"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Diff"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Rect"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Hall_Out"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/DIS_THR"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/NE555_Out"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Nano_Input"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Filter1"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Filter2"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/CV"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

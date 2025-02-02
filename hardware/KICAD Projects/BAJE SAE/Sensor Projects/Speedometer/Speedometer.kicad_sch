@@ -4295,7 +4295,7 @@
 		)
 		(uuid "34ac6749-c06e-4f88-8277-5ebf8e55aa79")
 	)
-	(label "DIS{slash}THR"
+	(label "DIS_THR"
 		(at 191.77 73.66 0)
 		(effects
 			(font
@@ -4314,6 +4314,16 @@
 			(justify left bottom)
 		)
 		(uuid "74b1750c-737e-4ede-b5d5-128ca615fe05")
+	)
+	(label "Nano_Input"
+		(at 85.09 161.29 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9e24e758-3500-432e-94ad-ce09f1537c2d")
 	)
 	(label "Nano_Input"
 		(at 246.38 111.76 0)
@@ -4500,28 +4510,6 @@
 		(uuid "12b7b937-0be6-4da5-af88-84a81acef9a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 63.5 93.2157 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "Nano_Input"
-		(shape input)
-		(at 85.09 161.29 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "16a6c13c-771a-496c-ae27-a6af2a786b67")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 85.09 174.7978 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5749,7 +5737,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BAJA SAE:SHIELD_ARDUINO_NANO"
+		(property "Footprint" "Module:Arduino_Nano"
 			(at 108.712 194.056 0)
 			(effects
 				(font
