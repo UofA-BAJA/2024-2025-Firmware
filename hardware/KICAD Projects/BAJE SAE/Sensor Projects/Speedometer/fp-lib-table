@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "SS49E")(type "KiCad")(uri "/home/jack-tanner/Baja/2024-2025-Firmware/hardware/kiCAD footprints and symbols/HallEffect/SS49E")(options "")(descr ""))
+)
