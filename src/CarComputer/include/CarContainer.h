@@ -11,6 +11,7 @@
 #include "procedures/IMUProcedure.cpp"
 #include "procedures/DashProcedure.cpp"
 #include "procedures/TemperatureProcedure.cpp"
+#include "procedures/SpedometerProcedure.cpp"
 
 #include "DashSubsystem.h"
 #include "IMUSubsystem.h"
@@ -30,15 +31,10 @@ namespace BajaWildcatRacing
                         );
         private:
             IMUSubsystem imuSubsystem;
-            IMUProcedure* imuProcedure;
 
             DashSubsystem dashSubsystem;
-            DashProcedure* dashProcedure;
 
             DrivetrainSubsystem drivetrainSubsystem;
-            TemperatureProcedure* temperatureProcedure;
-
-
 
     };
 

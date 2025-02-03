@@ -16,6 +16,7 @@ namespace BajaWildcatRacing
             void enqueue(float data);
             float dequeue();
             bool dataInQueue();
+            void clearAllData();
 
             DataTypes getDataType();
 

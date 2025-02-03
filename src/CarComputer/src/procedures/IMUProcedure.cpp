@@ -3,7 +3,6 @@
 #include "DataStorage.h"
 #include "CarLogger.h"
 #include "Coms.h"
-#include "LiveDataStream.h"
 
 #include <iomanip>
 
@@ -16,35 +15,14 @@ class IMUProcedure : public Procedure{
         DataStorage& dataStorage;
         Coms& coms;
 
-        // LiveDataStream* xRotStream;
-        // LiveDataStream* yRotStream;
-        // LiveDataStream* zRotStream;
-        // LiveDataStream* xAccStream;
-        // LiveDataStream* yAccStream;
-        // LiveDataStream* zAccStream;
-
 
         IMUProcedure(IMUSubsystem& imuSubsystem, DataStorage& dataStorage, Coms& coms)
         : imuSubsystem(imuSubsystem)
         , dataStorage(dataStorage)
         , coms(coms)
         {
-            
-            // xRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_X);
-            // yRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Y);
-            // zRotStream = new LiveDataStream(DataTypes::IMU_ROTATION_Z);
-            // xAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_X);
-            // yAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Y);
-            // zAccStream = new LiveDataStream(DataTypes::IMU_ACCELERATION_Z);
 
-            // coms.addNewLiveDataStream(yRotStream);
-            // coms.addNewLiveDataStream(xRotStream);
-            // coms.addNewLiveDataStream(zRotStream);
-            // coms.addNewLiveDataStream(xAccStream);
-            // coms.addNewLiveDataStream(yAccStream);
-            // coms.addNewLiveDataStream(zAccStream);
-
-            this->frequency = 10;
+            this->frequency = 60;
 
         }
         
@@ -70,6 +48,13 @@ class IMUProcedure : public Procedure{
             dataStorage.storeData(xAccel, DataTypes::IMU_ACCELERATION_X);
             dataStorage.storeData(yAccel, DataTypes::IMU_ACCELERATION_Y);
             dataStorage.storeData(zAccel, DataTypes::IMU_ACCELERATION_Z);
+
+            coms.sendData(DataTypes::IMU_ROTATION_X, xRot);
+            coms.sendData(DataTypes::IMU_ROTATION_Y, yRot);
+            coms.sendData(DataTypes::IMU_ROTATION_Z, zRot);
+            coms.sendData(DataTypes::IMU_ACCELERATION_X, xAccel);
+            coms.sendData(DataTypes::IMU_ACCELERATION_Y, yAccel);
+            coms.sendData(DataTypes::IMU_ACCELERATION_Z, zAccel);
 
             // xRotStream->enqueue(xRot);
             // yRotStream->enqueue(yRot);

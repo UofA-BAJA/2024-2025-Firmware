@@ -24,6 +24,11 @@ namespace BajaWildcatRacing
         return data;
     }
 
+    void LiveDataStream::clearAllData(){
+        std::queue<float> empty;
+        std::swap(dataQueue, empty); 
+    }
+
     bool LiveDataStream::dataInQueue(){
         return !dataQueue.empty();
     }

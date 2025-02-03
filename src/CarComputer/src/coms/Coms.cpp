@@ -57,7 +57,6 @@ namespace BajaWildcatRacing
 
 
     void Coms::execute(float timestamp){
-
         std::lock_guard<std::mutex> lock(timestampMutex);
         currTimestamp = timestamp;
     }
@@ -110,7 +109,7 @@ namespace BajaWildcatRacing
         //     transmitDatabase();
         // }
 
-            idle();
+            transmitLiveData();
 
         // Received command from pit!
         if(radio.isAckPayloadAvailable()){
@@ -144,6 +143,7 @@ namespace BajaWildcatRacing
 
     void Coms::idle(){
         bool report = radio.write(&thingy, sizeof(thingy));
+
     }
 
     void Coms::transmitLiveData(){
@@ -192,10 +192,12 @@ namespace BajaWildcatRacing
                 packets[currPacket].data[i % maxPackets] = liveDataStreams[i]->dequeue();
 
 
+                liveDataStreams[i]->clearAllData();
                 // std::bitset<32> x(packets[currPacket].streamMask);
 
                 // std::cout << x << std::endl;
             }
+
 
             lock.unlock();
 
@@ -238,6 +240,22 @@ namespace BajaWildcatRacing
     }
 
 
+    void Coms::sendData(DataTypes dataType, float data){
+
+        // If the stream of type dataType doesn't exist, create it and add it to the list of streams.
+        if(liveDataStreamMap.find(dataType) == liveDataStreamMap.end()){
+            std::shared_ptr<LiveDataStream> newStream = std::make_shared<LiveDataStream>(dataType);
+            liveDataStreamMap[dataType] = newStream;
+
+            addNewLiveDataStream(newStream);
+
+
+        }
+
+        liveDataStreamMap[dataType]->enqueue(data);
+
+    }
+
     /*
     *  Method: addNewLiveDataStream
     *
@@ -254,7 +272,7 @@ namespace BajaWildcatRacing
     *  Returns:  None
     *
     */
-    void Coms::addNewLiveDataStream(LiveDataStream* stream){
+    void Coms::addNewLiveDataStream(std::shared_ptr<LiveDataStream> stream){
 
         if(stream == nullptr){
             return;
@@ -276,12 +294,13 @@ namespace BajaWildcatRacing
         while(i > 0 && liveDataStreams[i - 1]->getDataType() > streamDataType){
 
             // Shift the pointer
-            liveDataStreams[i] = liveDataStreams[i - 1];
+            liveDataStreams[i] = std::move(liveDataStreams[i - 1]);
             i--;
         }
 
-        liveDataStreams[i] = stream;
+        liveDataStreams[i] = std::move(stream);
         liveStreamCount++;
+
     }
 
 
