@@ -496,7 +496,7 @@
     "netclass_patterns": [
       {
         "netclass": "Power_5V",
-        "pattern": "5V"
+        "pattern": "+5V"
       },
       {
         "netclass": "Power_GND",
@@ -529,10 +529,6 @@
       {
         "netclass": "Default",
         "pattern": "/Filter1"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "/Filter2"
       },
       {
         "netclass": "Default",
