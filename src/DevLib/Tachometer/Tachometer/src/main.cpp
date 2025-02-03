@@ -17,52 +17,52 @@ void setup() {
     Serial.begin(115200);  // Initialize serial communication
     pinMode(analogPin, INPUT);  // Set the analog pin as an input
 
-    byte canInitResult = CAN.begin(MCP_STDEXT,CAN_500KBPS, MCP_8MHZ);
+//     byte canInitResult = CAN.begin(MCP_STDEXT,CAN_500KBPS, MCP_8MHZ);
 
-    if (canInitResult == CAN_OK)
-  {
-    Serial.println("CAN Init OK!");
-  }
-  else if (canInitResult == CAN_FAILINIT)
-  {
-    Serial.println("CAN Init Failed: CAN_FAILINIT");
-    Serial.end();
-    while (1)
-      ;
-  }
-  else if (canInitResult == CAN_FAILTX)
-  {
-    Serial.println("CAN Init Failed: CAN_FAILTX");
-    Serial.end();
-    while (1)
-      ;
-  }
-  else
-  {
-    Serial.println("CAN Init Failed: Unknown error");
-    Serial.end();
-    while (1)
-      ;
-  }
+// //     if (canInitResult == CAN_OK)
+// //   {
+// //     Serial.println("CAN Init OK!");
+// //   }
+// //   else if (canInitResult == CAN_FAILINIT)
+// //   {
+// //     Serial.println("CAN Init Failed: CAN_FAILINIT");
+// //     Serial.end();
+// //     while (1)
+// //       ;
+// //   }
+// //   else if (canInitResult == CAN_FAILTX)
+// //   {
+// //     Serial.println("CAN Init Failed: CAN_FAILTX");
+// //     Serial.end();
+// //     while (1)
+// //       ;
+// //   }
+// //   else
+// //   {
+// //     Serial.println("CAN Init Failed: Unknown error");
+// //     Serial.end();
+// //     while (1)
+// //       ;
+// //   }
 
-  CAN.init_Mask(0, 1, 0xFFFFFFFF);
-  CAN.init_Filt(0, 1, 0x00000004);
-  CAN.init_Filt(1, 1, 0x00000004);
+// //   CAN.init_Mask(0, 1, 0xFFFFFFFF);
+// //   CAN.init_Filt(0, 1, 0x00000004);
+// //   CAN.init_Filt(1, 1, 0x00000004);
 
-  CAN.init_Mask(1, 1, 0xFFFFFFFF);
-  CAN.init_Filt(2, 1, 0x00000004);
-  CAN.init_Filt(3, 1, 0x00000004);
-  CAN.init_Filt(4, 1, 0x00000004);
-  CAN.init_Filt(5, 1, 0x00000004);
+// //   CAN.init_Mask(1, 1, 0xFFFFFFFF);
+// //   CAN.init_Filt(2, 1, 0x00000004);
+// //   CAN.init_Filt(3, 1, 0x00000004);
+// //   CAN.init_Filt(4, 1, 0x00000004);
+// //   CAN.init_Filt(5, 1, 0x00000004);
 
 
-  // Set the MCP2515 to normal mode to start receiving CAN messages
-  Serial.println("Setting CAN Normal");
-  CAN.setMode(MCP_NORMAL);
+// //   // Set the MCP2515 to normal mode to start receiving CAN messages
+// //   Serial.println("Setting CAN Normal");
+// //   CAN.setMode(MCP_NORMAL);
 
-  //---------------------------------------------------
+//   //---------------------------------------------------
 
-  delay(1000);
+  delay(500);
 
  Serial.println("Init OK!");
 
@@ -80,39 +80,39 @@ rxBuf[1] = 0;
 
 //check for incoming CAN messages
 
-while (CAN_MSGAVAIL == CAN.checkReceive())
-{
+// while (CAN_MSGAVAIL == CAN.checkReceive())
+// {
 
-    CAN.readMsgBuf(&rxId, &len, rxBuf);
+//     CAN.readMsgBuf(&rxId, &len, rxBuf);
 
 
-    if (rxBuf[3]==0x01)
-    {
-        float engineRPM = getRPM();
-        byte engineRPMData[sizeof engineRPM];
+//     if (rxBuf[3]==0x01)
+//     {
+//         float engineRPM = getRPM();
+//         byte engineRPMData[sizeof engineRPM];
         
-        memcpy(engineRPMData, &engineRPM, sizeof engineRPM);
+//         memcpy(engineRPMData, &engineRPM, sizeof engineRPM);
 
-        Serial.println(engineRPM);
+//         Serial.println(engineRPM);
 
-        unsigned long callbackID = 0;
-        // 3 bytes for the callback ID
-        memcpy(&callbackID, rxBuf, 3);
+//         unsigned long callbackID = 0;
+//         // 3 bytes for the callback ID
+//         memcpy(&callbackID, rxBuf, 3);
 
-        byte sendMSG = CAN.sendMsgBuf(callbackID,1 ,4,engineRPMData);
+//         byte sendMSG = CAN.sendMsgBuf(callbackID,1 ,4,engineRPMData);
 
-        if (sendMSG != CAN_OK)
-        {
-            Serial.print("Error Sending Message...");
-            Serial.println(sendMSG);
-        }
+//         if (sendMSG != CAN_OK)
+//         {
+//             Serial.print("Error Sending Message...");
+//             Serial.println(sendMSG);
+//         }
         
-    }
+//     }
     
 
-}
+// }
 
-
+getRPM();
 
 
 
@@ -135,10 +135,10 @@ float getRPM(){
     rpm += 1279.5 * voltage;
     rpm += - 210.92;
 
-    return rpm;
     // Output the result to the Serial Monitor
-    // Serial.print("Voltage: ");
-    // Serial.print(voltage, 2);  // Print voltage with 2 decimal places
-    // Serial.print(" V, RPM: ");
-    // Serial.println(rpm, 2);  // Print RPM with 2 decimal places
+    Serial.print("Voltage: ");
+    Serial.print(voltage, 2);  // Print voltage with 2 decimal places
+    Serial.print(" V, RPM: ");
+    Serial.println(rpm, 2);  // Print RPM with 2 decimal places
+    return rpm;
 }
