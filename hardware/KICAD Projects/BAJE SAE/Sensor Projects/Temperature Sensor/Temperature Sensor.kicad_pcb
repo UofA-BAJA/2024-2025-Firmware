@@ -2011,13 +2011,35 @@
 		)
 		(model "/Users/connor/dev/baja sae/2024-2025-Firmware/hardware/3D models/KICAD/Arduino_NANO_CH340.step"
 			(offset
-				(xyz 0 0 4.5)
+				(xyz 0 0 11)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz 0 0 -90)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.step"
+			(offset
+				(xyz -7.5 18 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.step"
+			(offset
+				(xyz 7.5 18 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -2389,15 +2411,15 @@
 			(solder_mask_margin 0.102)
 			(uuid "60f956c8-c071-4c37-94a8-74f4146b821c")
 		)
-		(model "C:/Users/larso/Dev/3D models/KICAD/4646 BNO055 Stemma.step"
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x07_P2.54mm_Vertical.step"
 			(offset
-				(xyz -21 -14.5 4.5)
+				(xyz -10 10 0)
 			)
 			(scale
-				(xyz 1.1 2 0.7)
+				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 180 90)
+				(xyz 0 0 0)
 			)
 		)
 	)
