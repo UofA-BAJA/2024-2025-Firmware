@@ -7,6 +7,13 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(title "Baja Speedometer")
+		(date "2025-02-02")
+		(rev "v1")
+		(company "University of Arizona")
+		(comment 1 "Jack Tanner")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(31 "B.Cu" signal)
@@ -10867,6 +10874,19 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "e24e7e6f-3ef9-40ac-9ebd-05851e6c66dd")
+	)
+	(gr_text "Jack Tanner\nBaja 2024-2025\n"
+		(at 103.11 79.01 0)
+		(layer "B.SilkS")
+		(uuid "eadc519e-12b4-4008-aa7a-42171c8a4a54")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.5)
+				(bold yes)
+			)
+			(justify left bottom mirror)
+		)
 	)
 	(gr_text "NANO"
 		(at 135.58 85.11 0)
