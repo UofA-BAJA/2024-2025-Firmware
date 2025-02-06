@@ -47,7 +47,7 @@ namespace BajaWildcatRacing
     *  Pre-Condition: None
     * 
     *  Post-Condition: All active procedures are executed; If the procedure should be terminated, 
-    *                  it is ended; The procedures are run at their selected frequency
+    *                  it is ended; The procedures are run at their selected frequency;
     * 
     *  Parameters: None
     *
@@ -120,9 +120,11 @@ namespace BajaWildcatRacing
     *
     *  Purpose: Activate all the procedures bound to the command sent from the pit computer
     *
-    *  Pre-Condition:  command is a valid command recognized by the Raspberry PI;
+    *  Pre-Condition:  command is a valid command recognized by the Raspberry PI 
+	*  (Meaning it is in the Command header file);
     * 
-    *  Post-Condition: All procedures bound to command are activated;
+    *  Post-Condition: All procedures bound to command are activated unless the
+	*  command was already active;
     * 
     * 
     *  @param command -- The command sent from the pit computer to the Raspberry PI

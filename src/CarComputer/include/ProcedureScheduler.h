@@ -21,6 +21,7 @@ namespace BajaWildcatRacing
             void execute();
             void end();
 
+			// TODO: Figure out a way to get this into the cpp file and not the header file
             // https://stackoverflow.com/questions/115703/storing-c-template-function-definitions-in-a-cpp-file
             // :(
             /*
@@ -28,12 +29,19 @@ namespace BajaWildcatRacing
             *
             *  Purpose: Bind a procedure to a command, so that when the command is received the procedure is run
             *
-            *  Pre-Condition:  procedure points to a valid procedure; procedure is not bound to any commands;
+            *  Pre-Condition: ProcedureType inherits from Procedure; 
             * 
-            *  Post-Condition: The procedure is successfully bound to the corresponding command; 
+            *  Post-Condition: A new ProcedureTemplate is created which provides a function lambda,
+			*  a unique ID for the procedure, and the start and end commands;
+			*  The procedure scheduler will use this ProcedureTemplate to create
+			*  a new procedure when the corresponding command is created;
+			*  Args are the same args as the arguments of the ProcedureType procedure
             * 
-            * @param procedure -- The procedure to bind
-            * @param command -- The command to bind the procedure to
+            * @param Typename -- The type of procedure to be bound (inherits from Procedure)
+            * @param startCommands -- The commands that should activate the procedure
+			* @param endCommands -- The commands that should deactivate (and destroy) the procedure
+			* @param args -- The args that should be forwarded into the constructor
+			* of the procedure of type ProcedureType
             *
             *  @returns None
             *
@@ -61,6 +69,15 @@ namespace BajaWildcatRacing
             using ProcedureInstantiationFunc = std::function<std::unique_ptr<Procedure>()>;
             
 
+
+			/*
+			 * This class is a nested class used to make the instantiation
+			 * of procedures easier. The most important part of the class
+			 * is the function that instantiations the function, which should
+			 * be defined in the bindCommand function.
+			 *
+			 * It also has a unique ID which makes the class hashable
+			 */
             class ProcedureTemplate{
                 public:
 
