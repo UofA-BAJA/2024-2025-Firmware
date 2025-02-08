@@ -92,6 +92,9 @@ void setup()
     // while (1)
     //   ;
   }
+  ledMatrix.displaybuffer[5] = 1;
+  ledMatrix.displaybuffer[6] = 1;
+  ledMatrix.writeDisplay();
 
   //---------------------------------------------------
 
