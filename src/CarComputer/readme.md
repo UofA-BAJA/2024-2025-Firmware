@@ -4,15 +4,15 @@
 
 The Car Computer program is the heart of the Baja Electrical telemetry system. Without this program, we wouuld not be able to get any data. There are many different aspects of the program that are important to understand, all of which will be described on a high level here.
 
-* [Build System](build-bystem)
-* [Code Architecture Overview](code-architecture-overview)
-* [CAN Setup](can-setup)
-* [Radio Setup](radio-setup)
-* [Data Storage](data-storage)
-* [Devices](devices)
-* [Subsystems](subsystems)
-* [Procedures](procedures)
-* [Car Container](car-container)
+* [Build System](####build-bystem)
+* [Code Architecture Overview](####code-architecture-overview)
+* [CAN Setup](####can-setup)
+* [Radio Setup](####radio-setup)
+* [Data Storage](####data-storage)
+* [Devices](####devices)
+* [Subsystems](####subsystems)
+* [Procedures](####procedures)
+* [Car Container](####car-container)
 
 #### Build System
 
