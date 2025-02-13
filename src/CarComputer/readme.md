@@ -20,8 +20,8 @@ The build system used for this project is [CMake](https://cmake.org/).
 
 In order to build and run the project, run the following commands in the build directory of the repository.
 
-> [!NOTE]
 
+> [!NOTE]
 > Test the note here
 
 `$ cmake ..`
