@@ -14,15 +14,14 @@ The Car Computer program is the heart of the Baja Electrical telemetry system. W
 * [Procedures](#procedures)
 * [Car Container](#car-container)
 
-#### Build System
+### Build System
 
 The build system used for this project is [CMake](https://cmake.org/).
 
 In order to build and run the project, run the following commands in the build directory of the repository.
 
-
 > [!NOTE]
-> Test the note here
+> These commands will most likely not work unless the code is running on a raspberry pi with the correct libraries and configuration as described later in this document.
 
 `$ cmake ..`
 
@@ -30,21 +29,33 @@ In order to build and run the project, run the following commands in the build d
 
 `$ ./carComputer`
 
-#### Code Architecture Overview
+The way the CmakeLists.txt file is set up is most likely not following best practices. In fact, it might not even be in a very good place in the repository. This is something that should be updated in the future.
 
-#### CAN Setup
+> TODO: Insert description of how the current build system works
 
-#### Radio Setup
+### Code Architecture Overview
 
-#### Data Storage
+The Car Computer code was largely inspired by the FIRST Robotics WPIlib. This library seemed easy to use, while still being largely flexible. The Car Computer code is largely intended to be easily used for new members of the Baja Electrical subteam, while abstracting away the complexity of the project for those who do not need to know how it works. The only files that should be touched by beginners are the CarContainer class, subsystems, and procedures, as those are the only classes that are needed in order to provide functionality for sensors, telemetry, live data, logging, and (in the future) the implementation of an ECVT or active suspension.
 
-#### Devices
+The easiest concept to understand are the *Subsystems*. Every subsystem can be thought of as a portion of the car. For example, the drivetrain subsystem is made up of all the sensors and devices that make up the drivetrain (Tachometer, wheel RPM, CVT temperature, etc). Subsystems can also be thought of as a collection of devices on the car.
 
-#### Subsystems
+*Procedures* can be thought of as 
 
-#### Procedures
 
-#### Car Container
+
+### CAN Setup
+
+### Radio Setup
+
+### Data Storage
+
+### Devices
+
+### Subsystems
+
+### Procedures
+
+### Car Container
 
 One potential issue with the way I'm doing things right now is the fact that subsystems can be accessed by multiple
 procedures at the same time. In theory this is nice, because if two procedures wanted to read the RPM they could,
