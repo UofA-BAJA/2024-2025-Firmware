@@ -471,10 +471,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Gerber Files/",
+      "plot": "./",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../../../3D models/KICAD/Finished projects/Temperature Sensor.step",
+      "step": "",
       "svg": "",
       "vrml": ""
     },
