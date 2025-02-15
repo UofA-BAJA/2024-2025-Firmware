@@ -5,23 +5,28 @@
 #include <queue>
 #include "DataTypes.h"
 
+namespace BajaWildcatRacing
+{
 
-class LiveDataStream{
+    class LiveDataStream{
 
-    public:
-        LiveDataStream(DataTypes dataType);
+        public:
+            LiveDataStream(DataTypes dataType);
 
-        void enqueue(float data);
-        float dequeue();
-        bool dataInQueue();
+            void enqueue(float data);
+            float dequeue();
+            bool dataInQueue();
 
-        DataTypes getDataType();
+            DataTypes getDataType();
 
-    private:
-        DataTypes dataType;
+        private:
+            DataTypes dataType;
 
-        std::queue<float> dataQueue;
+            std::queue<float> dataQueue;
 
-};
+    };
+    
+}
+
 
 #endif

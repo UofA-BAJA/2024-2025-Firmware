@@ -3,19 +3,23 @@
 
 #include "CANDevice.h"
 
-class Tachometer : CANDevice {
+namespace BajaWildcatRacing
+{
 
-    public:
+    class Tachometer : CANDevice {
 
-        Tachometer(CANDispatcher* candispatcher);
+        public:
 
-        float getEngineRPM();
+            Tachometer(CANDispatcher& candispatcher);
+
+            float getEngineRPM();
 
 
-    private:
-        float engineRPM = 0.0;
+        private:
+            float engineRPM = 0.0;
 
-};
+    };
 
+}
 
 #endif

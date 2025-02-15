@@ -1,22 +1,24 @@
 #ifndef CARTIME_H
 #define CARTIME_H
 
+namespace BajaWildcatRacing
+{
 
-class CarTime{
+    class CarTime{
 
-    public:
+        public:
 
-        static float getCurrentTimeSeconds();
+            static float getCurrentTimeSeconds();
 
-        static void setCurrentTimeSeconds(float time);
+            static void setCurrentTimeSeconds(float time);
 
-    private:
+        private:
 
-        static float currTimeSeconds;
+            static float currTimeSeconds;
 
-    
-};
-
+        
+    };
+}
 
 
 #endif

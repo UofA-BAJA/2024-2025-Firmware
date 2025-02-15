@@ -10,29 +10,34 @@
 #include <chrono>
 #include <map>
 
+namespace BajaWildcatRacing
+{
 
-class CANDevice{
+    class CANDevice{
 
-    private:
-        CANDispatcher* m_canDispatcher;
-        double minimumRepeatThreshold;
+        private:
+            CANDispatcher& m_canDispatcher;
+            double minimumRepeatThreshold;
 
-        std::unordered_map<uint16_t, std::chrono::steady_clock::time_point> activeCommandTimes;
+            std::unordered_map<uint16_t, std::chrono::steady_clock::time_point> activeCommandTimes;
 
-        void populateValue(can_frame frame, void* destination);
+            void populateValue(can_frame frame, void* destination);
 
 
 
-    public:
-        CANDevice(CANDispatcher* canDispatcher) : m_canDispatcher(canDispatcher){
-            this->minimumRepeatThreshold = 1/BASE_CAR_FREQUENCY * 1000;
-        }
+        public:
+            CANDevice(CANDispatcher& canDispatcher) : m_canDispatcher(canDispatcher){
+                this->minimumRepeatThreshold = 1/BASE_CAR_FREQUENCY * 1000;
+            }
 
-    protected:
-        void sendCanCommand(Device::Devices deviceID, byte commandByte, void* receivedData);
-        void sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData);
+        protected:
+            void sendCanCommand(Device::Devices deviceID, byte commandByte, void* receivedData);
+            void sendCanCommand(Device::Devices deviceID, byte commandByte, std::vector<byte> rawData);
 
-};
+    };
+    
+}
+
 
 
 #endif

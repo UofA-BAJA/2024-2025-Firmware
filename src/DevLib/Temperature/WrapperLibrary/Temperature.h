@@ -6,22 +6,24 @@
 #include "functional"
 #include "linux/can.h"
 
+namespace BajaWildcatRacing
+{
 
+    class Temperature : CANDevice{
 
-class Temperature : CANDevice{
+        public:
+            Temperature(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
 
-    public:
-        Temperature(CANDispatcher* canDispatcher) : CANDevice(canDispatcher){
+            }
 
-        }
+            float getLatestTemperature();
 
-        float getLatestTemperature();
+        private:
 
-    private:
+            float temperature = 0.0;
+        
+    };
 
-        float temperature = 0.0;
-       
-};
-
+}
 
 #endif

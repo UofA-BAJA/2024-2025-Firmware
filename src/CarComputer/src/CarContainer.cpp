@@ -33,22 +33,41 @@
 
 #include "CarContainer.h"
 
-CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
+namespace BajaWildcatRacing
+{
 
-    imuSubsystem = new IMUSubsystem(canDispatcher);
-    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
-
-    drivetrainSubsystem = new DrivetrainSubsystem(canDispatcher);
-    temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
-
-    dashSubsystem = new DashSubsystem(canDispatcher);
-    dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
-
-    // procedureScheduler->bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
-    // procedureScheduler->bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
-    procedureScheduler->bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
+    CarContainer::CarContainer(
+                               ProcedureScheduler& procedureScheduler, 
+                               CANDispatcher& canDispatcher,
+                               DataStorage& dataStorage,
+                               Coms& coms)
+    : imuSubsystem(canDispatcher)
+    , drivetrainSubsystem(canDispatcher)
+    , dashSubsystem(canDispatcher)
+    {
 
 
-    CarLogger::Log("Car Started");
-    std::cout << "Car Container Constructor called" << std::endl;
+
+        // temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
+
+        // dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
+
+        // procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+        // procedureScheduler.bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
+        // procedureScheduler.bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
+
+    
+
+        // Method 1 (Memory unsafe):
+        imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
+        procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+
+        // Method 2 (Memory safe):
+        procedureScheduler.bindCommand<IMUProcedure>(Command::DEFAULT_CAR_START, imuSubsystem, dataStorage, coms);
+
+
+        CarLogger::Log("Car Started");
+        std::cout << "Car Container Constructor called" << std::endl;
+    }
+
 }

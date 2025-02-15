@@ -2162,12 +2162,6 @@
 			)
 		)
 	)
-	(junction
-		(at 133.35 190.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "84a66792-c691-4b30-bf2a-cf05f522ecb8")
-	)
 	(no_connect
 		(at 36.83 92.71)
 		(uuid "0a60e98b-ba14-493d-bac8-32e934be6bf8")
@@ -2407,16 +2401,6 @@
 			(type default)
 		)
 		(uuid "869239a9-189b-4c78-a0a6-e43c6337674d")
-	)
-	(wire
-		(pts
-			(xy 133.35 189.23) (xy 133.35 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9a776a60-5239-45a7-9f37-8e0fe03eb325")
 	)
 	(wire
 		(pts
@@ -4024,8 +4008,8 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "cf26b899-18a8-40ad-afd0-73d8cfd1acf5")
-		(property "Reference" "#PWR07"
+		(uuid "cebfe7b0-abdf-4945-b151-8139ec5cf451")
+		(property "Reference" "#PWR02"
 			(at 133.35 196.85 0)
 			(effects
 				(font
@@ -4070,12 +4054,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "09b696e6-7029-4274-a681-31df4abe5b20")
+			(uuid "bbb9d8ff-5759-42de-8f90-c8a3cf0522a6")
 		)
 		(instances
-			(project ""
+			(project "ESP32 IMU"
 				(path "/7db5226c-054a-443a-bdfe-e8f86c4e465d"
-					(reference "#PWR07")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)

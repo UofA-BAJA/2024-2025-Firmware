@@ -466,10 +466,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "Gerber Files/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../../../3D models/KICAD/Finished projects/Main Computer.step",
       "svg": "",
       "vrml": ""
     },
