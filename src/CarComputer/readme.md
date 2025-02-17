@@ -39,7 +39,19 @@ The Car Computer code was largely inspired by the FIRST Robotics WPIlib. This li
 
 The easiest concept to understand are the *Subsystems*. Every subsystem can be thought of as a portion of the car. For example, the drivetrain subsystem is made up of all the sensors and devices that make up the drivetrain (Tachometer, wheel RPM, CVT temperature, etc). Subsystems can also be thought of as a collection of devices on the car.
 
-*Procedures* can be thought of as 
+*Procedures* can be thought of as individual processes that have a lifetime. Each procedure begins, runs on a clock cycle, and ends (if desired). The procedures are the part of the system that interact with the subsystems, providing logical behavior for them. For example, one procedure might interact with the drivetrain subsystem and the dash, sending RPM information to the dash. The subsystems by themselves do not (should not) have the capacity to interact with other subsystems, which is why the procedures must exist.
+
+There are many useful utility classes written with the purpose of being used by the procedures. These classes include *Coms*, *CarLogger*, *DataStorage*, and *CarTime*. These classes will be further described in detail in the next sections of this document.
+
+* The Coms class provides the ability to send a data stream to the pit
+* The DataStorage class provides the ability to log data to the local SQL database.
+* The CarLogger class provides the ability to write debug logs, warnings, errors, and panic messages to the car.log file found in /home/<user\>/car.log
+* The CarTime class provides the ability to get information regarding the time in the car.
+
+The next concept to understand is the idea of a command.
+
+One of the more challenging concepts to understand is the idea of binding procedures to commands.
+
 
 
 
