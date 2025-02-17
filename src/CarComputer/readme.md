@@ -1,4 +1,4 @@
-# Car Computer
+### Car Computer
 
 ### This document will provide an overview for the structure of the Car Computer program.
 
@@ -13,6 +13,7 @@ The Car Computer program is the heart of the Baja Electrical telemetry system. W
 * [Subsystems](#subsystems)
 * [Procedures](#procedures)
 * [Car Container](#car-container)
+* Known Issues
 
 ### Build System
 
@@ -48,14 +49,12 @@ There are many useful utility classes written with the purpose of being used by 
 * The CarLogger class provides the ability to write debug logs, warnings, errors, and panic messages to the car.log file found in /home/<user\>/car.log
 * The CarTime class provides the ability to get information regarding the time in the car.
 
-The next concept to understand is the idea of a command.
+The next concept to understand is the idea of a command. One of the more challenging concepts to understand is the idea of binding procedures to commands. Procedures are processes that run on the car and have a lifetime. As such, that has to be something that starts and ends the procedure. Commands are the way in which procedures are started and stopped. When a command is  sent from the pit GUI software, it is sent to the *procedure scheduler*, which then processes the command and manages the procedures that are *bound* to the command. When a procedure is bound to a command, it has a list of start commands and end commands. When the command is received, the procedures that are bound with that start command are started, and the procedures that are bound to that end command are ended. The easiest way to understand this concept is with an example, described in the [procedures](#procedures) section.
 
-One of the more challenging concepts to understand is the idea of binding procedures to commands.
-
-
-
+The place where the subsystems and procedures are defined is in the *Car Container*. In the header file of the class the subsystems are defined. They are initialized in the constructor, usually taking the *Can Dispatcher* as a constructor parameter. The procedure objects are not actually instantiated in the car container class, rather, they are bound to commands using the procedure scheduler. The syntax of doing this might seem bizarre at first. Examples of doing this is described in the [car container](#car-container) section. 
 
 ### CAN Setup
+
 
 ### Radio Setup
 
@@ -68,6 +67,8 @@ One of the more challenging concepts to understand is the idea of binding proced
 ### Procedures
 
 ### Car Container
+
+### Known Issues
 
 One potential issue with the way I'm doing things right now is the fact that subsystems can be accessed by multiple
 procedures at the same time. In theory this is nice, because if two procedures wanted to read the RPM they could,
