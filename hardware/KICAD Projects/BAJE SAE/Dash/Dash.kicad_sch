@@ -7133,7 +7133,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "300 (3v3 tune)"
+		(property "Value" "1k (3v3 tune)"
 			(at 145.034 80.01 0)
 			(effects
 				(font
