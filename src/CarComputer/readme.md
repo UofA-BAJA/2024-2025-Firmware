@@ -6,7 +6,7 @@
 
 The Car Computer program is the heart of the Baja Electrical telemetry system. Without this program, we would not be able to get any data. There are many different aspects of the program that are important to understand, all of which will be described on a high level here.
 
-* [Build System](#build-bystem)
+* [Build System](#build-system)
 * [Code Architecture Overview](#code-architecture-overview)
 * [CAN Setup](#can-setup)
 * [Radio Setup](#radio-setup)
@@ -63,7 +63,15 @@ The place where the subsystems and procedures are defined is in the *Car Contain
 
 ### CAN Setup
 
+
+I'm scared to write this section
+
+
 ### Radio Setup
+
+
+I'm also mildly scared to write this section.
+
 
 ### Data Storage
 
@@ -71,7 +79,15 @@ For the most part, the BAJA electrical team works to provide sensor data for the
 
 In order to automatically mount the SSD on startup, the fstab (file system table) file must be updated. This file is located at `/etc/fstab`, and must be edited with sudo permissions.
 
-> Insert stuff about mounting the SSD here
+Add the following line to the fstab file (if it is not already there):
+
+```
+/dev/sda1 /home/bajaelectrical/DataStorage ext4 defaults 0 0
+```
+
+This will automatically mount the partition `/dev/sda1` (the partition of the SSD we are using to store the database) to the mounting point `/home/bajaelectrical/DataStorage`. The filesystem of the partition is ext4, and the rest of the options are not particularly relevant.
+
+To learn more about mounting, check [this link](https://thelinuxcode.com/how-to-automount-a-storage-partition-on-startup-in-linux/). We are using static mounting, but there are other ways to mount drives automatically.
 
 > ![Note]
 >
@@ -101,11 +117,33 @@ Now it should be possible to use the sqlite3 library in the car computer program
 
 > Author's (Matthew) note: Databases are a quite extensive, and often very complicated topic. It can take some time to wrap your head around them. If you're trying to learn how the code works, try not to get discouraged!
 
-The next step is to understand the structure of the database that will store all of the time series data. The folowing graphic is a schema that represents the structure of the data and how all of the tables in the database relate to each other.
+The next step is to understand the structure of the database that will store all of the time series data. The following graphic is a schema that represents the structure of the data and how all of the tables in the database relate to each other.
 
 > TODO: Insert a schema of the database
 
+There are three main tables in the database.
 
+1. Session
+2. DataType
+3. Data
+
+Each table can have many rows. A row can be thought of as a unique entry in a table. A row in the Session table represents a unique logging session, which has a start time, end time, and a name. A row in the DataType table represents some sort of data that can be recorded. This has a name (ex. Speed), a unit (ex. m/s^2), and a unique ID that corresponds to the enum value found in DataTypes.h file. (This is located in the include folder of the repository, not CarComputer). A row in the Data table represents a single point of data. This has a reference to the session it belongs to, a timestamp of when the data was recorded, a reference to what data type it is, and the value of the recorded data.
+
+##### How to use the DataStorage class
+
+The *DataStorage* class is in charge of managing the connection to the database. This means that it should be the only place in the car computer that interacts with the database itself. This class also provides an interface for the rest of the classes to be able to easily store data.
+
+> It is possible to access the database from any class, however, this is highly discouraged, as it could create very confusing problems later on.
+
+Typically (always), the DataStorage class will be used by procedures. The instance of the class created by the Car is passed through the CarContainer constructor, giving the procedures easy access to it. If a procedure intends to store any data, it needs to store a local reference to the DataStorage class. Afterwards, it is as easy as writing the following line to store data to the database:
+
+```
+dataStorage.storeData({data-value}, DataTypes::{data-type});
+```
+
+This will create a new row in the Data table, where the data type is {data-type}, the value is {data-value}, the session ID is the current session ID, and the timestamp is the current car timestamp when the line was called. 
+
+Now that the data is stored locally, the next step is to simply take the SSD off of the car and move it to another computer to analyze the data, or wirelessley transmit the data from a session (as provided by the coms class) (haha just kidding not yet)
 
 ### Devices
 

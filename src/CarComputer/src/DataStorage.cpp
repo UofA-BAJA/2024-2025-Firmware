@@ -375,12 +375,4 @@ namespace BajaWildcatRacing
             sqlite3_finalize(statement);
         }
     }
-
-
-
-        // enum DataRetrieval{
-        //     RETRIEVE_ALL,
-        //     RETRIEVE
-        // }
-
 }
