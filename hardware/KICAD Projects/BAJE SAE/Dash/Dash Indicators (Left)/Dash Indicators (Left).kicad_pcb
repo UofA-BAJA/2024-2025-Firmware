@@ -1,0 +1,5035 @@
+(kicad_pcb
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(general
+		(thickness 1.6)
+		(legacy_teardrops no)
+	)
+	(paper "A4")
+	(layers
+		(0 "F.Cu" signal)
+		(31 "B.Cu" signal)
+		(32 "B.Adhes" user "B.Adhesive")
+		(33 "F.Adhes" user "F.Adhesive")
+		(34 "B.Paste" user)
+		(35 "F.Paste" user)
+		(36 "B.SilkS" user "B.Silkscreen")
+		(37 "F.SilkS" user "F.Silkscreen")
+		(38 "B.Mask" user)
+		(39 "F.Mask" user)
+		(40 "Dwgs.User" user "User.Drawings")
+		(41 "Cmts.User" user "User.Comments")
+		(42 "Eco1.User" user "User.Eco1")
+		(43 "Eco2.User" user "User.Eco2")
+		(44 "Edge.Cuts" user)
+		(45 "Margin" user)
+		(46 "B.CrtYd" user "B.Courtyard")
+		(47 "F.CrtYd" user "F.Courtyard")
+		(48 "B.Fab" user)
+		(49 "F.Fab" user)
+		(50 "User.1" user)
+		(51 "User.2" user)
+		(52 "User.3" user)
+		(53 "User.4" user)
+		(54 "User.5" user)
+		(55 "User.6" user)
+		(56 "User.7" user)
+		(57 "User.8" user)
+		(58 "User.9" user)
+	)
+	(setup
+		(pad_to_mask_clearance 0)
+		(allow_soldermask_bridges_in_footprints no)
+		(pcbplotparams
+			(layerselection 0x00010fc_ffffffff)
+			(plot_on_all_layers_selection 0x0000000_00000000)
+			(disableapertmacros no)
+			(usegerberextensions no)
+			(usegerberattributes yes)
+			(usegerberadvancedattributes yes)
+			(creategerberjobfile yes)
+			(dashed_line_dash_ratio 12.000000)
+			(dashed_line_gap_ratio 3.000000)
+			(svgprecision 4)
+			(plotframeref no)
+			(viasonmask no)
+			(mode 1)
+			(useauxorigin no)
+			(hpglpennumber 1)
+			(hpglpenspeed 20)
+			(hpglpendiameter 15.000000)
+			(pdf_front_fp_property_popups yes)
+			(pdf_back_fp_property_popups yes)
+			(dxfpolygonmode yes)
+			(dxfimperialunits yes)
+			(dxfusepcbnewfont yes)
+			(psnegative no)
+			(psa4output no)
+			(plotreference yes)
+			(plotvalue yes)
+			(plotfptext yes)
+			(plotinvisibletext no)
+			(sketchpadsonfab no)
+			(subtractmaskfromsilk no)
+			(outputformat 1)
+			(mirror no)
+			(drillshape 1)
+			(scaleselection 1)
+			(outputdirectory "")
+		)
+	)
+	(net 0 "")
+	(net 1 "A0")
+	(net 2 "C0")
+	(net 3 "C1")
+	(net 4 "A1")
+	(net 5 "A2")
+	(net 6 "A3")
+	(net 7 "A4")
+	(net 8 "A5")
+	(net 9 "A6")
+	(net 10 "A7")
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "12c4d2d2-fcfd-49a1-bb4a-de101b0e2ce8")
+		(at 90.1 79.5)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D13"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "9552d67b-1573-4d08-b491-f676dc9e5486")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "2cd1e23d-3d7b-4e31-8dea-938b0fa126e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4eb743d4-dcbe-47ad-a98b-935f43b0f13e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e99f281-7f8f-40d3-9e4b-421ddac9e277")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7e4602d1-24fb-449c-99e0-09cc01971bf4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/49b5ba4e-d2a7-40cc-8b95-fe3ea5e0e98c")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "86d8da46-e9c5-40b5-b645-1b4f3c285604")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b8616e09-69b9-46e2-9042-524c3d8f937a")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3de53703-edb1-4f3c-96e8-27873de1276c")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "2336bdec-5af0-482a-8348-dd4b499634da")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6c46653a-786e-4206-87ad-5b8d1ec37595")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "2e649051-6169-464c-880d-062ba97bba3e")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6bdded81-f786-4f02-a49b-df482c903895")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "5636074a-a05b-42e6-ba86-1b1155b8b631")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "9c13fa3d-fc0a-4f43-89ce-929a597fcdd8")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "5478449e-109f-431c-b30a-788cd7a0ead3")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "51f85c36-9619-4b3c-b80d-c3e4bd840b08")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "3b06e3c3-3ad9-4490-a945-dd4c391101b1")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "aecd86ae-9623-457e-8356-90b618076f1c")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 9 "A6")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "dbfc13c9-954e-4dcb-959c-a6232cd618d8")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "1d329baa-b0e7-4bab-85a6-067e2e1e1547")
+		(at 97.5 94.5)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D8"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "fd85b37d-5554-4ea0-9718-40d189bad9d6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "99c90798-f4fe-430c-a507-75baed40798f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d7a1b4aa-1135-4554-bda5-bfec38a4ae77")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0633ea58-3116-4172-9499-a73fc8d22b42")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ba56daa-60a6-4e64-b3b7-ee9c0d614b66")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/98131889-5ce1-498f-a900-d88cdc521960")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "813c2aa0-5bba-41a6-837c-32d9c8034d33")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "22fa1604-b006-44e5-962a-d0c5e95952d5")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3ef2703d-20eb-4c8f-bca1-86d068ecb903")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "92b34a97-44e8-4148-80f2-0372cfd26853")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "4948bb15-548e-46a2-8279-86f102e71b1f")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ef35e33e-1813-4e72-85af-7d9a235c6778")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "dd429db2-deae-464c-ba92-6fa9745ca1be")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "11e28219-2856-4fc2-8d67-f77e452ad3bc")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "1afdb87c-0516-44ae-b4b9-44974c040422")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "70ab8533-fdf2-4a9d-9f2a-a6814c7658e2")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "ba098560-4e03-498d-b79c-a6fa90850621")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "12ec4e3b-aba4-4a85-832c-ffc95b8e73bb")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "04bab624-7c14-4959-bb6e-dfdf852a0602")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 6 "A3")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "257d688f-5d9b-4c93-a53e-30154676d35a")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "MountingHole:MountingHole_3.2mm_M3"
+		(layer "F.Cu")
+		(uuid "1e02d6bc-4a1c-4e94-86a4-cf9190f0d8f6")
+		(at 69.9 30.1)
+		(descr "Mounting Hole 3.2mm, no annular, M3")
+		(tags "mounting hole 3.2mm no annular m3")
+		(property "Reference" "REF**"
+			(at 0 -4.2 0)
+			(layer "F.SilkS")
+			(uuid "7d884652-cadd-405b-892d-1bc36d51d246")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_3.2mm_M3"
+			(at 0 4.2 0)
+			(layer "F.Fab")
+			(uuid "5cc1c741-14d4-404a-bbba-33ca1a3ef5c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad70492e-b6ba-463e-a06d-7b6500fed5fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cfdb3f6-3b97-4aaa-a15f-29446ed1f443")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdc53034-c64b-49da-bf89-3063e5fd9caa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 3.2 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "07df5ce0-4285-4aae-a868-a32f401e9eec")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 3.45 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "9dfa4b6d-a5e4-4fbf-ac71-955549d5b755")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "e6ce50d0-8764-4a63-b3d9-c4ad78fc9695")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 3.2 3.2)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "49409c16-6f55-4483-aa55-074ce14a2ba5")
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "22afaf05-c099-4365-a98c-55a9edf4331a")
+		(at 90 86.95)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D3"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "2b34cd1b-9a6e-44bf-8448-7a4cdef33211")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "836c5678-3ae7-4e3f-a455-621ed947ed04")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "816fbaab-a548-40e9-bc76-4844c7355e19")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f17aef29-ea33-45f3-95c2-f085619e9239")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "adfdbe16-e1d8-4ffd-acf4-a2f95dec5ec3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/0709240f-3042-4bfb-94d0-27f4f7e8e9b5")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "83e77081-ec1a-4d4f-9401-d1d218bda14d")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "ba6bcc79-97e7-494e-983c-5e14c370a7fd")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e7ed2c76-4a5a-4770-bd63-c89d6990a31a")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "53cabc8e-ca7c-4c73-8aad-214edacff382")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "2a553e8e-c191-4ae1-999e-d2054463f65a")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "c136f9ac-d88f-49d7-a848-e3365cf2bd70")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "332dd585-d305-44f3-b430-82bcdf5f8b9d")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "c7b4d1ee-20d2-4cce-a7c1-8c029b92a2c1")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "52505030-3f1f-4ed2-a6fa-47b0ff07d640")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "05b59d4e-9ee5-407e-b2b2-7a43ae4c3ff1")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "fa9ef205-0ddc-4aa1-b8ea-a1cc730cbc3a")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "9b1f91a7-ca1e-41e1-a803-5d271d0623b1")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "8838a147-7975-4d71-a0e8-cca042ced343")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "A1")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "f1c81845-2ad9-4186-938f-b33c329307b5")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "2c6d742c-f2ce-4276-ae3d-3b30fa1635ef")
+		(at 97.6 79.5)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D14"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "183c8119-d639-4ceb-afb7-1f4b8d9dd4ed")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "a730ac82-427c-46f5-ad7c-84493ce67892")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ff7a903-759e-49e5-ab78-96314199de5b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "46a9fdd2-3f8d-4c2d-8197-9314a0b798e0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0268a58-2f22-444e-825d-c6ea4e4b3373")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/586c0eb5-9515-474c-9b72-77d6ea6752d5")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e9274234-17aa-48a9-9534-1a8998e4a732")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "7f1fbd6e-f3c8-4378-867f-8b4d115dffee")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "9ff2f135-d725-4aa3-a385-d9f93f624f0e")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "f5d309cd-fa65-4de0-a845-169133835f26")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6df8e3a2-9ed5-44a0-a113-ed9b021f1a90")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "7ad71dcb-cefe-4237-815f-45ae7192225d")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "7629482e-2bba-4343-983f-639946831c22")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a624ea20-3870-42da-9d71-63f1022db16d")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d0e03642-c8c3-4725-a775-69889e3984f7")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "6f0e03e4-abdd-476d-ab15-3104b9898878")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "6b053280-bb3d-4672-92b4-d1708b872aff")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "f40cb057-44b8-4ce9-bbd1-3c984029d4e2")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "4055448f-3b9e-4d15-b0ae-0fb45b6b3199")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 9 "A6")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "cfc02077-3738-4b0c-b267-56ac838b1568")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "MountingHole:MountingHole_3.2mm_M3"
+		(layer "F.Cu")
+		(uuid "3dfe1fdd-c15f-44e5-a268-ff171909b020")
+		(at 119.9 30.1)
+		(descr "Mounting Hole 3.2mm, no annular, M3")
+		(tags "mounting hole 3.2mm no annular m3")
+		(property "Reference" "REF**"
+			(at 0 -4.2 0)
+			(layer "F.SilkS")
+			(uuid "7d884652-cadd-405b-892d-1bc36d51d246")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_3.2mm_M3"
+			(at 0 4.2 0)
+			(layer "F.Fab")
+			(uuid "5cc1c741-14d4-404a-bbba-33ca1a3ef5c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad70492e-b6ba-463e-a06d-7b6500fed5fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cfdb3f6-3b97-4aaa-a15f-29446ed1f443")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdc53034-c64b-49da-bf89-3063e5fd9caa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 3.2 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "07df5ce0-4285-4aae-a868-a32f401e9eec")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 3.45 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "9dfa4b6d-a5e4-4fbf-ac71-955549d5b755")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "e6ce50d0-8764-4a63-b3d9-c4ad78fc9695")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 3.2 3.2)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "49409c16-6f55-4483-aa55-074ce14a2ba5")
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "498cf793-82ce-4ce8-bb6c-d6c42e4f882b")
+		(at 97.5 109.6)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D16"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "24b898f7-450b-4a46-ba1b-13f483fe6a77")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "caa8c465-a48a-49b4-8196-3d3bd7cae2aa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d2880eea-4174-417a-b467-9f5422a8f6d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a93d9a90-3009-4108-a59e-7138c62fb3d4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "300115c2-0595-4233-9768-f4c05548f26c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/28cd2a43-39a1-400f-b184-47828095e224")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "1c629173-3232-45b8-890b-4e53ff3654ee")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "637c24e2-e54e-4eea-bb84-171bd2373d9b")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b87cfa8b-17d1-48fb-a0f3-afb8e9331af0")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "87c3b568-bf50-4c91-af97-82cf09971e6a")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "b5f8e475-ce9a-464f-84f6-482cc6643acb")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "58dd6d28-8954-40db-80b1-bb12f5e8dc13")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "bdf58924-2af9-4185-9108-eb6142138f0c")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "4c3c6d70-4e41-404c-b6d1-ee2abd690dba")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "06513c49-bba8-44b9-8be6-a69c1ef63d0b")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "8c92abcd-8543-4c57-9eef-04091d0094d1")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "1511f2c9-07c9-41ce-9985-d79a60c2362f")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "d524c54f-7029-4669-b4a4-46f2d134f692")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "ae299f82-a42c-4fa0-ab5d-cc74793b34eb")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 10 "A7")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "fb5fb51b-992b-460a-b3fa-02fa7ee487d1")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "5ec7ba6f-424e-4f4e-ba1e-501f4042fb64")
+		(at 97.5 86.95)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D4"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "0ae48181-8fe3-4369-b461-a1b6be1c2f6a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "e8a2e022-7e1e-42eb-bcaf-08ecaaa2ed5e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48fdd252-f439-4a33-9b4f-349cdd356c89")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8299a566-3df7-4c60-ba21-a735f1869982")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48050539-4f38-4869-b408-72cda71df5fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/fc7b69d9-b5ea-492d-bba4-147ebef8e8aa")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "6c0b232b-fee4-4312-9c9f-35c904ebac45")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "eee7b32a-4d3a-49d8-aca2-46adf630b79f")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "285d78b8-086e-4fab-bed2-ebe2d6bf55e1")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "f227257d-6627-4ea9-b873-f2273ebe4cb8")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "4ede1293-ac4f-4268-8c1d-dae769c1ac27")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "111c3438-150e-4e19-9997-beb92591b287")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "33a10a35-b261-4e6e-b7fa-b26379ee7412")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "392b9fc9-97d9-4944-8d63-5a86122e35d7")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "64911ccf-62c0-4578-a2b1-a554d0a74a70")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "58309804-c43c-47be-9c8e-3e371f44e9f0")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "d249e5b9-33d1-472f-ba84-0d32d29b982b")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "134a3bc5-bf67-4889-b36f-e7b16d88a33e")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "8c19b382-1274-4e5b-a1c3-1f9dc0e56932")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "A1")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "0ffecb4f-9b98-403f-8852-b8b3f5374e4f")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "62785fa6-0f22-49ee-a006-08736dc686db")
+		(at 97.6 71.95)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D10"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "7e3fcb52-3163-44c6-9e84-f9d3c540bba2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "bfa7489a-1751-439c-8ea7-b48855d79adf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d90868d1-8d4c-456a-906a-48630eb09b74")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4d7adf66-0ae3-48c1-9e82-32d06504c9cd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "36e7a5ce-cfd9-4290-aedf-23b63ee8aea7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/a03af5bd-ec74-4c88-8285-d638bebda59a")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "14010252-094c-4385-bd98-f9f1b4899f8c")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f0545e49-2a52-4c10-a38f-aacf294a9184")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "659c8cfe-08f5-48c4-87a8-1b1c8d7fd991")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "bae89c97-68fa-4342-9238-d4aced9ed9b6")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "197f7162-404c-468b-a6c4-a7b9cf049979")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "735a6c17-b443-4441-a769-efa0af736073")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "29fb0c8f-ac5b-4518-83cf-8fd097da3e5c")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6c621fbe-9e20-4241-9886-e1385f760eff")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "8c947eda-c805-4fa8-9163-1bca981d3e09")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "1c9fdd69-c076-496a-9edc-910ae8e95387")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "d2c8d014-9590-40bb-ba60-8a1651c4ab0b")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "9fc4f250-be9f-4599-a074-fcae9c09e844")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "38aeb86d-af3c-4b3c-9436-eeb7a0341728")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 7 "A4")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "beb5f73b-129f-42ff-be89-1009c66b2a98")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "72dbee17-2f25-430e-a85f-e41a76064dd4")
+		(at 90.1 71.95)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D9"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "bd1005bf-de3b-4b2c-b6da-756caae004ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "d8c616c4-ea8f-4b23-883d-d6088056e555")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e3c1930f-36e8-401d-9587-2e6c70367ff7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3081802-9bd6-44e1-9181-b06abf319e93")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "846f3ee7-3639-4191-a0a6-3dc8f3ebcb12")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/16ee4149-f3be-4377-80de-cbf305bc6f4f")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b22e1f40-9b0c-4bd3-9c38-518cd29c267d")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "633da75b-59f7-4f45-a9be-3b741a024661")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "75334727-c517-436b-8826-fd33e520ee97")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "6f852c8a-a3e5-4ba8-bf98-40d08b054697")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ddd3271a-fda4-4a87-88ae-a94e672626ca")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "f6095f87-59b8-48b7-8e8c-dc2ddbaa159b")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ebaaafe0-ab6a-424a-af50-e51574eb4ccf")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a3e22efa-4e0f-4338-b42a-39e7525a5089")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "4c8dffa2-db76-437d-86e2-fe23d999a71b")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "49f9be00-393c-4379-90cd-8bfc24caa002")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "42c8ffbf-5458-465e-ba77-8b80214fadee")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "09b80d77-911f-45d7-97bc-730214b6fe35")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "bb587081-4814-49b6-bca7-1d35c582d7d8")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 7 "A4")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "adb46b42-5007-4e5c-a50b-9cd20dd5f30d")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "772b4940-a43e-4914-bb25-da8d3a26a1ec")
+		(at 90 102.05)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D11"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "41c20b40-4d59-4c74-9463-31abfe407417")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "d2cb005f-9e62-466e-9066-a6d7149fd3e3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9255901f-aea3-460f-9f47-13a865f6c630")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00bc8f9d-66e5-4093-a806-cc33b13392b8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19d8d7f7-ac79-413c-a2c8-5f3526907d62")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/a85aedc0-55d9-4821-b6be-edf2bc341e56")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "67e70ca2-0378-414b-9bc5-589abbeaefd0")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "749958e2-4941-4f1f-8727-07172be3fb4f")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e828e43f-7890-4484-941e-aca157cc17ef")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "8e4f8203-d723-46cc-be7a-dc8d2e44e920")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "14fb0b87-c832-4a00-b62f-f22626d47333")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "503173c4-5157-451e-9d17-567948bc491b")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "56a40cbb-d495-467f-8ad1-be8e5fd6da48")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "44eeac5e-5a09-4696-9245-37d36eaf1588")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d263865f-29e2-4f82-9dc2-d554e3abb163")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "3645010d-cf56-4a98-8f2c-6b36d10d055d")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "4d7b64ce-303d-4b2e-bea5-25525595f8ac")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "aca1c4de-610f-4fef-9de6-374e48d7835f")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "7e75d1c6-ef89-4d5d-8b3e-dd1e70429f21")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 8 "A5")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "0d71515a-490a-426b-892c-80c383a05c5b")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "7dacaf6c-ae0e-4d83-a951-4e1f66ef3625")
+		(at 97.6 56.85)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D2"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "25226a78-737a-4dc9-b343-09222fa95c72")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "3dafdbcc-36df-4236-bff4-94b2f1b41d1b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4ae50694-7fdd-4f06-abb1-b8d032939d0d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "72617e53-cfed-4504-b013-97c2691ce504")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ccc0c42e-2fc0-48d6-9470-a8c14c77825b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/befc8c54-f64e-4316-81be-54458c3a48e8")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "701935e7-554b-43b4-867a-072d4be01ae7")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "4b671b03-52f7-4d8e-8eba-75e59d1664d0")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "fc5396d8-1c35-4247-b525-8cb9057d15e7")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "e5e2babc-a192-4517-990c-1f19316d7fbf")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "69058ae8-048a-4268-80ab-47d4ec7b90e5")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e1cc0c2a-c3c3-4b99-a8a8-0b095d2dca2e")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "42a19394-b32f-4e0c-88e1-f500deb80f5c")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "8693b35d-29b4-4b1e-9a5b-a180767bad4f")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c21877af-fa45-4082-920e-c4b945545bb4")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "71c98e65-7c48-41bc-a998-13248edea37f")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "d2a60fe5-2e36-42ad-8fca-54640be6a8a7")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "50e7620f-5fee-4b57-a64c-a18ff77e3aec")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "7abd201d-39fd-4523-8cba-dd09ad2a60dd")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "A0")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "4a13de82-5a12-4e12-b5cf-454e7a405047")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "MountingHole:MountingHole_3.2mm_M3"
+		(layer "F.Cu")
+		(uuid "847c4ee6-cc9a-4c62-adad-48c8322584f1")
+		(at 70 130.1)
+		(descr "Mounting Hole 3.2mm, no annular, M3")
+		(tags "mounting hole 3.2mm no annular m3")
+		(property "Reference" "REF**"
+			(at 0 -4.2 0)
+			(layer "F.SilkS")
+			(uuid "7d884652-cadd-405b-892d-1bc36d51d246")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_3.2mm_M3"
+			(at 0 4.2 0)
+			(layer "F.Fab")
+			(uuid "5cc1c741-14d4-404a-bbba-33ca1a3ef5c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad70492e-b6ba-463e-a06d-7b6500fed5fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cfdb3f6-3b97-4aaa-a15f-29446ed1f443")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdc53034-c64b-49da-bf89-3063e5fd9caa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 3.2 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "07df5ce0-4285-4aae-a868-a32f401e9eec")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 3.45 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "9dfa4b6d-a5e4-4fbf-ac71-955549d5b755")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "e6ce50d0-8764-4a63-b3d9-c4ad78fc9695")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 3.2 3.2)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "49409c16-6f55-4483-aa55-074ce14a2ba5")
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "a03152a9-60f1-4eec-b376-f5790e1aa98f")
+		(at 97.5 102.05)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D12"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "a510c8ab-18a9-4698-9ed1-c8ed8718a10a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "623233b2-82a7-421a-ba49-55e7c9c6f179")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ae4d2ee-d706-479d-964f-51457454f63a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f4ec0715-0ee6-4126-86d9-6d35d1659b2e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ff82899-2d56-4677-9c6c-1a5ffc521457")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/3446467a-3468-4a24-b08e-2b2eac023a43")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "6754233e-6288-44e4-92de-d752d1545f87")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "07164592-895d-4143-8d6d-12a4632ed9a3")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "857b6723-9319-4d8c-98c5-aacd60e1d1e1")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "b7c4324f-9e61-4f50-8996-a34581b1f8f5")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "d7e5495c-6604-4453-9350-9d0618021ff8")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "2e57aea2-e203-424f-9edc-8362cd34d1c9")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "260cbc7d-565e-462d-85af-bdda72f919af")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a6460b26-dc7c-43fa-b94f-ae71c2e08764")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "17c3c064-6fa8-41c7-a94f-869806b9986a")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "28d04da5-842c-482b-b702-cf2f4cec50bc")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "7a99e420-ef9a-4927-9a2a-4952e5400d45")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "b06c605c-806f-4219-af15-5636ae5611e8")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "33247138-4cca-4352-bbdd-e400d013edef")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 8 "A5")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "b1b30990-db7e-4768-bae1-146b4ef2c1ed")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "b1460d4b-2f09-4ef0-9037-b61fcd075c03")
+		(at 90 109.6)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D15"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "2be68c93-bcee-4fc9-abfe-075d654fc199")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "5913faa2-a6b8-4f47-a415-10ee18475a4d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00782626-2ba6-4d20-a8c5-0983be315b1e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0f4a57ad-aaa3-4b96-81e5-cbcbd6e8dd10")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5bfb3cbd-2187-41a6-af38-7547652ee7ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/c019c922-6d88-48e4-84a4-f054376286bf")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "018c12c2-e69f-475d-8751-5276412fa9e1")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3307f533-8af2-4e06-bd9d-e9101419fc96")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "9b4e3c28-1bef-4741-9efc-be3cd4db768f")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "cd95db9c-f63e-46c3-ad91-bba9ba107d13")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "b0994cce-6671-4aa3-a3f2-0a42d54782d9")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "239583f2-39c1-472e-b0eb-76c1bcbec61f")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a05c3d10-04c3-4bcf-aa64-1890e10e6f4f")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "8946d504-e278-42db-bc40-2429ddda94ac")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "38451b00-2205-450c-9733-07f8d0f2854b")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "27329a56-3af4-42c8-8dc4-493063d7652f")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "c33bd9b4-6915-4be2-bcd3-0ada465a7d03")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "b7cf3a16-d7ab-42fd-81f8-d0dde12ff712")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "72b33133-10e5-4be4-b36f-fb687356a154")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 10 "A7")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "5ff4fc12-c48c-42b0-b0ba-af2f4f3e4ed5")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "bc2994c5-01d4-401c-b831-2772d85cca68")
+		(at 90.1 56.85)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D1"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "7ad811c3-0482-4b68-8815-e01c46da0579")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "c25676b8-1861-471e-a549-2e0dd605a694")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e94d4ff-8a2a-4fb2-b6c2-5815d12bb884")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6719e668-3133-4ef2-b430-f0fb4037e4f2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ace59c63-d791-48fb-b119-8385c97d20a3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/f295c805-2da4-4328-bb2e-cded602c7ee5")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "ae69c383-e1a1-48a6-aabd-f8230cdb04f9")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "081d3849-f24f-4b89-be5f-0738bda69a9e")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "710f5fa9-ac52-4e92-a387-07ed8704d480")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "a7ee3f62-6ead-4f77-a971-ddf5f0e2fd46")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e3511728-a3b7-49fe-b365-8c1bba357495")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "d0aa1598-0d60-4ec1-91e5-07f2c99135fc")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "9c5c6b6f-a4a4-447f-865a-7cec6c8cbc29")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ce195ecb-03a2-480c-9952-30253366c834")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "ddc0fc3b-8d32-486d-b41d-180c268d7a4b")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "3b3c9e75-a1c2-46a3-b801-763e9fd52d0a")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "196bbae9-6bf9-45a2-a786-69587d9a546e")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "87630ae4-e081-4c37-97e4-1f7b79132940")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "eeeff379-9b7e-49c9-898a-79ad1f1dca68")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "A0")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "e4eddbb8-8296-4bbe-a9b5-3647ef991dd2")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "d26677bb-9359-421b-ac36-3f229c4f5c6e")
+		(at 90 94.5)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D7"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "5e37ed90-ce2e-464d-ba31-7d3a684a75d2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "402f9e04-2ffc-48c8-aaf7-88d479286634")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eda9b7d3-68de-4429-b4d5-bfdda2c782e2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d6d9f9b7-627b-4f66-a472-547b55f44043")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4b1c218e-e43b-430e-9de5-842844071f00")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/833c3419-ab6c-48c8-a127-5f54b8bd262b")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b8712bd4-1ce4-478a-9214-430534229023")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e3f4b262-c7bb-4680-b30c-1dfe27289ca2")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "9034cc98-0f7f-4f8a-a84c-bf81d53b012b")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "e6b28cfd-b57a-4ed8-b729-4af296800a6e")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "44ccb755-1521-43be-8e7e-c40c7f4a0c35")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "49cc3380-29c2-4431-b94f-18eca39efc34")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ee1166e5-cc63-49e0-99b9-da233bde312e")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "10bca9b6-456e-4e08-9dbe-8e290a7a2844")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "2d50e2c6-d9be-4baa-846d-8e065f113eea")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "6cf63493-27fc-4923-a171-dfc473c11002")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "b76d804e-9469-4a3a-b7c3-aace6b72023e")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "6c856097-8d9b-4d4c-9856-73d14095c60e")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "c8d48a06-53e8-4557-8c2c-f8f1b41e34f9")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 6 "A3")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "639c617e-df4c-4927-82d2-5047e6709567")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "MountingHole:MountingHole_3.2mm_M3"
+		(layer "F.Cu")
+		(uuid "d5443806-fada-4b99-8015-0d94afc7913b")
+		(at 120 130)
+		(descr "Mounting Hole 3.2mm, no annular, M3")
+		(tags "mounting hole 3.2mm no annular m3")
+		(property "Reference" "REF**"
+			(at 0 -4.2 0)
+			(layer "F.SilkS")
+			(uuid "7d884652-cadd-405b-892d-1bc36d51d246")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_3.2mm_M3"
+			(at 0 4.2 0)
+			(layer "F.Fab")
+			(uuid "5cc1c741-14d4-404a-bbba-33ca1a3ef5c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad70492e-b6ba-463e-a06d-7b6500fed5fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cfdb3f6-3b97-4aaa-a15f-29446ed1f443")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdc53034-c64b-49da-bf89-3063e5fd9caa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 3.2 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "07df5ce0-4285-4aae-a868-a32f401e9eec")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 3.45 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "9dfa4b6d-a5e4-4fbf-ac71-955549d5b755")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "e6ce50d0-8764-4a63-b3d9-c4ad78fc9695")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 3.2 3.2)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "49409c16-6f55-4483-aa55-074ce14a2ba5")
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "dd5f2ce8-238f-4890-97a2-30c21093b3d0")
+		(at 90.1 64.4)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D5"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "4b13044f-42e4-46d9-9409-b88314bbdf18")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "a5631b5b-8771-4dfc-b420-caf637fcb247")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "44b677f0-40eb-4e2f-92d1-1e022d5e9dc5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0d5c3b59-7a23-4f6c-a546-bda00e9baef0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e5e4f563-f103-47b1-afac-4de50fb53833")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/3ba7305a-a363-4a3b-97ec-2e84290bdde9")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3dcebc06-116b-439f-ab2d-021fff6bad13")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "2dde3ffe-c0f6-45c4-9416-94eef11d8f54")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "012867ae-abf1-465a-adf8-890f61aa981a")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "088dc5a8-f165-4364-bee8-a652b84a1f3c")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "074ecbf6-ec9c-49b1-a5b2-feded9065e1f")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "200d271d-366a-4095-a7e5-4bbb89c5d4d6")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "8688f19b-6501-4f62-b359-1a9ca53f1939")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "65c5f57b-8db4-466c-ab0c-84147cc304ac")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "cc86433e-29ef-49e4-bfaf-59bf85eb7c90")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "794e8228-e679-4e1c-b1b8-b0e479188ec1")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "14380895-0a28-43e3-bc74-1e99233a5eb0")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "38aaaf1f-84e1-47b9-877f-0359a95c52ab")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "b78f2f72-8fdd-494d-a29a-57141bb92a60")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 5 "A2")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "31bc1f5a-49a7-455a-bdf2-13460a1c8314")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "LED_THT:LED_D5.0mm"
+		(layer "F.Cu")
+		(uuid "fea6a206-c172-465e-80ea-b849d5d12455")
+		(at 97.6 64.4)
+		(descr "LED, diameter 5.0mm, 2 pins, http://cdn-reichelt.de/documents/datenblatt/A500/LL-504BC2E-009.pdf")
+		(tags "LED diameter 5.0mm 2 pins")
+		(property "Reference" "D6"
+			(at 1.27 -3.96 0)
+			(layer "F.SilkS")
+			(uuid "11aeea1b-523f-42f6-a515-f364e5f8fafa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 1.27 3.96 0)
+			(layer "F.Fab")
+			(uuid "ee3feb3a-8689-420f-abb9-e9a91f2a7520")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a36ced24-409f-4ed8-bc5b-669d3aa33742")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "64f6d5e9-233f-4b99-b38d-e59f9f308b1b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7fbcd4a4-ae5e-4e7b-9279-928e1d54c56b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
+		(path "/3fdb53b2-e911-4a3a-a516-4aeefc4ef0ab")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -1.29 -1.545)
+			(end -1.29 1.545)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f7fac94b-0dc6-4461-9f2e-40bd4268d240")
+		)
+		(fp_arc
+			(start -1.29 -1.54483)
+			(mid 2.072002 -2.880433)
+			(end 4.26 0.000462)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "1168dca1-ac34-41d6-9468-cc94e3af00f5")
+		)
+		(fp_arc
+			(start 4.26 -0.000462)
+			(mid 2.072002 2.880433)
+			(end -1.29 1.54483)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "53241200-023b-409f-ba4e-d2e04192ab86")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "958cb730-8a1f-4ad8-9833-9381651e4509")
+		)
+		(fp_line
+			(start -1.95 -3.25)
+			(end -1.95 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "98b38fd6-a3f8-44c4-81b5-c1b179ac755c")
+		)
+		(fp_line
+			(start -1.95 3.25)
+			(end 4.5 3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "af9cd330-9c2e-4418-9590-dd4faa46e7bf")
+		)
+		(fp_line
+			(start 4.5 -3.25)
+			(end -1.95 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6572b29e-5f3a-4599-9baf-252a92bd40ec")
+		)
+		(fp_line
+			(start 4.5 3.25)
+			(end 4.5 -3.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "42201420-4064-4d24-99f7-ac94aa84808f")
+		)
+		(fp_line
+			(start -1.23 -1.469694)
+			(end -1.23 1.469694)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c03d7245-245e-4915-9528-bd33856159a5")
+		)
+		(fp_arc
+			(start -1.23 -1.469694)
+			(mid 4.17 0.000016)
+			(end -1.230016 1.469666)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "dc5f09bf-749b-4ca2-bbc2-5493ab64a382")
+		)
+		(fp_circle
+			(center 1.27 0)
+			(end 3.77 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.Fab")
+			(uuid "24ca3e13-ddb8-4c16-bb8e-3e38c0f922e9")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 0 0)
+			(layer "F.Fab")
+			(uuid "aae65d99-dfe5-4c34-bc11-5833e4f763e5")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.2)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "K")
+			(pintype "passive")
+			(uuid "c932d330-b187-48b5-aba6-3f98156caf93")
+		)
+		(pad "2" thru_hole circle
+			(at 2.54 0)
+			(size 1.8 1.8)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 5 "A2")
+			(pinfunction "A")
+			(pintype "passive")
+			(uuid "fd9a704e-c180-4e95-aae6-0fc3e50fc2b6")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+		(layer "B.Cu")
+		(uuid "71cd0e6b-982e-4a27-b7be-945f41349593")
+		(at 100.22 49.2 90)
+		(descr "Through hole straight pin header, 1x05, 2.54mm pitch, single row")
+		(tags "Through hole pin header THT 1x05 2.54mm single row")
+		(property "Reference" "J1-A1"
+			(at 0 2.33 90)
+			(layer "B.SilkS")
+			(uuid "a4f1c335-400f-46eb-b8fd-f9e874b63906")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -12.49 90)
+			(layer "B.Fab")
+			(uuid "2c42b87a-887b-4318-a101-4a99326b7c9b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "308ffbfb-faaa-4ef4-a829-45e956d180fe")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "db5ffe87-ff63-46e9-b156-6691656447e3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c0b30af8-586f-48eb-837f-6dc34d93d32f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property ki_fp_filters "Connector*:*_1x??_*")
+		(path "/18dbe1b6-3418-4c74-9055-b55fb8e6aba7")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start 1.33 -11.49)
+			(end -1.33 -11.49)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "e32c1a63-9b46-42b6-9c51-75b94f9ac093")
+		)
+		(fp_line
+			(start 1.33 -11.49)
+			(end 1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "c72ab913-3074-4e66-8b92-8dc135c65e25")
+		)
+		(fp_line
+			(start -1.33 -11.49)
+			(end -1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "0f2ddf6f-3090-45d7-9c07-5b38876b9d92")
+		)
+		(fp_line
+			(start 1.33 -1.27)
+			(end -1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "b8cee7f8-1703-4788-a1a1-3706ddac8f93")
+		)
+		(fp_line
+			(start 0 1.33)
+			(end -1.33 1.33)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "b4e310ea-c2fb-49f8-97e4-42e98ad094d4")
+		)
+		(fp_line
+			(start -1.33 1.33)
+			(end -1.33 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "c29d9c7d-34e2-4630-872a-6ec144bf4b31")
+		)
+		(fp_line
+			(start 1.8 -11.95)
+			(end -1.8 -11.95)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "aa0ca1d2-4983-4571-b181-7d575780c722")
+		)
+		(fp_line
+			(start -1.8 -11.95)
+			(end -1.8 1.8)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "6b9379ac-c481-4b63-842f-467da808dba2")
+		)
+		(fp_line
+			(start 1.8 1.8)
+			(end 1.8 -11.95)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "08876bf1-35f3-4be3-af94-acdd8e504181")
+		)
+		(fp_line
+			(start -1.8 1.8)
+			(end 1.8 1.8)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "c5ba39ec-c1cc-4023-b1cd-9e9d90b4860f")
+		)
+		(fp_line
+			(start 1.27 -11.43)
+			(end 1.27 1.27)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "8e3a5924-8ad2-40e6-affd-8592e54ffe75")
+		)
+		(fp_line
+			(start -1.27 -11.43)
+			(end 1.27 -11.43)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "e65a22d8-50b7-4b1b-9b79-183e337724a1")
+		)
+		(fp_line
+			(start -1.27 0.635)
+			(end -1.27 -11.43)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "107db16b-2d47-4f2d-ab99-4c8825cf9685")
+		)
+		(fp_line
+			(start 1.27 1.27)
+			(end -0.635 1.27)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "f736af24-2643-438b-8245-e61adcd8d89e")
+		)
+		(fp_line
+			(start -0.635 1.27)
+			(end -1.27 0.635)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "b681f3bf-79c5-4a56-bd25-90007a383b20")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -5.08 0)
+			(layer "B.Fab")
+			(uuid "d0e4a640-42b8-465d-a47e-323f3ea6a6fe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "A0")
+			(pinfunction "Pin_1")
+			(pintype "passive")
+			(uuid "d06ecb32-3e8d-432c-8d84-4d6064aeb1c0")
+		)
+		(pad "2" thru_hole oval
+			(at 0 -2.54 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "A1")
+			(pinfunction "Pin_2")
+			(pintype "passive")
+			(uuid "c5b62ac3-487e-47a1-92c9-55857e42bad5")
+		)
+		(pad "3" thru_hole oval
+			(at 0 -5.08 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 5 "A2")
+			(pinfunction "Pin_3")
+			(pintype "passive")
+			(uuid "7169bfe6-4663-4957-9bb9-5182af8ec62b")
+		)
+		(pad "4" thru_hole oval
+			(at 0 -7.62 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 6 "A3")
+			(pinfunction "Pin_4")
+			(pintype "passive")
+			(uuid "e3688986-d645-4eb4-9745-55792d11ec7e")
+		)
+		(pad "5" thru_hole oval
+			(at 0 -10.16 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 7 "A4")
+			(pinfunction "Pin_5")
+			(pintype "passive")
+			(uuid "6f298fda-15d1-4c2f-820b-bc7dd6775a80")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+		(layer "B.Cu")
+		(uuid "c7bb9cd8-fb48-46c4-9723-fe5397b81309")
+		(at 100.22 45.5 90)
+		(descr "Through hole straight pin header, 1x05, 2.54mm pitch, single row")
+		(tags "Through hole pin header THT 1x05 2.54mm single row")
+		(property "Reference" "J1-B1"
+			(at 0 2.33 90)
+			(layer "B.SilkS")
+			(uuid "fa9f2536-79dc-4957-bd5c-5b367f9a114d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -12.49 90)
+			(layer "B.Fab")
+			(uuid "81efcd43-620d-4776-bb59-d137e1859c47")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4fd2a65d-1af3-4d39-9ea0-155807eab37a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "052c7309-cad3-4428-ac8e-3fae76e85f1e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8fc86c83-de65-49c1-9d3e-603e4f9fa4ca")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property ki_fp_filters "Connector*:*_1x??_*")
+		(path "/67337def-1d30-47e6-9d85-deca714e4627")
+		(sheetname "Root")
+		(sheetfile "Dash Indicators (Left).kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start 1.33 -11.49)
+			(end -1.33 -11.49)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "c39f5541-5006-473b-a686-4426008b890e")
+		)
+		(fp_line
+			(start 1.33 -11.49)
+			(end 1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "84e8616e-6bbf-4458-a18e-65746eb29ca7")
+		)
+		(fp_line
+			(start -1.33 -11.49)
+			(end -1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "a51cebbb-a765-48b2-80f4-d26b8a8bde2b")
+		)
+		(fp_line
+			(start 1.33 -1.27)
+			(end -1.33 -1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "34b41c54-efb6-4026-8da1-8e3bcdbf018d")
+		)
+		(fp_line
+			(start 0 1.33)
+			(end -1.33 1.33)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "889a4537-5f61-4ba1-85e2-35836348de20")
+		)
+		(fp_line
+			(start -1.33 1.33)
+			(end -1.33 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "c3d3f030-9be0-459c-944a-d9274516d43f")
+		)
+		(fp_line
+			(start 1.8 -11.95)
+			(end -1.8 -11.95)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "a1360bf6-4cfa-4999-8bb3-beb557edf7a7")
+		)
+		(fp_line
+			(start -1.8 -11.95)
+			(end -1.8 1.8)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "c68dfeb7-8224-4a20-870f-e03b33d61e6a")
+		)
+		(fp_line
+			(start 1.8 1.8)
+			(end 1.8 -11.95)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "36d30456-909c-40d7-b497-bda3a6d5e901")
+		)
+		(fp_line
+			(start -1.8 1.8)
+			(end 1.8 1.8)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "f3644741-db6c-4653-8b54-be40c0dcca52")
+		)
+		(fp_line
+			(start 1.27 -11.43)
+			(end 1.27 1.27)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "da8bdfa6-1bc5-4814-8862-c8e245ca27ad")
+		)
+		(fp_line
+			(start -1.27 -11.43)
+			(end 1.27 -11.43)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "bbc06fbf-ce54-4572-b222-429f972e188f")
+		)
+		(fp_line
+			(start -1.27 0.635)
+			(end -1.27 -11.43)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "4f273656-b46b-4ad0-a35d-00688d248295")
+		)
+		(fp_line
+			(start 1.27 1.27)
+			(end -0.635 1.27)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "d801b45e-4a94-4afc-8079-2f43a01f44c8")
+		)
+		(fp_line
+			(start -0.635 1.27)
+			(end -1.27 0.635)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "591101e9-5bd3-4de2-9ade-f95e2cf74609")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -5.08 0)
+			(layer "B.Fab")
+			(uuid "8b330c54-58c9-41b4-bc4a-6664dc8c8a0c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 8 "A5")
+			(pinfunction "Pin_1")
+			(pintype "passive")
+			(uuid "48384431-3650-4314-ab1b-95ac9236af7a")
+		)
+		(pad "2" thru_hole oval
+			(at 0 -2.54 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 9 "A6")
+			(pinfunction "Pin_2")
+			(pintype "passive")
+			(uuid "b0ce7c96-d380-4ba1-8bbc-b79f1e314994")
+		)
+		(pad "3" thru_hole oval
+			(at 0 -5.08 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 10 "A7")
+			(pinfunction "Pin_3")
+			(pintype "passive")
+			(uuid "86625a07-b567-4b1b-b880-0b5526a44950")
+		)
+		(pad "4" thru_hole oval
+			(at 0 -7.62 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "C0")
+			(pinfunction "Pin_4")
+			(pintype "passive")
+			(uuid "d664155c-ee91-426d-99fa-2d7abc50a4c9")
+		)
+		(pad "5" thru_hole oval
+			(at 0 -10.16 90)
+			(size 1.7 1.7)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "C1")
+			(pinfunction "Pin_5")
+			(pintype "passive")
+			(uuid "36fa6682-40f7-452a-bee8-a55d7bff1825")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(gr_line
+		(start 87.54 42.1)
+		(end 87.54 113.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "6d12fa62-f755-4e47-8187-d92c63bf7542")
+	)
+	(gr_line
+		(start 66 31.6)
+		(end 86.5 52.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "8357c76d-958d-432a-a497-8c61d459d5ba")
+	)
+	(gr_arc
+		(start 101.54 41.1)
+		(mid 102.247107 41.392893)
+		(end 102.54 42.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "8db37498-1a14-4d97-b4fe-cce20dd8aa12")
+	)
+	(gr_line
+		(start 88.54 41.1)
+		(end 101.54 41.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "9abc968a-68e8-446e-90fa-35764ed0fc46")
+	)
+	(gr_arc
+		(start 87.54 42.1)
+		(mid 87.832893 41.392893)
+		(end 88.54 41.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "a5b6c11f-24fd-4f8e-9f57-d04338fcad17")
+	)
+	(gr_arc
+		(start 102.54 113.1)
+		(mid 102.247107 113.807107)
+		(end 101.54 114.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "ba257f87-7cde-4e79-ae53-b327f8f9fd25")
+	)
+	(gr_line
+		(start 102.54 113.1)
+		(end 102.54 42.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "bddd4eef-5245-4174-9bc0-91be9d233afb")
+	)
+	(gr_line
+		(start 101.54 114.1)
+		(end 88.54 114.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "db073352-9be4-4080-9ad8-30e1fdf2cd9b")
+	)
+	(gr_line
+		(start 71.9 26.5)
+		(end 87.6 42.2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "dfcf76d7-ed34-4ed0-a519-f86cb129aee9")
+	)
+	(gr_arc
+		(start 88.54 114.1)
+		(mid 87.832893 113.807107)
+		(end 87.54 113.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "e70ba171-ed83-4e57-a01f-c09eb94f66ef")
+	)
+	(gr_text "LEFT"
+		(at 93.44 43 0)
+		(layer "F.SilkS")
+		(uuid "155a9da0-6bfe-4fd5-a082-f8878dabddf1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(dimension
+		(type aligned)
+		(layer "F.SilkS")
+		(uuid "306fe303-8ee7-4a97-86ac-1ed51b6be827")
+		(pts
+			(xy 69.9 30.1) (xy 69.9 130.1)
+		)
+		(height 10.5)
+		(gr_text "100.0000 mm"
+			(at 58.3 80.1 90)
+			(layer "F.SilkS")
+			(uuid "306fe303-8ee7-4a97-86ac-1ed51b6be827")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 1)
+			(precision 4)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(extension_height 0.58642)
+			(extension_offset 0.5) keep_text_aligned)
+	)
+	(dimension
+		(type aligned)
+		(layer "F.SilkS")
+		(uuid "5aee0c62-0089-4fd6-93a6-74635ba8e7a3")
+		(pts
+			(xy 69.9 30.1) (xy 119.9 30.1)
+		)
+		(height -3.6)
+		(gr_text "50.0000 mm"
+			(at 94.9 25.4 0)
+			(layer "F.SilkS")
+			(uuid "5aee0c62-0089-4fd6-93a6-74635ba8e7a3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 1)
+			(precision 4)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(extension_height 0.58642)
+			(extension_offset 0.5) keep_text_aligned)
+	)
+)
