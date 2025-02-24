@@ -5883,7 +5883,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00e13d78-fac0-43c9-aca8-13930afa4466")
-		(property "Reference" "J9"
+		(property "Reference" "J8"
 			(at 160.02 132.0799 0)
 			(effects
 				(font
@@ -5943,7 +5943,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J9")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -6030,7 +6030,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1131c61b-d229-4190-a9eb-6229ea32d989")
-		(property "Reference" "J11"
+		(property "Reference" "J6"
 			(at 161.29 110.4899 0)
 			(effects
 				(font
@@ -6090,7 +6090,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J11")
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -6172,7 +6172,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e3bce4d-a387-4edb-8526-6dee3d2ac5bd")
-		(property "Reference" "J8"
+		(property "Reference" "J2"
 			(at 247.65 111.7599 0)
 			(effects
 				(font
@@ -6229,7 +6229,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J8")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -6327,8 +6327,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4ae2331c-d134-4df3-9c99-8fb8801e1e23")
-		(property "Reference" "J1-B1"
-			(at 147.32 175.2599 0)
+		(property "Reference" "J11-2"
+			(at 147.32 176.5299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6391,7 +6391,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J1-B1")
+					(reference "J11-2")
 					(unit 1)
 				)
 			)
@@ -6407,7 +6407,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "503af4b0-3149-4b0d-aab4-2ffb3c6205b9")
-		(property "Reference" "J2-B1"
+		(property "Reference" "J1-2"
 			(at 168.91 176.5299 0)
 			(effects
 				(font
@@ -6471,7 +6471,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J2-B1")
+					(reference "J1-2")
 					(unit 1)
 				)
 			)
@@ -6569,7 +6569,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "682ba13e-f265-4bdc-8cb4-a940ab68fda5")
-		(property "Reference" "J5"
+		(property "Reference" "J7"
 			(at 119.38 132.0799 0)
 			(effects
 				(font
@@ -6629,7 +6629,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J5")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -6645,7 +6645,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6f232e16-5974-49f4-87d0-570f242e385c")
-		(property "Reference" "J2"
+		(property "Reference" "J10"
 			(at 208.28 111.7599 0)
 			(effects
 				(font
@@ -6702,7 +6702,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J2")
+					(reference "J10")
 					(unit 1)
 				)
 			)
@@ -6883,8 +6883,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9ebb3858-d74b-4881-b9cc-304c39da1dcf")
-		(property "Reference" "J1-A1"
-			(at 147.32 162.5599 0)
+		(property "Reference" "J11-1"
+			(at 147.32 163.8299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6947,7 +6947,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J1-A1")
+					(reference "J11-1")
 					(unit 1)
 				)
 			)
@@ -7417,7 +7417,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e240716d-ae6b-4088-87be-107189194286")
-		(property "Reference" "J2-A1"
+		(property "Reference" "J1-1"
 			(at 168.91 163.8299 0)
 			(effects
 				(font
@@ -7481,7 +7481,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J2-A1")
+					(reference "J1-1")
 					(unit 1)
 				)
 			)
@@ -7563,7 +7563,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f8411ca4-5e6a-460c-b32b-be8653d3fe4b")
-		(property "Reference" "J10"
+		(property "Reference" "J9"
 			(at 254 137.1599 0)
 			(effects
 				(font
@@ -7617,7 +7617,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J10")
+					(reference "J9")
 					(unit 1)
 				)
 			)
@@ -7633,7 +7633,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fccf4d72-d8ed-49df-8d19-e6482bddad8b")
-		(property "Reference" "J3"
+		(property "Reference" "J5"
 			(at 212.09 135.8899 0)
 			(effects
 				(font
@@ -7687,7 +7687,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J3")
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -7703,7 +7703,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fea0e756-6fcb-40c0-ac2d-533c0a2db296")
-		(property "Reference" "J4"
+		(property "Reference" "J5"
 			(at 119.38 110.4899 0)
 			(effects
 				(font
@@ -7763,7 +7763,7 @@
 		(instances
 			(project "Dash Main"
 				(path "/ce068e4e-d009-4dc1-a111-640e06c307fc"
-					(reference "J4")
+					(reference "J5")
 					(unit 1)
 				)
 			)
