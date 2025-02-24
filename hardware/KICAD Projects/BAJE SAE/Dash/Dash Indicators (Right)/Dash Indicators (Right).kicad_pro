@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.5,
-          "height": 2.2,
-          "width": 2.2
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -431,7 +431,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Dash Main.kicad_pro",
+    "filename": "Dash Indicators (Right).kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -469,7 +469,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../../../3D models/KICAD/Finished projects/Dash Main.step",
+      "step": "../../../../3D models/KICAD/Finished projects/Dash Indicators (Right).step",
       "svg": "",
       "vrml": ""
     },
@@ -576,7 +576,7 @@
   },
   "sheets": [
     [
-      "ce068e4e-d009-4dc1-a111-640e06c307fc",
+      "901e9e13-05f6-46fe-a132-7f08cb748e6d",
       "Root"
     ]
   ],
