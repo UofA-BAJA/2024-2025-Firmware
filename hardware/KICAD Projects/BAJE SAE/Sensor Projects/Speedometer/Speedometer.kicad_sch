@@ -2797,10 +2797,6 @@
 		(uuid "e8c1e273-8978-456c-adc8-25782e422683")
 	)
 	(no_connect
-		(at 106.68 184.15)
-		(uuid "ec7cdd7a-c30c-4df4-96e5-fba1a01f8f8a")
-	)
-	(no_connect
 		(at 102.87 184.15)
 		(uuid "fb05f2c5-6f0a-4c91-8b88-00a3c813b3db")
 	)
@@ -3880,6 +3876,28 @@
 			)
 		)
 	)
+	(global_label "+5V"
+		(shape output)
+		(at 106.68 184.15 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "22fc3314-8ee3-4b7f-b97d-bb29bd4e1029")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.68 191.0057 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SO"
 		(shape input)
 		(at 149.86 147.32 90)
@@ -4458,7 +4476,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_Baja_Final:Can Bus (Correct)"
+		(property "Footprint" "0_Baja_Final:Jack_CanBus"
 			(at 45.974 159.766 0)
 			(effects
 				(font
