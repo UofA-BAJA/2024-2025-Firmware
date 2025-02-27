@@ -74,9 +74,9 @@
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "Gerbers/")
 		)
 	)
 	(net 0 "")
@@ -8216,7 +8216,7 @@
 		)
 	)
 	(gr_text "Designed by Connor Larson, Karsten Yian and Julian m56 \nIn Tucson, Arizona, on Febuary 23rd, 2025."
-		(at 70.43 81.245 90)
+		(at 67.98 87.09 90)
 		(layer "F.SilkS")
 		(uuid "e32b2639-0b88-4d06-9dd5-134bef6928d5")
 		(effects

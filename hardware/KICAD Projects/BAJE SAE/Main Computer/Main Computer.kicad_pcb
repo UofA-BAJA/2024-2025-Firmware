@@ -2977,6 +2977,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "This side up Matthew"
+		(at 97.34 138.24 0)
+		(layer "F.SilkS")
+		(uuid "2b46bd73-df56-4a6a-819e-c8c33b8c8eba")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "L"
 		(at 97.2 115.7 0)
 		(layer "F.SilkS")
