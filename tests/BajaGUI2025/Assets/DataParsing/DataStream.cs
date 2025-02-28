@@ -23,7 +23,12 @@ public class DataStream
     public KeyValuePair<float, float> GetOldestData(){
         // I mean technically this is an escaping reference but it literally does not affect anything
         // because the data is removed from the queue
+
         return dataInStream.Dequeue();
+    }
+
+    public bool IsEmpty(){
+        return dataInStream.Count == 0;
     }
 
 }

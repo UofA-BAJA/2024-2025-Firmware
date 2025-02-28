@@ -30,9 +30,11 @@ public class SerialInterface
         DataPacket dataPacket = new();
 
 
-        // Idea: read one byte at a time until we see the two FF bytes, then read all 32?
         try{
 
+            // In between each packet there are two bytes of FF. We have to make sure we 
+            // read those before we read a packet, otherwise reading packets is going to
+            // be offset incorrectly.
             bool prevByteFF = false;
             byte[] currByte = {0x00};
             radioSerialPort.Read(currByte, 0, 1);
@@ -59,7 +61,7 @@ public class SerialInterface
             dataPacket.timestamp = BitConverter.ToSingle(buf, 4);
 
             for(int i = 0; i < 6; i++){
-                dataPacket.data[i] = BitConverter.ToSingle(buf, i + 2);
+                dataPacket.data[i] = BitConverter.ToSingle(buf, (i * 4) + 8);
             }
 
         }
