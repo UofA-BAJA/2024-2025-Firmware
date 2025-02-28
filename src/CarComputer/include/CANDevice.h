@@ -19,11 +19,10 @@ namespace BajaWildcatRacing
             CANDispatcher& m_canDispatcher;
             double minimumRepeatThreshold;
 
+            // Maps device + command bytes to the time when that command was sent
             std::unordered_map<uint16_t, std::chrono::steady_clock::time_point> activeCommandTimes;
 
             void populateValue(can_frame frame, void* destination);
-
-
 
         public:
             CANDevice(CANDispatcher& canDispatcher) : m_canDispatcher(canDispatcher){

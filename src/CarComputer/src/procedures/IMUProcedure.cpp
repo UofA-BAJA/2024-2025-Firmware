@@ -22,7 +22,7 @@ class IMUProcedure : public Procedure{
         , coms(coms)
         {
 
-            this->frequency = 60;
+            this->frequency = 90;
 
         }
         
