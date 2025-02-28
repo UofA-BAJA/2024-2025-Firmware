@@ -1,25 +1,13 @@
-#include "Devices.h"
 #include "Temperature.h"
 
-Temperature::Temperature(CANDispatcher* canDispatcher){
-    this->canDispatcher = canDispatcher;
-}
+namespace BajaWildcatRacing
+{
 
-float Temperature::getLatestTemperature(){
+    float Temperature::getLatestTemperature(){
 
-    byte canID = Devices::CVT_TEMP;
-    std::vector<byte> data = {0x01};
+        sendCanCommand(Device::CVT_TEMP, 0x01, &temperature);
+        return temperature;
 
-
-    if(!canDispatcher){
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
     }
 
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {this ->populateTemperature(frame);});
-
-    return temperature;
-}
-
-void Temperature::populateTemperature(can_frame frame){
-    memcpy(&temperature, &frame.data, sizeof(temperature));
 }

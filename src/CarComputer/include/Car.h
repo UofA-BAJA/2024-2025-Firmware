@@ -1,10 +1,3 @@
-/* 
- * Defines all of the subsystems on the car
- * 
- * 
- * Author: Matthew Larson
- */
-
 #ifndef CAR_H
 #define CAR_H
 
@@ -22,16 +15,39 @@
 
 #include "Constants.h"
 
-class Car{
+#include "CarTime.h"
 
-    public:
-        Car();
-        ~Car();
+namespace BajaWildcatRacing
+{
 
-    private:
-        void init();
-        void execute();
-        void end();
-};
+    class Car{
+
+        public:
+            Car();
+            ~Car();
+
+        private:
+            void init();
+            void execute();
+            void end();
+
+            const char* canInterface = "can0";
+            const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
+            const char* logPath = "/home/bajaelectrical/car.log";
+
+            // IMPORTANT NOTE!!!
+            // c++ initializes members in the order they're declared in the class, not in the order they are listed
+            // in the initialization list! It's very important that the order stays this way, or maybe I should make
+            // it so that the constructors aren't dependent on any of the objects here
+            DataStorage dataStorage;
+            ProcedureScheduler procedureScheduler;
+            CANDispatcher canDispatcher;            
+            Coms coms;                              // coms needs the procedure scheduler
+            CarContainer carContainer;              // carContainer needs all four of the above
+
+    };
+
+}
+
 
 #endif

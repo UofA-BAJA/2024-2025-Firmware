@@ -9,9 +9,15 @@
 
 #include <string>
 
-class Subsystem{
-    public:
-        virtual std::string toString();
-};
+namespace BajaWildcatRacing
+{
+
+    class Subsystem{
+        public:
+            virtual std::string toString();
+    };
+
+}
+
 
 #endif

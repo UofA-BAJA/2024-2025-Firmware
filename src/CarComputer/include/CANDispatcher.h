@@ -23,44 +23,51 @@
 
 #include "CarLogger.h"
 
-using byte = unsigned char;
+namespace BajaWildcatRacing
+{
 
-class CANDispatcher{
+    using byte = unsigned char;
 
-    public:
+    class CANDispatcher{
 
-        CANDispatcher(const char* interface);
+        public:
 
-        void execute();
+            CANDispatcher(const char* interface);
 
-        void sendCanCommand(int deviceID, std::vector<byte> data, std::function<void(can_frame)> callback);
-        void sendCanCommand(int deviceID, std::vector<byte> data);
+            void execute();
 
-    private:
-        const int MIN_UID_BOUND = 0x1000;         // Reserve the non extended ID's for all the other devices
-        const int MAX_UID_BOUND = 0xFFFFFF;
+            void sendCanCommand(int deviceID, std::vector<byte> data, void* destination, std::function<void(can_frame, void*)> callback);
+            void sendCanCommand(int deviceID, std::vector<byte> data);
 
-        int can_socket_fd;
-        uint32_t currUID;
+        private:
+            const int MIN_UID_BOUND = 0x1000;         // Reserve the non extended ID's for all the other devices
+            const int MAX_UID_BOUND = 0xFFFFFF;
 
-        std::thread canReadingThread;
+            int can_socket_fd;
+            uint32_t currUID;
 
-        std::unordered_map<uint32_t, std::function<void(can_frame)>> callbacks;
-        // Maps a command to the amount of cycles it has been waiting for a response
-        std::unordered_map<uint32_t, int> commandCycles;
-        int cycleThreshold = 100;     // A command can be in queue for 100 cycles until it is considered dropped.
+            std::thread canReadingThread;
 
-        const char* interfaceName;
+            std::unordered_map<uint32_t, std::function<void(can_frame, void*)>> callbacks;
+            std::unordered_map<uint32_t, void*> destinations;
+            // Maps a command to the amount of cycles it has been waiting for a response
+            std::unordered_map<uint32_t, int> commandCycles;
+            int cycleThreshold = 100;     // A command can be in queue for 100 cycles until it is considered dropped.
 
-        std::mutex callbacks_mutex;
+            const char* interfaceName;
 
-        int openCANSocket(const char* interface);
-        void readCANInterface();
+            std::mutex callbacks_mutex;
 
-        void resetCANInterface(const char* interface);
-        int droppedCommands = 0;
+            int openCANSocket(const char* interface);
+            void readCANInterface();
 
-};
+            void resetCANInterface(const char* interface);
+            int droppedCommands = 0;
+
+    };
+
+}
+
 
 
 #endif

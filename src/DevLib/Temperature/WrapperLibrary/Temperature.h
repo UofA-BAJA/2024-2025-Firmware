@@ -2,23 +2,28 @@
 #define TEMPERATURE_H
 
 
-#include "CANDispatcher.h"
+#include "CANDevice.h"
 #include "functional"
 #include "linux/can.h"
 
-class Temperature{
+namespace BajaWildcatRacing
+{
 
-    public:
-        Temperature(CANDispatcher* canDispatcher);
+    class Temperature : CANDevice{
 
-        float getLatestTemperature();
-    private:
-        CANDispatcher* canDispatcher;
+        public:
+            Temperature(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
 
-        float temperature = 0.0;
+            }
 
-        void populateTemperature(struct can_frame frame);
-};
+            float getLatestTemperature();
 
+        private:
+
+            float temperature = 0.0;
+        
+    };
+
+}
 
 #endif

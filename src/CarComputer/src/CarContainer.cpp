@@ -1,57 +1,73 @@
 /*
- * Where all the subsystems and commands are defined and bound to the car
  *
- * Authors: Matthew Larson and
+ *  Class: CarContainer
+ *
+ *         Author:  Matthew Larson, Karsten Yin, Julian Rendon
+ *
+ *        Purpose:  Defines the functionality of the car. All subsystems and procedures are defined,
+ *        created, and bound here. 
+ *
+ *  Inherits From:  None
+ *
+ *     Interfaces:  None
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *      Constants:  None
+ *
+ *+-----------------------------------------------------------------------
+ *
+ *   Constructors:  CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms) --
+ *   the location to define all the subsystems and procedures in the car and subsequently bind the procedures to commands.
+ *
+ *  Class Methods:  [List the names, arguments, and return types of all
+ *                   public class methods.]
+ *
+ * Inst. Methods:  [List the names, arguments, and return types of all
+ *                   public instance methods.]
+ *
 */
+
 
 #include <iostream>
+
 #include "CarContainer.h"
-#include "Car.h"
-#include "Commands.h"
 
-#include "procedures/ExampleProcedure.cpp"
-#include "procedures/IMUProcedure.cpp"
-#include "procedures/DashProcedure.cpp"
-#include "procedures/TemperatureProcedure.cpp"
+namespace BajaWildcatRacing
+{
 
-#include "DataStorage.h"
+    CarContainer::CarContainer(
+                               ProcedureScheduler& procedureScheduler, 
+                               CANDispatcher& canDispatcher,
+                               DataStorage& dataStorage,
+                               Coms& coms)
+    : imuSubsystem(canDispatcher)
+    , drivetrainSubsystem(canDispatcher)
+    , dashSubsystem(canDispatcher)
+    {
 
-#include "IMUSubsystem.h"
-#include "DashSubsystem.h"
 
-#include "TemperatureSubsystem.h"
 
-/*
- * Here you create the subsystems and commands.
- * You should also bind the commands to the car or they will not
- * do anything.
-*/
+        // temperatureProcedure = new TemperatureProcedure(drivetrainSubsystem, dataStorage, coms);
 
-// ExampleProcedure* exampleProcedure;
-// TestProcedure* testProcedure;
+        // dashProcedure = new DashProcedure(dashSubsystem, drivetrainSubsystem);
 
-IMUSubsystem* imuSubsystem;
-IMUProcedure* imuProcedure;
+        // procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
+        // procedureScheduler.bindCommand(temperatureProcedure, Command::DEFAULT_CAR_START);
+        // procedureScheduler.bindCommand(dashProcedure, Command::DEFAULT_CAR_START);
 
-DashSubsystem* dashSubsystem;
-DashProcedure* dashProcedure;
+    
 
-TemperatureSubsystem* temperatureSubsystem;
-TemperatureProcedure* temperatureProcedure;
+        // Method 1 (Memory unsafe):
+        imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
+        procedureScheduler.bindCommand(imuProcedure, Command::DEFAULT_CAR_START);
 
-CarContainer::CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms){
+        // Method 2 (Memory safe):
+        procedureScheduler.bindCommand<IMUProcedure>(Command::DEFAULT_CAR_START, imuSubsystem, dataStorage, coms);
 
-    // testProcedure = new TestProcedure(dataStorageSubsystem);
-    imuSubsystem = new IMUSubsystem(canDispatcher);
-    imuProcedure = new IMUProcedure(imuSubsystem, dataStorage, coms);
 
-    temperatureSubsystem = new TemperatureSubsystem(canDispatcher);
-    temperatureProcedure = new TemperatureProcedure(temperatureSubsystem, dataStorage, coms);
+        CarLogger::Log("Car Started");
+        std::cout << "Car Container Constructor called" << std::endl;
+    }
 
-    procedureScheduler->bindCommand(imuProcedure, Command::START_LOG);
-    procedureScheduler->bindCommand(temperatureProcedure, Command::START_LOG);
-
-    dashS
-
-    std::cout << "Car Container Constructor called" << std::endl;
 }

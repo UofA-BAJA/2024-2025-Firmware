@@ -26,7 +26,7 @@ uint8_t address[][6] = { "1Node", "2Node" };
 
 // to use different addresses on a pair of radios, we need a variable to
 // uniquely identify which address this radio will use to transmit
-bool radioNumber = 1;  // 0 uses address[0] to transmit, 1 uses address[1] to transmit
+bool radioNumber = 0;  // 0 uses address[0] to transmit, 1 uses address[1] to transmit
 
 // Used to control whether this node is sending or receiving
 bool role = false;  // true = TX role, false = RX role
@@ -53,12 +53,12 @@ void setup() {
   Serial.println(F("RF24/examples/GettingStarted"));
 
   // To set the radioNumber via the Serial monitor on startup
-  Serial.println(F("Which radio is this? Enter '0' or '1'. Defaults to '0'"));
-  while (!Serial.available()) {
+  // Serial.println(F("Which radio is this? Enter '0' or '1'. Defaults to '0'"));
+  // while (!Serial.available()) {
     // wait for user input
-  }
-  char input = Serial.parseInt();
-  radioNumber = input == 1;
+  // }
+  // char input = Serial.parseInt();
+  // radioNumber = input == 1;
   Serial.print(F("radioNumber = "));
   Serial.println((int)radioNumber);
 
@@ -72,19 +72,19 @@ void setup() {
   // because these examples are likely run with nodes in close proximity to
   // each other.
   radio.setPALevel(RF24_PA_HIGH);  // RF24_PA_MAX is default.
-  radio.setAutoAck(false);
-  radio.setDataRate(RF24_2MBPS);
   // save on transmission time by setting the radio to only transmit the
   // number of bytes we need to transmit a float
   radio.setPayloadSize(32);  // float datatype occupies 4 bytes
-  radio.setRetries(0, 0);
   // set the TX address of the RX node into the TX pipe
+
+  radio.enableDynamicPayloads();
+  radio.enableAckPayload();
+
   radio.openWritingPipe(address[radioNumber]);  // always uses pipe 0
 
   // set the RX address of the TX node into a RX pipe
   radio.openReadingPipe(1, address[!radioNumber]);  // using pipe 1
 
-  role = true;
   // additional setup specific to the node's role
   if (role) {
     radio.stopListening();  // put radio in TX mode
@@ -99,44 +99,68 @@ void setup() {
 
 }  // setup
 
+bool ackPacketExists = false;
+
+byte command;
+
 void loop() {
 
-  if (role) {
-    // This device is a TX node
 
-    // unsigned long start_timer = micros();                // start the timer
-    bool report = radio.write(&payload, 32);  // transmit & save the report
-    // unsigned long end_timer = micros(); 0                 // end the timer
+  if(Serial.available()){
 
-    if (report) {
-      // Serial.print(F("Transmission successful! "));  // payload was delivered
-      // Serial.print(F("Time to transmit = "));
-      // Serial.print(end_timer - start_timer);  // print the timer result
-      // Serial.print(F(" us. Sent: "));
-      // Serial.println(payload);  // print payload sent
-      // payload += 0.01;          // increment float payload
-    } else {
-      // Serial.println(F("Transmission failed or timed out"));  // payload was not delivered
-    }
+    command = Serial.read();
 
-    // to make this example readable in the serial monitor
-    // delay(10);  // slow transmissions down by 1 second
+    Serial.println("-------------------------------");
+    Serial.println(command);
+    Serial.println("-------------------------------");
 
-  } else {
+    ackPacketExists = true;
+
+  }
+
+
+
+
     // This device is a RX node
 
     uint8_t pipe;
     if (radio.available(&pipe)) {              // is there a payload? get the pipe number that received it
       uint8_t bytes = radio.getPayloadSize();  // get the size of the payload
       radio.read(&payload, bytes);             // fetch payload from FIFO
-      Serial.print(F("Received "));
-      Serial.print(bytes);  // print the size of the payload
-      Serial.print(F(" bytes on pipe "));
-      Serial.print(pipe);  // print the pipe number
-      Serial.print(F(": "));
+      // Serial.print(F("Received "));
+      // Serial.print(bytes);  // print the size of the payload
+      // Serial.print(F(" bytes on pipe "));
+      // Serial.print(pipe);  // print the pipe number
+      // Serial.print(F(": "));
+      // Serial.println();
+
+      Serial.print(payload[0], BIN);
+      Serial.print(" ");
+
+      for(int i = 1; i < 8; i++){
+
+        float val;
+
+        memcpy(&val, &payload[i], sizeof(float));
+        Serial.print(val);
+
+        Serial.print(" ");
+
+      }
+
+      if(ackPacketExists){
+
+        int hello = 100;
+        radio.writeAckPayload(pipe, &command, 1);
+
+        ackPacketExists = false;
+      }
+
+
+      Serial.println();
+
       // Serial.println(payload);  // print the payload's value
     }
-  }  // role
 
   // if (Serial.available()) {
   //   // change the role via the serial monitor

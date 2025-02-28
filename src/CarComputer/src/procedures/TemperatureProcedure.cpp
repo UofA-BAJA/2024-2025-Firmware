@@ -1,5 +1,5 @@
 #include "Procedure.h"
-#include "TemperatureSubsystem.h"
+#include "DrivetrainSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
 #include "LiveDataStream.h"
@@ -7,23 +7,27 @@
 
 #include <iomanip>
 
+namespace BajaWildcatRacing
+{
+
 class TemperatureProcedure : public Procedure{
     public:
-        TemperatureSubsystem* temperatureSubsystem;
-        DataStorage* dataStorage;
-        Coms* coms;
+        DrivetrainSubsystem& drivetrainSubsystem;
+        DataStorage& dataStorage;
+        Coms& coms;
 
         LiveDataStream* temperatureStream;
 
 
-        TemperatureProcedure(TemperatureSubsystem *temperatureSubsystem, DataStorage* dataStorage, Coms* coms){
-            this->temperatureSubsystem = temperatureSubsystem;
-            this->dataStorage = dataStorage;
-            this->coms = coms;
+        TemperatureProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
+        : drivetrainSubsystem(drivetrainSubsystem)
+        , dataStorage(dataStorage)
+        , coms(coms)
+        {
 
-            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMP);
+            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
 
-            coms->addNewLiveDataStream(temperatureStream);
+            coms.addNewLiveDataStream(temperatureStream);
 
             this->frequency = 1;
 
@@ -43,7 +47,7 @@ class TemperatureProcedure : public Procedure{
             // xRot = imuSubsystem->getRotationX();
             // xRot = imuSubsystem->getRotationX();
 
-            float cvt_temperature = temperatureSubsystem->getTemperature();
+            float cvt_temperature = drivetrainSubsystem.getCVTTemperature();
 
             temperatureStream->enqueue(cvt_temperature);
 
@@ -69,3 +73,5 @@ class TemperatureProcedure : public Procedure{
 
     private:
 };
+
+}

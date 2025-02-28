@@ -7,21 +7,24 @@
 #include <fstream>
 #include <cstring>
 
+namespace BajaWildcatRacing
+{
 
-class CarLogger{
+    class CarLogger{
 
-    public:
+        public:
 
-        // This should only be called by the car.
-        static void Initialize(const char* path);
-        static void Log(const char* str);
-        static void LogWarning(const char* str);
-        static void LogError(const char* str);
-        static void LogPanic(const char* str);
+            // This should only be called by the car.
+            static void Initialize(const char* path);
+            static void Log(const char* str);
+            static void LogWarning(const char* str);
+            static void LogError(const char* str);
+            static void LogPanic(const char* str);
 
-    private:
-        static std::ofstream logFile;
-};
+        private:
+            static std::ofstream logFile;
+    };
 
+}
 
 #endif

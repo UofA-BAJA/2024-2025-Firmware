@@ -1,108 +1,93 @@
 #include "Dash.h"
 
-Dash::Dash(CANDispatcher *canDispatcher)
+
+namespace BajaWildcatRacing
 {
-    this->canDispatcher = canDispatcher;
-}
 
-
-// FOR TESTING PURPOSES ONLY, if we actually manage to run this
-void Dash::sendIMURotX(float rotX)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data = {0x45, rotX};
-
-    if (!canDispatcher)
-    {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+    Dash::Dash(CANDispatcher& canDispatcher) : CANDevice(canDispatcher){
+        indicatorLightState = 0;
     }
 
-    canDispatcher->sendCanCommand(canID, data);
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
-}
 
-// Sends latest speed information to the Dash
-void Dash::sendSpeed(float speed)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data(8, 0);
-
-    memcpy(data.data()+1, speed, sizeof(float));
-    data[0] = 0x01;
-
-    if (!canDispatcher)
+    // Sends latest speed information to the Dash
+    void Dash::sendSpeed(float speed)
     {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(float)+1, 0);
+
+        memcpy(data.data()+1, &speed, sizeof(float));
+        data[0] = 0x01;
+
+        sendCanCommand(canID, 0x01, data);
+        
     }
 
-    canDispatcher->sendCanCommand(canID, data, [this](can_frame frame) {});
-}
 
-// Sends latest RPM information to the Dash
-void Dash::sendRPM(float rpm)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data(8, 0);
-
-    memcpy(data.data()+1, rpm, sizeof(float));
-    data[0] = 0x02;
-
-    if (!canDispatcher)
+    // Sends latest RPM information to the Dash
+    void Dash::sendRPM(float rpm)
     {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(float)+1, 0);
+
+        memcpy(data.data()+1, &rpm, sizeof(float));
+        data[0] = 0x02;
+
+        sendCanCommand(canID, 0x02, data);
+
     }
 
-    canDispatcher->sendCanCommand(canID, data);
-}
-
-// Sends latest CVT Temp information to the Dash
-void Dash::sendCVTTemp(float cvtTemp)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data(8, 0);
-
-    memcpy(data.data()+1, cvtTemp, sizeof(float));
-    data[0] = 0x03;
-    
-
-    if (!canDispatcher)
+    // Sends latest CVT Temp information to the Dash
+    void Dash::sendCVTTemp(float cvtTemp)
     {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(float)+1, 0);
+
+        memcpy(data.data()+1, &cvtTemp, sizeof(float));
+        data[0] = 0x03;
+        
+        sendCanCommand(canID, 0x03, data);
+        
     }
 
-    canDispatcher->sendCanCommand(canID, data);
-}
-
-// Sends latest Time Elapsed information to the Dash
-void Dash::sendTimeSeconds(unsigned long seconds)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data(8, 0);
-
-    memcpy(data.data()+1, seconds, sizeof(unsigned long));
-    data[0] = 0x04;
-
-    if (!canDispatcher)
+    // Sends latest Time Elapsed information to the Dash
+    void Dash::sendTimeSeconds(float seconds)
     {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(float)+1, 0);
+        
+        memcpy(data.data()+1, &seconds, sizeof(float));
+        data[0] = 0x04;
+        
+        sendCanCommand(canID, 0x04, data);
+
     }
 
-    canDispatcher->sendCanCommand(canID, data);
-}
-
-// Sends new indicator light state to the Dash
-void Dash::sendTimeSeconds(uint16_t lightState)
-{
-    byte canID = Devices::Dash;
-    std::vector<byte> data(8, 0);
-
-    memcpy(data.data()+1, lightState, sizeof(uint16_t));
-    data[0] = 0x05;
-
-    if (!canDispatcher)
+    // Sets new indicator light state, all indicator lights at once 
+    // Each bit represents 1 light, least significant is light 0
+    void Dash::setIndicatorLights(uint16_t lightState)
     {
-        std::cerr << "Error: CANDispatcher is null!" << std::endl;
+        this->indicatorLightState = lightState;
     }
 
-    canDispatcher->sendCanCommand(canID, data);
+    // Sets new indicator light state for a specific indicator light
+    void Dash::setSpecificIndicatorLight(IndicatorLights light, bool state){
+        if(state){
+            this->indicatorLightState = this->indicatorLightState | 1 << light;
+        }else{
+            this->indicatorLightState = this->indicatorLightState & ~(1 << light);
+        }
+    } 
+
+    // Sends the current indicator light state in the wrapper library to the dash
+    // This should ONLY be called by the dash procedure at the end of its cycle
+    void Dash::sendIndicatorLightState(){
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(uint16_t)+1, 0);
+
+        memcpy(data.data()+1, &this->indicatorLightState, sizeof(uint16_t));
+        data[0] = 0x05;
+
+        sendCanCommand(canID, 0x05, data);
+    }
+
 }

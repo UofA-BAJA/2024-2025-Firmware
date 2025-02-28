@@ -23,7 +23,7 @@ enum DataTypes{
     IMU_ACCELERATION_X = 0x00B,
     IMU_ACCELERATION_Y = 0x00C,
     IMU_ACCELERATION_Z = 0x00D,
-    CVT_TEMP = 0x00E,
+    CVT_TEMPERATURE = 0x00E,
     // The reserves are here because we can have a total of 32 data types that can be transmitted live
     RESERVE_16,
     RESERVE_17,

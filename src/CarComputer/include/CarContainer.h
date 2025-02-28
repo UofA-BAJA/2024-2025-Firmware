@@ -5,12 +5,44 @@
 #include "CANDispatcher.h"
 #include "DataStorage.h"
 #include "Coms.h"
+#include "Commands.h"
+#include "CarLogger.h"
 
-// class Car;
+#include "procedures/IMUProcedure.cpp"
+#include "procedures/DashProcedure.cpp"
+#include "procedures/TemperatureProcedure.cpp"
 
-class CarContainer{
-    public:
-        CarContainer(ProcedureScheduler* procedureScheduler, CANDispatcher* canDispatcher, DataStorage* dataStorage, Coms* coms);
-};
+#include "DashSubsystem.h"
+#include "IMUSubsystem.h"
+#include "DrivetrainSubsystem.h"
+
+namespace BajaWildcatRacing
+{
+
+    class CarContainer{
+        
+        public:
+            CarContainer(
+                         ProcedureScheduler& procedureScheduler,
+                         CANDispatcher& canDispatcher,
+                         DataStorage& dataStorage,
+                         Coms& coms
+                        );
+        private:
+            IMUSubsystem imuSubsystem;
+            IMUProcedure* imuProcedure;
+
+            DashSubsystem dashSubsystem;
+            DashProcedure* dashProcedure;
+
+            DrivetrainSubsystem drivetrainSubsystem;
+            TemperatureProcedure* temperatureProcedure;
+
+
+
+    };
+
+}
+
 
 #endif

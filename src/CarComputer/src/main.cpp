@@ -9,7 +9,8 @@
 #include "Car.h" 
 
 int main(){
-    Car car = Car();
+
+    BajaWildcatRacing::Car car = BajaWildcatRacing::Car();
 
     return 0;
 }
