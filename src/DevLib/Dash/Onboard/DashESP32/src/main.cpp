@@ -5,13 +5,26 @@
 #include <mcp_can.h>
 #include <SPI.h>
 #include <Adafruit_LEDBackpack.h>
+#include <Preferences.h>
 
-void readCAN(void *pvParameters);
-void displayCVTTemp();
-void displayTime();
+//Methods
+void writeDisplays(void *pvParameters);
+void displayCVTTemp(HT16K33 disp);
+void displayTime(HT16K33 disp);
+void displayRPM(HT16K33 disp);
+void displaySpeed(HT16K33 disp);
 
 // Constants
 const int CAN_CS_PIN = 5;
+const int DISPLAY1_BUTTON_PIN = 12;
+const int DISPLAY2_BUTTON_PIN = 14;
+enum displayOptions{
+  CVT_TEMP = 0,
+  TIME,
+  RPM,
+  SPEED,
+  END_ELEMENT
+};
 
 // Devices
 HT16K33 display; // 14 segment
@@ -22,15 +35,22 @@ Servo rpm;
 Adafruit_LEDBackpack ledMatrix = Adafruit_LEDBackpack();
 
 SemaphoreHandle_t canMutex = NULL;
+Preferences prefs;
 
 // Variables
 float lastSpeed = 0;
 float lastRPM = 0;
 float lastCVTTemp = 0;
-unsigned long lastTimeSeconds = 0;
+float lastTimeSeconds = 0;
 uint16_t indicatorLightState = 0;
 
-bool canRecentRX = false;
+bool canRecentRX = true;
+unsigned long lastCANRx = 0;
+int display1CurrentDisplay = 0;
+unsigned long lastDisp1Button = 0;
+int display2CurrentDisplay = 1;
+unsigned long lastDisp2Button = 0; 
+
 
 void setup()
 {
@@ -72,6 +92,9 @@ void setup()
     // while (1)
     //   ;
   }
+  ledMatrix.displaybuffer[5] = 1;
+  ledMatrix.displaybuffer[6] = 1;
+  ledMatrix.writeDisplay();
 
   //---------------------------------------------------
 
@@ -108,6 +131,7 @@ void setup()
       ;
   }
 
+  //Init filter so we only worry about our CAN ID
   CAN.init_Mask(0, 1, 0xFFFFFFFF);
   CAN.init_Filt(0, 1, 0x00000003);
   CAN.init_Filt(1, 1, 0x00000003);
@@ -121,132 +145,247 @@ void setup()
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
 
+  //---------------------------------------------------
+
+  //Initialize pins for buttons
+  pinMode(DISPLAY1_BUTTON_PIN, INPUT_PULLUP);
+  pinMode(DISPLAY2_BUTTON_PIN, INPUT_PULLUP);
+
+  //---------------------------------------------------
+
+  //Load Display preferences
+  prefs.begin("DisplayPrefs", false);
+  if(!prefs.isKey("Display1") || !prefs.isKey("Display2")){
+    //Put in "Factory Defaults" otherwise it will error (example: swapping ESP32s)
+    prefs.putInt("Display1", display1CurrentDisplay);
+    prefs.putInt("Display2", display2CurrentDisplay);
+  }else{
+    //Load in whatever's stored 
+    display1CurrentDisplay = prefs.getInt("Display1");
+    display2CurrentDisplay = prefs.getInt("Display2");
+  }
+  prefs.end();
+
+  //---------------------------------------------------
+
   // Create mutex (absolutely insane comment)
   canMutex = xSemaphoreCreateMutex();
-
   xTaskCreate(
-    readCAN,
-    "Read CAN",
+    writeDisplays,
+    "Write Displays",
     4096,
     NULL, 
     10,
     NULL
   );
 
+  //Init OK!
   display2.clear();
   display.print("INIT OK");
   Serial.println("Init Ok!");
   delay(1500);
+
 }
 
-int num = 0;
+
+
 void loop()
 {
-  num++;
-
-  if(num%10==0 && !canRecentRX){
-    if(num%20 == 0){
-      display.clear();
-    }else{
-     
-      display.print("NO CAN");
-    }
-  }
-  if(canRecentRX){
-    if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-      unsigned long currentMinutes = lastTimeSeconds/60;
-      unsigned long currentHours = lastTimeSeconds/3600;
-      display.printf("%02u%02u  %02u", currentHours, currentMinutes%60, lastTimeSeconds%60);  
-      display.colonOn();
-      display2.printf("CVT %4.0f", lastCVTTemp);
-      // display2.printf("IMUX%4.0f", lastRPM);
-      xSemaphoreGive(canMutex);
-    }
-  }
-
-  //test led drive and servos
-  // if(num%20000==0){
-  //   if(num%40000 == 0){
-  //     ledMatrix.displaybuffer[5] = 0b0000001000000000;
-  //     ledMatrix.writeDisplay();
-  //     speed.write(20);
-  //     rpm.write(120);
-  //   }else{
-  //     ledMatrix.displaybuffer[5] = 0b0000000100000000;
-  //     ledMatrix.writeDisplay();
-  //     speed.write(120);
-  //     rpm.write(20);
-  //   }
-  // }
-
-
-  delay(50);
-}
-
-
-
-void readCAN(void *pvParameters){
-  // Handle Can RX
   unsigned long rxId;
   unsigned char len = 0;
   unsigned char rxBuf[8];
-  unsigned long cyclesWithoutRx = 0;
-  while(true){
-    while (CAN_MSGAVAIL == CAN.checkReceive()) {
-      CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
-      if(xSemaphoreTake(canMutex, portMAX_DELAY)){
-        // Serial.print(">RX Data: ");
-        // for (int i = 0; i < len; i++)
-        // {
-        //   Serial.print(rxBuf[i], HEX);
-        //   Serial.print(" ");
-        // }
-        Serial.println();
-        switch (rxBuf[0])
-        {
-          case 0x01:
-            // Speed
-            memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
-            break;
-          case 0x02:
-            // RPM
-            memcpy(&lastRPM, &rxBuf[1], sizeof(float));
-            break;
-          case 0x03:
-            // CVT Temp
-            memcpy(&lastCVTTemp, &rxBuf[1], sizeof(float));
-            break;
-          case 0x04:
-            // Timer (seconds)
-            memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(unsigned long));
-            break;
-          case 0x05:
-            // Indicator Lights
-            memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
-            ledMatrix.displaybuffer[5] = indicatorLightState;
-            ledMatrix.writeDisplay();
-            break;
-        }
-        xSemaphoreGive(canMutex);
+  
+  while (CAN_MSGAVAIL == CAN.checkReceive()) {
+    CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
+    // Serial.println(rxId, HEX);
+    if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+      // Serial.print(">RX Data: ");
+      // for (int i = 0; i < len; i++)
+      // {
+      //   Serial.print(rxBuf[i], HEX);
+      //   Serial.print(" ");
+      // } 
+      switch (rxBuf[0])
+      {
+        case 0x01:
+          // Speed
+          memcpy(&lastSpeed, &rxBuf[1], sizeof(float));
+          break;
+        case 0x02:
+          // RPM
+          memcpy(&lastRPM, &rxBuf[1], sizeof(float));
+          break;
+        case 0x03:
+          // CVT Temp
+          memcpy(&lastCVTTemp, &rxBuf[1], sizeof(float));
+          break;
+        case 0x04:
+          // Timer (seconds)
+          memcpy(&lastTimeSeconds, &rxBuf[1], sizeof(float));
+          break;
+        case 0x05:
+          // Indicator Lights
+          memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
+          break;
       }
       canRecentRX = true;
-      cyclesWithoutRx = 0;
+      xSemaphoreGive(canMutex);
+      lastCANRx = millis();
     }
-    cyclesWithoutRx++;
-    if(cyclesWithoutRx == 150){
-      canRecentRX = false;
+  }
+
+  if(millis()-lastCANRx > 2000 && canRecentRX){
+      if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+        canRecentRX = false;
+        xSemaphoreGive(canMutex);
+      }
       ledMatrix.displaybuffer[5] = indicatorLightState | 1;
       ledMatrix.writeDisplay();
-    }
-    delay(20);
   }
-  
 }
 
-void displayCVTTemp(){
 
+
+void writeDisplays(void *pvParameters){
+  delay(1500);
+  int num = 0;
+  while(true){
+    num++;
+
+    //thread safety
+    bool tempCANRecentRX = true; 
+    if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+      tempCANRecentRX = canRecentRX;
+      xSemaphoreGive(canMutex); 
+    }
+
+    // If there has not been can recently, flash NO CAN
+    if(num%8==0 && !tempCANRecentRX){
+      if(num%16 == 0){
+        display.clear();
+        rpm.write(0);
+        speed.write(0);
+      }else{
+        display.print("NO CAN");
+        rpm.write(172);
+        speed.write(172);
+      }
+    }
+
+    //If there has been CAN recently, display stuff 
+    if(tempCANRecentRX){
+      //Switch display data field (note: active low)
+      if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW && millis()-lastDisp1Button > 300){
+        lastDisp1Button = millis();
+        display1CurrentDisplay++;
+        //Rollover
+        if(display1CurrentDisplay == END_ELEMENT){
+          display1CurrentDisplay = 0;
+        }
+        //Save to the ESP32
+        prefs.begin("DisplayPrefs", false);
+        prefs.putInt("Display1", display1CurrentDisplay);
+        prefs.end();
+      }
+      if(digitalRead(DISPLAY2_BUTTON_PIN) == LOW && millis()-lastDisp2Button > 300){
+        lastDisp2Button = millis();
+        display2CurrentDisplay++;
+        //Rollover
+        if(display2CurrentDisplay == END_ELEMENT){
+          display2CurrentDisplay = 0;
+        }
+        //Save to the ESP32
+        prefs.begin("DisplayPrefs", false);
+        prefs.putInt("Display2", display2CurrentDisplay);
+        prefs.end();
+      }
+
+      //Display the correct thing for the display
+      switch(display1CurrentDisplay){
+        case CVT_TEMP:
+          displayCVTTemp(display);
+          break;
+        case TIME:
+          displayTime(display);
+          break;
+        case RPM:
+          displayRPM(display);
+          break;
+        case SPEED:
+          displaySpeed(display);
+          break;
+        default:
+          display.print("????");
+          break;
+      }
+      switch(display2CurrentDisplay){
+        case CVT_TEMP:
+          displayCVTTemp(display2);
+          break;
+        case TIME:
+          displayTime(display2);
+          break;
+        case RPM:
+          displayRPM(display2);
+          break;
+        case SPEED:
+          displaySpeed(display2);
+          break;
+        default:
+          display2.print("????");
+          break;
+      }
+      //Write LED matrix and RPM/Speed gauges
+      if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+        uint16_t tempIndicatorLights = indicatorLightState; 
+        float tempSpeed = lastSpeed;
+        float tempRPM = lastRPM;
+        xSemaphoreGive(canMutex);
+        ledMatrix.displaybuffer[5] = tempIndicatorLights;
+        ledMatrix.writeDisplay(); 
+        speed.write((tempSpeed/40.0)*172.0);
+        rpm.write((tempRPM/4000.0)*172.0);
+      }
+    }
+    delay(100);
+  } 
 }
 
-void displayTime(){
+//Displays the latest CVT temp information on the given display
+void displayCVTTemp(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    float tempCVTTemp = lastCVTTemp;
+    xSemaphoreGive(canMutex);
+    disp.printf("CVT %4.0f", tempCVTTemp);
+  }
+}
 
+//Displays the latest time information on the given display
+void displayTime(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    unsigned long realSeconds = (unsigned long)lastTimeSeconds;
+    xSemaphoreGive(canMutex);
+    unsigned long currentMinutes = lastTimeSeconds/60;
+    unsigned long currentHours = lastTimeSeconds/3600;
+    disp.printf("%02u%02u  %02u", currentHours, currentMinutes%60, realSeconds%60);  
+    disp.colonOn();
+  }
+}
+
+//Displays the latest RPM information on the given display
+void displayRPM(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    float tempRPM = lastRPM;
+    xSemaphoreGive(canMutex);
+    disp.printf("RPM %4.0f", tempRPM);
+  }
+}
+
+//Displays the latest speed information on the given display
+void displaySpeed(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    float tempSpeed = lastSpeed;
+    xSemaphoreGive(canMutex);
+    disp.printf("SPD %4.0f", tempSpeed);
+  }
 }
