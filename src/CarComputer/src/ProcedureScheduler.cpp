@@ -47,7 +47,7 @@ namespace BajaWildcatRacing
     *  Pre-Condition: None
     * 
     *  Post-Condition: All active procedures are executed; If the procedure should be terminated, 
-    *                  it is ended; The procedures are run at their selected frequency
+    *                  it is ended; The procedures are run at their selected frequency;
     * 
     *  Parameters: None
     *
@@ -58,38 +58,32 @@ namespace BajaWildcatRacing
 
     void ProcedureScheduler::execute(){
 
-        for(const auto& keyValuePair : activeProcedures){
-            
-            auto& procedures = keyValuePair.second;  // Reference to the set of procedures
+        for(auto it = activeProcedures.begin(); it != activeProcedures.end(); ){
 
+            ProcedureTemplate procedureTemplate = it->first;
 
-            // Use of an iterator is required, as we are removing elements from the set we are iterating over.
-            for(auto it =  procedures.begin(); it != procedures.end(); ){
-
-                Procedure* procedure = *it;
-
-                if(360 % procedure->frequency != 0){
-                    std::string errorMsg = procedure->toString() + " frequency not a divisor of 360";
-                    CarLogger::LogError(errorMsg.c_str());
-                    ++it;
-                    continue;
-                }
-
-                if(cycleCount % (BASE_CAR_FREQUENCY / procedure->frequency) != 0) {
-                    ++it;
-                    continue;
-                }
-
-                if(procedure->isFinished()){
-                    procedure->end();
-                    // Remove the procedure from the active procedures list that way it doesn't get run.
-                    activeProcedures[keyValuePair.first].erase(procedure);
-                }
-                else{
-                    procedure->execute();
-                    ++it;   // Only increment the iterator if we're not erasing anything.
-                }
+            if(BASE_CAR_FREQUENCY % activeProcedures[procedureTemplate]->frequency != 0){
+                std::string errorMsg = activeProcedures[procedureTemplate]->toString() + " frequency not a divisor of 360";
+                CarLogger::LogError(errorMsg.c_str());
+                ++it;
+                continue;
             }
+
+            if(cycleCount % (BASE_CAR_FREQUENCY / activeProcedures[procedureTemplate]->frequency) != 0) {
+                ++it;
+                continue;
+            }
+
+            if(activeProcedures[procedureTemplate]->isFinished()){
+
+                activeProcedures[procedureTemplate]->end();
+                activeProcedures.erase(procedureTemplate);
+            }
+            else{
+                activeProcedures[procedureTemplate]->execute();
+                ++it;   // Only increment the iterator if we're not erasing anything.
+            }
+
         }
 
         cycleCount++;
@@ -111,54 +105,26 @@ namespace BajaWildcatRacing
     void ProcedureScheduler::end(){
         // ! We're going to get a bug here! We need to do this the way it's done in the 
         // ! execute method above. (The bug will be a )
-        for(auto keyValuePair : activeProcedures){
-            for(Procedure* procedure : activeProcedures[keyValuePair.first]){
-                procedure->end();
-                activeProcedures[keyValuePair.first].erase(procedure);
-            }
-        }
+        // for(auto keyValuePair : activeProcedures){
+        //     for(Procedure* procedure : activeProcedures[keyValuePair.first]){
+        //         procedure->end();
+        //         activeProcedures[keyValuePair.first].erase(procedure);
+        //     }
+        // }
     }
 
 
-    /*
-    *  Method:  bindCommand
-    *
-    *  Purpose: Bind a procedure to a command, so that when the command is received the procedure is run
-    *
-    *  Pre-Condition:  procedure points to a valid procedure; procedure is not bound to any commands;
-    * 
-    *  Post-Condition: The procedure is successfully bound to the corresponding command; 
-    * 
-    * @param procedure -- The procedure to bind
-    * @param command -- The command to bind the procedure to
-    *
-    *  @returns None
-    *
-    */
-    void ProcedureScheduler::bindCommand(std::unique_ptr<Procedure> procedure, Command command){
-        totalProcedures[command].insert(procedure);
-    }
-
-
-    template <typename ProcedureType, typename... Args>
-    void ProcedureScheduler::bindCommand(Command command, Args... args){
-
-        // Compile-time check to ensure ProcedureType inherits from Procedure (taken from Mr. Chat)
-        static_assert(std::is_base_of_v<Procedure, ProcedureType>, "ProcedureType must derive from Procedure");
-
-        ProcedureType newProcedure = new Procedure(args);   // This should work to create the new procedure
-        // all we have to do now is store this information somewhere to be able to call it later. 
-
-    }
 
     /*
     *  Method:  receiveComCommand
     *
     *  Purpose: Activate all the procedures bound to the command sent from the pit computer
     *
-    *  Pre-Condition:  command is a valid command recognized by the Raspberry PI;
+    *  Pre-Condition:  command is a valid command recognized by the Raspberry PI 
+	*  (Meaning it is in the Command header file);
     * 
-    *  Post-Condition: All procedures bound to command are activated;
+    *  Post-Condition: All procedures bound to command are activated unless the
+	*  command was already active;
     * 
     * 
     *  @param command -- The command sent from the pit computer to the Raspberry PI
@@ -167,15 +133,38 @@ namespace BajaWildcatRacing
     */
     void ProcedureScheduler::receiveComCommand(Command command){
 
-        // Iterates through all the procedures bounded to command
-        for(Procedure* procedure : totalProcedures[command]){
+        for(auto it = procedureTemplates.begin(); it != procedureTemplates.end(); ){
 
-            // If the procedure is already active, then obviously we don't want to activate it again, right...?
-            if(activeProcedures[command].find(procedure) == activeProcedures[command].end()){
-                procedure->init();
-                // Technically insert uses the find() function already, so there's the possiblity for optimization.
-                activeProcedures[command].insert(procedure);
+            ProcedureTemplate procedureTemplate = *it;
+
+            // Check to see if the command exists in the template's end commands. If it does, then check
+            // if that procedure associated with the command is active and end it.
+            if(procedureTemplate.endCommands.find(command) != procedureTemplate.endCommands.end()){
+                
+                if(activeProcedures.find(procedureTemplate) != activeProcedures.end()){
+
+                    activeProcedures[procedureTemplate]->end();
+                    activeProcedures.erase(procedureTemplate);
+                    continue;
+                }
             }
+
+            // Now do the same thing as above, but for the start commands.
+            if(procedureTemplate.startCommands.find(command) != procedureTemplate.startCommands.end()){
+                
+                // Procedures that are already active will just keep running.
+                if(activeProcedures.find(procedureTemplate) != activeProcedures.end()){
+                    // Do nothing
+                }
+                else{
+                    // Otherwise, create the new procedure and make it active
+                    activeProcedures[procedureTemplate] = procedureTemplate.instantiationFunc();
+                    activeProcedures[procedureTemplate]->init();
+
+                }
+            }
+            ++it;
+
         }
 
         std::cout << "Command: " << command << " received" << std::endl;

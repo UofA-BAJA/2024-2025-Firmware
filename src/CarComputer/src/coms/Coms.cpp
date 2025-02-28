@@ -57,7 +57,6 @@ namespace BajaWildcatRacing
 
 
     void Coms::execute(float timestamp){
-
         std::lock_guard<std::mutex> lock(timestampMutex);
         currTimestamp = timestamp;
     }
@@ -100,16 +99,17 @@ namespace BajaWildcatRacing
 
 
     void Coms::radioTransmit(){
-        if(currentPitCommandState == PitCommandState::IDLE){
-            idle();
-        }
-        else if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
-            transmitLiveData();
-        }
-        else if(currentPitCommandState == PitCommandState::DATABASE_TRANSMIT){
-            transmitDatabase();
-        }
+        // if(currentPitCommandState == PitCommandState::IDLE){
+        //     idle();
+        // }
+        // else if(currentPitCommandState == PitCommandState::LIVE_DATA_TRANSMIT){
+        //     transmitLiveData();
+        // }
+        // else if(currentPitCommandState == PitCommandState::DATABASE_TRANSMIT){
+        //     transmitDatabase();
+        // }
 
+            transmitLiveData();
 
         // Received command from pit!
         if(radio.isAckPayloadAvailable()){
@@ -120,7 +120,7 @@ namespace BajaWildcatRacing
             radio.read(&ackData, 1);
 
             if(ackData == Command::START_LOG){
-                procedureScheduler.receiveComCommand(Command::START_LOG);
+                // procedureScheduler.receiveComCommand(Command::START_LOG);
 
                 currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
             }
@@ -128,6 +128,9 @@ namespace BajaWildcatRacing
                 currentPitCommandState = PitCommandState::IDLE;
             }
 
+            std::lock_guard<std::mutex> lock(procedureSchedulerMutex);
+
+            procedureScheduler.receiveComCommand((Command)ackData);
 
             // std::bitset<32> x(ackData);
 
@@ -140,6 +143,7 @@ namespace BajaWildcatRacing
 
     void Coms::idle(){
         bool report = radio.write(&thingy, sizeof(thingy));
+
     }
 
     void Coms::transmitLiveData(){
@@ -188,10 +192,12 @@ namespace BajaWildcatRacing
                 packets[currPacket].data[i % maxPackets] = liveDataStreams[i]->dequeue();
 
 
+                liveDataStreams[i]->clearAllData();
                 // std::bitset<32> x(packets[currPacket].streamMask);
 
                 // std::cout << x << std::endl;
             }
+
 
             lock.unlock();
 
@@ -199,6 +205,7 @@ namespace BajaWildcatRacing
             // Now we need to send all of the packets that actually have data.
             // Easy way to tell if it has data is if the stream mask != 0
 
+            int packetsSent = 0;
             for(int i = 0; i < maxPackets; i++){
 
                 if(packets[i].streamMask == 0){
@@ -206,6 +213,7 @@ namespace BajaWildcatRacing
                 }
 
                 bool report = radio.write(&packets[i], sizeof(packets[i]));
+                packetsSent++;
 
                 if(report){
 
@@ -218,6 +226,10 @@ namespace BajaWildcatRacing
                 }
             }
 
+            if(packetsSent == 0){
+                bool report = radio.write(&thingy, sizeof(thingy));
+            }
+
     }
 
     void Coms::transmitDatabase(){
@@ -227,6 +239,22 @@ namespace BajaWildcatRacing
         // we only want to send one session at a time (probably the current one)
     }
 
+
+    void Coms::sendData(DataTypes dataType, float data){
+
+        // If the stream of type dataType doesn't exist, create it and add it to the list of streams.
+        if(liveDataStreamMap.find(dataType) == liveDataStreamMap.end()){
+            std::shared_ptr<LiveDataStream> newStream = std::make_shared<LiveDataStream>(dataType);
+            liveDataStreamMap[dataType] = newStream;
+
+            addNewLiveDataStream(newStream);
+
+
+        }
+
+        liveDataStreamMap[dataType]->enqueue(data);
+
+    }
 
     /*
     *  Method: addNewLiveDataStream
@@ -244,7 +272,7 @@ namespace BajaWildcatRacing
     *  Returns:  None
     *
     */
-    void Coms::addNewLiveDataStream(LiveDataStream* stream){
+    void Coms::addNewLiveDataStream(std::shared_ptr<LiveDataStream> stream){
 
         if(stream == nullptr){
             return;
@@ -266,12 +294,13 @@ namespace BajaWildcatRacing
         while(i > 0 && liveDataStreams[i - 1]->getDataType() > streamDataType){
 
             // Shift the pointer
-            liveDataStreams[i] = liveDataStreams[i - 1];
+            liveDataStreams[i] = std::move(liveDataStreams[i - 1]);
             i--;
         }
 
-        liveDataStreams[i] = stream;
+        liveDataStreams[i] = std::move(stream);
         liveStreamCount++;
+
     }
 
 

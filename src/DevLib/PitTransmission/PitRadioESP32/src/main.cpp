@@ -34,7 +34,7 @@ bool role = false;  // true = TX role, false = RX role
 // For this example, we'll be using a payload containing
 // a single float number that will be incremented
 // on every successful transmission
-int payload[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+int payload[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 void setup() {
 
@@ -134,19 +134,35 @@ void loop() {
       // Serial.print(F(": "));
       // Serial.println();
 
-      Serial.print(payload[0], BIN);
-      Serial.print(" ");
 
-      for(int i = 1; i < 8; i++){
+      // char dataAsCharacters[bytes * 4];
 
-        float val;
+      // memcpy(dataAsCharacters, payload, bytes * sizeof(float));
 
-        memcpy(&val, &payload[i], sizeof(float));
-        Serial.print(val);
+      byte payloadAsBytes[bytes];
 
-        Serial.print(" ");
+      memcpy(payloadAsBytes, payload, bytes);
 
-      }
+
+      // Before every payload we will send two bytes of 1's
+      Serial.write(0xFF);
+      Serial.write(0xFF);
+      Serial.write(payloadAsBytes, sizeof(payload));
+
+
+      // Serial.print(payload[0], BIN);
+      // Serial.print(" ");
+
+      // for(int i = 1; i < 8; i++){
+
+      //   float val;
+
+      //   memcpy(&val, &payload[i], sizeof(float));
+      //   Serial.print(val);
+
+      //   Serial.print(" ");
+
+      // }
 
       if(ackPacketExists){
 
@@ -157,7 +173,7 @@ void loop() {
       }
 
 
-      Serial.println();
+      // Serial.println();
 
       // Serial.println(payload);  // print the payload's value
     }

@@ -2,7 +2,6 @@
 #include "DrivetrainSubsystem.h"
 #include "DataStorage.h"
 #include "CarLogger.h"
-#include "LiveDataStream.h"
 #include "Coms.h"
 
 #include <iomanip>
@@ -16,8 +15,6 @@ class TemperatureProcedure : public Procedure{
         DataStorage& dataStorage;
         Coms& coms;
 
-        LiveDataStream* temperatureStream;
-
 
         TemperatureProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
@@ -25,11 +22,8 @@ class TemperatureProcedure : public Procedure{
         , coms(coms)
         {
 
-            temperatureStream = new LiveDataStream(DataTypes::CVT_TEMPERATURE);
 
-            coms.addNewLiveDataStream(temperatureStream);
-
-            this->frequency = 1;
+            this->frequency = 20;
 
         }
         
@@ -38,18 +32,10 @@ class TemperatureProcedure : public Procedure{
         }
 
         void execute() override {
-            // std::cout << "IMU procedure execution"<< std::endl;
-
-            // For testing purposes
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
-            // xRot = imuSubsystem->getRotationX();
 
             float cvt_temperature = drivetrainSubsystem.getCVTTemperature();
 
-            temperatureStream->enqueue(cvt_temperature);
+            coms.sendData(DataTypes::CVT_TEMPERATURE, cvt_temperature);
 
             //dataStorage->storeData(temperature, DataTypes::TEMPERATURE);
 

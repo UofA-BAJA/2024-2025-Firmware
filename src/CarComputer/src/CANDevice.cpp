@@ -73,11 +73,6 @@ namespace BajaWildcatRacing
             byte canID = deviceID;
             std::vector<byte> data = {commandByte};
 
-            // It is impossible for the can dispatcher to be null because it's a reference now
-            // if(!m_canDispatcher){
-            //     std::cerr << "Error: CANDispatcher is null!" << std::endl;
-            // }
-
             m_canDispatcher.sendCanCommand(canID, data, receivedData, [this](can_frame frame, void* destination) {this ->populateValue(frame, destination);});
             activeCommandTimes[deviceCommandKey] = now;
         }
@@ -142,11 +137,6 @@ namespace BajaWildcatRacing
 
         if(timeDifference > minimumRepeatThreshold){
             byte canID = deviceID;
-
-            // It is impossible for the can dispatcher to be null becauase it is a reference now
-            // if(!m_canDispatcher){
-            //     std::cerr << "Error: CANDispatcher is null!" << std::endl;
-            // }
 
             m_canDispatcher.sendCanCommand(canID, rawData);
             activeCommandTimes[deviceCommandKey] = now;

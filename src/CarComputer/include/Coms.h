@@ -16,7 +16,8 @@
 #include <thread>
 #include <chrono> // I believe this is used for the sleep function in the executeRadio loop
 #include <bitset> // No idea what this is for, but I think it's important for something
-
+#include <unordered_set>
+#include <memory>
 
 // Radio library
 #include <RF24/RF24.h>
@@ -43,9 +44,11 @@ namespace BajaWildcatRacing
         public:
             Coms(ProcedureScheduler& procedureScheduler);
 
-            void addNewLiveDataStream(LiveDataStream* stream);
 
             void execute(float timestamp);
+
+            void sendData(DataTypes dataType, float data);
+
 
         private:
 
@@ -54,6 +57,8 @@ namespace BajaWildcatRacing
             // and defeat the purpose of multithreading
             RF24 radio;
 
+            void addNewLiveDataStream(std::shared_ptr<LiveDataStream> stream);
+            
             const bool RADIO_ACTIVE = true;
 
             PitCommandState currentPitCommandState = PitCommandState::IDLE;
@@ -72,11 +77,13 @@ namespace BajaWildcatRacing
             void sortPackets(DataPacket packets[]);
 
             ProcedureScheduler& procedureScheduler;
-            LiveDataStream* liveDataStreams[32];
+            std::shared_ptr<LiveDataStream> liveDataStreams[32];
+            std::unordered_map<DataTypes, std::shared_ptr<LiveDataStream>> liveDataStreamMap;
 
             int liveStreamCount = 0;
 
             std::mutex timestampMutex;
+            std::mutex procedureSchedulerMutex;
 
 
 

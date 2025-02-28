@@ -281,6 +281,7 @@ void readBNO(void *pvParameters){
       xAcc = accelerationEvent.acceleration.x;
       yAcc = accelerationEvent.acceleration.y;
       zAcc = accelerationEvent.acceleration.z;
+
       xSemaphoreGive(bnoMutex);
     }
 
