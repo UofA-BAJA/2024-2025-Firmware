@@ -22,6 +22,7 @@
 #include <vector>
 
 #include "CarLogger.h"
+#include "CarTime.h"
 
 namespace BajaWildcatRacing
 {
@@ -62,7 +63,8 @@ namespace BajaWildcatRacing
             void readCANInterface();
 
             void resetCANInterface(const char* interface);
-            int droppedCommands = 0;
+            unsigned long droppedCommands = 0;
+            unsigned long totalCommands = 0;
 
     };
 

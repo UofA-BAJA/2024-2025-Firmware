@@ -139,7 +139,7 @@ namespace BajaWildcatRacing
 
     }
 
-    int thingy[] = {-1};
+    int thingy[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
     void Coms::idle(){
         bool report = radio.write(&thingy, sizeof(thingy));

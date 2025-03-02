@@ -29,9 +29,8 @@ namespace BajaWildcatRacing
 
             if(commandCycles[commandID] >= cycleThreshold){
                     droppedCommands++;
-
                     std::cout << "Commands Dropped: " << droppedCommands << std::endl;
-                    // std::cout << "Command Dropped: " << std::hex << commandID << std::endl;
+                    // std::out << "Command Dropped: " << std::hex << commandID << std::endl;
                     callbacks.erase(commandID);
                     destinations.erase(commandID);
                     // Proper way to continue iterating over the map
@@ -40,7 +39,15 @@ namespace BajaWildcatRacing
             else{
                 ++it;
             }
-        }
+        } 
+
+        float droppedCommandRatio = (float) droppedCommands / totalCommands * 100.0;
+
+        // std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+        // std::cout << std::fixed;
+        // std::cout << std::setprecision(2);
+        // std::cout << "Percentage dropped: " << droppedCommandRatio << std::endl;
+        
     }
 
     /*
@@ -136,6 +143,8 @@ namespace BajaWildcatRacing
         commandCycles[currUID] = 0;
 
         ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
+        totalCommands++;
+
 
         // std::cout << result << std::endl;
 

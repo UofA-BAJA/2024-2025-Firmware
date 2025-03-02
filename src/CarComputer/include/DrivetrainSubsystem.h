@@ -3,7 +3,7 @@
 
 #include "CANDispatcher.h"
 #include "CarLogger.h"
-
+#include "DataTypes.h"
 
 #include "Temperature.h"
 #include "Tachometer.h"

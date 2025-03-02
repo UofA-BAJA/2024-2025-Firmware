@@ -1,6 +1,8 @@
 #include "Procedure.h"
 
 #include "DrivetrainSubsystem.h"
+#include "Coms.h"
+#include "DataStorage.h"
 
 namespace BajaWildcatRacing
 {
@@ -9,11 +11,15 @@ class SpedometerProcedure : public Procedure {
     public:
 
         DrivetrainSubsystem& drivetrainSubsystem;
+        DataStorage& dataStorage;
+        Coms& coms;
 
-        SpedometerProcedure(DrivetrainSubsystem& drivetrainSubsystem)
+        SpedometerProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
+        , dataStorage(dataStorage)
+        , coms(coms)
         {
-            this->frequency = 10;
+            this->frequency = 60;
         }
         
         void init() override {
@@ -22,7 +28,13 @@ class SpedometerProcedure : public Procedure {
 
         void execute() override {
 
-            std::cout << drivetrainSubsystem.getEngineRPM() << std::endl;
+            float mph = drivetrainSubsystem.getEngineRPM();
+
+            dataStorage.storeData(mph, DataTypes::CAR_SPEED);
+
+            // std::cout << "MPH: " << mph << std::endl;
+
+            coms.sendData(DataTypes::CAR_SPEED, mph);
 
         }
 
