@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 using System;
-using Unity.VisualScripting;
 
 public class SerialInterface
 {
@@ -66,7 +65,7 @@ public class SerialInterface
 
         }
         catch(TimeoutException){
-
+            Debug.LogWarning("Unable to read from serial port: " + port);
         }
 
         return dataPacket;

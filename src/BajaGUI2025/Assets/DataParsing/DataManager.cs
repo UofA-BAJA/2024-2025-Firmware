@@ -18,12 +18,8 @@ public class DataManager : MonoBehaviour
             dataStreams.Add((DataType)i, new DataStream((DataType)i, "Idk rn let's be so real", "also idk"));
         }
 
-        Debug.Log(dataStreams.ContainsKey(DataType.CAR_SPEED));
         testGraph.Graph.SetDuration(8f);
-    }
-    private void Start()
-    {
-        
+        testGraph.Graph.AddLine("Speed");
     }
 
     private void Update()
@@ -34,6 +30,13 @@ public class DataManager : MonoBehaviour
         // The following line helps get a binary representation
         // Debug.Log(Convert.ToString(packet.dataMask, 2));
 
+        if(packet == null){
+            return;
+        }
+
+        if(packet.dataMask == 0){
+            return;
+        }
 
         int dataMask = packet.dataMask;
 
@@ -55,9 +58,12 @@ public class DataManager : MonoBehaviour
 
         // Example of how to get the data
 
-        if(!dataStreams[DataType.CAR_SPEED].IsEmpty()){
-            KeyValuePair<float, float> values = dataStreams[DataType.CAR_SPEED].GetOldestData();
-            testGraph.Graph.AddValue(values.Value, "idk");
+        if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty() && !dataStreams[DataType.CAR_SPEED].IsEmpty()){
+            KeyValuePair<float, float> values1 = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
+            KeyValuePair<float, float> values2 = dataStreams[DataType.CAR_SPEED].GetOldestData();
+
+            testGraph.Graph.AddValue(values1.Value, "idk");
+            testGraph.Graph.AddValue(values2.Value, "Speed");
 
         }
 
