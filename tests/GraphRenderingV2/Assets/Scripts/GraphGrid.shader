@@ -1,4 +1,4 @@
-Shader "Custon/GraphGrid"
+Shader "Custom/GraphGrid"
 {
     Properties
     {
@@ -14,7 +14,8 @@ Shader "Custon/GraphGrid"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
+            
+            #pragma target 4.1
             #include "UnityCG.cginc"
 
             struct appdata
