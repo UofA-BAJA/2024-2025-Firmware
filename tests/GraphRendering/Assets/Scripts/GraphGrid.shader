@@ -9,6 +9,7 @@ Shader "Custon/GraphGrid"
         Tags { "RenderType"="Transparent" "Queue"="Transparent"}
         LOD 100
         Blend SrcAlpha OneMinusSrcAlpha
+        Cull Off
         Pass
         {
             CGPROGRAM
@@ -41,21 +42,33 @@ Shader "Custon/GraphGrid"
                 return o;
             }
 
+
+            /**
+             * Returns ~1 if the pixel lies on the grid, zero if it doesn't
+             */
             float GridTest(float2 uv)
             {
-                uv *= 1000;
 
-                float test = (uv.x % 100 < 5) ? 1 : 0;
-                float test2 = (uv.y % 100 < 5) ? 1 : 0;
+                float x = uv.x * (10.0); // 10 is the world size of the graph.
+                x = abs(sin(3.1415926 * .8 * x)); // .8 is the num of subdivisions (8/10)
+                x = 1.0 - x;
+                x = smoothstep(.8, 1.0, x);
 
-                return test + test2;
+                float y = uv.y * (10.0);
+                y = abs(sin(3.1415926 * .8 * y));
+                y = 1.0 - y;
+                y = smoothstep(.88, 1.0, y);
+
+
+                //return uv.x;
+                return max(x, y);
 
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
                 //fixed4 col = tex2D(_MainTex, i.uv);
-                return float4(.2, .2, .2, GridTest(i.uv));
+                return float4(0, 0, 0, GridTest(i.uv) * .8);
             }
             ENDCG
         }
