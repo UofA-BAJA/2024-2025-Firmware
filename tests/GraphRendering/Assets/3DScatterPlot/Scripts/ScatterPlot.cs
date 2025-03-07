@@ -24,7 +24,7 @@ public class ScatterPlot : MonoBehaviour
 
 
     private int texWidth;
-    private int maxTextureSize = 2048;
+    private readonly int maxTextureSize = 2048;
 
 
     private float furthestXPoint = 1;
@@ -130,9 +130,9 @@ public class ScatterPlot : MonoBehaviour
 
             TimeSeriesData data = new()
             {
-                val1 = randGaussian(),
-                val2 = randGaussian() * 10,
-                val3 = randGaussian() * 10,
+                val1 = randGaussian() + transform.position.x,
+                val2 = randGaussian() * 10 + transform.position.y,
+                val3 = randGaussian() * 10 + transform.position.z,
             };
 
             data.val1 = Mathf.Abs(data.val1);
@@ -156,12 +156,12 @@ public class ScatterPlot : MonoBehaviour
 
             if (data.val1 > furthestXPoint)
             {
-                furthestXPoint = (int) data.val1 + 1;
+                furthestXPoint = (int)data.val1 + 1;
                 xAxis.SetMaxAxisVal(furthestXPoint);
             }
             if (data.val2 > furthestYPoint)
             {
-                furthestYPoint = (int) data.val2 + 1;
+                furthestYPoint = (int)data.val2 + 1;
                 yAxis.SetMaxAxisVal(furthestYPoint);
 
             }

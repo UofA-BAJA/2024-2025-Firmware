@@ -14,7 +14,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -69,9 +69,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FurthestXPoint: 6
-    - _FurthestYPoint: 51
-    - _FurthestZPoint: 54
+    - _FurthestXPoint: 5
+    - _FurthestYPoint: 47
+    - _FurthestZPoint: 46
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
