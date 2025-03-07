@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GraphPoint
-  m_Shader: {fileID: 4800000, guid: 83382d4548e522f429db7f5eaf75266b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7cb8b1c36b319dd75966dad0357f0c43, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

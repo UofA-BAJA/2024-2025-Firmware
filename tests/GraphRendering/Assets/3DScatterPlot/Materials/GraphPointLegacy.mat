@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GraphPointLegacy
-  m_Shader: {fileID: 4800000, guid: 3660e4a379d5ad648945551942d85f24, type: 3}
+  m_Shader: {fileID: 4800000, guid: fb70564d62af4916f81ab670e94b2243, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -70,7 +70,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FurthestXPoint: 5
-    - _FurthestYPoint: 47
+    - _FurthestYPoint: 40
     - _FurthestZPoint: 46
     - _GlossMapScale: 1
     - _Glossiness: 0.5

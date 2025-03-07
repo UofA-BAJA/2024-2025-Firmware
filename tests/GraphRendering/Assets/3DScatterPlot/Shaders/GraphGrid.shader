@@ -1,4 +1,4 @@
-Shader "Custon/GraphGrid"
+Shader "Custom/GraphGrid"
 {
     Properties
     {

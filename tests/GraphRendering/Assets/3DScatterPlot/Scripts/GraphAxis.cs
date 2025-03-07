@@ -8,14 +8,13 @@ public class GraphAxis : MonoBehaviour
 {
 
     private List<TMP_Text> markers = new();
-    private Transform mainCam;
+    [SerializeField] private Transform cam;
 
     private float maxAxisVal = 1f;
     private float minAxisVal = 0f;
 
     private void Awake()
     {
-        mainCam = Camera.main.transform;
         markers = GetComponentsInChildren<TMP_Text>().ToList();
     }
 
@@ -23,7 +22,7 @@ public class GraphAxis : MonoBehaviour
     {
         foreach(TMP_Text marker in markers)
         {
-            marker.transform.LookAt(mainCam);
+            marker.transform.LookAt(cam);
             marker.transform.RotateAround(marker.transform.position, marker.transform.up, 180f);
         }
     }
