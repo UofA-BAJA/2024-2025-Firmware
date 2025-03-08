@@ -3,6 +3,8 @@
 #include "DrivetrainSubsystem.h"
 #include "Coms.h"
 #include "DataStorage.h"
+#include "CarTime.h"
+
 
 namespace BajaWildcatRacing
 {
@@ -14,6 +16,12 @@ class SpedometerProcedure : public Procedure {
         DataStorage& dataStorage;
         Coms& coms;
 
+        float deltaTime = 0;
+        float prevCarTime;
+        float prevCarMPS = 0;
+
+        float distMiles = 0;
+
         SpedometerProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
         , dataStorage(dataStorage)
@@ -23,6 +31,8 @@ class SpedometerProcedure : public Procedure {
         }
         
         void init() override {
+
+            prevCarTime = CarTime::getCurrentTimeSeconds();
             std::cout << "Spedometer procedure initialized!" << std::endl;
         }
 
@@ -35,6 +45,20 @@ class SpedometerProcedure : public Procedure {
             // std::cout << "MPH: " << mph << std::endl;
 
             coms.sendData(DataTypes::CAR_SPEED, mph);
+
+            float currTime = CarTime::getCurrentTimeSeconds();
+            deltaTime = currTime - prevCarTime;
+            prevCarTime = currTime;
+
+            
+            // Integrating using the trapezoidal rule:
+            float currCarMPS = mph / 3600.0f;
+            float trapezoid = (deltaTime * (currCarMPS + prevCarMPS)) * 0.5f;
+            distMiles += trapezoid;
+
+            std::cout << "Dist (miles): " << distMiles << " MPH: " << mph << std::endl;
+
+            prevCarMPS = currCarMPS;
 
         }
 
