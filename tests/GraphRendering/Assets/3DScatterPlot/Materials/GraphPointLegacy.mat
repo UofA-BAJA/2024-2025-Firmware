@@ -69,9 +69,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FurthestXPoint: 5
-    - _FurthestYPoint: 40
-    - _FurthestZPoint: 46
+    - _FurthestXPoint: 89
+    - _FurthestYPoint: 33
+    - _FurthestZPoint: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

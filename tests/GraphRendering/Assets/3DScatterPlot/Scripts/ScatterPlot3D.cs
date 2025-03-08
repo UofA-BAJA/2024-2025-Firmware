@@ -112,12 +112,12 @@ public class ScatterPlot3D : MonoBehaviour
     void Update()
     {
 
-        if(numFrames % 2 == test)
-        {
-            PopulateData();
+        // if(numFrames % 2 == test)
+        // {
+            // PopulateData();
             RenderData();
             cam.Render();
-        }
+        // }
 
         numFrames++;
     }
@@ -127,6 +127,82 @@ public class ScatterPlot3D : MonoBehaviour
         if (timeSeriesDataBuffer != null)
         {
             timeSeriesDataBuffer.Release();
+        }
+    }
+
+    public void SetData(float value1, float value2, float value3){
+
+        NativeArray<TimeSeriesData> subData = new ();
+
+        if (useComputeShader)
+        {
+            subData = timeSeriesDataBuffer.BeginWrite<TimeSeriesData>(currPointIndex, 1);
+        }
+
+        TimeSeriesData data = new()
+        {
+            val1 = value1,
+            val2 = value2,
+            val3 = value3,
+        };
+
+        data.val1 = Mathf.Abs(data.val1);
+        data.val2 = Mathf.Abs(data.val2);
+        data.val3 = Mathf.Abs(data.val3);
+
+        if (useComputeShader)
+        {
+            subData[0] = data;
+        }
+        else
+        {
+            int xCoord = currPointIndex % texWidth;
+            int yCoord = currPointIndex / texWidth;
+            Color color = new(data.val1, data.val2, data.val3);
+            timeSeriesDataTexture.SetPixel(xCoord, yCoord, color);
+        }
+
+
+
+
+        if (data.val1 > furthestXPoint)
+        {
+            furthestXPoint = (int)data.val1 + 1;
+            xAxis.SetMaxAxisVal(furthestXPoint);
+        }
+        if (data.val2 > furthestYPoint)
+        {
+            furthestYPoint = (int)data.val2 + 1;
+            yAxis.SetMaxAxisVal(furthestYPoint);
+
+        }
+        if (data.val3 > furthestZPoint)
+        {
+            furthestZPoint = (int)data.val3 + 1;
+            zAxis.SetMaxAxisVal(furthestZPoint);
+        }
+
+
+        currPointIndex++;
+        currNumPoints++;
+
+        if (currPointIndex >= maxNumPoints)
+        {
+            currPointIndex = 0;
+        }
+
+        if (currNumPoints >= maxNumPoints)
+        {
+            currNumPoints = maxNumPoints;
+        }
+
+        if (useComputeShader)
+        {
+            timeSeriesDataBuffer.EndWrite<TimeSeriesData>(1);
+        }
+        else
+        {
+            timeSeriesDataTexture.Apply();
         }
     }
 

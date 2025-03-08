@@ -86,7 +86,8 @@ Shader "Custom/GraphPointLegacy"
 
                 o.pos = mul(UNITY_MATRIX_VP, half4(finalPos, 1.0));
 
-                o.color = half4(pos.r * .1, pos.g * .1, pos.b * .1, 1);
+                // o.color = half4(pos.r * .1, pos.g * .1, pos.b * .1, 1);
+                o.color = half4(1.0, 0, 0, 1);
                 return o;
             }
 
