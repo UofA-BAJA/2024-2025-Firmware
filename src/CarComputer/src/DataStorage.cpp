@@ -32,7 +32,7 @@ namespace BajaWildcatRacing
 
             std::unique_lock<std::mutex> lock(insertBufferMutex);
 
-            std::queue<dataValues> localInsertBuffer;
+            std::queue<DataValues> localInsertBuffer;
             std::swap(localInsertBuffer, insertBuffer);
             lock.unlock();
 
@@ -42,7 +42,7 @@ namespace BajaWildcatRacing
 
             while(!localInsertBuffer.empty()){
 
-                dataValues data = localInsertBuffer.front();
+                DataValues data = localInsertBuffer.front();
                 localInsertBuffer.pop();
 
 
@@ -180,7 +180,7 @@ namespace BajaWildcatRacing
 
     void DataStorage::storeData(float data, DataTypes dataType){
 
-        dataValues dataToStore;
+        DataValues dataToStore = {};
         dataToStore.currentSessionID = currentSessionID;
         dataToStore.currentTimestamp = currentTimestamp;
         dataToStore.dataType = dataType;

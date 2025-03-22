@@ -30,7 +30,7 @@ namespace BajaWildcatRacing
             int getData();
             void storeData(float data, DataTypes dataType);
         private:
-            struct dataValues{
+            struct DataValues{
                 int currentSessionID;
                 double currentTimestamp;
                 int dataType;
@@ -44,7 +44,7 @@ namespace BajaWildcatRacing
             ulong numDataInserts = 1;
 
             std::mutex insertBufferMutex;
-            std::queue<dataValues> insertBuffer;
+            std::queue<DataValues> insertBuffer;
 
             // std::condition_variable insertCondition;
             // std::mutex cvMutex;

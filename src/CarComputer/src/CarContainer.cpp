@@ -48,27 +48,34 @@ namespace BajaWildcatRacing
 
          procedureScheduler.bindCommand<IMUProcedure>(
              std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
-             std::unordered_set<Command>({Command::END_LOG}), 
+             std::unordered_set<Command>({}), 
              imuSubsystem, dataStorage, coms
         );
 
-        procedureScheduler.bindCommand<TemperatureProcedure>(
-             std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-             std::unordered_set<Command>({Command::END_LOG}),
-             drivetrainSubsystem, dataStorage, coms
-         );
+        procedureScheduler.bindCommand<AccelerationProcedure>(
+            std::unordered_set<Command>({Command::ACCELERATION}), 
+            std::unordered_set<Command>({Command::END_LOG})
+       );
 
-        //procedureScheduler.bindCommand<DashProcedure>(
+        // procedureScheduler.bindCommand<TemperatureProcedure>(
+        //      std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+        //      std::unordered_set<Command>({Command::END_LOG}),
+        //      drivetrainSubsystem, dataStorage, coms
+        //  );
+
+        // procedureScheduler.bindCommand<DashProcedure>(
         //    std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
         //    std::unordered_set<Command>({}),
-        //    dashSubsystem, drivetrainSubsystem
-        //);
+        //    dashSubsystem, drivetrainSubsystem, imuSubsystem
+        // );
 
-        procedureScheduler.bindCommand<SpedometerProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-            std::unordered_set<Command>({}),
-            drivetrainSubsystem, dataStorage, coms
-        );
+        // procedureScheduler.bindCommand<SpedometerProcedure>(
+        //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+        //     std::unordered_set<Command>({}),
+        //     drivetrainSubsystem, dataStorage, coms
+        // );
+
+
 
         CarLogger::Log("Car Started");
         std::cout << "Car Container Constructor called" << std::endl;

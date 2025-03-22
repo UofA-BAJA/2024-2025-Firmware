@@ -113,7 +113,7 @@ namespace BajaWildcatRacing
 
 
         // Prepare the CAN frame
-        struct can_frame frame;                                             // The CAN frame to send to the CAN device
+        struct can_frame frame = {};                                        // The CAN frame to send to the CAN device
         frame.can_id = deviceID;                                            // CAN ID
         frame.can_id |= CAN_EFF_FLAG;
         // dlc stands for data length code. It is plus 3 because we are sending the data and the callback

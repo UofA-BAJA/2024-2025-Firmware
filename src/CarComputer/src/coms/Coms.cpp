@@ -109,7 +109,7 @@ namespace BajaWildcatRacing
         //     transmitDatabase();
         // }
 
-            transmitLiveData();
+        transmitLiveData();
 
         // Received command from pit!
         if(radio.isAckPayloadAvailable()){
@@ -119,14 +119,14 @@ namespace BajaWildcatRacing
 
             radio.read(&ackData, 1);
 
-            if(ackData == Command::START_LOG){
-                // procedureScheduler.receiveComCommand(Command::START_LOG);
+            // if(ackData == Command::START_LOG){
+            //     // procedureScheduler.receiveComCommand(Command::START_LOG);
 
-                currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
-            }
-            else if(ackData == Command::END_LOG){
-                currentPitCommandState = PitCommandState::IDLE;
-            }
+            //     currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
+            // }
+            // else if(ackData == Command::END_LOG){
+            //     currentPitCommandState = PitCommandState::IDLE;
+            // }
 
             std::lock_guard<std::mutex> lock(procedureSchedulerMutex);
 
@@ -139,12 +139,7 @@ namespace BajaWildcatRacing
 
     }
 
-    int thingy[] = {0, 0, 0, 0, 0, 0, 0, 0};
-
-    void Coms::idle(){
-        bool report = radio.write(&thingy, sizeof(thingy));
-
-    }
+    int idlePacket[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
     void Coms::transmitLiveData(){
             // The car can have 32 streams.
@@ -227,7 +222,7 @@ namespace BajaWildcatRacing
             }
 
             if(packetsSent == 0){
-                bool report = radio.write(&thingy, sizeof(thingy));
+                bool report = radio.write(&idlePacket, sizeof(idlePacket));
             }
 
     }
@@ -248,7 +243,6 @@ namespace BajaWildcatRacing
             liveDataStreamMap[dataType] = newStream;
 
             addNewLiveDataStream(newStream);
-
 
         }
 
