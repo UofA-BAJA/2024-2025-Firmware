@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using RoyTheunissen.Graphing;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    [SerializeField] GraphComponent testGraph;
 
+    [SerializeField] GraphComponent graph;
     Dictionary<DataType, DataStream> dataStreams = new();
 
     SerialInterface serialInterface = new SerialInterface("/dev/ttyUSB0", 115200);
@@ -18,13 +19,12 @@ public class DataManager : MonoBehaviour
             dataStreams.Add((DataType)i, new DataStream((DataType)i, "Idk rn let's be so real", "also idk"));
         }
 
-        testGraph.Graph.SetDuration(8f);
-        testGraph.Graph.AddLine("Speed");
     }
 
     private void Update()
     {
-        DataPacket packet = serialInterface.ReadSerialPort();
+
+        DataPacket packet = serialInterface.GetData();
 
         // Now we have the exciting task of decoding the packets =D
         // The following line helps get a binary representation
@@ -56,17 +56,26 @@ public class DataManager : MonoBehaviour
             dataMask >>= 1;
         }
 
-        // Example of how to get the data
+        // Example of how to get the data and use it. 
 
-        if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty() && !dataStreams[DataType.CAR_SPEED].IsEmpty()){
-            KeyValuePair<float, float> values1 = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
-            KeyValuePair<float, float> values2 = dataStreams[DataType.CAR_SPEED].GetOldestData();
+        // if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty() && !dataStreams[DataType.CVT_TEMPERATURE].IsEmpty()){
+        //     KeyValuePair<float, float> values1 = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
+        //     KeyValuePair<float, float> values2 = dataStreams[DataType.CVT_TEMPERATURE].GetOldestData();
 
-            testGraph.Graph.AddValue(values1.Value, "idk");
-            testGraph.Graph.AddValue(values2.Value, "Speed");
+        //     plot.SetData(values1.Value, values2.Value, Time.time);
+        // }
+
+        if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty()){
+            KeyValuePair<float, float> speed = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
+            // plot.SetData(speed.Key, speed.Value, 0);
+
+            graph.Graph.AddValue(speed.Value, 0);
 
         }
+    }
 
 
+    public void SendCommand(Command command){
+        serialInterface.SendCommand(command);
     }
 }

@@ -27,6 +27,12 @@ public class SerialInterface
         radioSerialPort.Open();
     }
 
+    public void SendCommand(Command command){
+
+        byte[] data = BitConverter.GetBytes((int) command);
+        radioSerialPort.Write(data, 0, 1);
+    }
+
     // Call this function to start the read operation in the background
     private void StartReading()
     {

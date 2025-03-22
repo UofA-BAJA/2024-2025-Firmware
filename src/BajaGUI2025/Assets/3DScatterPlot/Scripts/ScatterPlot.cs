@@ -2,14 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ScatterPlot3D : MonoBehaviour
+public class ScatterPlot : MonoBehaviour
 {
-
-    private static int numInstances = 0;
-    private int graphID;
-    [SerializeField] private LayerMask graphLayer;
 
     [SerializeField] private GraphAxis xAxis;
     [SerializeField] private GraphAxis yAxis;
@@ -27,14 +24,14 @@ public class ScatterPlot3D : MonoBehaviour
 
 
     private int texWidth;
-    private int maxTextureSize = 2048;
+    private readonly int maxTextureSize = 2048;
 
 
     private float furthestXPoint = 1;
     private float furthestYPoint = 1;
     private float furthestZPoint = 1;
 
-    Camera graphRenderCam;
+
 
     private ComputeBuffer timeSeriesDataBuffer;
     // timeSeriesDataTexture is for support for computers that don't have compute shader capabilities
@@ -53,37 +50,11 @@ public class ScatterPlot3D : MonoBehaviour
         public float val3;
     }
 
-
-    private void OnEnable()
-    {
-        numInstances++;
-        graphID = numInstances;
-    }
-
-    private void OnDisable()
-    {
-        numInstances--;
-    }
-
     private void Awake()
     {
-        graphRenderCam = GetComponentInChildren<Camera>();
-        graphRenderCam.enabled = false;
-        // Make all the children of this object on the graph layer, that way the main camera doesn't render them.
-        gameObject.layer = (int)Mathf.Log(graphLayer.value, 2);
-
-        foreach (Transform go in GetComponentsInChildren<Transform>())
-        {
-            go.gameObject.layer = (int)Mathf.Log(graphLayer.value, 2);
-        }
-
-        // Should be able to see the default layer and the graph layer, tbhhh I don't really think this matters but whatever
-        graphRenderCam.cullingMask = 0;
-        graphRenderCam.cullingMask |= graphLayer.value;
-        graphRenderCam.cullingMask |= 1;        // 1 for default layer
 
         useComputeShader = SystemInfo.supportsComputeShaders;
-        //useComputeShader = false;
+        useComputeShader = false;
 
         if (useComputeShader)
         {
@@ -94,7 +65,7 @@ public class ScatterPlot3D : MonoBehaviour
         {
             texWidth = Mathf.FloorToInt(Mathf.Sqrt(maxNumPoints));
 
-            if (texWidth > maxTextureSize)
+            if(texWidth > maxTextureSize)
             {
                 texWidth = maxTextureSize;
             }
@@ -120,100 +91,25 @@ public class ScatterPlot3D : MonoBehaviour
 
     }
 
-    int numFrames = 0;
+    private void Start()
+    {
+
+    }
+
     void Update()
     {
-        // TODO: Fix this!
-        if((numFrames % numInstances) % graphID == 0)
-        {
-            // PopulateData();
-            RenderData();
-            graphRenderCam.Render();
-        }
 
-        numFrames++;
+        //PopulateData();
+        PopulateData();
+        RenderData();
+
     }
 
     private void OnDestroy()
     {
-        // This is called null propogation. Pretty cool
-        // it calls release if it is not null =O
-        timeSeriesDataBuffer?.Release();
-    }
-
-    public void SetData(float value1, float value2, float value3){
-
-        NativeArray<TimeSeriesData> subData = new ();
-
-        if (useComputeShader)
+        if (timeSeriesDataBuffer != null)
         {
-            subData = timeSeriesDataBuffer.BeginWrite<TimeSeriesData>(currPointIndex, 1);
-        }
-
-        TimeSeriesData data = new()
-        {
-            val1 = value1,
-            val2 = value2,
-            val3 = value3,
-        };
-
-        data.val1 = Mathf.Abs(data.val1);
-        data.val2 = Mathf.Abs(data.val2);
-        data.val3 = Mathf.Abs(data.val3);
-
-        if (useComputeShader)
-        {
-            subData[0] = data;
-        }
-        else
-        {
-            int xCoord = currPointIndex % texWidth;
-            int yCoord = currPointIndex / texWidth;
-            Color color = new(data.val1, data.val2, data.val3);
-            timeSeriesDataTexture.SetPixel(xCoord, yCoord, color);
-        }
-
-
-
-
-        if (data.val1 > furthestXPoint)
-        {
-            furthestXPoint = (int)data.val1 + 1;
-            xAxis.SetMaxAxisVal(furthestXPoint);
-        }
-        if (data.val2 > furthestYPoint)
-        {
-            furthestYPoint = (int)data.val2 + 1;
-            yAxis.SetMaxAxisVal(furthestYPoint);
-
-        }
-        if (data.val3 > furthestZPoint)
-        {
-            furthestZPoint = (int)data.val3 + 1;
-            zAxis.SetMaxAxisVal(furthestZPoint);
-        }
-
-
-        currPointIndex++;
-        currNumPoints++;
-
-        if (currPointIndex >= maxNumPoints)
-        {
-            currPointIndex = 0;
-        }
-
-        if (currNumPoints >= maxNumPoints)
-        {
-            currNumPoints = maxNumPoints;
-        }
-
-        if (useComputeShader)
-        {
-            timeSeriesDataBuffer.EndWrite<TimeSeriesData>(1);
-        }
-        else
-        {
-            timeSeriesDataTexture.Apply();
+            timeSeriesDataBuffer.Release();
         }
     }
 
@@ -230,13 +126,13 @@ public class ScatterPlot3D : MonoBehaviour
         for (int i = 0; i < numPoints; i++)
         {
 
-            float x = 10 * currPointIndex / (float)numPoints;
+            float x =  10 * currPointIndex / (float) numPoints;
 
             TimeSeriesData data = new()
             {
-                val1 = randGaussian(),
-                val2 = randGaussian() * 10,
-                val3 = randGaussian() * 10,
+                val1 = randGaussian() + transform.position.x,
+                val2 = randGaussian() * 10 + transform.position.y,
+                val3 = randGaussian() * 10 + transform.position.z,
             };
 
             data.val1 = Mathf.Abs(data.val1);
@@ -317,7 +213,7 @@ public class ScatterPlot3D : MonoBehaviour
         };
 
 
-        if (useComputeShader)
+        if(useComputeShader)
         {
             rp.matProps.SetBuffer("_TimeSeriesData", timeSeriesDataBuffer);
         }

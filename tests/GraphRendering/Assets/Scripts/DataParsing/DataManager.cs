@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -22,7 +24,8 @@ public class DataManager : MonoBehaviour
 
     private void Update()
     {
-        DataPacket packet = serialInterface.ReadSerialPort();
+
+        DataPacket packet = serialInterface.GetData();
 
         // Now we have the exciting task of decoding the packets =D
         // The following line helps get a binary representation
@@ -63,9 +66,10 @@ public class DataManager : MonoBehaviour
         //     plot.SetData(values1.Value, values2.Value, Time.time);
         // }
 
-        if(!dataStreams[DataType.CAR_SPEED].IsEmpty()){
-            KeyValuePair<float, float> speed = dataStreams[DataType.CAR_SPEED].GetOldestData();
-            Debug.Log(speed.Value);
+        if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty()){
+            KeyValuePair<float, float> speed = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
+            plot.SetData(speed.Key, speed.Value, 0);
+
         }
 
 

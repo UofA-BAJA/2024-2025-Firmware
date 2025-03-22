@@ -16,5 +16,6 @@ public enum Command{
     EMERGENCY_STOP = 104,         // Not sure if we'll ever use this one
 
 
-    START_CAM = 105
+    START_CAM = 105,
+    ACCELERATION = 106
 };
