@@ -147,7 +147,7 @@ namespace BajaWildcatRacing
             // ceil(32 / 6) = 6, so there are at most 6 structs we can send in one cycle
             // hence: the array size of 6
 
-            DataPacket packets[maxPackets];
+            DataPacket packets[maxPackets] = {};
 
             std::unique_lock<std::mutex> lock(dataStreamMutex);
             
@@ -222,7 +222,7 @@ namespace BajaWildcatRacing
             }
 
             if(packetsSent == 0){
-                bool report = radio.write(&idlePacket, sizeof(idlePacket));
+                bool report = radio.write(idlePacket, sizeof(idlePacket));
             }
 
     }

@@ -39,6 +39,7 @@
 namespace BajaWildcatRacing
 {
 
+    std::atomic<bool> g_running;
 
 
     /*
@@ -64,6 +65,12 @@ namespace BajaWildcatRacing
     , carContainer(procedureScheduler, canDispatcher, dataStorage, coms)
 
     {
+
+        std::signal(SIGSEGV, signal_handler); 
+        std::signal(SIGINT, signal_handler);
+        std::signal(SIGTERM, signal_handler);
+
+    
 
         // Init behavior that needs to be called before the subsystems start running.
         init();
@@ -117,6 +124,8 @@ namespace BajaWildcatRacing
     */
     void Car::execute(){
 
+        g_running = true;
+
         using namespace std::chrono;
 
 
@@ -137,7 +146,7 @@ namespace BajaWildcatRacing
         steady_clock::time_point startTime;
         steady_clock::time_point endTime;
 
-        while(1){
+        while(g_running.load()){
             startTime = steady_clock::now();
             double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
 
@@ -167,6 +176,8 @@ namespace BajaWildcatRacing
                 CarLogger::LogError("Car Computer cycle takes longer to compute than frequency");
             }
         }
+
+        std::cout << "Yeah so we're just done I guess...?" << std::endl;
     }
 
     /*
@@ -205,6 +216,19 @@ namespace BajaWildcatRacing
         procedureScheduler.end();
         std::cout << "Car sucessfully destroyed" << std::endl;
     }
+
+    void Car::signal_handler(int signal_num) 
+    { 
+
+        if (signal_num == SIGINT || signal_num == SIGTERM) {
+            g_running = false;
+        }
+        else{
+            std::cout << "Interrupt signal is (" << signal_num << ").\n"; 
+            exit(signal_num); 
+        }
+     
+    } 
 
 }
 

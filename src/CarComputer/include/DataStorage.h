@@ -37,8 +37,8 @@ namespace BajaWildcatRacing
                 double data;
             };
 
-            int currentSessionID;
-            float currentTimestamp;
+            int currentSessionID = 0;
+            float currentTimestamp = 0;
             int currentTimestampID = 0;
 
             ulong numDataInserts = 1;

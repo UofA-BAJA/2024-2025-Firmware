@@ -63,7 +63,7 @@ namespace BajaWildcatRacing
 
             PitCommandState currentPitCommandState = PitCommandState::IDLE;
 
-            float currTimestamp;
+            float currTimestamp = 0;
             void executeRadio();
             void radioTransmit();
 
