@@ -4180,6 +4180,26 @@
 			"IECgdIH/D/8LJ53CZWV9AAAAAElFTkSuQmCC"
 		)
 	)
+	(text "= 3.95k"
+		(exclude_from_sim no)
+		(at 228.6 102.616 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3c1205e8-2029-4dc2-8c12-8c85fc02128d")
+	)
+	(text "    2.5 x 2.32 X(2.43 + 0)\nRV1=              (5.5-5) X 2.32      - 8.2"
+		(exclude_from_sim no)
+		(at 228.092 97.028 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "85b058b6-5f18-46ae-ae93-f85be967e5d1")
+	)
 	(global_label "trim"
 		(shape input)
 		(at 166.37 95.25 0)
@@ -4375,7 +4395,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "?"
+		(property "Value" "3.95k"
 			(at 165.1 110.4899 0)
 			(effects
 				(font
