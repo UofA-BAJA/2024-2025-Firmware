@@ -4,6 +4,8 @@
 #include <iostream>
 #include <chrono>
 #include <cstdlib>
+#include <csignal>
+#include <atomic>
 
 #include "CarContainer.h"
 #include "ProcedureScheduler.h"
@@ -31,9 +33,12 @@ namespace BajaWildcatRacing
             void execute();
             void end();
 
+            static void signal_handler(int signal_num);
+
             const char* canInterface = "can0";
             const char* dataStoragePath = "/home/bajaelectrical/DataStorage";
             const char* logPath = "/home/bajaelectrical/car.log";
+
 
             // IMPORTANT NOTE!!!
             // c++ initializes members in the order they're declared in the class, not in the order they are listed

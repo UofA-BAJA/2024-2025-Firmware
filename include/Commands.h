@@ -13,9 +13,10 @@ enum Command{
     RETRIEVE = 102,               // Sends the logs to the Pit Computer
     // We don't talk about 103
     EMERGENCY_STOP = 104,         // Not sure if we'll ever use this one
-
-
-    START_CAM = 105
+    
+    
+    START_CAM = 105,
+    ACCELERATION = 106
 };
 
 
