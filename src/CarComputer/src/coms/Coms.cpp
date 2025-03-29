@@ -61,6 +61,14 @@ namespace BajaWildcatRacing
         currTimestamp = timestamp;
     }
 
+    void Coms::end(){
+        running = false;
+
+        if (radioThread.joinable()) {
+            radioThread.join();  // Wait for the thread to finish
+        }
+    }
+
     void Coms::executeRadio(){
 
         // perform hardware check
@@ -88,7 +96,7 @@ namespace BajaWildcatRacing
 
         int waitTimems = (1.0 / RADIO_CLOCK_FREQUENCY) * 1000;
         // If RADIO_ACTIVE is true, this thread will run the entire time the car is on
-        while(RADIO_ACTIVE){
+        while(running){
 
             radioTransmit();
 
@@ -115,7 +123,7 @@ namespace BajaWildcatRacing
         if(radio.isAckPayloadAvailable()){
 
 
-            int ackData;
+            int ackData = 0;
 
             radio.read(&ackData, 1);
 

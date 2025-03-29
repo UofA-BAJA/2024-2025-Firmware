@@ -3,9 +3,6 @@
 namespace BajaWildcatRacing
 {
 
-    // Database handle for our sqlite database
-    sqlite3* db;
-
 
     DataStorage::DataStorage(const char* path)
     {
@@ -76,9 +73,6 @@ namespace BajaWildcatRacing
 
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
-
-        std::cout << "Ended the work running on this thread" << std::endl;
-
     }
 
 
@@ -149,6 +143,9 @@ namespace BajaWildcatRacing
         if (updateDBThread.joinable()) {
             updateDBThread.join();  // Wait for the thread to finish
         }
+
+        sqlite3_close(db);
+
     }
 
     void DataStorage::execute(float timestamp){
@@ -320,33 +317,87 @@ namespace BajaWildcatRacing
         // corresponds to the same data type! If it doesn't things will break.
         // There's definitely a better way to do this (if somebody wants to fix pls do!)
 
-        dataTypesInDB.push_back(DataTypes::IMU_ROTATION_X);
-        dataTypeName.push_back("IMU ROTATION X");
-        dataTypeUnit.push_back("deg");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ROTATION_X,
+            "IMU Rotation X",
+            "deg"
+        });
 
-        dataTypesInDB.push_back(DataTypes::IMU_ROTATION_Y);
-        dataTypeName.push_back("IMU ROTATION Y");
-        dataTypeUnit.push_back("deg");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ROTATION_Y,
+            "IMU Rotation Y",
+            "deg"
+        });
 
-        dataTypesInDB.push_back(DataTypes::IMU_ROTATION_Z);
-        dataTypeName.push_back("IMU ROTATION Z");
-        dataTypeUnit.push_back("deg");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ROTATION_Z,
+            "IMU Rotation Z",
+            "deg"
+        });
 
-        dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_X);
-        dataTypeName.push_back("IMU ACCELERATION X");
-        dataTypeUnit.push_back("m/s^2");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ACCELERATION_X,
+            "IMU Acceleration X",
+            "m/s^2"
+        });
 
-        dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Y);
-        dataTypeName.push_back("IMU ACCELERATION Y");
-        dataTypeUnit.push_back("m/s^2");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ACCELERATION_Y,
+            "IMU Acceleration Y",
+            "m/s^2"
+        });
 
-        dataTypesInDB.push_back(DataTypes::IMU_ACCELERATION_Z);
-        dataTypeName.push_back("IMU ACCELERATION Z");
-        dataTypeUnit.push_back("m/s^2");
+        dataTypesInDB.push_back({
+            DataTypes::IMU_ACCELERATION_Z,
+            "IMU Acceleration Z",
+            "m/s^2"
+        });
 
-        dataTypesInDB.push_back(DataTypes::CAR_SPEED);
-        dataTypeName.push_back("CAR SPEED");
-        dataTypeUnit.push_back("m/s");
+        dataTypesInDB.push_back({
+            DataTypes::CAR_SPEED,
+            "Car Speed",
+            "m/s"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::CVT_TEMPERATURE,
+            "CVT Temperature",
+            "deg C"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::DISTANCE,
+            "Distance",
+            "m"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::RPM_FRONT_L,
+            "RPM Front Left",
+            "rev/s"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::RPM_FRONT_R,
+            "RPM Front Right",
+            "rev/s"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::RPM_BACK,
+            "RPM Back",
+            "rev/s"
+        });
+
+        dataTypesInDB.push_back({
+            DataTypes::MOTOR_RPM,
+            "RPM Motor",
+            "rev/s"
+        });
+
+        // dataTypesInDB.push_back(DataTypes::CAR_SPEED);
+        // dataTypeName.push_back("CAR SPEED");
+        // dataTypeUnit.push_back("m/s");
 
         /* I'm not entirely sure how the ON CONFLICT works, but we need to do this if we want to update the data types table. 
         * The reason why is that all of the data in the data table has a foreign key that references this table, so if it's
@@ -371,9 +422,9 @@ namespace BajaWildcatRacing
             }
 
             // Bind values to parameters
-            sqlite3_bind_double(statement, 1, dataTypesInDB[i]);
-            sqlite3_bind_text(statement, 2, dataTypeName[i].c_str(), -1, SQLITE_STATIC);
-            sqlite3_bind_text(statement, 3, dataTypeUnit[i].c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_double(statement, 1, dataTypesInDB[i].dataType);
+            sqlite3_bind_text(statement, 2, dataTypesInDB[i].name.c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 3, dataTypesInDB[i].unit.c_str(), -1, SQLITE_STATIC);
 
 
             exit = sqlite3_step(statement);

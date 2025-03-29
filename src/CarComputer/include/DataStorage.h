@@ -42,6 +42,15 @@ namespace BajaWildcatRacing
                 double data;
             };
 
+            struct DataTypeTable{
+                DataTypes dataType;
+                std::string name;
+                std::string unit;
+            };
+
+            // Database handle for our sqlite database
+            sqlite3* db;
+
             int currentSessionID = 0;
             float currentTimestamp = 0;
             int currentTimestampID = 0;
@@ -54,10 +63,7 @@ namespace BajaWildcatRacing
             // std::condition_variable insertCondition;
             // std::mutex cvMutex;
 
-
-            std::vector<DataTypes> dataTypesInDB;
-            std::vector<std::string> dataTypeName;
-            std::vector<std::string> dataTypeUnit;
+            std::vector<DataTypeTable> dataTypesInDB;
 
             std::thread updateDBThread;
             std::atomic<bool> running = true;

@@ -218,7 +218,7 @@ namespace BajaWildcatRacing
 	    dataStorage.endCurrentSession();
         dataStorage.end();
 	    canDispatcher.end();
-        // coms
+        coms.end();
 
 	// When the objects go out of scope, their destructors will be called.
 	// They only need destructors if they have dynamically managed memory. 	
