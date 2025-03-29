@@ -14,6 +14,8 @@
 // For multithreading
 #include <mutex>
 #include <thread>
+#include <atomic>
+
 #include <chrono> // I believe this is used for the sleep function in the executeRadio loop
 #include <bitset> // No idea what this is for, but I think it's important for something
 #include <unordered_set>
@@ -46,6 +48,7 @@ namespace BajaWildcatRacing
 
 
             void execute(float timestamp);
+            void end();
 
             void sendData(DataTypes dataType, float data);
 
@@ -63,7 +66,7 @@ namespace BajaWildcatRacing
 
             PitCommandState currentPitCommandState = PitCommandState::IDLE;
 
-            float currTimestamp;
+            float currTimestamp = 0;
             void executeRadio();
             void radioTransmit();
 
@@ -89,6 +92,7 @@ namespace BajaWildcatRacing
 
             std::mutex dataStreamMutex;
             std::thread radioThread;
+            std::atomic<bool> running = RADIO_ACTIVE;
 
     };
 

@@ -46,28 +46,36 @@ namespace BajaWildcatRacing
     , dashSubsystem(canDispatcher)
     {
 
-        procedureScheduler.bindCommand<IMUProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
-            std::unordered_set<Command>({Command::END_LOG}), 
-            imuSubsystem, dataStorage, coms);
-
-        procedureScheduler.bindCommand<TemperatureProcedure>(
-            std::unordered_set<Command>({Command::START_LOG}),
-            std::unordered_set<Command>({Command::END_LOG}),
-            drivetrainSubsystem, dataStorage, coms
+         procedureScheduler.bindCommand<IMUProcedure>(
+             std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
+             std::unordered_set<Command>({}), 
+             imuSubsystem, dataStorage, coms
         );
 
-        procedureScheduler.bindCommand<DashProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-            std::unordered_set<Command>({}),
-            dashSubsystem, drivetrainSubsystem
-        );
+        procedureScheduler.bindCommand<AccelerationProcedure>(
+            std::unordered_set<Command>({Command::ACCELERATION}), 
+            std::unordered_set<Command>({Command::END_LOG})
+       );
+
+        // procedureScheduler.bindCommand<TemperatureProcedure>(
+        //      std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+        //      std::unordered_set<Command>({Command::END_LOG}),
+        //      drivetrainSubsystem, dataStorage, coms
+        //  );
+
+        // procedureScheduler.bindCommand<DashProcedure>(
+        //    std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+        //    std::unordered_set<Command>({}),
+        //    dashSubsystem, drivetrainSubsystem, imuSubsystem
+        // );
 
         // procedureScheduler.bindCommand<SpedometerProcedure>(
         //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
         //     std::unordered_set<Command>({}),
-        //     drivetrainSubsystem
+        //     drivetrainSubsystem, dataStorage, coms
         // );
+
+
 
         CarLogger::Log("Car Started");
         std::cout << "Car Container Constructor called" << std::endl;

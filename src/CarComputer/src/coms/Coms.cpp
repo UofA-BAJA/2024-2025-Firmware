@@ -61,6 +61,14 @@ namespace BajaWildcatRacing
         currTimestamp = timestamp;
     }
 
+    void Coms::end(){
+        running = false;
+
+        if (radioThread.joinable()) {
+            radioThread.join();  // Wait for the thread to finish
+        }
+    }
+
     void Coms::executeRadio(){
 
         // perform hardware check
@@ -88,7 +96,7 @@ namespace BajaWildcatRacing
 
         int waitTimems = (1.0 / RADIO_CLOCK_FREQUENCY) * 1000;
         // If RADIO_ACTIVE is true, this thread will run the entire time the car is on
-        while(RADIO_ACTIVE){
+        while(running){
 
             radioTransmit();
 
@@ -109,24 +117,24 @@ namespace BajaWildcatRacing
         //     transmitDatabase();
         // }
 
-            transmitLiveData();
+        transmitLiveData();
 
         // Received command from pit!
         if(radio.isAckPayloadAvailable()){
 
 
-            int ackData;
+            int ackData = 0;
 
             radio.read(&ackData, 1);
 
-            if(ackData == Command::START_LOG){
-                // procedureScheduler.receiveComCommand(Command::START_LOG);
+            // if(ackData == Command::START_LOG){
+            //     // procedureScheduler.receiveComCommand(Command::START_LOG);
 
-                currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
-            }
-            else if(ackData == Command::END_LOG){
-                currentPitCommandState = PitCommandState::IDLE;
-            }
+            //     currentPitCommandState = PitCommandState::LIVE_DATA_TRANSMIT;
+            // }
+            // else if(ackData == Command::END_LOG){
+            //     currentPitCommandState = PitCommandState::IDLE;
+            // }
 
             std::lock_guard<std::mutex> lock(procedureSchedulerMutex);
 
@@ -139,12 +147,7 @@ namespace BajaWildcatRacing
 
     }
 
-    int thingy[] = {-1};
-
-    void Coms::idle(){
-        bool report = radio.write(&thingy, sizeof(thingy));
-
-    }
+    int idlePacket[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
     void Coms::transmitLiveData(){
             // The car can have 32 streams.
@@ -152,7 +155,7 @@ namespace BajaWildcatRacing
             // ceil(32 / 6) = 6, so there are at most 6 structs we can send in one cycle
             // hence: the array size of 6
 
-            DataPacket packets[maxPackets];
+            DataPacket packets[maxPackets] = {};
 
             std::unique_lock<std::mutex> lock(dataStreamMutex);
             
@@ -227,7 +230,7 @@ namespace BajaWildcatRacing
             }
 
             if(packetsSent == 0){
-                bool report = radio.write(&thingy, sizeof(thingy));
+                bool report = radio.write(idlePacket, sizeof(idlePacket));
             }
 
     }
@@ -248,7 +251,6 @@ namespace BajaWildcatRacing
             liveDataStreamMap[dataType] = newStream;
 
             addNewLiveDataStream(newStream);
-
 
         }
 

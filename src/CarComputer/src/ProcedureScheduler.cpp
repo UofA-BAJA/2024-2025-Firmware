@@ -60,27 +60,32 @@ namespace BajaWildcatRacing
 
         for(auto it = activeProcedures.begin(); it != activeProcedures.end(); ){
 
-            ProcedureTemplate procedureTemplate = it->first;
+            // This gets the key of the current active procedure
+            // it->second gives the procedure itself
+            // ProcedureTemplate procedureTemplate = it->first;
+            // gets the raw pointer for the current procedure... dangerous? idk
+            Procedure* currProcedure = it->second.get();
 
-            if(BASE_CAR_FREQUENCY % activeProcedures[procedureTemplate]->frequency != 0){
-                std::string errorMsg = activeProcedures[procedureTemplate]->toString() + " frequency not a divisor of 360";
+            if(BASE_CAR_FREQUENCY % currProcedure->frequency != 0){
+                std::string errorMsg = currProcedure->toString() + " frequency not a divisor of 360";
                 CarLogger::LogError(errorMsg.c_str());
                 ++it;
                 continue;
             }
 
-            if(cycleCount % (BASE_CAR_FREQUENCY / activeProcedures[procedureTemplate]->frequency) != 0) {
+            if(cycleCount % (BASE_CAR_FREQUENCY / currProcedure->frequency) != 0) {
                 ++it;
                 continue;
             }
 
-            if(activeProcedures[procedureTemplate]->isFinished()){
+            if(currProcedure->isFinished()){
 
-                activeProcedures[procedureTemplate]->end();
-                activeProcedures.erase(procedureTemplate);
+                currProcedure->end();
+                it = activeProcedures.erase(it);
+                continue;
             }
             else{
-                activeProcedures[procedureTemplate]->execute();
+                currProcedure->execute();
                 ++it;   // Only increment the iterator if we're not erasing anything.
             }
 
@@ -103,14 +108,18 @@ namespace BajaWildcatRacing
     *  Returns: None
     */
     void ProcedureScheduler::end(){
-        // ! We're going to get a bug here! We need to do this the way it's done in the 
-        // ! execute method above. (The bug will be a )
-        // for(auto keyValuePair : activeProcedures){
-        //     for(Procedure* procedure : activeProcedures[keyValuePair.first]){
-        //         procedure->end();
-        //         activeProcedures[keyValuePair.first].erase(procedure);
-        //     }
-        // }
+        
+        for(auto it = activeProcedures.begin(); it != activeProcedures.end(); ){
+
+            // This gets the key of the current active procedure
+            // it->second gives the procedure itself
+            // ProcedureTemplate procedureTemplate = it->first;
+            // gets the raw pointer for the current procedure... dangerous? idk
+            Procedure* currProcedure = it->second.get();
+
+            currProcedure->end();
+            it = activeProcedures.erase(it);
+        }
     }
 
 

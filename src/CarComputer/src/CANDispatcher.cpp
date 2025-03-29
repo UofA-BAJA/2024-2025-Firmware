@@ -29,9 +29,8 @@ namespace BajaWildcatRacing
 
             if(commandCycles[commandID] >= cycleThreshold){
                     droppedCommands++;
-
                     std::cout << "Commands Dropped: " << droppedCommands << std::endl;
-                    // std::cout << "Command Dropped: " << std::hex << commandID << std::endl;
+                    // std::out << "Command Dropped: " << std::hex << commandID << std::endl;
                     callbacks.erase(commandID);
                     destinations.erase(commandID);
                     // Proper way to continue iterating over the map
@@ -40,7 +39,15 @@ namespace BajaWildcatRacing
             else{
                 ++it;
             }
-        }
+        } 
+
+        float droppedCommandRatio = (float) droppedCommands / totalCommands * 100.0;
+
+        // std::cout << "Commands Dropped: " << droppedCommands << std::endl;
+        // std::cout << std::fixed;
+        // std::cout << std::setprecision(2);
+        // std::cout << "Percentage dropped: " << droppedCommandRatio << std::endl;
+        
     }
 
     /*
@@ -106,7 +113,7 @@ namespace BajaWildcatRacing
 
 
         // Prepare the CAN frame
-        struct can_frame frame;                                             // The CAN frame to send to the CAN device
+        struct can_frame frame = {};                                        // The CAN frame to send to the CAN device
         frame.can_id = deviceID;                                            // CAN ID
         frame.can_id |= CAN_EFF_FLAG;
         // dlc stands for data length code. It is plus 3 because we are sending the data and the callback
@@ -136,6 +143,8 @@ namespace BajaWildcatRacing
         commandCycles[currUID] = 0;
 
         ssize_t result = write(can_socket_fd, &frame, sizeof(frame));
+        totalCommands++;
+
 
         // std::cout << result << std::endl;
 
@@ -235,10 +244,51 @@ namespace BajaWildcatRacing
 
         struct can_frame frame;                     // The data read from the CAN bus will be stored here
         // Continuous loop to read from the CAN bus
-        while(true){
+        while(running.load()){
+
+            ////////////////////////////////////////
+            // Chat code
+            // This code makes it so that the thread properly ends without blocking
+            fd_set read_fds;
+            struct timeval timeout;
+    
+            FD_ZERO(&read_fds);
+            FD_SET(can_socket_fd, &read_fds);
+    
+            // Set timeout to 100ms (adjust as needed)
+            timeout.tv_sec = 0;
+            timeout.tv_usec = 100000;
+    
+            // Wait for data on the socket with a timeout
+            int retval = select(can_socket_fd + 1, &read_fds, nullptr, nullptr, &timeout);
+    
+            if (retval < 0) {
+                if (errno == EINTR) continue;  // Ignore interrupted system calls
+                std::cerr << "Error in select(): " << strerror(errno) << std::endl;
+                break;
+            } else if (retval == 0) {
+                // Timeout occurred, check if we need to exit
+                continue;
+            }
+            // End of chat code
+            ///////////////////////////////////////////////
+
+
+
             int nbytes = read(can_socket_fd, &frame, sizeof(struct can_frame));
 
+            if (nbytes < 0) {
+                if (errno == EBADF || errno == ECONNRESET) {
+                    std::cout << "CAN interface shutting down." << std::endl;
+                    break;
+                }
+                std::cerr << "Error reading CAN frame: " << strerror(errno) << std::endl;
+                continue;
+            }
+
             if(nbytes > 0){
+
+
                 uint32_t messageID = frame.can_id & CAN_EFF_MASK; // Mask to get only the 29-bit ID
 
                 std::lock_guard<std::mutex> lock(callbacks_mutex);
@@ -254,6 +304,23 @@ namespace BajaWildcatRacing
                 }
             }
         }
+
+        std::cout << "Read CAN interface thread out of scope" << std::endl;
+
+    }
+
+    void CANDispatcher::end(){
+
+        
+
+        running = false;
+        shutdown(can_socket_fd, SHUT_RD);
+        
+        if (canReadingThread.joinable()) {
+            canReadingThread.join();  // Wait for the thread to finish
+        }
+
+        close(can_socket_fd);
     }
 
     /*
@@ -300,8 +367,6 @@ namespace BajaWildcatRacing
             exit(EXIT_FAILURE);
         }
 
-        
-
         return socket_fd;
     }
 
@@ -327,4 +392,3 @@ namespace BajaWildcatRacing
     }
 
 }
-
