@@ -11,8 +11,11 @@
 #include <iostream>
 #include <string.h>
 #include <queue>
+
 #include <mutex>
 #include <thread>
+#include <atomic>
+
 #include <chrono>
 
 
@@ -27,8 +30,10 @@ namespace BajaWildcatRacing
             void startNewSession(const char* sessionName);
             void endCurrentSession();
             void execute(float timestamp);
+            void end();
             int getData();
             void storeData(float data, DataTypes dataType);
+
         private:
             struct DataValues{
                 int currentSessionID;
@@ -55,6 +60,7 @@ namespace BajaWildcatRacing
             std::vector<std::string> dataTypeUnit;
 
             std::thread updateDBThread;
+            std::atomic<bool> running = true;
 
             void setupDatabase(const char* path);
             void setupDataTypes();

@@ -39,7 +39,7 @@
 namespace BajaWildcatRacing
 {
 
-    std::atomic<bool> g_running;
+    bool g_running;
 
 
     /*
@@ -104,7 +104,7 @@ namespace BajaWildcatRacing
         // Later on we'll probably call this function as a command from the pit. Actually, 
         // the car should theoretically never be destroyed unless the program quits, which
         // should never happen while the car is running. 
-        end();
+        // end();
     }
 
     /*
@@ -128,8 +128,6 @@ namespace BajaWildcatRacing
 
         using namespace std::chrono;
 
-
-        // ! WARNNING: not tested on raspberry pi. 
         // ! Does not work with frequency 1 for whatever reason...
         int frequency = BASE_CAR_FREQUENCY;   // CAN can go up to 1 Mhz or 1000000 hz
 
@@ -146,7 +144,7 @@ namespace BajaWildcatRacing
         steady_clock::time_point startTime;
         steady_clock::time_point endTime;
 
-        while(g_running.load()){
+        while(g_running){
             startTime = steady_clock::now();
             double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
 
@@ -177,7 +175,9 @@ namespace BajaWildcatRacing
             }
         }
 
-        std::cout << "Yeah so we're just done I guess...?" << std::endl;
+
+        end();
+
     }
 
     /*
@@ -213,8 +213,17 @@ namespace BajaWildcatRacing
     *
     */
     void Car::end(){
+	// Ends currently running procedures
         procedureScheduler.end();
-        std::cout << "Car sucessfully destroyed" << std::endl;
+	    dataStorage.endCurrentSession();
+        dataStorage.end();
+	    canDispatcher.end();
+        // coms
+
+	// When the objects go out of scope, their destructors will be called.
+	// They only need destructors if they have dynamically managed memory. 	
+
+        std::cout << "Car successfully ended" << std::endl;
     }
 
     void Car::signal_handler(int signal_num) 

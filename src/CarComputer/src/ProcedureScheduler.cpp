@@ -108,14 +108,18 @@ namespace BajaWildcatRacing
     *  Returns: None
     */
     void ProcedureScheduler::end(){
-        // ! We're going to get a bug here! We need to do this the way it's done in the 
-        // ! execute method above. (The bug will be a )
-        // for(auto keyValuePair : activeProcedures){
-        //     for(Procedure* procedure : activeProcedures[keyValuePair.first]){
-        //         procedure->end();
-        //         activeProcedures[keyValuePair.first].erase(procedure);
-        //     }
-        // }
+        
+        for(auto it = activeProcedures.begin(); it != activeProcedures.end(); ){
+
+            // This gets the key of the current active procedure
+            // it->second gives the procedure itself
+            // ProcedureTemplate procedureTemplate = it->first;
+            // gets the raw pointer for the current procedure... dangerous? idk
+            Procedure* currProcedure = it->second.get();
+
+            currProcedure->end();
+            it = activeProcedures.erase(it);
+        }
     }
 
 

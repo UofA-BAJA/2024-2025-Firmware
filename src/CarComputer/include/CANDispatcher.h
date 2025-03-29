@@ -18,6 +18,8 @@
 // For multithreading
 #include <thread>
 #include <mutex>
+#include <atomic>
+
 
 #include <vector>
 
@@ -36,6 +38,7 @@ namespace BajaWildcatRacing
             CANDispatcher(const char* interface);
 
             void execute();
+            void end();
 
             void sendCanCommand(int deviceID, std::vector<byte> data, void* destination, std::function<void(can_frame, void*)> callback);
             void sendCanCommand(int deviceID, std::vector<byte> data);
@@ -48,6 +51,7 @@ namespace BajaWildcatRacing
             uint32_t currUID;
 
             std::thread canReadingThread;
+            std::atomic<bool> running = true;
 
             std::unordered_map<uint32_t, std::function<void(can_frame, void*)>> callbacks;
             std::unordered_map<uint32_t, void*> destinations;

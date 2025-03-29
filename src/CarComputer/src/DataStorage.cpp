@@ -26,7 +26,7 @@ namespace BajaWildcatRacing
         char* messageError;
         int exit;
 
-        while(true){
+        while(running.load()){
             // insertCondition.wait(conditionalLock, [this] { return insertBuffer.size() > 20; });
 
             std::unique_lock<std::mutex> lock(insertBufferMutex);
@@ -76,6 +76,8 @@ namespace BajaWildcatRacing
 
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
+
+        std::cout << "Ended the work running on this thread" << std::endl;
 
     }
 
@@ -140,6 +142,14 @@ namespace BajaWildcatRacing
         sqlite3_finalize(statement);
     }
 
+
+    void DataStorage::end(){
+        running = false;
+
+        if (updateDBThread.joinable()) {
+            updateDBThread.join();  // Wait for the thread to finish
+        }
+    }
 
     void DataStorage::execute(float timestamp){
 
