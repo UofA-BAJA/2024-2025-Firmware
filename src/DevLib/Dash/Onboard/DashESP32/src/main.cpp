@@ -25,6 +25,11 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
+const String version = "V1-0-2"; //Will I use this?
+const int SPEED_MIN_ANGLE = 0;
+const int SPEED_MAX_ANGLE = 180;
+const int RPM_MIN_ANGLE = 0;
+const int RPM_MAX_ANGLE = 0;
 
 // Devices
 HT16K33 display; // 14 segment
@@ -46,17 +51,19 @@ uint16_t indicatorLightState = 0;
 
 bool canRecentRX = true;
 unsigned long lastCANRx = 0;
+
 int display1CurrentDisplay = 0;
-unsigned long lastDisp1Button = 0;
+unsigned long lastDisp1Button = 0; //Last button press time
 int display2CurrentDisplay = 1;
-unsigned long lastDisp2Button = 0; 
+unsigned long lastDisp2Button = 0; //Last button press time
 
 
 void setup()
 {
   // <insert that default comment that gets generated with all arduino projects>
   Serial.begin(115200);
-  Serial.println("Dash test r11");
+  Serial.print("Dash Firmware ");
+  Serial.println(version);
 
   // Join I2C
   Wire.begin();
@@ -66,36 +73,64 @@ void setup()
   // initalize 14 segment and check for display acknowledge
   if (display.begin(0x70, 0x71) == false)
   {
-    Serial.println("At least one 14 segment from row 1 did not acknowledge!");
+    Serial.println("[WARNING] At least one 14 segment from row 1 did not acknowledge!");
   }
   if (display2.begin(0x72, 0x73) == false)
   {
-    Serial.println("At least one 14 segment from row 2 did not acknowledge!");
+    Serial.println("[WARNING] At least one 14 segment from row 2 did not acknowledge!");
   }
   Serial.println("Display setup complete.");
-  display.print("WELCOME");
-  display2.print("TO BAJA");
-  delay(1500);
 
   //---------------------------------------------------
 
   // Initalize Servos
-    speed.attach(32);
-    rpm.attach(33);
+  speed.attach(32);
+  rpm.attach(33);
+  Serial.println("Servos initialized.");
 
   //---------------------------------------------------
 
   // Initialize LED Matrix
   if (ledMatrix.begin(0x74) == false)
   {
-    Serial.println("LED Matrix Driver did not acknowledge!");
+    Serial.println("[WARNING] LED Matrix Driver did not acknowledge!");
     // while (1)
     //   ;
   }
-  ledMatrix.displaybuffer[5] = 1;
-  ledMatrix.displaybuffer[6] = 1;
-  ledMatrix.writeDisplay();
+  Serial.println("LED Matrix setup complete.");
 
+  //---------------------------------------------------
+
+  //Light Test
+  ledMatrix.displaybuffer[0] = 0b1111111111111111;
+  ledMatrix.displaybuffer[1] = 0b1111111111111111;
+  ledMatrix.writeDisplay();
+  //Define an all-on character and print it out, then turn on decimal and colon
+  display.defineChar('`', 0b1111111111111111);
+  display2.defineChar('`', 0b1111111111111111);
+  display.print("````````");
+  display2.print("````````");
+  display.colonOn();
+  display2.colonOn();
+  display.decimalOn();
+  display2.decimalOn();
+  //Sweep the servos
+  speed.write(SPEED_MAX_ANGLE);
+  rpm.write(RPM_MAX_ANGLE);
+  delay(1000);
+  speed.write(SPEED_MIN_ANGLE);
+  rpm.write(RPM_MIN_ANGLE);
+  delay(1000);
+  //Clear displays
+  display.clear();
+  display2.clear();
+  ledMatrix.clear();
+  ledMatrix.writeDisplay();
+  display.print("WELCOME");
+  display2.print("TO BAJA");
+  delay(1500);
+  Serial.println("Light test complete.");
+  
   //---------------------------------------------------
 
   // Initialize and join CAN
@@ -108,23 +143,16 @@ void setup()
   else if (canInitResult == CAN_FAILINIT)
   {
 
-    Serial.println("CAN Init Failed: CAN_FAILINIT");
+    Serial.println("[ERROR] CAN Init Failed: CAN_FAILINIT");
     display.print("CAN FAIL");
     display2.print("FAILINIT");
     while (1)
       ;
   }
-  else if (canInitResult == CAN_FAILTX)
-  {
-    Serial.println("CAN Init Failed: CAN_FAILTX");
-    display.print("CAN FAIL");
-    display2.print("FAIL TX");
-    while (1)
-      ;
-  }
+  //There used to be a block for CAN_FAILTX here, but I removed it as the only options are CAN_FAILINIT and CAN_OK
   else
   {
-    Serial.println("CAN Init Failed: Unknown error");
+    Serial.println("[ERROR] CAN Init Failed: Unknown error");
     display.print("CAN FAIL");
     display2.print("UNKNOWN");
     while (1)
@@ -144,6 +172,7 @@ void setup()
 
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
+  Serial.println("CAN setup complete");
 
   //---------------------------------------------------
 
@@ -182,7 +211,8 @@ void setup()
   //Init OK!
   display2.clear();
   display.print("INIT OK");
-  Serial.println("Init Ok!");
+  display2.print(version);
+  Serial.println("Init Finished!");
   delay(1500);
 
 }
@@ -191,20 +221,25 @@ void setup()
 
 void loop()
 {
+  //Variables for CAN RX
   unsigned long rxId;
   unsigned char len = 0;
   unsigned char rxBuf[8];
-  
+
   while (CAN_MSGAVAIL == CAN.checkReceive()) {
-    CAN.readMsgBuf(&rxId, &len, rxBuf); // Read message
+    //Read CAN message buffer
+    CAN.readMsgBuf(&rxId, &len, rxBuf); 
     // Serial.println(rxId, HEX);
     if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+      //Print out data for debugging
       // Serial.print(">RX Data: ");
       // for (int i = 0; i < len; i++)
       // {
       //   Serial.print(rxBuf[i], HEX);
       //   Serial.print(" ");
       // } 
+
+      //Copy the data into the right location in memory 
       switch (rxBuf[0])
       {
         case 0x01:
@@ -234,12 +269,16 @@ void loop()
     }
   }
 
+  //If we haven't recieved a CAN command in 2 seconds, assume CAN is offline
   if(millis()-lastCANRx > 2000 && canRecentRX){
       if(xSemaphoreTake(canMutex, portMAX_DELAY)){
         canRecentRX = false;
         xSemaphoreGive(canMutex);
       }
-      ledMatrix.displaybuffer[5] = indicatorLightState | 1;
+      //Light up the appropriate indicator light
+      //TODO: I don't think this is the right one anymore, fix it
+      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
+      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
       ledMatrix.writeDisplay();
   }
 }
@@ -248,11 +287,11 @@ void loop()
 
 void writeDisplays(void *pvParameters){
   delay(1500);
-  int num = 0;
+  int num = 0; //cycle counter for arbitrary delay
   while(true){
     num++;
 
-    //thread safety
+    //thread safety for this variable
     bool tempCANRecentRX = true; 
     if(xSemaphoreTake(canMutex, portMAX_DELAY)){
       tempCANRecentRX = canRecentRX;
@@ -263,10 +302,16 @@ void writeDisplays(void *pvParameters){
     if(num%8==0 && !tempCANRecentRX){
       if(num%16 == 0){
         display.clear();
+        ledMatrix.displaybuffer[0] = 0b1111111111111111;
+        ledMatrix.displaybuffer[1] = 0;
+        ledMatrix.writeDisplay();
         rpm.write(0);
         speed.write(0);
       }else{
         display.print("NO CAN");
+        ledMatrix.displaybuffer[1] = 0b1111111111111111;
+        ledMatrix.displaybuffer[0] = 0;
+        ledMatrix.writeDisplay();
         rpm.write(172);
         speed.write(172);
       }
@@ -274,7 +319,7 @@ void writeDisplays(void *pvParameters){
 
     //If there has been CAN recently, display stuff 
     if(tempCANRecentRX){
-      //Switch display data field (note: active low)
+      //Switch display data field with cooldown (note: active low)
       if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW && millis()-lastDisp1Button > 300){
         lastDisp1Button = millis();
         display1CurrentDisplay++;
@@ -318,6 +363,7 @@ void writeDisplays(void *pvParameters){
           display.print("????");
           break;
       }
+
       switch(display2CurrentDisplay){
         case CVT_TEMP:
           displayCVTTemp(display2);
@@ -335,19 +381,24 @@ void writeDisplays(void *pvParameters){
           display2.print("????");
           break;
       }
+
       //Write LED matrix and RPM/Speed gauges
       if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+        //Copy everything to new variables so the mutex can be given as fast as possible
         uint16_t tempIndicatorLights = indicatorLightState; 
         float tempSpeed = lastSpeed;
         float tempRPM = lastRPM;
         xSemaphoreGive(canMutex);
-        ledMatrix.displaybuffer[5] = tempIndicatorLights;
+        ledMatrix.displaybuffer[0] = tempIndicatorLights;
+        ledMatrix.displaybuffer[1] = tempIndicatorLights;
         ledMatrix.writeDisplay(); 
-        speed.write((tempSpeed/40.0)*172.0);
-        rpm.write((tempRPM/4000.0)*172.0);
+        //Formula: ((value/maxValue) * servoRange) + minRange
+        speed.write(((tempSpeed / 40.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        rpm.write(((tempSpeed / 4000.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
       }
     }
-    delay(100);
+    //Effectively limits the refresh rate to ~10Hz (which is fine, we don't need much more than 5Hz)
+    delay(100); 
   } 
 }
 
