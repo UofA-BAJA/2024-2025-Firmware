@@ -40,7 +40,7 @@ namespace BajaWildcatRacing
                 dashSubsystem.sendTimeSeconds(CarTime::getCurrentTimeSeconds());
                 dashSubsystem.sendIndicatorLightState();
 
-                dashSubsystem.sendSpeed(imuSubsystem.getRotationX());
+                dashSubsystem.sendSpeed(drivetrainSubsystem.getFrontLeftRPM());
 
                 // dashSubsystem.sendRPM(drivetrainSubsystem->getEngineRPM());
                 // dashSubsystem.sendRPM(rand() % 4000);

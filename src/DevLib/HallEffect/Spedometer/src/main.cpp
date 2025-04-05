@@ -46,14 +46,14 @@ void setup() {
   }
 
   CAN.init_Mask(0, 1, 0xFFFFFFFF);
-  CAN.init_Filt(0, 1, 0x00000004);
-  CAN.init_Filt(1, 1, 0x00000004);
+  CAN.init_Filt(0, 1, 0x00000005);
+  CAN.init_Filt(1, 1, 0x00000005);
 
   CAN.init_Mask(1, 1, 0xFFFFFFFF);
-  CAN.init_Filt(2, 1, 0x00000004);
-  CAN.init_Filt(3, 1, 0x00000004);
-  CAN.init_Filt(4, 1, 0x00000004);
-  CAN.init_Filt(5, 1, 0x00000004);
+  CAN.init_Filt(2, 1, 0x00000005);
+  CAN.init_Filt(3, 1, 0x00000005);
+  CAN.init_Filt(4, 1, 0x00000005);
+  CAN.init_Filt(5, 1, 0x00000005);
 
 
   // Set the MCP2515 to normal mode to start receiving CAN messages

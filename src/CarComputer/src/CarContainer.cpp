@@ -75,11 +75,11 @@ namespace BajaWildcatRacing
             dashSubsystem
          );
 
-        // procedureScheduler.bindCommand<SpedometerProcedure>(
-        //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-        //     std::unordered_set<Command>({}),
-        //     drivetrainSubsystem, dataStorage, coms
-        // );
+        procedureScheduler.bindCommand<SpedometerProcedure>(
+            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+            std::unordered_set<Command>({}),
+            drivetrainSubsystem, dataStorage, coms
+        );
 
 
 
