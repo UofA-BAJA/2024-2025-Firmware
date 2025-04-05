@@ -56,13 +56,6 @@ class IMUProcedure : public Procedure{
             coms.sendData(DataTypes::IMU_ACCELERATION_Y, yAccel);
             coms.sendData(DataTypes::IMU_ACCELERATION_Z, zAccel);
 
-            // xRotStream->enqueue(xRot);
-            // yRotStream->enqueue(yRot);
-            // zRotStream->enqueue(zRot);
-
-            // xAccStream->enqueue(xAccel);
-            // yAccStream->enqueue(yAccel);
-            // zAccStream->enqueue(zAccel);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);

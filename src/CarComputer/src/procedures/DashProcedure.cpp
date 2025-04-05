@@ -22,7 +22,7 @@ namespace BajaWildcatRacing
             , drivetrainSubsystem(drivetrainSubsystem)
             , imuSubsystem(imuSubsystem)
             {
-                this->frequency = 60;
+                this->frequency = 5;
             }
 
             void init() override{
@@ -40,11 +40,11 @@ namespace BajaWildcatRacing
                 dashSubsystem.sendTimeSeconds(CarTime::getCurrentTimeSeconds());
                 dashSubsystem.sendIndicatorLightState();
 
-                dashSubsystem.sendSpeed(imuSubsystem.getRotationY());
+                dashSubsystem.sendSpeed(imuSubsystem.getRotationX());
 
                 // dashSubsystem.sendRPM(drivetrainSubsystem->getEngineRPM());
                 // dashSubsystem.sendRPM(rand() % 4000);
-                // dashSubsystem.sendSpeed(rand() % 40);
+               
                 // dashSubsystem.sendSpeed(drivetrainSubsystem.getEngineRPM());
             }
 

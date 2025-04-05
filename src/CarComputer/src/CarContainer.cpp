@@ -54,7 +54,7 @@ namespace BajaWildcatRacing
 
         procedureScheduler.bindCommand<AccelerationProcedure>(
             std::unordered_set<Command>({Command::ACCELERATION}), 
-            std::unordered_set<Command>({Command::END_LOG})
+            std::unordered_set<Command>({Command::END_LOG, Command::EMERGENCY_STOP})
        );
 
         // procedureScheduler.bindCommand<TemperatureProcedure>(
@@ -64,10 +64,16 @@ namespace BajaWildcatRacing
         //  );
 
         procedureScheduler.bindCommand<DashProcedure>(
-           std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::ENABLE_CHECK_ENGINE}),
-           std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
+           std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+           std::unordered_set<Command>({}),
            dashSubsystem, drivetrainSubsystem, imuSubsystem
         );
+
+        procedureScheduler.bindCommand<CheckEngineProcedure>(
+            std::unordered_set<Command>({Command::ENABLE_CHECK_ENGINE}),
+            std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
+            dashSubsystem
+         );
 
         // procedureScheduler.bindCommand<SpedometerProcedure>(
         //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
