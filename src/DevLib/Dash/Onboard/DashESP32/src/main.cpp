@@ -25,11 +25,11 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-0-2"; //Will I use this?
-const int SPEED_MIN_ANGLE = 0;
-const int SPEED_MAX_ANGLE = 180;
+const String version = "V1-0-6"; //Will I use this?
+const int SPEED_MIN_ANGLE = 180;
+const int SPEED_MAX_ANGLE = 0;
 const int RPM_MIN_ANGLE = 0;
-const int RPM_MAX_ANGLE = 0;
+const int RPM_MAX_ANGLE = 180;
 
 // Devices
 HT16K33 display; // 14 segment
@@ -61,6 +61,7 @@ unsigned long lastDisp2Button = 0; //Last button press time
 void setup()
 {
   // <insert that default comment that gets generated with all arduino projects>
+  delay(3000);
   Serial.begin(115200);
   Serial.print("Dash Firmware ");
   Serial.println(version);
@@ -115,6 +116,7 @@ void setup()
   display.decimalOn();
   display2.decimalOn();
   //Sweep the servos
+  delay(200); //Pause for stabilize?
   speed.write(SPEED_MAX_ANGLE);
   rpm.write(RPM_MAX_ANGLE);
   delay(1000);
@@ -300,20 +302,19 @@ void writeDisplays(void *pvParameters){
 
     // If there has not been can recently, flash NO CAN
     if(num%8==0 && !tempCANRecentRX){
+      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
+      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
+      ledMatrix.writeDisplay();
       if(num%16 == 0){
         display.clear();
-        ledMatrix.displaybuffer[0] = 0b1111111111111111;
-        ledMatrix.displaybuffer[1] = 0;
-        ledMatrix.writeDisplay();
-        rpm.write(0);
-        speed.write(0);
+        // ledMatrix.displaybuffer[0] = 0b1111111111111111;
+        // ledMatrix.displaybuffer[1] = 0;
+        // ledMatrix.writeDisplay();
       }else{
         display.print("NO CAN");
-        ledMatrix.displaybuffer[1] = 0b1111111111111111;
-        ledMatrix.displaybuffer[0] = 0;
-        ledMatrix.writeDisplay();
-        rpm.write(172);
-        speed.write(172);
+        // ledMatrix.displaybuffer[1] = 0b1111111111111111;
+        // ledMatrix.displaybuffer[0] = 0;
+        // ledMatrix.writeDisplay();
       }
     }
 
@@ -394,7 +395,7 @@ void writeDisplays(void *pvParameters){
         ledMatrix.writeDisplay(); 
         //Formula: ((value/maxValue) * servoRange) + minRange
         speed.write(((tempSpeed / 40.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((tempSpeed / 4000.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+        rpm.write(((tempRPM / 4000.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
       }
     }
     //Effectively limits the refresh rate to ~10Hz (which is fine, we don't need much more than 5Hz)
