@@ -30,6 +30,7 @@ public class SerialInterface
     public void SendCommand(Command command){
 
         byte[] data = BitConverter.GetBytes((int) command);
+
         radioSerialPort.Write(data, 0, 1);
     }
 

@@ -17,5 +17,8 @@ public enum Command{
 
 
     START_CAM = 105,
-    ACCELERATION = 106
+    ACCELERATION = 106,
+
+    ENABLE_CHECK_ENGINE = 69,
+    DISABLE_CHECK_ENGINE = 70
 };

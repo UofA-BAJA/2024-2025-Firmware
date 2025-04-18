@@ -26,6 +26,7 @@ public class CommandManager : MonoBehaviour
         }
 
         commandPicker.AddOptions(dropdownOptions);
+
     }
 
     public void SendCommand(){

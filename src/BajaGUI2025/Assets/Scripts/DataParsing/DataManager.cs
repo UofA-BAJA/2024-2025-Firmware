@@ -1,17 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using RoyTheunissen.Graphing;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    public static event Action AvailableDataTypesChanged;
 
-    [SerializeField] GraphComponent graph;
-    Dictionary<DataType, DataStream> dataStreams = new();
+    [SerializeField] private GraphComponent graph;
+    private Dictionary<DataType, DataStream> dataStreams = new();
 
-    SerialInterface serialInterface = new SerialInterface("/dev/ttyUSB0", 115200);
+    // Maps the data type to the time since data of that type was last received, in seconds
+    private Dictionary<DataType, float> availableDataTypes = new();
+    private SerialInterface serialInterface = new("/dev/ttyUSB0", 115200);
 
     private void Awake()
     {
@@ -24,6 +27,21 @@ public class DataManager : MonoBehaviour
     private void Update()
     {
 
+        // I don't really want to iterate through each data type each frame, but I can't think of an easy alternative
+        // at the moment.
+
+        foreach(DataType dataType in availableDataTypes.Keys.ToList()){
+
+            if(availableDataTypes[dataType] > .5f){
+                availableDataTypes.Remove(dataType);
+                AvailableDataTypesChanged?.Invoke();
+            }
+            else{
+                availableDataTypes[dataType] += Time.deltaTime;
+            }
+        }
+
+        
         DataPacket packet = serialInterface.GetData();
 
         // Now we have the exciting task of decoding the packets =D
@@ -45,7 +63,15 @@ public class DataManager : MonoBehaviour
             
             if((dataMask & 1) == 1){
 
-                dataStreams[(DataType)i].AddDataToStream(packet.timestamp, packet.data[dataIndex]);
+                DataType dataType = (DataType) i;
+
+                if(!availableDataTypes.ContainsKey(dataType)){
+                    AvailableDataTypesChanged?.Invoke();
+                }
+
+                availableDataTypes[dataType] = 0f;
+
+                dataStreams[dataType].AddDataToStream(packet.timestamp, packet.data[dataIndex]);
                 dataIndex++;
             }
 
@@ -56,6 +82,8 @@ public class DataManager : MonoBehaviour
             dataMask >>= 1;
         }
 
+
+
         // Example of how to get the data and use it. 
 
         // if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty() && !dataStreams[DataType.CVT_TEMPERATURE].IsEmpty()){
@@ -65,8 +93,8 @@ public class DataManager : MonoBehaviour
         //     plot.SetData(values1.Value, values2.Value, Time.time);
         // }
 
-        if(!dataStreams[DataType.IMU_ROTATION_Y].IsEmpty()){
-            KeyValuePair<float, float> speed = dataStreams[DataType.IMU_ROTATION_Y].GetOldestData();
+        if(!dataStreams[DataType.CVT_TEMPERATURE].IsEmpty()){
+            KeyValuePair<float, float> speed = dataStreams[DataType.CVT_TEMPERATURE].GetOldestData();
             // plot.SetData(speed.Key, speed.Value, 0);
 
             graph.Graph.AddValue(speed.Value, 0);
@@ -77,5 +105,9 @@ public class DataManager : MonoBehaviour
 
     public void SendCommand(Command command){
         serialInterface.SendCommand(command);
+    }
+
+    public List<DataType> GetAvaiableDataTypes(){
+        return new List<DataType>(availableDataTypes.Keys);
     }
 }
