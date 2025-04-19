@@ -25,10 +25,10 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-0-6"; //Will I use this?
-const int SPEED_MIN_ANGLE = 180;
+const String version = "V1-1-0"; //Will I use this?
+const int SPEED_MIN_ANGLE = 176;
 const int SPEED_MAX_ANGLE = 0;
-const int RPM_MIN_ANGLE = 0;
+const int RPM_MIN_ANGLE = 5;
 const int RPM_MAX_ANGLE = 180;
 
 // Devices
@@ -312,6 +312,8 @@ void writeDisplays(void *pvParameters){
         // ledMatrix.writeDisplay();
       }else{
         display.print("NO CAN");
+        speed.write(((20 / 38.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        rpm.write(((2000 / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
         // ledMatrix.displaybuffer[1] = 0b1111111111111111;
         // ledMatrix.displaybuffer[0] = 0;
         // ledMatrix.writeDisplay();
@@ -389,13 +391,15 @@ void writeDisplays(void *pvParameters){
         uint16_t tempIndicatorLights = indicatorLightState; 
         float tempSpeed = lastSpeed;
         float tempRPM = lastRPM;
+        // float tempSpeed = 20;
+        // float tempRPM = 2000;
         xSemaphoreGive(canMutex);
         ledMatrix.displaybuffer[0] = tempIndicatorLights;
         ledMatrix.displaybuffer[1] = tempIndicatorLights;
         ledMatrix.writeDisplay(); 
         //Formula: ((value/maxValue) * servoRange) + minRange
-        speed.write(((tempSpeed / 40.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((tempRPM / 4000.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+        speed.write(((tempSpeed / 36.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        rpm.write(((tempRPM / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
       }
     }
     //Effectively limits the refresh rate to ~10Hz (which is fine, we don't need much more than 5Hz)
