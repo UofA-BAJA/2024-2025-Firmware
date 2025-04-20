@@ -7,22 +7,34 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static event Action AvailableDataTypesChanged;
+    public static event Action<List<DataType>> AvailableDataTypesChanged;
 
-    [SerializeField] private GraphComponent graph;
+    // [SerializeField] private GraphComponent graph;
     private Dictionary<DataType, DataStream> dataStreams = new();
 
     // Maps the data type to the time since data of that type was last received, in seconds
     private Dictionary<DataType, float> availableDataTypes = new();
     private SerialInterface serialInterface = new("/dev/ttyUSB0", 115200);
 
+    public static DataManager Instance {get; private set;}
+
     private void Awake()
     {
+
+        if(Instance == null){
+            Instance = this;
+        }
+        else{
+            Destroy(gameObject);
+        }
+
+
         for(int i = 0; i < 32; i++){
             dataStreams.Add((DataType)i, new DataStream((DataType)i, "Idk rn let's be so real", "also idk"));
         }
 
     }
+
 
     private void Update()
     {
@@ -34,7 +46,7 @@ public class DataManager : MonoBehaviour
 
             if(availableDataTypes[dataType] > .5f){
                 availableDataTypes.Remove(dataType);
-                AvailableDataTypesChanged?.Invoke();
+                AvailableDataTypesChanged?.Invoke(GetAvaiableDataTypes());
             }
             else{
                 availableDataTypes[dataType] += Time.deltaTime;
@@ -66,7 +78,7 @@ public class DataManager : MonoBehaviour
                 DataType dataType = (DataType) i;
 
                 if(!availableDataTypes.ContainsKey(dataType)){
-                    AvailableDataTypesChanged?.Invoke();
+                    AvailableDataTypesChanged?.Invoke(GetAvaiableDataTypes());
                 }
 
                 availableDataTypes[dataType] = 0f;
@@ -93,15 +105,28 @@ public class DataManager : MonoBehaviour
         //     plot.SetData(values1.Value, values2.Value, Time.time);
         // }
 
-        if(!dataStreams[DataType.CVT_TEMPERATURE].IsEmpty()){
-            KeyValuePair<float, float> speed = dataStreams[DataType.CVT_TEMPERATURE].GetOldestData();
-            // plot.SetData(speed.Key, speed.Value, 0);
+        // if(!dataStreams[DataType.CVT_TEMPERATURE].IsEmpty()){
+        //     KeyValuePair<float, float> speed = dataStreams[DataType.CVT_TEMPERATURE].GetOldestData();
+        //     // plot.SetData(speed.Key, speed.Value, 0);
 
-            graph.Graph.AddValue(speed.Value, 0);
+        //     graph.Graph.AddValue(speed.Value, 0);
 
-        }
+        // }
     }
 
+    // void LateUpdate()
+    // {
+        
+    // }
+
+    // Issue here: we're currently dequeuing the data, so if two things ask for this data, only one will get it per frame
+    public KeyValuePair<float, float> GetLatestData(DataType dataType){
+        if(dataStreams[dataType].IsEmpty()){
+            throw new ArgumentException("No data for DataType: " + dataType.ToString());
+        }
+
+        return dataStreams[dataType].GetOldestData();
+    }
 
     public void SendCommand(Command command){
         serialInterface.SendCommand(command);
@@ -110,4 +135,5 @@ public class DataManager : MonoBehaviour
     public List<DataType> GetAvaiableDataTypes(){
         return new List<DataType>(availableDataTypes.Keys);
     }
+
 }
