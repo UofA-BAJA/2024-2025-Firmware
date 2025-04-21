@@ -38,7 +38,7 @@ class SpedometerProcedure : public Procedure {
 
         void execute() override {
 
-            float mph = drivetrainSubsystem.getEngineRPM();
+            float mph = drivetrainSubsystem.getFrontLeftRPM();
 
             dataStorage.storeData(mph, DataTypes::CAR_SPEED);
 
