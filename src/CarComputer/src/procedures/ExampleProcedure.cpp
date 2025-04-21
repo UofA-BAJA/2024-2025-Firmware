@@ -9,6 +9,7 @@ class ExampleProcedure : public Procedure {
     public:
 
         ExampleProcedure(){
+            this->frequency = 60;
         }
         
         void init() override {

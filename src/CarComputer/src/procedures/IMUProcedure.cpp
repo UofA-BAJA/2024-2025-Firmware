@@ -22,7 +22,7 @@ class IMUProcedure : public Procedure{
         , coms(coms)
         {
 
-            this->frequency = 90;
+            this->frequency = 60;
 
         }
         
@@ -56,19 +56,12 @@ class IMUProcedure : public Procedure{
             coms.sendData(DataTypes::IMU_ACCELERATION_Y, yAccel);
             coms.sendData(DataTypes::IMU_ACCELERATION_Z, zAccel);
 
-            // xRotStream->enqueue(xRot);
-            // yRotStream->enqueue(yRot);
-            // zRotStream->enqueue(zRot);
-
-            // xAccStream->enqueue(xAccel);
-            // yAccStream->enqueue(yAccel);
-            // zAccStream->enqueue(zAccel);
 
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
 
-            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {

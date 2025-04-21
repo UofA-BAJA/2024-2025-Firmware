@@ -3,7 +3,7 @@
 
 #include "CANDevice.h"
 #include "Devices.h"
-
+ 
 namespace BajaWildcatRacing
 {
 
@@ -18,8 +18,8 @@ namespace BajaWildcatRacing
                 CVT_HOT = 4,
                 LIGHT_5,
                 LIGHT_6,
-                LIGHT_7,
-                LIGHT_8, //Anything higher than this one is not currently planned to be wired up, but is there for testing
+                CHECK_ENGINE,
+                LIGHT_8, 
                 LIGHT_9,
                 LIGHT_10,
                 LIGHT_11,

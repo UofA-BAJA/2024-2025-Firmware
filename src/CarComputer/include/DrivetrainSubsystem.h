@@ -3,10 +3,11 @@
 
 #include "CANDispatcher.h"
 #include "CarLogger.h"
-
+#include "DataTypes.h"
 
 #include "Temperature.h"
 #include "Tachometer.h"
+#include "Spedometer.h"
 
 namespace BajaWildcatRacing
 {
@@ -21,10 +22,19 @@ namespace BajaWildcatRacing
 
             float getEngineRPM();
 
+            float getFrontRightRPM();
+            float getFrontLeftRPM();
+            float getRearRPM();
+
         private:
             Tachometer tachometer;
 
             Temperature cvtTemperature;
+
+            Spedometer frontRight;
+            Spedometer frontLeft;
+            Spedometer rear;
+            
             bool cvtIsHot = false;
 
     };

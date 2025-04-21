@@ -39,6 +39,7 @@
 namespace BajaWildcatRacing
 {
 
+    bool g_running;
 
 
     /*
@@ -64,6 +65,12 @@ namespace BajaWildcatRacing
     , carContainer(procedureScheduler, canDispatcher, dataStorage, coms)
 
     {
+
+        std::signal(SIGSEGV, signal_handler); 
+        std::signal(SIGINT, signal_handler);
+        std::signal(SIGTERM, signal_handler);
+
+    
 
         // Init behavior that needs to be called before the subsystems start running.
         init();
@@ -97,7 +104,7 @@ namespace BajaWildcatRacing
         // Later on we'll probably call this function as a command from the pit. Actually, 
         // the car should theoretically never be destroyed unless the program quits, which
         // should never happen while the car is running. 
-        end();
+        // end();
     }
 
     /*
@@ -117,10 +124,10 @@ namespace BajaWildcatRacing
     */
     void Car::execute(){
 
+        g_running = true;
+
         using namespace std::chrono;
 
-
-        // ! WARNNING: not tested on raspberry pi. 
         // ! Does not work with frequency 1 for whatever reason...
         int frequency = BASE_CAR_FREQUENCY;   // CAN can go up to 1 Mhz or 1000000 hz
 
@@ -137,7 +144,7 @@ namespace BajaWildcatRacing
         steady_clock::time_point startTime;
         steady_clock::time_point endTime;
 
-        while(1){
+        while(g_running){
             startTime = steady_clock::now();
             double time = duration_cast<nanoseconds>(startTime - absoluteStart).count();
 
@@ -167,6 +174,10 @@ namespace BajaWildcatRacing
                 CarLogger::LogError("Car Computer cycle takes longer to compute than frequency");
             }
         }
+
+
+        end();
+
     }
 
     /*
@@ -202,9 +213,31 @@ namespace BajaWildcatRacing
     *
     */
     void Car::end(){
+	// Ends currently running procedures
         procedureScheduler.end();
-        std::cout << "Car sucessfully destroyed" << std::endl;
+	    dataStorage.endCurrentSession();
+        dataStorage.end();
+	    canDispatcher.end();
+        coms.end();
+
+	// When the objects go out of scope, their destructors will be called.
+	// They only need destructors if they have dynamically managed memory. 	
+
+        std::cout << "Car successfully ended" << std::endl;
     }
+
+    void Car::signal_handler(int signal_num) 
+    { 
+
+        if (signal_num == SIGINT || signal_num == SIGTERM) {
+            g_running = false;
+        }
+        else{
+            std::cout << "Interrupt signal is (" << signal_num << ").\n"; 
+            exit(signal_num); 
+        }
+     
+    } 
 
 }
 
