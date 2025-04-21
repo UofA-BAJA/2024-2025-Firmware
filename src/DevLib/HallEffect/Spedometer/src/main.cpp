@@ -56,6 +56,7 @@ void setup() {
   CAN.init_Filt(5, 1, 0x00000005);
 
 
+
   // Set the MCP2515 to normal mode to start receiving CAN messages
   Serial.println("Setting CAN Normal");
   CAN.setMode(MCP_NORMAL);

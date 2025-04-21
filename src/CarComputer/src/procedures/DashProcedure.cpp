@@ -23,6 +23,7 @@ namespace BajaWildcatRacing
             , imuSubsystem(imuSubsystem)
             {
                 this->frequency = 5;
+
             }
 
             void init() override{
@@ -31,12 +32,12 @@ namespace BajaWildcatRacing
             }
 
             void execute() override {
-                dashSubsystem.sendCVTTemp(drivetrainSubsystem.getCVTTemperature());
-                if(drivetrainSubsystem.isCVTHot()){
-                    dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
-                }else{
-                    dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);
-                }
+                // dashSubsystem.sendCVTTemp(drivetrainSubsystem.getCVTTemperature());
+                // if(drivetrainSubsystem.isCVTHot()){
+                //     dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
+                // }else{
+                //     dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, false);
+                // }
                 dashSubsystem.sendTimeSeconds(CarTime::getCurrentTimeSeconds());
                 dashSubsystem.sendIndicatorLightState();
 
@@ -44,7 +45,7 @@ namespace BajaWildcatRacing
 
                 // dashSubsystem.sendRPM(drivetrainSubsystem->getEngineRPM());
                 // dashSubsystem.sendRPM(rand() % 4000);
-               
+
                 // dashSubsystem.sendSpeed(drivetrainSubsystem.getEngineRPM());
             }
 
