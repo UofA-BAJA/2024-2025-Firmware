@@ -3604,7 +3604,7 @@
 		(uuid "1be2ed1e-d304-4325-b573-cc375097586a")
 	)
 	(no_connect
-		(at -160.02 149.86)
+		(at 200.66 138.43)
 		(uuid "1ef16b02-eeb3-45fb-8daa-8ebe92be0fcb")
 	)
 	(no_connect
@@ -3719,7 +3719,7 @@
 	)
 	(wire
 		(pts
-			(xy -125.73 152.4) (xy -127 152.4)
+			(xy 234.95 140.97) (xy 233.68 140.97)
 		)
 		(stroke
 			(width 0)
@@ -4079,7 +4079,7 @@
 	)
 	(wire
 		(pts
-			(xy -143.51 170.18) (xy -143.51 168.91)
+			(xy 217.17 158.75) (xy 217.17 157.48)
 		)
 		(stroke
 			(width 0)
@@ -4615,7 +4615,7 @@
 	)
 	(text "CAN Bus"
 		(exclude_from_sim no)
-		(at -168.91 130.81 0)
+		(at 191.77 119.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4735,7 +4735,7 @@
 	)
 	(global_label "SO"
 		(shape input)
-		(at -160.02 157.48 180)
+		(at 200.66 146.05 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4745,7 +4745,7 @@
 		)
 		(uuid "0588425b-ca13-4bc6-95c7-04c18d753007")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -165.5452 157.48 0)
+			(at 195.1348 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5131,7 +5131,7 @@
 	)
 	(global_label "CS"
 		(shape input)
-		(at -160.02 160.02 180)
+		(at 200.66 148.59 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5141,7 +5141,7 @@
 		)
 		(uuid "5c8b267d-ee72-4c6e-973c-b7bbaa64cf62")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -165.4847 160.02 0)
+			(at 195.1953 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5241,7 +5241,7 @@
 	)
 	(global_label "High"
 		(shape input)
-		(at -125.73 152.4 0)
+		(at 234.95 140.97 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5251,7 +5251,7 @@
 		)
 		(uuid "71b66b7e-c17f-4e28-83d4-7fcd1a35662a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -118.5115 152.4 0)
+			(at 242.1685 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5263,7 +5263,7 @@
 	)
 	(global_label "SCK"
 		(shape input)
-		(at -160.02 152.4 180)
+		(at 200.66 140.97 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5273,7 +5273,7 @@
 		)
 		(uuid "79a75114-7ab3-4cf4-91a4-25e5a2e11778")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -166.7547 152.4 0)
+			(at 193.9253 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5285,7 +5285,7 @@
 	)
 	(global_label "SI"
 		(shape input)
-		(at -160.02 154.94 180)
+		(at 200.66 143.51 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5295,7 +5295,7 @@
 		)
 		(uuid "7bfd8bd3-f1b6-48ee-8488-cadc01c29b1c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -164.8195 154.94 0)
+			(at 195.8605 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5329,7 +5329,7 @@
 	)
 	(global_label "Low"
 		(shape input)
-		(at -127 157.48 0)
+		(at 233.68 146.05 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5339,7 +5339,7 @@
 		)
 		(uuid "9a2d1e19-02e3-4aae-98b2-45a168f78483")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -120.5072 157.48 0)
+			(at 240.1728 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5439,7 +5439,7 @@
 	)
 	(global_label "+5V"
 		(shape input)
-		(at -143.51 140.97 90)
+		(at 217.17 129.54 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5449,7 +5449,7 @@
 		)
 		(uuid "b5ce368b-cd47-4cb2-8d99-9ab29e5dc0f9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -143.51 134.1143 90)
+			(at 217.17 122.6843 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5706,7 +5706,7 @@
 	)
 	(symbol
 		(lib_id "0_Baja_Final:HiLetgo_CAN_BUS")
-		(at -143.51 154.94 0)
+		(at 217.17 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5715,7 +5715,7 @@
 		(fields_autoplaced yes)
 		(uuid "16e124e3-ca93-4e02-97b2-3ff9403364e9")
 		(property "Reference" "UNIT_2"
-			(at -141.3159 138.43 0)
+			(at 219.3641 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5724,7 +5724,7 @@
 			)
 		)
 		(property "Value" "HiLetgo CAN Bus"
-			(at -141.3159 140.97 0)
+			(at 219.3641 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5732,8 +5732,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BAJA SAE:HiLetgo CAN Bus"
-			(at -143.256 176.276 0)
+		(property "Footprint" "0_Baja_2025:CAN Bus (Feb 2025)"
+			(at 217.424 164.846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5742,7 +5742,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at -147.32 151.13 0)
+			(at 213.36 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5751,7 +5751,7 @@
 			)
 		)
 		(property "Description" ""
-			(at -147.32 151.13 0)
+			(at 213.36 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6843,7 +6843,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:0")
-		(at -143.51 170.18 0)
+		(at 217.17 158.75 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6852,7 +6852,7 @@
 		(fields_autoplaced yes)
 		(uuid "75df9c59-9641-4d81-b357-0a89f5237828")
 		(property "Reference" "#GND01"
-			(at -143.51 175.26 0)
+			(at 217.17 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6861,7 +6861,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at -143.51 167.64 0)
+			(at 217.17 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6870,7 +6870,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at -143.51 170.18 0)
+			(at 217.17 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6879,7 +6879,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at -143.51 180.34 0)
+			(at 217.17 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6888,7 +6888,7 @@
 			)
 		)
 		(property "Description" "0V reference potential for simulation"
-			(at -143.51 177.8 0)
+			(at 217.17 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)

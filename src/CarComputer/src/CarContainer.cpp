@@ -46,10 +46,10 @@ namespace BajaWildcatRacing
     , dashSubsystem(canDispatcher)
     {
 
-        procedureScheduler.bindCommand<IMUProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
-            std::unordered_set<Command>({Command::END_LOG}), 
-            imuSubsystem, dataStorage, coms
+         procedureScheduler.bindCommand<IMUProcedure>(
+             std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
+             std::unordered_set<Command>({}), 
+             imuSubsystem, dataStorage, coms
         );
 
     //     procedureScheduler.bindCommand<AccelerationProcedure>(
