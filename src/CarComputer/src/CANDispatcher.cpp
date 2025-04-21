@@ -314,7 +314,6 @@ namespace BajaWildcatRacing
         
 
         running = false;
-        shutdown(can_socket_fd, SHUT_RD);
         
         if (canReadingThread.joinable()) {
             canReadingThread.join();  // Wait for the thread to finish

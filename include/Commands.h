@@ -14,9 +14,11 @@ enum Command{
     // We don't talk about 103
     EMERGENCY_STOP = 104,         // Not sure if we'll ever use this one
     
-    
+    ENABLE_CHECK_ENGINE = 69,
+    DISABLE_CHECK_ENGINE = 70,  
     START_CAM = 105,
     ACCELERATION = 106
+
 };
 
 

@@ -13,6 +13,7 @@
 #include "procedures/TemperatureProcedure.cpp"
 #include "procedures/SpedometerProcedure.cpp"
 #include "procedures/AccelerationProcedure.cpp"
+#include "procedures/CheckEngineProcedure.cpp"
 
 #include "DashSubsystem.h"
 #include "IMUSubsystem.h"
