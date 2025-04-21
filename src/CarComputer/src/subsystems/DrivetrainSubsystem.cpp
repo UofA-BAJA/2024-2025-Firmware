@@ -6,9 +6,7 @@ namespace BajaWildcatRacing
     DrivetrainSubsystem::DrivetrainSubsystem(CANDispatcher& canDispatcher)
     : cvtTemperature(canDispatcher)
     , tachometer(canDispatcher)
-    , frontRight(canDispatcher, Device::Devices::SPEDO_FR)
-    , frontLeft(canDispatcher, Device::Devices::SPEDO_FL)
-    , rear(canDispatcher, Device::Devices::SPEDO_REAR)
+    , spedometer(canDispatcher)
     {
 
     }
@@ -29,15 +27,25 @@ namespace BajaWildcatRacing
     }
 
     float DrivetrainSubsystem::getFrontRightRPM(){
-        return frontRight.getRPM();
+        return spedometer.getFrontRightRPM();
     }
 
     float DrivetrainSubsystem::getFrontLeftRPM(){
-        return frontLeft.getRPM();
+        return spedometer.getFrontLeftRPM();
     }
 
     float DrivetrainSubsystem::getRearRPM(){
-        return rear.getRPM();
+        return spedometer.getRearRPM();
+    }
+
+    float DrivetrainSubsystem::getCarSpeedMetersSec(){
+        //Average of all 3 multipled by some constant to convert Rotations to Meters and 1/60 for per min to per sec 
+        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM() + spedometer.getRearRPM()) / 3.0) * (1 / 60);
+    }
+
+    float DrivetrainSubsystem::getCarSpeedMPH(){
+        //Average of all 3 multipled by some constant to convert Rotations to Miles and 60 for per min to per hour 
+        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM() + spedometer.getRearRPM()) / 3.0) * 1 * 60;
     }
 
 }

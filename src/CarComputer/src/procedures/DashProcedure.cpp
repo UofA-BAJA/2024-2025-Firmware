@@ -27,11 +27,11 @@ namespace BajaWildcatRacing
 
             void init() override{
                 std::cout << "Dash Procedure Initialized" << std::endl;
-                // dashSubsystem->sendRPM(testSpeed);
             }
 
             void execute() override {
-                dashSubsystem.sendCVTTemp(drivetrainSubsystem.getCVTTemperature());
+                // Commented out lines to avoid millions of dropped commands during testing
+                // dashSubsystem.sendCVTTemp(drivetrainSubsystem.getCVTTemperature());
                 if(drivetrainSubsystem.isCVTHot()){
                     dashSubsystem.setSpecificIndicatorLight(Dash::IndicatorLights::CVT_HOT, true);
                 }else{
@@ -40,15 +40,12 @@ namespace BajaWildcatRacing
                 dashSubsystem.sendTimeSeconds(CarTime::getCurrentTimeSeconds());
                 dashSubsystem.sendIndicatorLightState();
 
-                dashSubsystem.sendSpeed(drivetrainSubsystem.getFrontLeftRPM());
-
                 // dashSubsystem.sendRPM(drivetrainSubsystem->getEngineRPM());
-                // dashSubsystem.sendRPM(rand() % 4000);
-               
-                // dashSubsystem.sendSpeed(drivetrainSubsystem.getEngineRPM());
+                // dashSubsystem.sendSpeed(drivetrainSubsystem->getCarSpeedMPH());
             }
 
             void end() override {
+                
             }
 
             bool isFinished() override {

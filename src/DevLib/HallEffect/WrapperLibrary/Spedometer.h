@@ -9,11 +9,13 @@ namespace BajaWildcatRacing
     class Spedometer : CANDevice {
         public: 
             Spedometer(CANDispatcher& canDispatcher, Device::Devices deviceId);
-            float getRPM();
-
+            float getFrontLeftRPM();
+            float getFrontRightRPM();
+            float getRearRPM();
         private:
-            Device::Devices deviceId;
-            float RPM = 0.0;
+            float frontLeftRPM = 0.0;
+            float frontRightRPM = 0.0;
+            float rearRPM = 0.0;
     };
 }
 

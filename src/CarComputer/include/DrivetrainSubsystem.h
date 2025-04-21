@@ -25,15 +25,15 @@ namespace BajaWildcatRacing
             float getFrontRightRPM();
             float getFrontLeftRPM();
             float getRearRPM();
+            float getCarSpeedMetersSec();
+            float getCarSpeedMPH();
 
         private:
             Tachometer tachometer;
 
             Temperature cvtTemperature;
 
-            Spedometer frontRight;
-            Spedometer frontLeft;
-            Spedometer rear;
+            Spedometer spedometer;
             
             bool cvtIsHot = false;
 

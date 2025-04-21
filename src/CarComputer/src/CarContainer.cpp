@@ -52,10 +52,10 @@ namespace BajaWildcatRacing
             imuSubsystem, dataStorage, coms
         );
 
-        procedureScheduler.bindCommand<AccelerationProcedure>(
-            std::unordered_set<Command>({Command::ACCELERATION}), 
-            std::unordered_set<Command>({Command::END_LOG, Command::EMERGENCY_STOP})
-       );
+    //     procedureScheduler.bindCommand<AccelerationProcedure>(
+    //         std::unordered_set<Command>({Command::ACCELERATION}), 
+    //         std::unordered_set<Command>({Command::END_LOG, Command::EMERGENCY_STOP})
+    //    );
 
         // procedureScheduler.bindCommand<TemperatureProcedure>(
         //      std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
@@ -75,11 +75,11 @@ namespace BajaWildcatRacing
             dashSubsystem
          );
 
-        procedureScheduler.bindCommand<SpedometerProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-            std::unordered_set<Command>({}),
-            drivetrainSubsystem, dataStorage, coms
-        );
+        // procedureScheduler.bindCommand<SpedometerProcedure>(
+        //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
+        //     std::unordered_set<Command>({}),
+        //     drivetrainSubsystem, dataStorage, coms
+        // );
 
 
 
