@@ -25,7 +25,7 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-1-0"; //Will I use this?
+const String version = "V1-1-1"; //Will I use this?
 const int SPEED_MIN_ANGLE = 176;
 const int SPEED_MAX_ANGLE = 0;
 const int RPM_MIN_ANGLE = 5;
@@ -101,38 +101,60 @@ void setup()
   Serial.println("LED Matrix setup complete.");
 
   //---------------------------------------------------
+  
+  //Initialize pins for buttons
+  pinMode(DISPLAY1_BUTTON_PIN, INPUT_PULLUP);
+  pinMode(DISPLAY2_BUTTON_PIN, INPUT_PULLUP);
+
+  //---------------------------------------------------
 
   //Light Test
-  ledMatrix.displaybuffer[0] = 0b1111111111111111;
-  ledMatrix.displaybuffer[1] = 0b1111111111111111;
-  ledMatrix.writeDisplay();
-  //Define an all-on character and print it out, then turn on decimal and colon
-  display.defineChar('`', 0b1111111111111111);
-  display2.defineChar('`', 0b1111111111111111);
-  display.print("````````");
-  display2.print("````````");
-  display.colonOn();
-  display2.colonOn();
-  display.decimalOn();
-  display2.decimalOn();
-  //Sweep the servos
-  delay(200); //Pause for stabilize?
-  speed.write(SPEED_MAX_ANGLE);
-  rpm.write(RPM_MAX_ANGLE);
-  delay(1000);
-  speed.write(SPEED_MIN_ANGLE);
-  rpm.write(RPM_MIN_ANGLE);
-  delay(1000);
-  //Clear displays
-  display.clear();
-  display2.clear();
-  ledMatrix.clear();
-  ledMatrix.writeDisplay();
+  if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW || digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+    //While still holding the buttons...
+    while(digitalRead(DISPLAY1_BUTTON_PIN) == LOW || digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+      display.print("LIGHT");
+      display2.print("TEST");
+      delay(1000);
+      display.clear();
+      display2.clear();
+      ledMatrix.displaybuffer[0] = 0b1111111111111111;
+      ledMatrix.displaybuffer[1] = 0b1111111111111111;
+      ledMatrix.writeDisplay();
+      delay(2000);
+      ledMatrix.clear();
+      ledMatrix.writeDisplay();
+      //Define an all-on character and print it out, then turn on decimal and colon
+      display.defineChar('`', 0b1111111111111111);
+      display2.defineChar('`', 0b1111111111111111);
+      display.print("````````");
+      display2.print("````````");
+      display.colonOn();
+      display2.colonOn();
+      display.decimalOn();
+      display2.decimalOn();
+      delay(2000);
+      display.clear();
+      display2.clear();
+      //Sweep the servos
+      speed.write(SPEED_MAX_ANGLE);
+      rpm.write(RPM_MAX_ANGLE);
+      delay(1500);
+      speed.write(SPEED_MIN_ANGLE);
+      rpm.write(RPM_MIN_ANGLE);
+      delay(1500);
+      Serial.println("Light test complete.");
+      //Will loop if a button is held
+      display.print("AGAIN?");
+      delay(2000);
+    }
+  }
+
   display.print("WELCOME");
   display2.print("TO BAJA");
+  speed.write(SPEED_MIN_ANGLE);
+  rpm.write(RPM_MIN_ANGLE);
   delay(1500);
-  Serial.println("Light test complete.");
-  
+ 
   //---------------------------------------------------
 
   // Initialize and join CAN
@@ -178,12 +200,6 @@ void setup()
 
   //---------------------------------------------------
 
-  //Initialize pins for buttons
-  pinMode(DISPLAY1_BUTTON_PIN, INPUT_PULLUP);
-  pinMode(DISPLAY2_BUTTON_PIN, INPUT_PULLUP);
-
-  //---------------------------------------------------
-
   //Load Display preferences
   prefs.begin("DisplayPrefs", false);
   if(!prefs.isKey("Display1") || !prefs.isKey("Display2")){
@@ -216,7 +232,6 @@ void setup()
   display2.print(version);
   Serial.println("Init Finished!");
   delay(1500);
-
 }
 
 
@@ -346,6 +361,13 @@ void writeDisplays(void *pvParameters){
         prefs.begin("DisplayPrefs", false);
         prefs.putInt("Display2", display2CurrentDisplay);
         prefs.end();
+      }
+
+      //If they are both held in for an amount of time, reset may be happening
+      if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW  && digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+        ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1111111111111111;
+        ledMatrix.displaybuffer[0] = 0;
+        ledMatrix.writeDisplay();
       }
 
       //Display the correct thing for the display
