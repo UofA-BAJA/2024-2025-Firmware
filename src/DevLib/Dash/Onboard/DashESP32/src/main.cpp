@@ -25,7 +25,7 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-1-1"; //Will I use this?
+const String version = "V1-1-3"; //Will I use this?
 const int SPEED_MIN_ANGLE = 176;
 const int SPEED_MAX_ANGLE = 0;
 const int RPM_MIN_ANGLE = 5;
@@ -56,6 +56,8 @@ int display1CurrentDisplay = 0;
 unsigned long lastDisp1Button = 0; //Last button press time
 int display2CurrentDisplay = 1;
 unsigned long lastDisp2Button = 0; //Last button press time
+bool areBothHeld = false; //Hold for 2 seconds to reset 
+unsigned long bothHeldStart = 0;
 
 
 void setup()
@@ -292,11 +294,6 @@ void loop()
         canRecentRX = false;
         xSemaphoreGive(canMutex);
       }
-      //Light up the appropriate indicator light
-      //TODO: I don't think this is the right one anymore, fix it
-      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
-      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
-      ledMatrix.writeDisplay();
   }
 }
 
@@ -327,12 +324,38 @@ void writeDisplays(void *pvParameters){
         // ledMatrix.writeDisplay();
       }else{
         display.print("NO CAN");
-        speed.write(((20 / 38.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((2000 / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
         // ledMatrix.displaybuffer[1] = 0b1111111111111111;
         // ledMatrix.displaybuffer[0] = 0;
         // ledMatrix.writeDisplay();
       }
+    }
+
+    //Reset by holding both for 2 seconds
+    if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW  && digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+      if(!areBothHeld){
+        areBothHeld = true;
+        bothHeldStart = millis();
+      }else if(millis() - bothHeldStart > 2000){
+        //Clear everything, reset
+        ledMatrix.displaybuffer[1] = 0;
+        ledMatrix.displaybuffer[0] = 0;
+        ledMatrix.writeDisplay();
+        display.clear();
+        display2.clear();
+        speed.write(SPEED_MIN_ANGLE);
+        rpm.write(RPM_MIN_ANGLE);
+        delay(500);
+        ESP.restart();
+      }
+      ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1000000000;
+      ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] | 0b1000000000;
+      ledMatrix.writeDisplay();
+    }else if(areBothHeld){
+      //If they aren't actively both held but we still have the flag, Clear warning
+      ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] & 0b1111110111111111;
+      ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] & 0b1111110111111111;
+      ledMatrix.writeDisplay();
+      areBothHeld = false;
     }
 
     //If there has been CAN recently, display stuff 
@@ -361,13 +384,6 @@ void writeDisplays(void *pvParameters){
         prefs.begin("DisplayPrefs", false);
         prefs.putInt("Display2", display2CurrentDisplay);
         prefs.end();
-      }
-
-      //If they are both held in for an amount of time, reset may be happening
-      if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW  && digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
-        ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1111111111111111;
-        ledMatrix.displaybuffer[0] = 0;
-        ledMatrix.writeDisplay();
       }
 
       //Display the correct thing for the display
@@ -418,10 +434,16 @@ void writeDisplays(void *pvParameters){
         xSemaphoreGive(canMutex);
         ledMatrix.displaybuffer[0] = tempIndicatorLights;
         ledMatrix.displaybuffer[1] = tempIndicatorLights;
-        ledMatrix.writeDisplay(); 
         //Formula: ((value/maxValue) * servoRange) + minRange
-        speed.write(((tempSpeed / 36.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        speed.write(((tempSpeed / 38.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
         rpm.write(((tempRPM / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+
+        //Put this so the indicator doesn't get overridden
+        if(areBothHeld){
+          ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1000000000;
+          ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] | 0b1000000000;
+        }
+        ledMatrix.writeDisplay(); //Putting this down here so the reset warning doesn't flicker
       }
     }
     //Effectively limits the refresh rate to ~10Hz (which is fine, we don't need much more than 5Hz)

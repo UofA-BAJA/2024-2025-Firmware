@@ -20,7 +20,7 @@ namespace BajaWildcatRacing
                 LIGHT_6,
                 CHECK_ENGINE,
                 LIGHT_8, 
-                LIGHT_9,
+                RESET_WARNING, //reserved for use on ESP32
                 LIGHT_10,
                 LIGHT_11,
                 LIGHT_12,
