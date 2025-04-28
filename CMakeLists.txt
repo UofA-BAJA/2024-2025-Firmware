@@ -45,3 +45,11 @@ target_link_libraries(carComputer PRIVATE pthread)
 target_link_libraries(carComputer PRIVATE sqlite3)
 # radio library
 target_link_libraries(carComputer PRIVATE rf24)
+
+
+
+# Chat guide for installing
+include(GNUInstallDirs)        # gives you ${CMAKE_INSTALL_BINDIR} → usually “bin”
+
+install(TARGETS carComputer    # what to install
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})   # where to put the executable

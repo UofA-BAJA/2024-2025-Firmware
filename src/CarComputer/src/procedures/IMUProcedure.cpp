@@ -22,7 +22,7 @@ class IMUProcedure : public Procedure{
         , coms(coms)
         {
 
-            this->frequency = 60;
+            this->frequency = 120;
 
         }
         
@@ -60,8 +60,8 @@ class IMUProcedure : public Procedure{
             std::cout << std::fixed;
             std::cout << std::setprecision(2);
 
-            std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
-            std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
+            // std::cout << "X: " << xRot << " Y: " << yRot << " Z: " << zRot << std::endl;
+            // std::cout << "X-A: " << xAccel << " Y-A: " << yAccel << " Z-A: " << zAccel << std::endl;
         }
 
         void end() override {

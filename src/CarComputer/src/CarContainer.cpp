@@ -69,15 +69,15 @@ namespace BajaWildcatRacing
            dashSubsystem, drivetrainSubsystem, imuSubsystem
         );
 
-        procedureScheduler.bindCommand<CheckEngineProcedure>(
-            std::unordered_set<Command>({Command::ENABLE_CHECK_ENGINE}),
-            std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
-            dashSubsystem
-         );
+        // procedureScheduler.bindCommand<CheckEngineProcedure>(
+        //     std::unordered_set<Command>({Command::ENABLE_CHECK_ENGINE}),
+        //     std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
+        //     dashSubsystem
+        //  );
 
         // procedureScheduler.bindCommand<SpedometerProcedure>(
         //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-        //     std::unordered_set<Command>({}),
+        //     std::unordered_set<Command>({Command::END_LOG}),
         //     drivetrainSubsystem, dataStorage, coms
         // );
 

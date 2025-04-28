@@ -20,7 +20,7 @@
 #include <mutex>
 #include <atomic>
 
-
+#include <queue>
 #include <vector>
 
 #include "CarLogger.h"
@@ -66,9 +66,20 @@ namespace BajaWildcatRacing
             int openCANSocket(const char* interface);
             void readCANInterface();
 
+            void sendCanCommand();
+
             void resetCANInterface(const char* interface);
             unsigned long droppedCommands = 0;
             unsigned long totalCommands = 0;
+            
+            typedef struct CANCommand{
+                int deviceID;
+                std::vector<byte> data;
+                void* destination;
+                std::function<void(can_frame, void*)> callback;
+            } CANCommand;
+
+            std::queue<CANCommand> queuedCommands;
 
     };
 

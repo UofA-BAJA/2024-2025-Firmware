@@ -7,8 +7,18 @@ namespace BajaWildcatRacing
     }
 
     float Spedometer::getFrontLeftRPM(){
-        sendCanCommand(0x05, 0x01, &frontLeftRPM);
+        sendCanCommand(Device::SPEDOMETER, 0x01, &frontLeftRPM);
         return frontLeftRPM;
+    }
+
+    float Spedometer::getFrontRightRPM(){
+        sendCanCommand(Device::SPEDOMETER, 0x02, &frontRightRPM);
+        return frontRightRPM;
+    }
+
+    float Spedometer::getRearRPM(){
+        sendCanCommand(Device::SPEDOMETER, 0x03, &rearRPM);
+        return rearRPM;
     }
 
 }

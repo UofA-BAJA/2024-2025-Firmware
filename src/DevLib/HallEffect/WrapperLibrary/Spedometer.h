@@ -2,13 +2,13 @@
 #define SPEDOMETER_H
 
 #include "CANDevice.h"
-#include "Devices.h"
+// #include "Devices.h"
 
 namespace BajaWildcatRacing
 {
     class Spedometer : CANDevice {
         public: 
-            Spedometer(CANDispatcher& canDispatcher, Device::Devices deviceId);
+            Spedometer(CANDispatcher& canDispatcher);
             float getFrontLeftRPM();
             float getFrontRightRPM();
             float getRearRPM();
