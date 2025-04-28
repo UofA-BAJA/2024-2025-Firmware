@@ -47,6 +47,7 @@ public class DataManager : MonoBehaviour
             if(availableDataTypes[dataType] > .5f){
                 availableDataTypes.Remove(dataType);
                 AvailableDataTypesChanged?.Invoke(GetAvaiableDataTypes());
+                Debug.Log("Data types changed");
             }
             else{
                 availableDataTypes[dataType] += Time.deltaTime;
@@ -79,6 +80,7 @@ public class DataManager : MonoBehaviour
 
                 if(!availableDataTypes.ContainsKey(dataType)){
                     AvailableDataTypesChanged?.Invoke(GetAvaiableDataTypes());
+                    Debug.Log("Data types changed");
                 }
 
                 availableDataTypes[dataType] = 0f;
