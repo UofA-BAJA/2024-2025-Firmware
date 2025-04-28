@@ -25,11 +25,11 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-1-3"; //Will I use this?
-const int SPEED_MIN_ANGLE = 176;
-const int SPEED_MAX_ANGLE = 0;
-const int RPM_MIN_ANGLE = 5;
-const int RPM_MAX_ANGLE = 180;
+const String version = "V1-1-7"; //Will I use this? Yes!
+const int RPM_MIN_ANGLE = 168;
+const int RPM_MAX_ANGLE = 0;
+const int SPEED_MIN_ANGLE = 5;
+const int SPEED_MAX_ANGLE = 180;
 
 // Devices
 HT16K33 display; // 14 segment
@@ -87,8 +87,8 @@ void setup()
   //---------------------------------------------------
 
   // Initalize Servos
-  speed.attach(32);
-  rpm.attach(33);
+  speed.attach(33);
+  rpm.attach(32);
   Serial.println("Servos initialized.");
 
   //---------------------------------------------------
@@ -155,6 +155,9 @@ void setup()
   display2.print("TO BAJA");
   speed.write(SPEED_MIN_ANGLE);
   rpm.write(RPM_MIN_ANGLE);
+  ledMatrix.displaybuffer[0] = 0b1010100000000000;
+  ledMatrix.displaybuffer[1] = 0b1010100000000000;
+  ledMatrix.writeDisplay();
   delay(1500);
  
   //---------------------------------------------------
@@ -172,8 +175,17 @@ void setup()
     Serial.println("[ERROR] CAN Init Failed: CAN_FAILINIT");
     display.print("CAN FAIL");
     display2.print("FAILINIT");
-    while (1)
-      ;
+    //Automatically restart if we failed can init
+    delay(5000);
+    ledMatrix.displaybuffer[1] = 0;
+    ledMatrix.displaybuffer[0] = 0;
+    ledMatrix.writeDisplay();
+    display.clear();
+    display2.clear();
+    speed.write(SPEED_MIN_ANGLE);
+    rpm.write(RPM_MIN_ANGLE);
+    delay(500);
+    ESP.restart();
   }
   //There used to be a block for CAN_FAILTX here, but I removed it as the only options are CAN_FAILINIT and CAN_OK
   else
@@ -181,8 +193,17 @@ void setup()
     Serial.println("[ERROR] CAN Init Failed: Unknown error");
     display.print("CAN FAIL");
     display2.print("UNKNOWN");
-    while (1)
-      ;
+    //Automatically restart if we failed can init
+    delay(5000);
+    ledMatrix.displaybuffer[1] = 0;
+    ledMatrix.displaybuffer[0] = 0;
+    ledMatrix.writeDisplay();
+    display.clear();
+    display2.clear();
+    speed.write(SPEED_MIN_ANGLE);
+    rpm.write(RPM_MIN_ANGLE);
+    delay(500);
+    ESP.restart();
   }
 
   //Init filter so we only worry about our CAN ID
@@ -234,6 +255,9 @@ void setup()
   display2.print(version);
   Serial.println("Init Finished!");
   delay(1500);
+  ledMatrix.displaybuffer[0] = 0;
+  ledMatrix.displaybuffer[1] = 0;
+  ledMatrix.writeDisplay();
 }
 
 
@@ -314,8 +338,8 @@ void writeDisplays(void *pvParameters){
 
     // If there has not been can recently, flash NO CAN
     if(num%8==0 && !tempCANRecentRX){
-      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
-      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
+      ledMatrix.displaybuffer[0] = indicatorLightState | (1 << 8);
+      ledMatrix.displaybuffer[1] = indicatorLightState | (1 << 8);
       ledMatrix.writeDisplay();
       if(num%16 == 0){
         display.clear();
@@ -435,8 +459,8 @@ void writeDisplays(void *pvParameters){
         ledMatrix.displaybuffer[0] = tempIndicatorLights;
         ledMatrix.displaybuffer[1] = tempIndicatorLights;
         //Formula: ((value/maxValue) * servoRange) + minRange
-        speed.write(((tempSpeed / 38.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((tempRPM / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+        speed.write(((tempSpeed / 39.5) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        rpm.write(((tempRPM / 3800.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
 
         //Put this so the indicator doesn't get overridden
         if(areBothHeld){

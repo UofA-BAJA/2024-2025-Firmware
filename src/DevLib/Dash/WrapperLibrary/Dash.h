@@ -11,22 +11,22 @@ namespace BajaWildcatRacing
     {
         public:
             enum IndicatorLights{
-                CAN_ERR = 0, //this is really only here to reserve it, the Pi shouldn't be lighting this one up
-                LIGHT_1,
-                LIGHT_2,
+                FL_LOCK = 0, //reserved for use on ESP32
+                CHECK_ENGINE = 1,
+                FR_LOCK = 2,
                 LIGHT_3,
-                CVT_HOT = 4,
+                REAR_LOCK = 4,
                 LIGHT_5,
                 LIGHT_6,
-                CHECK_ENGINE,
-                LIGHT_8, 
-                RESET_WARNING, //reserved for use on ESP32
+                LIGHT_7,
+                NO_CAN = 8, 
+                RESET_WARNING = 9, //reserved for use on ESP32
                 LIGHT_10,
-                LIGHT_11,
-                LIGHT_12,
-                LIGHT_13,
+                BAJA = 11,
+                CVT_HOT = 12,
+                WILDCAT = 13,
                 LIGHT_14,
-                LIGHT_15
+                RACING = 15
             };
             Dash(CANDispatcher& canDispatcher);
             void sendSpeed(float speed);
