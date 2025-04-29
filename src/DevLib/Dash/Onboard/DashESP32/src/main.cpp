@@ -25,11 +25,11 @@ enum displayOptions{
   SPEED,
   END_ELEMENT
 };
-const String version = "V1-1-0"; //Will I use this?
-const int SPEED_MIN_ANGLE = 176;
-const int SPEED_MAX_ANGLE = 0;
-const int RPM_MIN_ANGLE = 5;
-const int RPM_MAX_ANGLE = 180;
+const String version = "V1-1-7"; //Will I use this? Yes!
+const int RPM_MIN_ANGLE = 168;
+const int RPM_MAX_ANGLE = 0;
+const int SPEED_MIN_ANGLE = 5;
+const int SPEED_MAX_ANGLE = 180;
 
 // Devices
 HT16K33 display; // 14 segment
@@ -56,6 +56,8 @@ int display1CurrentDisplay = 0;
 unsigned long lastDisp1Button = 0; //Last button press time
 int display2CurrentDisplay = 1;
 unsigned long lastDisp2Button = 0; //Last button press time
+bool areBothHeld = false; //Hold for 2 seconds to reset 
+unsigned long bothHeldStart = 0;
 
 
 void setup()
@@ -85,8 +87,8 @@ void setup()
   //---------------------------------------------------
 
   // Initalize Servos
-  speed.attach(32);
-  rpm.attach(33);
+  speed.attach(33);
+  rpm.attach(32);
   Serial.println("Servos initialized.");
 
   //---------------------------------------------------
@@ -101,38 +103,63 @@ void setup()
   Serial.println("LED Matrix setup complete.");
 
   //---------------------------------------------------
+  
+  //Initialize pins for buttons
+  pinMode(DISPLAY1_BUTTON_PIN, INPUT_PULLUP);
+  pinMode(DISPLAY2_BUTTON_PIN, INPUT_PULLUP);
+
+  //---------------------------------------------------
 
   //Light Test
-  ledMatrix.displaybuffer[0] = 0b1111111111111111;
-  ledMatrix.displaybuffer[1] = 0b1111111111111111;
-  ledMatrix.writeDisplay();
-  //Define an all-on character and print it out, then turn on decimal and colon
-  display.defineChar('`', 0b1111111111111111);
-  display2.defineChar('`', 0b1111111111111111);
-  display.print("````````");
-  display2.print("````````");
-  display.colonOn();
-  display2.colonOn();
-  display.decimalOn();
-  display2.decimalOn();
-  //Sweep the servos
-  delay(200); //Pause for stabilize?
-  speed.write(SPEED_MAX_ANGLE);
-  rpm.write(RPM_MAX_ANGLE);
-  delay(1000);
-  speed.write(SPEED_MIN_ANGLE);
-  rpm.write(RPM_MIN_ANGLE);
-  delay(1000);
-  //Clear displays
-  display.clear();
-  display2.clear();
-  ledMatrix.clear();
-  ledMatrix.writeDisplay();
+  if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW || digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+    //While still holding the buttons...
+    while(digitalRead(DISPLAY1_BUTTON_PIN) == LOW || digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+      display.print("LIGHT");
+      display2.print("TEST");
+      delay(1000);
+      display.clear();
+      display2.clear();
+      ledMatrix.displaybuffer[0] = 0b1111111111111111;
+      ledMatrix.displaybuffer[1] = 0b1111111111111111;
+      ledMatrix.writeDisplay();
+      delay(2000);
+      ledMatrix.clear();
+      ledMatrix.writeDisplay();
+      //Define an all-on character and print it out, then turn on decimal and colon
+      display.defineChar('`', 0b1111111111111111);
+      display2.defineChar('`', 0b1111111111111111);
+      display.print("````````");
+      display2.print("````````");
+      display.colonOn();
+      display2.colonOn();
+      display.decimalOn();
+      display2.decimalOn();
+      delay(2000);
+      display.clear();
+      display2.clear();
+      //Sweep the servos
+      speed.write(SPEED_MAX_ANGLE);
+      rpm.write(RPM_MAX_ANGLE);
+      delay(1500);
+      speed.write(SPEED_MIN_ANGLE);
+      rpm.write(RPM_MIN_ANGLE);
+      delay(1500);
+      Serial.println("Light test complete.");
+      //Will loop if a button is held
+      display.print("AGAIN?");
+      delay(2000);
+    }
+  }
+
   display.print("WELCOME");
   display2.print("TO BAJA");
+  speed.write(SPEED_MIN_ANGLE);
+  rpm.write(RPM_MIN_ANGLE);
+  ledMatrix.displaybuffer[0] = 0b1010100000000000;
+  ledMatrix.displaybuffer[1] = 0b1010100000000000;
+  ledMatrix.writeDisplay();
   delay(1500);
-  Serial.println("Light test complete.");
-  
+ 
   //---------------------------------------------------
 
   // Initialize and join CAN
@@ -148,8 +175,17 @@ void setup()
     Serial.println("[ERROR] CAN Init Failed: CAN_FAILINIT");
     display.print("CAN FAIL");
     display2.print("FAILINIT");
-    while (1)
-      ;
+    //Automatically restart if we failed can init
+    delay(5000);
+    ledMatrix.displaybuffer[1] = 0;
+    ledMatrix.displaybuffer[0] = 0;
+    ledMatrix.writeDisplay();
+    display.clear();
+    display2.clear();
+    speed.write(SPEED_MIN_ANGLE);
+    rpm.write(RPM_MIN_ANGLE);
+    delay(500);
+    ESP.restart();
   }
   //There used to be a block for CAN_FAILTX here, but I removed it as the only options are CAN_FAILINIT and CAN_OK
   else
@@ -157,8 +193,17 @@ void setup()
     Serial.println("[ERROR] CAN Init Failed: Unknown error");
     display.print("CAN FAIL");
     display2.print("UNKNOWN");
-    while (1)
-      ;
+    //Automatically restart if we failed can init
+    delay(5000);
+    ledMatrix.displaybuffer[1] = 0;
+    ledMatrix.displaybuffer[0] = 0;
+    ledMatrix.writeDisplay();
+    display.clear();
+    display2.clear();
+    speed.write(SPEED_MIN_ANGLE);
+    rpm.write(RPM_MIN_ANGLE);
+    delay(500);
+    ESP.restart();
   }
 
   //Init filter so we only worry about our CAN ID
@@ -175,12 +220,6 @@ void setup()
   // Set the MCP2515 to normal mode to start receiving CAN messages
   CAN.setMode(MCP_NORMAL);
   Serial.println("CAN setup complete");
-
-  //---------------------------------------------------
-
-  //Initialize pins for buttons
-  pinMode(DISPLAY1_BUTTON_PIN, INPUT_PULLUP);
-  pinMode(DISPLAY2_BUTTON_PIN, INPUT_PULLUP);
 
   //---------------------------------------------------
 
@@ -216,7 +255,9 @@ void setup()
   display2.print(version);
   Serial.println("Init Finished!");
   delay(1500);
-
+  ledMatrix.displaybuffer[0] = 0;
+  ledMatrix.displaybuffer[1] = 0;
+  ledMatrix.writeDisplay();
 }
 
 
@@ -277,11 +318,6 @@ void loop()
         canRecentRX = false;
         xSemaphoreGive(canMutex);
       }
-      //Light up the appropriate indicator light
-      //TODO: I don't think this is the right one anymore, fix it
-      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
-      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
-      ledMatrix.writeDisplay();
   }
 }
 
@@ -302,8 +338,8 @@ void writeDisplays(void *pvParameters){
 
     // If there has not been can recently, flash NO CAN
     if(num%8==0 && !tempCANRecentRX){
-      ledMatrix.displaybuffer[0] = indicatorLightState | 1;
-      ledMatrix.displaybuffer[1] = indicatorLightState | 1;
+      ledMatrix.displaybuffer[0] = indicatorLightState | (1 << 8);
+      ledMatrix.displaybuffer[1] = indicatorLightState | (1 << 8);
       ledMatrix.writeDisplay();
       if(num%16 == 0){
         display.clear();
@@ -312,12 +348,38 @@ void writeDisplays(void *pvParameters){
         // ledMatrix.writeDisplay();
       }else{
         display.print("NO CAN");
-        speed.write(((20 / 38.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((2000 / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
         // ledMatrix.displaybuffer[1] = 0b1111111111111111;
         // ledMatrix.displaybuffer[0] = 0;
         // ledMatrix.writeDisplay();
       }
+    }
+
+    //Reset by holding both for 2 seconds
+    if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW  && digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
+      if(!areBothHeld){
+        areBothHeld = true;
+        bothHeldStart = millis();
+      }else if(millis() - bothHeldStart > 2000){
+        //Clear everything, reset
+        ledMatrix.displaybuffer[1] = 0;
+        ledMatrix.displaybuffer[0] = 0;
+        ledMatrix.writeDisplay();
+        display.clear();
+        display2.clear();
+        speed.write(SPEED_MIN_ANGLE);
+        rpm.write(RPM_MIN_ANGLE);
+        delay(500);
+        ESP.restart();
+      }
+      ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1000000000;
+      ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] | 0b1000000000;
+      ledMatrix.writeDisplay();
+    }else if(areBothHeld){
+      //If they aren't actively both held but we still have the flag, Clear warning
+      ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] & 0b1111110111111111;
+      ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] & 0b1111110111111111;
+      ledMatrix.writeDisplay();
+      areBothHeld = false;
     }
 
     //If there has been CAN recently, display stuff 
@@ -396,10 +458,16 @@ void writeDisplays(void *pvParameters){
         xSemaphoreGive(canMutex);
         ledMatrix.displaybuffer[0] = tempIndicatorLights;
         ledMatrix.displaybuffer[1] = tempIndicatorLights;
-        ledMatrix.writeDisplay(); 
         //Formula: ((value/maxValue) * servoRange) + minRange
-        speed.write(((tempSpeed / 36.0) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
-        rpm.write(((tempRPM / 3950.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+        speed.write(((tempSpeed / 39.5) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
+        rpm.write(((tempRPM / 3800.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
+
+        //Put this so the indicator doesn't get overridden
+        if(areBothHeld){
+          ledMatrix.displaybuffer[1] = ledMatrix.displaybuffer[1] | 0b1000000000;
+          ledMatrix.displaybuffer[0] = ledMatrix.displaybuffer[0] | 0b1000000000;
+        }
+        ledMatrix.writeDisplay(); //Putting this down here so the reset warning doesn't flicker
       }
     }
     //Effectively limits the refresh rate to ~10Hz (which is fine, we don't need much more than 5Hz)
