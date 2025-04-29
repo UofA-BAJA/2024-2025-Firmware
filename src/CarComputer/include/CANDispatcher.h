@@ -66,6 +66,7 @@ namespace BajaWildcatRacing
             int openCANSocket(const char* interface);
             void readCANInterface();
 
+            // Pulls from the queue of commands and sends them accordingly
             void sendCanCommand();
 
             void resetCANInterface(const char* interface);

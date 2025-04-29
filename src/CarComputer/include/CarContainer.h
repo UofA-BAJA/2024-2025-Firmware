@@ -8,12 +8,13 @@
 #include "Commands.h"
 #include "CarLogger.h"
 
-#include "procedures/IMUProcedure.cpp"
+#include "procedures/IMULoggingProcedure.cpp"
 #include "procedures/DashProcedure.cpp"
-#include "procedures/TemperatureProcedure.cpp"
+#include "procedures/TemperatureLoggingProcedure.cpp"
 #include "procedures/SpedometerProcedure.cpp"
 #include "procedures/AccelerationProcedure.cpp"
 #include "procedures/CheckEngineProcedure.cpp"
+#include "procedures/DistCalcProcedure.cpp"
 
 #include "DashSubsystem.h"
 #include "IMUSubsystem.h"

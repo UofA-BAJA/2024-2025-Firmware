@@ -46,23 +46,40 @@ namespace BajaWildcatRacing
     , dashSubsystem(canDispatcher)
     {
 
-         procedureScheduler.bindCommand<IMUProcedure>(
-             std::unordered_set<Command>({Command::DEFAULT_CAR_START}), 
-             std::unordered_set<Command>({}), 
+        ///////////////////////////////////////////////////////////
+        // Logging procedures
+        ///////////////////////////////////////////////////////////
+
+         procedureScheduler.bindCommand<IMULoggingProcedure>(
+             std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}), 
+             std::unordered_set<Command>({Command::END_LOG}), 
              imuSubsystem, dataStorage, coms
         );
+        
+        procedureScheduler.bindCommand<TemperatureLoggingProcedure>(
+            std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}),
+            std::unordered_set<Command>({Command::END_LOG}),
+             drivetrainSubsystem, dataStorage, coms
+         );
 
+         procedureScheduler.bindCommand<DistCalcProcedure>(
+            std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}),
+            std::unordered_set<Command>({Command::END_LOG}),
+            drivetrainSubsystem, dataStorage, coms
+         );
+
+        ///////////////////////////////////////////////////////////
+        // End of logging procedures
+        ///////////////////////////////////////////////////////////
+
+        
     //     procedureScheduler.bindCommand<AccelerationProcedure>(
     //         std::unordered_set<Command>({Command::ACCELERATION}), 
     //         std::unordered_set<Command>({Command::END_LOG, Command::EMERGENCY_STOP})
     //    );
 
-        procedureScheduler.bindCommand<TemperatureProcedure>(
-             std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
-             std::unordered_set<Command>({Command::END_LOG}),
-             drivetrainSubsystem, dataStorage, coms
-         );
 
+        // The dash is always running.
         procedureScheduler.bindCommand<DashProcedure>( 
            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
            std::unordered_set<Command>({}),
