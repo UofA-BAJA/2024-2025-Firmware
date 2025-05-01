@@ -90,4 +90,14 @@ namespace BajaWildcatRacing
         sendCanCommand(canID, 0x05, data);
     }
 
+    //Sends latest distance infromation to the dash
+    void Dash::sendDistance(float distance){
+        Device::Devices canID = Device::DASH;
+        std::vector<byte> data(sizeof(float)+1, 0);
+        
+        memcpy(data.data()+1, &distance, sizeof(float));
+        data[0] = 0x06;
+        
+        sendCanCommand(canID, 0x04, data);
+    }
 }

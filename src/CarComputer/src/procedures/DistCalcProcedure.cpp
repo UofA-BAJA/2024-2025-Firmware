@@ -1,6 +1,7 @@
 #include "Procedure.h"
 
 #include "DrivetrainSubsystem.h"
+#include "DashSubsystem.h"
 #include "Coms.h"
 #include "DataStorage.h"
 #include "CarTime.h"
@@ -14,6 +15,7 @@ class DistCalcProcedure : public Procedure {
     public:
 
         DrivetrainSubsystem& drivetrainSubsystem;
+        DashSubsystem& dashSubsystem;
         DataStorage& dataStorage;
         Coms& coms;
 
@@ -24,8 +26,12 @@ class DistCalcProcedure : public Procedure {
 
         float distMeters = 0;
 
-        DistCalcProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
+        //Counter so we only send to dash every 5 hz 
+        int cycleNum = 0;
+
+        DistCalcProcedure(DrivetrainSubsystem& drivetrainSubsystem, DashSubsystem& dashSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
+        , dashSubsystem(dashSubsystem)
         , dataStorage(dataStorage)
         , coms(coms)
         {
@@ -60,6 +66,12 @@ class DistCalcProcedure : public Procedure {
 
             prevCarMPS = mps;
 
+            //Avoid flooding the dash with can commands
+            cycleNum++;
+            if(cycleNum  % 12 == 0){
+                dashSubsystem.sendDistance(distMeters);
+            }
+            
             // float rpm1 = drivetrainSubsystem.getFrontLeftRPM();
             // float rpm2 = drivetrainSubsystem.getFrontRightRPM();
             // float rpm3 = drivetrainSubsystem.getRearRPM();

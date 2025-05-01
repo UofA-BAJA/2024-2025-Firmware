@@ -14,6 +14,7 @@ namespace BajaWildcatRacing
             void sendRPM(float rpm);
             void sendCVTTemp(float cvtTemp);
             void sendTimeSeconds(float seconds);
+            void sendDistance(float distance);
             void setIndicatorLights(uint16_t lightState);
             void setSpecificIndicatorLight(Dash::IndicatorLights light, bool state);
             void sendIndicatorLightState();
