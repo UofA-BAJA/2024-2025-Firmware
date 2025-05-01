@@ -47,7 +47,7 @@ namespace BajaWildcatRacing
 
                 float frontRightMPH = drivetrainSubsystem.getFrontRightRPM() * 0.0647f;
                 float frontLeftMPH = drivetrainSubsystem.getFrontLeftRPM() * 0.0647f;
-                dashSubsystem.sendSpeed(frontLeftMPH);
+                dashSubsystem.sendSpeed((frontLeftMPH+frontRightMPH)/2);
             }
 
             void end() override {
