@@ -344,22 +344,22 @@ void writeDisplays(void *pvParameters){
     }
 
     // If there has not been can recently, flash NO CAN
-    // if(num%8==0 && !tempCANRecentRX){
-    //   ledMatrix.displaybuffer[0] = indicatorLightState | (1 << 8);
-    //   ledMatrix.displaybuffer[1] = indicatorLightState | (1 << 8);
-    //   ledMatrix.writeDisplay();
-    //   if(num%16 == 0){
-    //     display.clear();
-    //     // ledMatrix.displaybuffer[0] = 0b1111111111111111;
-    //     // ledMatrix.displaybuffer[1] = 0;
-    //     // ledMatrix.writeDisplay();
-    //   }else{
-    //     display.print("NO CAN");
-    //     // ledMatrix.displaybuffer[1] = 0b1111111111111111;
-    //     // ledMatrix.displaybuffer[0] = 0;
-    //     // ledMatrix.writeDisplay();
-    //   }
-    // }
+    if(num%8==0 && !tempCANRecentRX){
+      ledMatrix.displaybuffer[0] = indicatorLightState | (1 << 8);
+      ledMatrix.displaybuffer[1] = indicatorLightState | (1 << 8);
+      ledMatrix.writeDisplay();
+      if(num%16 == 0){
+        display.clear();
+        // ledMatrix.displaybuffer[0] = 0b1111111111111111;
+        // ledMatrix.displaybuffer[1] = 0;
+        // ledMatrix.writeDisplay();
+      }else{
+        display.print("NO CAN");
+        // ledMatrix.displaybuffer[1] = 0b1111111111111111;
+        // ledMatrix.displaybuffer[0] = 0;
+        // ledMatrix.writeDisplay();
+      }
+    }
 
     //Reset by holding both for 2 seconds
     if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW  && digitalRead(DISPLAY2_BUTTON_PIN) == LOW){
@@ -390,7 +390,7 @@ void writeDisplays(void *pvParameters){
     }
 
     //If there has been CAN recently, display stuff 
-    if(true){
+    if(canRecentRX){
       //Switch display data field with cooldown (note: active low)
       if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW && millis()-lastDisp1Button > 300){
         lastDisp1Button = millis();
@@ -537,7 +537,6 @@ void displayDistance(HT16K33 disp){
   if(xSemaphoreTake(canMutex, portMAX_DELAY)){
     float tempDistance = lastDistance;
     xSemaphoreGive(canMutex);
-    tempDistance = 221.58;
     disp.printf("DST %5.1f", tempDistance);
     disp.decimalOn();
   }
