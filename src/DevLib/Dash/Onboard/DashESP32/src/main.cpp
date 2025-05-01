@@ -308,6 +308,10 @@ void loop()
           // Indicator Lights
           memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
           break;
+        case 0x06:
+          // Distance Travelled
+          memcpy(&lastDistance, &rxBuf[1], sizeof(float));
+          break;
       }
       canRecentRX = true;
       xSemaphoreGive(canMutex);
