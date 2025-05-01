@@ -69,9 +69,9 @@ class DistCalcProcedure : public Procedure {
             //Avoid flooding the dash with can commands
             cycleNum++;
             if(cycleNum  % 12 == 0){
-                dashSubsystem.sendDistance(distMeters);
+                dashSubsystem.sendDistance(distMeters * 0.000621371f);
             }
-            
+
             // float rpm1 = drivetrainSubsystem.getFrontLeftRPM();
             // float rpm2 = drivetrainSubsystem.getFrontRightRPM();
             // float rpm3 = drivetrainSubsystem.getRearRPM();
