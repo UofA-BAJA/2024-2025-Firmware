@@ -14,6 +14,7 @@
 #include "procedures/AccelerationProcedure.cpp"
 #include "procedures/CheckEngineProcedure.cpp"
 #include "procedures/DistCalcProcedure.cpp"
+#include "procedures/RPMLoggingProcedure.cpp"
 
 #include "DashSubsystem.h"
 #include "IMUSubsystem.h"
