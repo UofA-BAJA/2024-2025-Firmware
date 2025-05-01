@@ -390,7 +390,7 @@ void writeDisplays(void *pvParameters){
     }
 
     //If there has been CAN recently, display stuff 
-    if(canRecentRX){
+    if(tempCANRecentRX){
       //Switch display data field with cooldown (note: active low)
       if(digitalRead(DISPLAY1_BUTTON_PIN) == LOW && millis()-lastDisp1Button > 300){
         lastDisp1Button = millis();
