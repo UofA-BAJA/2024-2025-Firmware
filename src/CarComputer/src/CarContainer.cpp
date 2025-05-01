@@ -61,7 +61,7 @@ namespace BajaWildcatRacing
              std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
              std::unordered_set<Command>({Command::END_LOG}),
              drivetrainSubsystem, dataStorage, coms
-         );
+        );
 
         procedureScheduler.bindCommand<DashProcedure>( 
            std::unordered_set<Command>({Command::DEFAULT_CAR_START}),
