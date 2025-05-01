@@ -5,11 +5,12 @@
 #include "DataStorage.h"
 #include "CarTime.h"
 
+#define PI 3.1415926
 
 namespace BajaWildcatRacing
 {
 
-class SpedometerProcedure : public Procedure {
+class DistCalcProcedure : public Procedure {
     public:
 
         DrivetrainSubsystem& drivetrainSubsystem;
@@ -18,11 +19,12 @@ class SpedometerProcedure : public Procedure {
 
         float deltaTime = 0;
         float prevCarTime;
+        // MPS = meters per second
         float prevCarMPS = 0;
 
-        float distMiles = 0;
+        float distMeters = 0;
 
-        SpedometerProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
+        DistCalcProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
         , dataStorage(dataStorage)
         , coms(coms)
@@ -38,13 +40,12 @@ class SpedometerProcedure : public Procedure {
 
         void execute() override {
 
-            float mph = drivetrainSubsystem.getFrontLeftRPM();
+            float rpm = drivetrainSubsystem.getRearRPM();
 
-            dataStorage.storeData(mph, DataTypes::CAR_SPEED);
+            // TODO:
+            // mps - meters per second. I think this calculation is incorrect
+            float mps = (rpm / (2 * PI * 60)) * WHEEL_RADIUS_METERS;
 
-            // std::cout << "MPH: " << mph << std::endl;
-
-            coms.sendData(DataTypes::CAR_SPEED, mph);
 
             float currTime = CarTime::getCurrentTimeSeconds();
             deltaTime = currTime - prevCarTime;
@@ -52,18 +53,20 @@ class SpedometerProcedure : public Procedure {
 
             
             // Integrating using the trapezoidal rule:
-            float currCarMPS = mph / 3600.0f;
-            float trapezoid = (deltaTime * (currCarMPS + prevCarMPS)) * 0.5f;
-            distMiles += trapezoid;
+            float trapezoid = (deltaTime * (mps + prevCarMPS)) * 0.5f;
+            distMeters += trapezoid;
 
-            std::cout << "Dist (miles): " << distMiles << " MPH: " << mph << std::endl;
+            // std::cout << "Dist (miles): " << distMiles << " MPH: " << mph << std::endl;
 
-            prevCarMPS = currCarMPS;
+            dataStorage.storeData(distMeters, DataTypes::DISTANCE);
+            coms.sendData(DataTypes::DISTANCE, distMeters);
+
+            prevCarMPS = mps;
 
         }
 
         void end() override {
-            std::cout << "Spedometer procedure ended" << std::endl;
+            std::cout << "Distance Calculation procedure ended" << std::endl;
         }
 
         bool isFinished() override {

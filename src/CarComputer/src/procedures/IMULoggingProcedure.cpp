@@ -9,20 +9,20 @@
 namespace BajaWildcatRacing
 {
 
-class IMUProcedure : public Procedure{
+class IMULoggingProcedure : public Procedure{
     public:
         IMUSubsystem& imuSubsystem;
         DataStorage& dataStorage;
         Coms& coms;
 
 
-        IMUProcedure(IMUSubsystem& imuSubsystem, DataStorage& dataStorage, Coms& coms)
+        IMULoggingProcedure(IMUSubsystem& imuSubsystem, DataStorage& dataStorage, Coms& coms)
         : imuSubsystem(imuSubsystem)
         , dataStorage(dataStorage)
         , coms(coms)
         {
 
-            this->frequency = 120;
+            this->frequency = 60;
 
         }
         
