@@ -11,7 +11,6 @@
 #include "procedures/IMULoggingProcedure.cpp"
 #include "procedures/DashProcedure.cpp"
 #include "procedures/TemperatureLoggingProcedure.cpp"
-#include "procedures/SpedometerProcedure.cpp"
 #include "procedures/AccelerationProcedure.cpp"
 #include "procedures/CheckEngineProcedure.cpp"
 #include "procedures/DistCalcProcedure.cpp"

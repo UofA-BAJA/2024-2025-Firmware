@@ -50,17 +50,17 @@ namespace BajaWildcatRacing
         // Logging procedures
         ///////////////////////////////////////////////////////////
 
-         procedureScheduler.bindCommand<IMULoggingProcedure>(
-             std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}), 
-             std::unordered_set<Command>({Command::END_LOG}), 
-             imuSubsystem, dataStorage, coms
-        );
+        //  procedureScheduler.bindCommand<IMULoggingProcedure>(
+        //      std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}), 
+        //      std::unordered_set<Command>({Command::END_LOG}), 
+        //      imuSubsystem, dataStorage, coms
+        // );
         
-        procedureScheduler.bindCommand<TemperatureLoggingProcedure>(
-            std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}),
-            std::unordered_set<Command>({Command::END_LOG}),
-             drivetrainSubsystem, dataStorage, coms
-         );
+        // procedureScheduler.bindCommand<TemperatureLoggingProcedure>(
+        //     std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}),
+        //     std::unordered_set<Command>({Command::END_LOG}),
+        //      drivetrainSubsystem, dataStorage, coms
+        //  );
 
          procedureScheduler.bindCommand<DistCalcProcedure>(
             std::unordered_set<Command>({Command::DEFAULT_CAR_START, Command::START_LOG}),
@@ -86,11 +86,11 @@ namespace BajaWildcatRacing
            dashSubsystem, drivetrainSubsystem, imuSubsystem
         );
 
-        procedureScheduler.bindCommand<CheckEngineProcedure>(
-            std::unordered_set<Command>({Command::ENABLE_CHECK_ENGINE}),
-            std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
-            dashSubsystem
-         );
+        // procedureScheduler.bindCommand<CheckEngineProcedure>(
+        //     std::unordered_set<Command>({Command::ENABLE_CHECK_ENGINE}),
+        //     std::unordered_set<Command>({Command::DISABLE_CHECK_ENGINE}),
+        //     dashSubsystem
+        //  );
 
         // procedureScheduler.bindCommand<SpedometerProcedure>(
         //     std::unordered_set<Command>({Command::DEFAULT_CAR_START}),

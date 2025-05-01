@@ -42,10 +42,7 @@ class DistCalcProcedure : public Procedure {
 
             float rpm = drivetrainSubsystem.getRearRPM();
 
-            // TODO:
-            // mps - meters per second. I think this calculation is incorrect
-            float mps = (rpm / (2 * PI * 60)) * WHEEL_RADIUS_METERS;
-
+            float mps = rpm * 0.0289f; // Magic number 
 
             float currTime = CarTime::getCurrentTimeSeconds();
             deltaTime = currTime - prevCarTime;
@@ -62,6 +59,13 @@ class DistCalcProcedure : public Procedure {
             coms.sendData(DataTypes::DISTANCE, distMeters);
 
             prevCarMPS = mps;
+
+            // float rpm1 = drivetrainSubsystem.getFrontLeftRPM();
+            // float rpm2 = drivetrainSubsystem.getFrontRightRPM();
+            // float rpm3 = drivetrainSubsystem.getRearRPM();
+            // std::cout << "RPM 1: " << rpm1 << std::endl;
+            // std::cout << "RPM 2: " << rpm2 << std::endl;
+            // std::cout << "RPM 3: " << rpm3 << std::endl;
 
         }
 
