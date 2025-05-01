@@ -13,6 +13,7 @@ void displayCVTTemp(HT16K33 disp);
 void displayTime(HT16K33 disp);
 void displayRPM(HT16K33 disp);
 void displaySpeed(HT16K33 disp);
+void displayDistance(HT16K33 disp);
 
 // Constants
 const int CAN_CS_PIN = 5;
@@ -23,6 +24,7 @@ enum displayOptions{
   TIME,
   RPM,
   SPEED,
+  DISTANCE,
   END_ELEMENT
 };
 const String version = "V1-1-7"; //Will I use this? Yes!
@@ -47,6 +49,7 @@ float lastSpeed = 0;
 float lastRPM = 0;
 float lastCVTTemp = 0;
 float lastTimeSeconds = 0;
+float lastDistance = 0;
 uint16_t indicatorLightState = 0;
 
 bool canRecentRX = true;
@@ -305,6 +308,10 @@ void loop()
           // Indicator Lights
           memcpy(&indicatorLightState, &rxBuf[1], sizeof(uint16_t));
           break;
+        case 0x06:
+          // Distance Travelled
+          memcpy(&lastDistance, &rxBuf[1], sizeof(float));
+          break;
       }
       canRecentRX = true;
       xSemaphoreGive(canMutex);
@@ -424,6 +431,9 @@ void writeDisplays(void *pvParameters){
         case SPEED:
           displaySpeed(display);
           break;
+        case DISTANCE:
+          displayDistance(display);
+          break;
         default:
           display.print("????");
           break;
@@ -442,6 +452,9 @@ void writeDisplays(void *pvParameters){
         case SPEED:
           displaySpeed(display2);
           break;
+        case DISTANCE: 
+          displayDistance(display2);
+          break;
         default:
           display2.print("????");
           break;
@@ -458,6 +471,11 @@ void writeDisplays(void *pvParameters){
         xSemaphoreGive(canMutex);
         ledMatrix.displaybuffer[0] = tempIndicatorLights;
         ledMatrix.displaybuffer[1] = tempIndicatorLights;
+        //Clamp values so the servos don't strain themselves
+        if(tempSpeed > 39.5) tempSpeed = 39.5;
+        else if(tempSpeed < 0) tempSpeed = 0;
+        if(tempRPM > 3800) tempRPM = 3800;
+        else if(tempRPM < 0) tempRPM = 0;
         //Formula: ((value/maxValue) * servoRange) + minRange
         speed.write(((tempSpeed / 39.5) * (SPEED_MAX_ANGLE - SPEED_MIN_ANGLE)) + SPEED_MIN_ANGLE);
         rpm.write(((tempRPM / 3800.0) * (RPM_MAX_ANGLE - RPM_MIN_ANGLE)) + RPM_MIN_ANGLE);
@@ -511,5 +529,15 @@ void displaySpeed(HT16K33 disp){
     float tempSpeed = lastSpeed;
     xSemaphoreGive(canMutex);
     disp.printf("SPD %4.0f", tempSpeed);
+  }
+}
+
+//Displays the latest distance information on the given display
+void displayDistance(HT16K33 disp){
+  if(xSemaphoreTake(canMutex, portMAX_DELAY)){
+    float tempDistance = lastDistance;
+    xSemaphoreGive(canMutex);
+    disp.printf("DST %4.1f", tempDistance);
+    disp.decimalOn();
   }
 }
