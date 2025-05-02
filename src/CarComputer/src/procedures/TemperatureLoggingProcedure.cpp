@@ -37,8 +37,8 @@ class TemperatureLoggingProcedure : public Procedure{
 
             coms.sendData(DataTypes::CVT_TEMPERATURE, cvt_temperature);
 
-            dataStorage.storeData(temperature, DataTypes::TEMPERATURE);
-            coms.sendData(DataTypes::CVT_TEMPERATURE, temperature);
+            dataStorage.storeData(cvt_temperature, DataTypes::CVT_TEMPERATURE);
+            coms.sendData(DataTypes::CVT_TEMPERATURE, cvt_temperature);
 
             // std::cout << std::fixed;
             // std::cout << std::setprecision(2);

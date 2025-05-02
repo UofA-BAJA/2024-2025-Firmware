@@ -36,4 +36,8 @@ namespace BajaWildcatRacing
         dash.sendIndicatorLightState();
     }
 
+    void DashSubsystem::sendDistance(float distance){
+        dash.sendDistance(distance);
+    }
+
 }

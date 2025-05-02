@@ -1,6 +1,7 @@
 #include "Procedure.h"
 
 #include "DrivetrainSubsystem.h"
+#include "DashSubsystem.h"
 #include "Coms.h"
 #include "DataStorage.h"
 #include "CarTime.h"
@@ -14,6 +15,7 @@ class DistCalcProcedure : public Procedure {
     public:
 
         DrivetrainSubsystem& drivetrainSubsystem;
+        DashSubsystem& dashSubsystem;
         DataStorage& dataStorage;
         Coms& coms;
 
@@ -24,8 +26,12 @@ class DistCalcProcedure : public Procedure {
 
         float distMeters = 0;
 
-        DistCalcProcedure(DrivetrainSubsystem& drivetrainSubsystem, DataStorage& dataStorage, Coms& coms)
+        //Counter so we only send to dash every 5 hz 
+        int cycleNum = 0;
+
+        DistCalcProcedure(DrivetrainSubsystem& drivetrainSubsystem, DashSubsystem& dashSubsystem, DataStorage& dataStorage, Coms& coms)
         : drivetrainSubsystem(drivetrainSubsystem)
+        , dashSubsystem(dashSubsystem)
         , dataStorage(dataStorage)
         , coms(coms)
         {
@@ -40,12 +46,10 @@ class DistCalcProcedure : public Procedure {
 
         void execute() override {
 
-            float rpm = drivetrainSubsystem.getRearRPM();
+            // float rpm = (drivetrainSubsystem.getFrontRightRPM()+drivetrainSubsystem.getFrontLeftRPM())/2;
 
-            // TODO:
-            // mps - meters per second. I think this calculation is incorrect
-            float mps = (rpm / (2 * PI * 60)) * WHEEL_RADIUS_METERS;
-
+            // float mps = rpm * 0.0289f; // Magic number 
+            float mps = drivetrainSubsystem.getCarSpeedMetersSec();
 
             float currTime = CarTime::getCurrentTimeSeconds();
             deltaTime = currTime - prevCarTime;
@@ -62,6 +66,19 @@ class DistCalcProcedure : public Procedure {
             coms.sendData(DataTypes::DISTANCE, distMeters);
 
             prevCarMPS = mps;
+
+            //Avoid flooding the dash with can commands
+            cycleNum++;
+            if(cycleNum  % 12 == 0){
+                dashSubsystem.sendDistance(distMeters * 0.000621371f);
+            }
+
+            // float rpm1 = drivetrainSubsystem.getFrontLeftRPM();
+            // float rpm2 = drivetrainSubsystem.getFrontRightRPM();
+            // float rpm3 = drivetrainSubsystem.getRearRPM();
+            // std::cout << "RPM 1: " << rpm1 << std::endl;
+            // std::cout << "RPM 2: " << rpm2 << std::endl;
+            // std::cout << "RPM 3: " << rpm3 << std::endl;
 
         }
 

@@ -8,7 +8,7 @@ namespace BajaWildcatRacing
     const int RADIO_CLOCK_FREQUENCY = 10;
     const int MAX_LIVE_DATA_STREAMS = 32;
 
-    const int WHEEL_RADIUS_METERS = 08123498134913284;
+    const int WHEEL_RADIUS_METERS = 0.276225;
 
 }
 
