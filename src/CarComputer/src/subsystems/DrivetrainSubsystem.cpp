@@ -39,13 +39,12 @@ namespace BajaWildcatRacing
     }
 
     float DrivetrainSubsystem::getCarSpeedMetersSec(){
-        //Average of all 3 multipled by some constant to convert Rotations to Meters and 1/60 for per min to per sec 
-        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM() + spedometer.getRearRPM()) / 3.0) * (1 / 60);
+        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM()) / 2.0) * 0.0289f; //Magical number
+
     }
 
     float DrivetrainSubsystem::getCarSpeedMPH(){
-        //Average of all 3 multipled by some constant to convert Rotations to Miles and 60 for per min to per hour 
-        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM() + spedometer.getRearRPM()) / 3.0) * 1 * 60;
+        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM()) / 2.0) * 0.0647f; //Slightly different magic number
     }
 
 }

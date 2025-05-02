@@ -46,9 +46,10 @@ class DistCalcProcedure : public Procedure {
 
         void execute() override {
 
-            float rpm = (drivetrainSubsystem.getFrontRightRPM()+drivetrainSubsystem.getFrontLeftRPM())/2;
+            // float rpm = (drivetrainSubsystem.getFrontRightRPM()+drivetrainSubsystem.getFrontLeftRPM())/2;
 
-            float mps = rpm * 0.0289f; // Magic number 
+            // float mps = rpm * 0.0289f; // Magic number 
+            float mps = drivetrainSubsystem.getCarSpeedMetersSec();
 
             float currTime = CarTime::getCurrentTimeSeconds();
             deltaTime = currTime - prevCarTime;

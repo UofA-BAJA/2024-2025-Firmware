@@ -41,5 +41,5 @@ namespace BajaWildcatRacing{
             std::string toString() override {
                 return "RPM Logging Procedure";
             }
-    }
+    };
 }
