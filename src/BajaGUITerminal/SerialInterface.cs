@@ -19,7 +19,13 @@ public class SerialInterface
         this.port = port;
         this.baudrate = baudrate;
 
-        radioSerialPort = new SerialPort(port, baudrate);
+		try{
+			radioSerialPort = new SerialPort(port, baudrate);
+		}
+		catch (System.IO.IOException){
+			Console.WriteLine("Can not connect to serial port");
+			System.Environment.Exit(1);
+		}
         radioSerialPort.ReadTimeout = 200;
         radioSerialPort.WriteTimeout = 200;
 
@@ -91,7 +97,7 @@ public class SerialInterface
         }
         catch (TimeoutException)
         {
-            Console.WriteLine("Unable to read from serial port: " + port);
+            // Console.WriteLine("Unable to read from serial port: " + port);
         }
         finally
         {

@@ -2,10 +2,10 @@
 // Terminal.Gui 1.5.0  •  ConsolePlot 0.1.0
 //
 // Controls
-//   Tab / Shift-Tab   : cycle yellow focus box
-//   t                 : change data-type of focused pane
-//   c                 : SEND COMMAND  ← NEW
-//   Esc / q / Q / Ctrl-Q : quit
+//   Tab / Shift‑Tab         : cycle yellow focus box
+//   t                       : change data‑type of focused pane
+//   c                       : send command to MCU
+//   Esc / q / Q / Ctrl‑Q    : quit
 //
 // Build & run
 //   dotnet add package Terminal.Gui --version 1.5.0
@@ -19,6 +19,9 @@ using System.Linq;
 using System.Text;
 using Terminal.Gui;
 using ConsolePlot;
+using ConsolePlot.Drawing.Tools;
+// alias to disambiguate Attribute type
+using TAttribute = Terminal.Gui.Attribute;
 
 namespace Baja.TerminalTelemetry
 {
@@ -38,10 +41,33 @@ namespace Baja.TerminalTelemetry
         {
             // ── boot the TUI ────────────────────────────────────────────
             Application.Init();
-            var top  = Application.Top;
+
+            // ──────── LIGHT‑THEME COLOR SCHEME ────────────────────────
+            var lightScheme = new ColorScheme
+            {
+                // unselected controls / list items
+                Normal    = new TAttribute(Color.Black,  Color.White),
+
+                // control or list‑row that currently has keyboard focus
+                Focus     = new TAttribute(Color.Black,  Color.BrightYellow),
+
+                // hotkey characters (underscored letters)
+                HotNormal = new TAttribute(Color.BrightBlue, Color.White),
+                HotFocus  = new TAttribute(Color.BrightBlue, Color.BrightYellow)
+            };
+
+            var top = Application.Top;
 
             var root = new Window("BAJA – Live Telemetry (TUI)")
-            { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
+            {
+                X = 0,
+                Y = 0,
+                Width  = Dim.Fill(),
+                Height = Dim.Fill()
+            };
+
+            top.ColorScheme  = lightScheme;   // apply globally
+            root.ColorScheme = lightScheme;
             top.Add(root);
 
             // ── 2 × 2 plot panes ───────────────────────────────────────
@@ -52,11 +78,12 @@ namespace Baja.TerminalTelemetry
             {
                 var pane = new PlotPane(DefaultTypes[i])
                 {
-                    X = (i % 2 == 0) ? 0           : Pos.Percent(50),
-                    Y = (i < 2)      ? 0           : Pos.Percent(50),
+                    X = (i % 2 == 0) ? 0            : Pos.Percent(50),
+                    Y = (i < 2)      ? 0            : Pos.Percent(50),
                     Width  = Dim.Percent(50),
                     Height = Dim.Percent(50)
                 };
+                pane.ColorScheme = lightScheme;
                 root.Add(pane);
                 panes[i] = pane;
                 paneForType[DefaultTypes[i]] = i;
@@ -70,7 +97,7 @@ namespace Baja.TerminalTelemetry
                     panes[idx].Push(t, v);
             };
 
-            // ── global key-handling ───────────────────────────────────
+            // ── global key‑handling ───────────────────────────────────
             int active = 0;
             panes[active].SetActive(true);
 
@@ -96,21 +123,21 @@ namespace Baja.TerminalTelemetry
                     return true;
                 }
 
-                // data-type picker
-                if (k == (Key)'t')
+                // data‑type picker
+                if (k == (Key) 't')
                 {
                     ShowTypeDialog(panes[active], active);
                     return true;
                 }
 
-                // COMMAND picker ─ NEW
-                if (k == (Key)'c')
+                // send command
+                if (k == (Key) 'c')
                 {
                     ShowCommandDialog();
                     return true;
                 }
 
-                return false;          // not handled
+                return false; // not handled
             };
 
             // refresh plots every 100 ms
@@ -128,10 +155,12 @@ namespace Baja.TerminalTelemetry
 
             void ShowTypeDialog(PlotPane pane, int paneIdx)
             {
-                var types  = Enum.GetValues<DataType>().ToArray();
-                var list   = new ListView(types.Select(t => t.ToString()).ToList())
-                             { Width = Dim.Fill(), Height = Dim.Fill() };
-                var dlg    = new Dialog("Select DataType", 60, 20, new Button("Cancel", true));
+                var types = Enum.GetValues<DataType>().ToArray();
+                var list  = new ListView(types.Select(t => t.ToString()).ToList())
+                            { Width = Dim.Fill(), Height = Dim.Fill() };
+
+                var dlg   = new Dialog("Select DataType", 60, 20, new Button("Cancel", is_default: true))
+                { ColorScheme = lightScheme };
                 dlg.Add(list);
 
                 list.OpenSelectedItem += args =>
@@ -149,10 +178,12 @@ namespace Baja.TerminalTelemetry
 
             void ShowCommandDialog()
             {
-                var cmds  = Enum.GetValues<Command>().ToArray();
-                var list  = new ListView(cmds.Select(c => $"{c} ({(int)c})").ToList())
-                            { Width = Dim.Fill(), Height = Dim.Fill() };
-                var dlg   = new Dialog("Send Command", 50, 20, new Button("Cancel", true));
+                var cmds = Enum.GetValues<Command>().ToArray();
+                var list = new ListView(cmds.Select(c => $"{c} ({(int)c})").ToList())
+                           { Width = Dim.Fill(), Height = Dim.Fill() };
+
+                var dlg  = new Dialog("Send Command", 50, 20, new Button("Cancel", is_default: true))
+                { ColorScheme = lightScheme };
                 dlg.Add(list);
 
                 list.OpenSelectedItem += args =>
@@ -169,20 +200,26 @@ namespace Baja.TerminalTelemetry
         }
     }
 
-    // ─────────────────────────── PlotPane (unchanged except comments) ──
+    // ─────────────────────────── PlotPane ──────────────────────────────
     internal class PlotPane : Window
     {
         private const int W = 60, H = 18, MaxPts = W - 6;
 
         private readonly TextView view;
-        private readonly List<double> xs = new(), ys = new();
+        private readonly List<double> xs = new();
+        private readonly List<double> ys = new();
 
         public PlotPane(DataType dt) : base(dt.ToString())
         {
             view = new TextView
             {
-                X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill(),
-                ReadOnly = true, WordWrap = false, Multiline = true
+                X = 0,
+                Y = 0,
+                Width  = Dim.Fill(),
+                Height = Dim.Fill(),
+                ReadOnly  = true,
+                WordWrap  = false,
+                Multiline = true
             };
             Add(view);
 
@@ -196,8 +233,13 @@ namespace Baja.TerminalTelemetry
 
         public void Push(float t, float v)
         {
-            xs.Add(t); ys.Add(v);
-            if (xs.Count > MaxPts) { xs.RemoveAt(0); ys.RemoveAt(0); }
+            xs.Add(t);
+            ys.Add(v);
+            if (xs.Count > MaxPts)
+            {
+                xs.RemoveAt(0);
+                ys.RemoveAt(0);
+            }
         }
 
         public void Refresh()
@@ -205,7 +247,18 @@ namespace Baja.TerminalTelemetry
             if (xs.Count == 0) return;
 
             var plt = new Plot(W, H);
+
+            // main data series
             plt.AddSeries(xs, ys);
+
+            // extra 0‑line for scale reference
+            if (xs.Count > 1)
+            {
+                var zeros = Enumerable.Repeat(0.0, xs.Count).ToList();
+                plt.AddSeries(xs, zeros,
+                    new PointPen(SystemPointBrushes.Braille, ConsoleColor.DarkGray));
+            }
+
             plt.Draw();
 
             var img = plt.GetImage();
@@ -223,15 +276,16 @@ namespace Baja.TerminalTelemetry
         public void ChangeType(DataType dt)
         {
             Title = dt.ToString();
-            xs.Clear(); ys.Clear();
+            xs.Clear();
+            ys.Clear();
         }
     }
 
     // helper: wipe dictionary entries by predicate
     internal static class DictExt
     {
-        public static void RemoveAll<K,V>(this IDictionary<K,V> d,
-                                          Func<KeyValuePair<K,V>, bool> pred)
+        public static void RemoveAll<K, V>(this IDictionary<K, V> d,
+                                           Func<KeyValuePair<K, V>, bool> pred)
         {
             foreach (var k in d.Where(pred).Select(kv => kv.Key).ToList())
                 d.Remove(k);
