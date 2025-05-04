@@ -24,7 +24,7 @@ namespace Baja.TerminalTelemetry
                 streams[(DataType)i] = new DataStream((DataType)i, string.Empty, string.Empty);
 
             // main update 60 Hz
-            pump = new Timer(1000.0 / 60);
+            pump = new Timer(1000.0 / 30);
             pump.Elapsed += (_, __) => Update();
             pump.AutoReset = true; pump.Start();
 
@@ -65,6 +65,7 @@ namespace Baja.TerminalTelemetry
 
                 // fire event
                 SampleReady?.Invoke(dt, t, value);
+
             }
         }
 

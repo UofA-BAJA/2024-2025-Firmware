@@ -206,8 +206,11 @@ namespace Baja.TerminalTelemetry
         private const int W = 60, H = 18, MaxPts = W - 6;
 
         private readonly TextView view;
+        private readonly Label    valueLbl;        // current‑reading box
         private readonly List<double> xs = new();
         private readonly List<double> ys = new();
+
+        private double latest;                     // most recent value
 
         public PlotPane(DataType dt) : base(dt.ToString())
         {
@@ -223,6 +226,17 @@ namespace Baja.TerminalTelemetry
             };
             Add(view);
 
+            // ── current‑value box (top‑right) ───────────────
+            valueLbl = new Label(string.Empty)
+            {
+                X = Pos.AnchorEnd(12),   // 12‑char wide box, right‑aligned
+                Y = 0,
+                Width  = 12,
+                Height = 1,
+                TextAlignment = TextAlignment.Centered
+            };
+            Add(valueLbl);
+
             Border.BorderStyle     = BorderStyle.Single;
             Border.BorderThickness = new Thickness(1);
             Border.BorderBrush     = Color.Gray;
@@ -233,6 +247,7 @@ namespace Baja.TerminalTelemetry
 
         public void Push(float t, float v)
         {
+            latest = v;                 // capture latest reading
             xs.Add(t);
             ys.Add(v);
             if (xs.Count > MaxPts)
@@ -245,6 +260,10 @@ namespace Baja.TerminalTelemetry
         public void Refresh()
         {
             if (xs.Count == 0) return;
+
+            // update the value box (two decimals)
+            valueLbl.Text = $" {latest:0.##} ";
+            valueLbl.SetNeedsDisplay();
 
             var plt = new Plot(W, H);
 
@@ -278,6 +297,7 @@ namespace Baja.TerminalTelemetry
             Title = dt.ToString();
             xs.Clear();
             ys.Clear();
+            latest = 0;
         }
     }
 

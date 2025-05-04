@@ -26,6 +26,7 @@ public enum DataType{
     IMU_ACCELERATION_Z,
     CVT_TEMPERATURE,
     // The reserves are here because we can have a total of 32 data types that can be transmitted live
+    DISTANCE,
     RESERVE_16,
     RESERVE_17,
     RESERVE_18,
