@@ -1,4 +1,4 @@
-// Program.cs  ─────────────────────────────────────────────────────────────
+﻿// Program.cs  ─────────────────────────────────────────────────────────────
 // Terminal.Gui 1.5.0  •  ConsolePlot 0.1.0
 //
 // Controls
@@ -90,7 +90,7 @@ namespace Baja.TerminalTelemetry
             }
 
             // ── data layer ─────────────────────────────────────────────
-            var dm = new DataManager("/dev/ttyUSB0", 115_200);
+            var dm = new DataManager("COM9", 115_200);
             dm.SampleReady += (dt, t, v) =>
             {
                 if (paneForType.TryGetValue(dt, out var idx))
