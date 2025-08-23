@@ -11,14 +11,16 @@ namespace BajaWildcatRacing
     void LiveDataStream::enqueue(float data){
         dataQueue.push(data);
     }
-
+    
     float LiveDataStream::dequeue(){
-
+        
         if(dataQueue.empty()){
-            return 0;
+            return lastVal;
         }
 
         float data = dataQueue.front();
+        lastVal = data;
+        
 
         dataQueue.pop();
         return data;

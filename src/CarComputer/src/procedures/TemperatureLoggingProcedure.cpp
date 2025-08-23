@@ -35,7 +35,6 @@ class TemperatureLoggingProcedure : public Procedure{
 
             float cvt_temperature = drivetrainSubsystem.getCVTTemperature();
 
-            coms.sendData(DataTypes::CVT_TEMPERATURE, cvt_temperature);
 
             dataStorage.storeData(cvt_temperature, DataTypes::CVT_TEMPERATURE);
             coms.sendData(DataTypes::CVT_TEMPERATURE, cvt_temperature);

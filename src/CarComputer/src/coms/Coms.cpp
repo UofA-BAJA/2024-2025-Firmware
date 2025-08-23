@@ -172,7 +172,6 @@ namespace BajaWildcatRacing
 
             for(int i = 0; i < liveStreamCount; i++){
 
-
                 if(i % maxPackets == 0){
                     currPacket++;
                 }
@@ -188,6 +187,8 @@ namespace BajaWildcatRacing
                     continue;
                 }
 
+
+                
                 // The range of getDataType() should be from 0 to 31. This is described in the packet
                 // description of the live data stream packets.
                 packets[currPacket].streamMask |= 1 << liveDataStreams[i]->getDataType();

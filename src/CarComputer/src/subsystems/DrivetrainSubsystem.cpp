@@ -13,9 +13,10 @@ namespace BajaWildcatRacing
 
     float DrivetrainSubsystem::getCVTTemperature(){
         float temperature = cvtTemperature.getLatestTemperature();
-        if(temperature > 40) cvtIsHot = true;
+        float tempFarenheit = (temperature * (9.0f / 5.0f)) + 32.0f;
+        if(tempFarenheit > 200.0f) cvtIsHot = true;
         else cvtIsHot = false;
-        return temperature;
+        return tempFarenheit;
     }
 
     bool DrivetrainSubsystem::isCVTHot(){
@@ -27,24 +28,30 @@ namespace BajaWildcatRacing
     }
 
     float DrivetrainSubsystem::getFrontRightRPM(){
-        return spedometer.getFrontRightRPM();
+        float rpm = spedometer.getFrontRightRPM();
+        return (rpm < 0.0) ? 0.0f : rpm;
     }
 
     float DrivetrainSubsystem::getFrontLeftRPM(){
-        return spedometer.getFrontLeftRPM();
+        float rpm = spedometer.getFrontLeftRPM();
+        return (rpm < 0.0) ? 0.0f : rpm;
     }
 
     float DrivetrainSubsystem::getRearRPM(){
-        return spedometer.getRearRPM();
+        float rpm = spedometer.getRearRPM();
+        return (rpm < 0.0) ? 0.0f : rpm;
     }
 
     float DrivetrainSubsystem::getCarSpeedMetersSec(){
-        return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM()) / 2.0) * 0.0289f; //Magical number
+        // return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM()) / 2.0) * 0.0289f; //Magical number
+        return spedometer.getFrontRightRPM() * 0.0289f;
 
     }
 
     float DrivetrainSubsystem::getCarSpeedMPH(){
         return ((spedometer.getFrontRightRPM() + spedometer.getFrontLeftRPM()) / 2.0) * 0.0647f; //Slightly different magic number
+        return spedometer.getFrontRightRPM() * 0.0647f;
+
     }
 
 }

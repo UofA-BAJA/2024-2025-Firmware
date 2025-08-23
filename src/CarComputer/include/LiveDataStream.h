@@ -1,7 +1,7 @@
 #ifndef LIVEDATASTREAM_H
 #define LIVEDATASTREAM_H
 
-
+#include <iostream>
 #include <queue>
 #include "DataTypes.h"
 
@@ -22,6 +22,7 @@ namespace BajaWildcatRacing
 
         private:
             DataTypes dataType;
+            float lastVal = 0.0f;
 
             std::queue<float> dataQueue;
 
