@@ -65,7 +65,6 @@ class IMULoggingProcedure : public Procedure{
         }
 
         void end() override {
-            // ! Remember to reset any local variables! This class does not actually get destroyed, only reused!
             std::cout << "IMU procedure ended" << std::endl;
         }
 
