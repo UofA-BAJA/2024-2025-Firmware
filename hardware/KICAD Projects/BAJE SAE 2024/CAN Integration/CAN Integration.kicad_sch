@@ -1,0 +1,7175 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5a977291-655d-4953-aea5-c3a0e1b496a1")
+	(paper "User" 280.01 200)
+	(lib_symbols
+		(symbol "CAN Integration-altium-import:GND_POWER_GROUND"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name 'GND'"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_POWER_GROUND_0_0"
+				(polyline
+					(pts
+						(xy -2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -3.302) (xy 1.778 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -4.064) (xy 1.016 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 -4.826) (xy 0.254 -4.826)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:VCC_BAR"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "VCC"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name 'VCC'"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VCC_BAR_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_CRYSTAL-ECS-100-20-5PVX_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "10MHz Â±30ppm Crystal 20pF 60 Ohms HC-49/US"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*HC-49US_L11.5-W4.5-P4.88*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_CRYSTAL-ECS-100-20-5PVX_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy -1.778 1.016) (xy 1.778 1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -1.016) (xy 1.778 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 0.381) (xy -1.524 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 -0.381) (xy 1.524 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.016) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.524 0.381) (xy -1.524 0.381)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.524 -0.381) (xy 1.524 0.381)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_Cap_Tantalum_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "SMD Tantalum Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*tantalum{space}{space}A*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_Cap_Tantalum_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy -2.032 -3.302) (xy 2.032 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 -2.286) (xy -0.508 -2.286)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -1.778) (xy -1.016 -2.794)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -4.318) (xy 0 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -4.318)
+					(mid 0.9856 -4.4393)
+					(end 1.9124 -4.7961)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.0163 -4.8535)
+					(mid -1.0431 -4.4542)
+					(end 0 -4.318)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_LEDCHIP-LED0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "SMD lamp beads"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*CHIPLED_0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_LEDCHIP-LED0603_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy -1.524 -0.025) (xy 0 -2.565) (xy 1.524 -0.025) (xy -1.524 -0.025)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.565) (xy -1.397 -2.565)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.413 -3.073) (xy 4.191 -4.851)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.429 -2.057) (xy 5.207 -3.835)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.191 -4.851) (xy 3.683 -3.835) (xy 3.175 -4.343) (xy 4.191 -4.851)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.207 -3.835) (xy 4.699 -2.819) (xy 4.191 -3.327) (xy 5.207 -3.835)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 5.08)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_MCP2515_adafruit.SCHLIB"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "CAN Controller"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*SOIC-18_L11.6-W7.5-P1.27-LS10.3-BL*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_MCP2515_adafruit.SCHLIB_1_0"
+				(rectangle
+					(start 27.94 0)
+					(end 0 -38.1)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -5.08 0)
+					(length 5.08)
+					(name "~{TX0RTS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -7.62 0)
+					(length 5.08)
+					(name "~{RX0BF}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -10.16 0)
+					(length 5.08)
+					(name "~{TX1RTS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -12.7 0)
+					(length 5.08)
+					(name "~{RX1BF}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -15.24 0)
+					(length 5.08)
+					(name "~{TX2RTS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at -5.08 -17.78 0)
+					(length 5.08)
+					(name "~{RESET}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive clock
+					(at -5.08 -27.94 0)
+					(length 5.08)
+					(name "CLKOUT/SOF"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -30.48 0)
+					(length 5.08)
+					(name "OSC2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -33.02 0)
+					(length 5.08)
+					(name "OSC1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -5.08 180)
+					(length 5.08)
+					(name "RXCAN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -7.62 180)
+					(length 5.08)
+					(name "TXCAN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at 33.02 -15.24 180)
+					(length 5.08)
+					(name "~{CS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -17.78 180)
+					(length 5.08)
+					(name "SO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -20.32 180)
+					(length 5.08)
+					(name "SI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -22.86 180)
+					(length 5.08)
+					(name "SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at 33.02 -25.4 180)
+					(length 5.08)
+					(name "~{INT}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -30.48 180)
+					(length 5.08)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 33.02 -33.02 180)
+					(length 5.08)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_Res_0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, ±1%, 0.100W"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*R0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_Res_0603_adafruit.IntLib_1_0"
+				(rectangle
+					(start 2.54 0.783)
+					(end -2.54 -0.79)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_0_TJA1050DRG_adafruit.SCHLIB"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "CAN Transiver"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*SOIC-8E*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_0_TJA1050DRG_adafruit.SCHLIB_1_0"
+				(rectangle
+					(start 16.51 0)
+					(end 0 -15.24)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 5.08)
+					(name "RXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 5.08)
+					(name "TXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 5.08)
+					(name "STB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -12.7 0)
+					(length 5.08)
+					(name "SPLIT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 -2.54 180)
+					(length 5.08)
+					(name "CANH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 -5.08 180)
+					(length 5.08)
+					(name "CANL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 -10.16 180)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 -12.7 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_1_Res_0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, ±1%, 0.100W"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*R0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_1_Res_0603_adafruit.IntLib_1_0"
+				(rectangle
+					(start 0.79 2.54)
+					(end -0.783 -2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_2_Cap_0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*C0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_2_Cap_0603_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy -2.032 4.318) (xy 2.032 4.318)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0 4.318)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.032 3.302) (xy -2.032 3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_2_mirrored_Header 2_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Header, 2-Pin"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*HDR1X2*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_2_mirrored_Header 2_adafruit.IntLib_1_0"
+				(rectangle
+					(start 7.62 7.62)
+					(end 0 0)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_2_mirrored_Header 7_Miscellaneous Connectors.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Header, 7-Pin"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*HDR1X7*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_2_mirrored_Header 7_Miscellaneous Connectors.IntLib_1_0"
+				(rectangle
+					(start 7.62 20.32)
+					(end 0 0)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 17.78 0)
+					(length 5.08)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 15.24 0)
+					(length 5.08)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 12.7 0)
+					(length 5.08)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 10.16 0)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 7.62 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_2_mirrored_TERMINAL-3.50-2P_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Screw Terminal 3.5mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*TERMINAL-BLOCK-2-PIN-3.5MM-ROUND-PAD*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_2_mirrored_TERMINAL-3.50-2P_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy 0 3.81) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.81) (xy 7.62 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 3.81) (xy 0 3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 3.81)
+					(end 0 -3.81)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 208 224 227 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -3.81) (xy 7.62 3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -2.54 1.27 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -1.27 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_3_Cap_0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*C0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_3_Cap_0603_adafruit.IntLib_1_0"
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -4.318 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.318 -2.032) (xy -4.318 2.032)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 2.032) (xy -3.302 -2.032)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -3.302 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 180)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CAN Integration-altium-import:root_3_Res_0603_adafruit.IntLib"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, ±1%, 0.100W"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*R0603*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "root_3_Res_0603_adafruit.IntLib_1_0"
+				(rectangle
+					(start 0.783 2.54)
+					(end -0.79 -2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "8MHz"
+		(exclude_from_sim no)
+		(at 68.58 98.3996 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2dbcd598-89a6-4df2-ad50-e4d54e796c37")
+	)
+	(text "Temperature Range: -40*C to +85*C"
+		(exclude_from_sim no)
+		(at 91.44 113.6396 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "31776d59-caff-4dfd-91bf-8d5e4893c38d")
+	)
+	(text "CAN Transiver"
+		(exclude_from_sim no)
+		(at 181.61 98.3996 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+			(justify left bottom)
+		)
+		(uuid "6f76ec27-e5e7-4eb7-847c-65153e2af127")
+	)
+	(text "CAN Controller"
+		(exclude_from_sim no)
+		(at 96.012 58.7756 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+			(justify left bottom)
+		)
+		(uuid "83756df1-0917-4b39-848b-1e0356cea94b")
+	)
+	(text "MCP251 CAN Bus 总线 Module"
+		(exclude_from_sim no)
+		(at 39.878 133.9596 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "8ca8bd61-b506-4c5e-b259-89f00a2a04d1")
+	)
+	(text "22pF"
+		(exclude_from_sim no)
+		(at 71.374 94.8436 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "95aceef0-9281-4f04-9a43-a8a473f724c1")
+	)
+	(text "120R"
+		(exclude_from_sim no)
+		(at 218.694 71.9836 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "98671a40-ab13-451c-995e-abe45aea6d7d")
+	)
+	(text "100nF"
+		(exclude_from_sim no)
+		(at 219.964 98.6536 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a0b61697-d2a9-4f0c-be80-3ad077d19445")
+	)
+	(text "22pF"
+		(exclude_from_sim no)
+		(at 72.39 105.2576 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "adb71b69-e565-40a6-9460-3239e00aea32")
+	)
+	(text "10uF/16V"
+		(exclude_from_sim no)
+		(at 24.13 92.0496 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ae1d4067-535e-46c9-af0a-596345ec92bb")
+	)
+	(text "10K"
+		(exclude_from_sim no)
+		(at 76.454 82.9056 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ae9c5567-7840-4cc9-a8a8-19189e4ea40a")
+	)
+	(text "VIN:  2.7V-5.5V."
+		(exclude_from_sim no)
+		(at 91.44 108.5596 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "be123181-1b31-40b4-bbe7-56878fed7295")
+	)
+	(text "100nF"
+		(exclude_from_sim no)
+		(at 64.262 89.0016 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c04d7dd7-7c7b-4042-85cc-54553cc1c3f0")
+	)
+	(text "1K"
+		(exclude_from_sim no)
+		(at 48.514 80.8736 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd56ef9a-df6a-42fe-b22f-c93617840cc4")
+	)
+	(text "SPI MODES:  0,0 & 1,1"
+		(exclude_from_sim no)
+		(at 91.44 111.0996 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fbe6a707-3de2-40b4-b2b9-862d9971ec6e")
+	)
+	(junction
+		(at 62.23 79.3496)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2bf47096-6d8c-403f-a345-44f47e6f5991")
+	)
+	(junction
+		(at 62.23 92.0496)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "53e784f2-b0e9-4f33-a0a2-226f90699b93")
+	)
+	(junction
+		(at 226.06 76.8096)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b02c2d9e-b4ec-43d6-a902-5bc8cbbfd953")
+	)
+	(junction
+		(at 62.23 102.2096)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cf56b534-faea-4eb2-a10e-b4d5664529f0")
+	)
+	(junction
+		(at 231.14 79.3496)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "db84b740-0d87-44a8-b71e-62dab6714b9e")
+	)
+	(wire
+		(pts
+			(xy 128.27 103.4796) (xy 128.27 94.5896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01036387-0132-4fa8-81d2-e975f2a619c4")
+	)
+	(wire
+		(pts
+			(xy 232.41 93.3196) (xy 226.06 93.3196)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "024513b6-d539-4f7e-bda7-c566b7cdc23f")
+	)
+	(wire
+		(pts
+			(xy 153.67 85.6996) (xy 153.67 88.2396)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06a72ca6-2602-4368-8a1b-464b3c879ed8")
+	)
+	(wire
+		(pts
+			(xy 62.23 89.5096) (xy 62.23 92.0496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08644e6f-8fe5-405d-967f-62839b9cf76c")
+	)
+	(wire
+		(pts
+			(xy 134.62 100.9396) (xy 134.62 84.4296)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0931c9c4-8a4e-45de-ab2c-f5ce92882892")
+	)
+	(wire
+		(pts
+			(xy 137.16 81.8896) (xy 124.46 81.8896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ceea670-9f41-4561-9582-8be1bde2d674")
+	)
+	(wire
+		(pts
+			(xy 173.99 84.4296) (xy 173.99 86.9696)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0df3c82c-9b05-4106-aa2c-2a077036e635")
+	)
+	(wire
+		(pts
+			(xy 231.14 65.3796) (xy 231.14 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a623f89-e017-4822-8954-0689d19b4512")
+	)
+	(wire
+		(pts
+			(xy 137.16 98.3996) (xy 137.16 81.8896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ef9b33b-1c46-4da5-b803-518849d7b381")
+	)
+	(wire
+		(pts
+			(xy 156.21 98.3996) (xy 137.16 98.3996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20a22ff5-0581-41ae-aa26-89d14743b6f4")
+	)
+	(wire
+		(pts
+			(xy 86.36 94.5896) (xy 82.55 94.5896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23c586e3-9cf3-4996-b304-e046f9ec6fc7")
+	)
+	(wire
+		(pts
+			(xy 226.06 74.2696) (xy 226.06 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25df4fa7-051a-441a-ba49-be2bfba8660e")
+	)
+	(wire
+		(pts
+			(xy 226.06 62.8396) (xy 226.06 64.1096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27374426-3f2c-48f3-a358-ad0f54100979")
+	)
+	(wire
+		(pts
+			(xy 71.12 79.3496) (xy 62.23 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "274acf40-1065-467f-9804-c9afa360e0bc")
+	)
+	(wire
+		(pts
+			(xy 232.41 62.8396) (xy 226.06 62.8396)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bd9fd8b-3723-43e7-ab4c-343851482e69")
+	)
+	(wire
+		(pts
+			(xy 232.41 65.3796) (xy 231.14 65.3796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32cae341-33af-4896-8ceb-40cf0e89a5c6")
+	)
+	(wire
+		(pts
+			(xy 35.56 104.7496) (xy 35.56 90.7796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38074968-9518-4953-a04e-6aa229490b11")
+	)
+	(wire
+		(pts
+			(xy 156.21 90.7796) (xy 149.86 90.7796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "418050b7-28bf-49e0-8735-a17a8faf564d")
+	)
+	(wire
+		(pts
+			(xy 146.05 83.1596) (xy 146.05 85.6996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4abd8b92-11fb-454e-849d-1a5f52bbee8a")
+	)
+	(wire
+		(pts
+			(xy 142.24 76.8096) (xy 142.24 93.3196)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bbf4f67-3c5d-4a7c-8dc8-3ca485408a11")
+	)
+	(wire
+		(pts
+			(xy 146.05 79.3496) (xy 177.8 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5124c3b6-0c05-4012-8f79-a616bac302f4")
+	)
+	(wire
+		(pts
+			(xy 153.67 88.2396) (xy 156.21 88.2396)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56bb72a6-9f64-488e-98dd-3e7cfe790779")
+	)
+	(wire
+		(pts
+			(xy 134.62 84.4296) (xy 124.46 84.4296)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58a0cbc1-fe5d-4564-bca8-838e89a02541")
+	)
+	(wire
+		(pts
+			(xy 204.47 76.8096) (xy 226.06 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e462cb2-ac93-4d66-be0e-84055a4d6b14")
+	)
+	(wire
+		(pts
+			(xy 82.55 94.5896) (xy 82.55 102.2096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f3ba594-bf91-4b8e-a4c7-506fc7127a5b")
+	)
+	(wire
+		(pts
+			(xy 149.86 83.1596) (xy 146.05 83.1596)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f557f10-86f3-497d-941d-df9a3ce7603a")
+	)
+	(wire
+		(pts
+			(xy 148.59 66.6496) (xy 148.59 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6540c887-28f4-41eb-8b0b-a36e9e4a13d1")
+	)
+	(wire
+		(pts
+			(xy 46.99 104.7496) (xy 46.99 95.8596)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b0ebd79-f38e-4b80-9758-57add68e40a9")
+	)
+	(wire
+		(pts
+			(xy 46.99 70.4596) (xy 46.99 72.9996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ba1a2e0-e8f3-466d-ac69-d83cf632b30b")
+	)
+	(wire
+		(pts
+			(xy 142.24 93.3196) (xy 156.21 93.3196)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "748ed57e-8c52-4de9-b8ab-a5f95499d10f")
+	)
+	(wire
+		(pts
+			(xy 226.06 76.8096) (xy 234.95 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74daf00f-b21e-41be-9ac1-105446a2d0c5")
+	)
+	(wire
+		(pts
+			(xy 231.14 79.3496) (xy 231.14 90.7796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7558fdd0-8655-4b3d-a556-ebb1cd7f08ea")
+	)
+	(wire
+		(pts
+			(xy 177.8 84.4296) (xy 173.99 84.4296)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b17f182-37be-45d3-a179-17c276f92ff4")
+	)
+	(wire
+		(pts
+			(xy 62.23 102.2096) (xy 66.675 102.2096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7eaccf2c-a923-44f6-bfb8-44ec140adc95")
+	)
+	(wire
+		(pts
+			(xy 208.28 84.4296) (xy 204.47 84.4296)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80a07f1a-ac52-49ed-b568-b2d81f911b4c")
+	)
+	(wire
+		(pts
+			(xy 124.46 76.8096) (xy 142.24 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8fab07eb-1a50-4948-b0c4-4cdba733ee36")
+	)
+	(wire
+		(pts
+			(xy 132.08 103.4796) (xy 132.08 86.9696)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9189404b-82de-4ef6-885a-584269271c59")
+	)
+	(wire
+		(pts
+			(xy 128.27 94.5896) (xy 124.46 94.5896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "936395af-2315-4d53-a2c0-1e03946e9b49")
+	)
+	(wire
+		(pts
+			(xy 128.27 92.0496) (xy 124.46 92.0496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "991c7fd9-0353-469a-bc2a-a50887a1b78f")
+	)
+	(wire
+		(pts
+			(xy 149.86 90.7796) (xy 149.86 83.1596)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ef3bb62-02f7-4ec5-98c8-6ac781948231")
+	)
+	(wire
+		(pts
+			(xy 124.46 69.1896) (xy 146.05 69.1896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f35bde2-d2af-4d64-860f-01519c4c932e")
+	)
+	(wire
+		(pts
+			(xy 231.14 79.3496) (xy 234.95 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2de7557-e299-47da-96cb-c84d7d0a8097")
+	)
+	(wire
+		(pts
+			(xy 156.21 95.8596) (xy 139.7 95.8596)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab465e6a-64f1-46e2-b607-c8b1ddcb4a30")
+	)
+	(wire
+		(pts
+			(xy 139.7 95.8596) (xy 139.7 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acc0a966-8264-4552-ae9b-717d919fcaa7")
+	)
+	(wire
+		(pts
+			(xy 218.44 103.4796) (xy 218.44 98.3996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acc136f5-d84e-4eca-8232-f7750e50efed")
+	)
+	(wire
+		(pts
+			(xy 74.295 102.2096) (xy 82.55 102.2096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae5bfed6-ed5a-41de-afb2-ba20ef574e8a")
+	)
+	(wire
+		(pts
+			(xy 146.05 69.1896) (xy 146.05 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aff61941-6322-4fa2-bb2a-981213555374")
+	)
+	(wire
+		(pts
+			(xy 74.295 92.0496) (xy 86.36 92.0496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b64f0b76-9a66-46be-9546-2952a2b21fe9")
+	)
+	(wire
+		(pts
+			(xy 148.59 76.8096) (xy 177.8 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8c32334-8d41-4f68-91e6-5edfb72797bf")
+	)
+	(wire
+		(pts
+			(xy 62.23 92.0496) (xy 66.675 92.0496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9b41bfd-e3d3-438f-bbf9-42788ec74460")
+	)
+	(wire
+		(pts
+			(xy 62.23 102.2096) (xy 62.23 104.7496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba23ddb2-3732-4fe7-bd37-ced4d96ef80f")
+	)
+	(wire
+		(pts
+			(xy 139.7 79.3496) (xy 124.46 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc02688a-7a6c-4879-b678-21e654399c9f")
+	)
+	(wire
+		(pts
+			(xy 124.46 66.6496) (xy 148.59 66.6496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c00b36d3-3cb9-42a6-96fb-44861531661b")
+	)
+	(wire
+		(pts
+			(xy 226.06 93.3196) (xy 226.06 76.8096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3306176-7384-4579-bec7-2d4fa352d475")
+	)
+	(wire
+		(pts
+			(xy 62.23 79.3496) (xy 62.23 81.8896)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9d7d1b2-3436-4d27-90a6-2deedcb2ed4d")
+	)
+	(wire
+		(pts
+			(xy 204.47 79.3496) (xy 231.14 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d085bd9a-5d31-4dc5-bfc3-e4cd84ed279d")
+	)
+	(wire
+		(pts
+			(xy 132.08 86.9696) (xy 124.46 86.9696)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d535e6ac-bd37-4c05-8e7b-e915d87efa88")
+	)
+	(wire
+		(pts
+			(xy 156.21 100.9396) (xy 134.62 100.9396)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de84bbc7-fbb9-4138-bae9-4680b7fd6982")
+	)
+	(wire
+		(pts
+			(xy 208.28 86.9696) (xy 204.47 86.9696)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df43c60c-2851-4295-a8bf-c8aebf9756d1")
+	)
+	(wire
+		(pts
+			(xy 156.21 103.4796) (xy 132.08 103.4796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e41cfb0c-d7d1-4d13-960d-7a10420c3a73")
+	)
+	(wire
+		(pts
+			(xy 62.23 70.4596) (xy 62.23 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e64f12e9-0602-463a-a30e-464f79aba5b0")
+	)
+	(wire
+		(pts
+			(xy 62.23 102.2096) (xy 62.23 92.0496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7713d5e-2632-4377-a798-b0676b129fc1")
+	)
+	(wire
+		(pts
+			(xy 35.56 70.4596) (xy 35.56 83.1596)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8fabe4d-aff6-4ce5-bfa5-f41c567d0d15")
+	)
+	(wire
+		(pts
+			(xy 86.36 79.3496) (xy 81.28 79.3496)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef4c91cf-be2b-482b-b410-76728c6c3bb0")
+	)
+	(wire
+		(pts
+			(xy 218.44 85.6996) (xy 218.44 90.7796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f65e9de8-4890-4a70-930c-5521bb036074")
+	)
+	(wire
+		(pts
+			(xy 231.14 90.7796) (xy 232.41 90.7796)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa41feb3-e9ed-42c3-bb79-ef2801471ff4")
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 35.56 70.4596 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "09268537-8e0f-4cfd-83b3-82753ac2d1c5")
+		(property "Reference" "#PWR?"
+			(at 35.56 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 35.56 66.6496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 35.56 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "f479de98-ea80-4d9d-ba2e-19a0061e4728")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 218.44 103.4796 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0b8a7b21-5a9d-4418-a7a6-40eb6eda6ed1")
+		(property "Reference" "#PWR?"
+			(at 218.44 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 218.44 109.8296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 218.44 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 218.44 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "0955763e-c7cb-4b13-abc4-13f26c016245")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_CRYSTAL-ECS-100-20-5PVX_adafruit.IntLib")
+		(at 77.47 97.1296 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "129edefd-c198-45e2-9805-cd6591e44de1")
+		(property "Reference" "X1"
+			(at 79.502 97.3836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 81.437 100.4016 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "HC-49US_L11.5-W4.5-P4.88"
+			(at 77.47 97.1296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 77.47 97.1296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10MHz Â±30ppm Crystal 20pF 60 Ohms HC-49/US"
+			(at 77.47 97.1296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "AVAILABILITY" "Warning"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SNAPEDA_LINK" "https://www.snapeda.com/parts/ECS-100-20-5PVX/ECS%20Inc./view-part/2721546/?ref=snap"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" "ECS-100-20-5PVX"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "8MHz"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PRICE" "None"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "HC49/US ECS International"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MF" "ECS Inc."
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "CHECK_PRICES" "https://www.snapeda.com/parts/ECS-100-20-5PVX/ECS%20Inc./view-part/2721546/?ref=eda"
+			(at 75.438 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2f6386c4-6db3-49d4-9ae7-309217bad846")
+		)
+		(pin "2"
+			(uuid "fc9130a6-40ce-481c-b5de-10a6daf57a40")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "X1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_3_Cap_0603_adafruit.IntLib")
+		(at 74.295 92.0496 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1910228e-0735-4e90-8a65-8be73fa7ca5e")
+		(property "Reference" "C3"
+			(at 66.294 91.5416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "C0603"
+			(at 74.295 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 74.295 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+			(at 74.295 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "C0603-N.C."
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-11-23"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "22pF"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "VOLTS" "6.3V"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "20069060"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 66.167 89.7636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cb955fd6-4546-4762-954d-f59695f1a791")
+		)
+		(pin "2"
+			(uuid "af8a31d7-faa9-4f6d-8f8e-cc50a0982ce6")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "C3")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 62.23 104.7496 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1ce46e77-e245-45f0-a857-dd2a3f89a272")
+		(property "Reference" "#PWR?"
+			(at 62.23 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 62.23 111.0996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 62.23 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "92925baa-5ab8-4ede-9305-82fb6e313c0e")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_mirrored_TERMINAL-3.50-2P_adafruit.IntLib")
+		(at 237.49 78.0796 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "250c46dc-1ef1-4e40-b65c-3753ac7cb82d")
+		(property "Reference" "P4"
+			(at 237.236 84.6836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Terminal Block 3.5mmPitch: 3,5 mmNumber of pins: 2Created by Rembrandt Electronicswww.rembrandtelectronics.com"
+			(at 251.46 77.1906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TERMINAL-BLOCK-2-PIN-3.5MM-ROUND-PAD"
+			(at 237.49 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Screw Terminal 3.5mm"
+			(at 237.49 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SYMBOLNAME_1" "TERMINAL-BLOCK-PIN-3.5MM"
+			(at 234.442 74.0156 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "GATENAME_1" "-1"
+			(at 234.442 74.0156 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "373ff6c4-37b2-4fc0-acee-5ae3b701202f")
+		)
+		(pin "2"
+			(uuid "d0ce22bf-4ca2-4816-b895-fe4cb104c61f")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "P4")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 128.27 103.4796 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "29f62ea6-a08e-4309-85f1-fc6958ca8eb5")
+		(property "Reference" "#PWR?"
+			(at 128.27 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 128.27 109.8296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 128.27 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 103.4796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "4a47282a-cabb-4d26-9cc6-d001184fc482")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_Cap_0603_adafruit.IntLib")
+		(at 62.23 89.5096 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2bd823d2-1496-4ccd-aa0b-fb0bffb89524")
+		(property "Reference" "C2"
+			(at 58.42 84.4296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "C0603"
+			(at 62.23 89.5096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 89.5096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+			(at 62.23 89.5096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "C0603-N.C."
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-11-23"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100nF"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "VOLTS" "6.3V"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "20069060"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 59.944 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1d9af0be-eddf-426d-9ade-f1371755fdbb")
+		)
+		(pin "2"
+			(uuid "78e9d05c-9986-4759-bd3b-66586a589459")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "C2")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 146.05 85.6996 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3a19f4f7-f767-4eb1-b10e-f74a4324f1f2")
+		(property "Reference" "#PWR?"
+			(at 146.05 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 146.05 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "e4a2a16b-87b5-4ab0-bba3-2bdb0a18a86a")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_mirrored_Header 2_adafruit.IntLib")
+		(at 237.49 67.9196 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "45baddb9-a573-4556-8725-c8f7407fbe27")
+		(property "Reference" "P3"
+			(at 237.49 60.2996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Header 2"
+			(at 237.49 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "HDR1X2"
+			(at 237.49 67.9196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 67.9196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Header, 2-Pin"
+			(at 237.49 67.9196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Jul-2002"
+			(at 231.902 60.2996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "Re-released for DXP Platform."
+			(at 231.902 60.2996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 231.902 60.2996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a11597a1-38b1-4d4c-bd85-a17b15fb40f0")
+		)
+		(pin "2"
+			(uuid "348b794e-806d-4ead-9139-9c58b80cd765")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "P3")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_3_Res_0603_adafruit.IntLib")
+		(at 226.06 69.1896 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "496c535d-9350-4552-badd-351bb415ba76")
+		(property "Reference" "R2"
+			(at 219.202 69.4436 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "R0603"
+			(at 226.06 69.1896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 226.06 69.1896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, ±1%, 0.100W"
+			(at 226.06 69.1896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "R0603-N.C.Ω"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-05-08"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "120Ω"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "NOTE" "Chip Res"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "N.A."
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 225.27 63.6016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f3d2ce8d-9456-410e-934f-fda3822dc65b")
+		)
+		(pin "1"
+			(uuid "4f10b57d-cd6c-4a93-8968-4682766a6769")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "R2")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_TJA1050DRG_adafruit.SCHLIB")
+		(at 182.88 74.2696 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4ef32a11-8d92-42a7-b20d-ef129025f985")
+		(property "Reference" "U1"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "TJA1050DRG"
+			(at 182.88 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "SOIC-8E"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAN Transiver"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NAME" ""
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SYMBOL" "TJA1050DRG"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DEVICE" "TJA1050DRG"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LCSC PART NAME" "TJA1050DRG"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART" "C19723770"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "HGC(深圳汉芯)"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART" "TJA1050DRG"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER FOOTPRINT" "SOP-8"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB PART CLASS" "Extended Part"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "https://atta.szlcsc.com/upload/public/pdf/source/20231229/9EC40A6172CAB0350BF7AF3421F4DEBF.pdf"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "LCSC"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ADD INTO BOM" "yes"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "CONVERT TO PCB" "yes"
+			(at 182.88 74.2696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "143b29fc-eec4-494c-8301-67a43802bb89")
+		)
+		(pin "2"
+			(uuid "e36d44a5-259b-4d8a-96b4-914898eb8ed2")
+		)
+		(pin "3"
+			(uuid "3ba9a537-c708-4a1f-ba3d-96fd52a61d39")
+		)
+		(pin "4"
+			(uuid "a077a90d-c6bd-4dc6-9011-5e0e08edd719")
+		)
+		(pin "5"
+			(uuid "015b2364-05e7-4124-ada9-08896eacfd07")
+		)
+		(pin "6"
+			(uuid "3f33cb2c-b53e-4e03-830f-6c495a959d8b")
+		)
+		(pin "7"
+			(uuid "c1761fad-8354-4a56-b30c-4365417c18f6")
+		)
+		(pin "8"
+			(uuid "e511e4c7-cfe5-4141-8faf-11169035e952")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "U1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 218.44 85.6996 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "55dcf970-5b6f-49f7-b894-9753ef9c8ee3")
+		(property "Reference" "#PWR?"
+			(at 218.44 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 218.44 81.8896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 218.44 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 218.44 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "37b35b43-04c9-4aa0-bdec-99b82d7a015d")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_Cap_0603_adafruit.IntLib")
+		(at 218.44 98.3996 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "570e2823-f4cb-4d94-88fe-7442950b50f9")
+		(property "Reference" "C5"
+			(at 214.63 93.3196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "C0603"
+			(at 218.44 98.3996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 98.3996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+			(at 218.44 98.3996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "C0603-N.C."
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-11-23"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100nF"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "VOLTS" "6.3V"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "20069060"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 216.154 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a1589554-7029-46ea-8531-70f62ae689c4")
+		)
+		(pin "2"
+			(uuid "5cf773d9-48f0-434b-9024-26f7e97ccb7a")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "C5")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 46.99 104.7496 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "59c78ccd-465d-4c76-8de5-ebc31642d248")
+		(property "Reference" "#PWR?"
+			(at 46.99 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 46.99 111.0996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 46.99 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "921adf20-5a8e-4bea-a3b9-347ac8d22f92")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 153.67 85.6996 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5e93ed20-c8b0-48bf-95bc-2678b1be40d5")
+		(property "Reference" "#PWR?"
+			(at 153.67 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 153.67 81.8896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 153.67 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 153.67 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 153.67 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "672af229-8c33-4b52-9ec9-e74a8022d650")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 208.28 86.9696 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "632d65fc-bb34-4ac1-b6c5-fd663ff520bc")
+		(property "Reference" "#PWR?"
+			(at 208.28 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 208.28 93.3196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "f2a27c0b-1735-4e68-9b36-2d7621093b37")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_MCP2515_adafruit.SCHLIB")
+		(at 91.44 61.5696 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "66cac76e-61ca-49d3-8f95-7df072daf156")
+		(property "Reference" "U2"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "MCP2515-I"
+			(at 91.44 102.2096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "SOIC-18_L11.6-W7.5-P1.27-LS10.3-BL"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAN Controller"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NAME" ""
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SYMBOL" "MCP2515-I"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DEVICE" "MCP2515-I"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "LCSC"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART" "C5250735"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Tokmas(托克马斯)"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART" "MCP2515-I"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB PART CLASS" "Extended Part"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LCSC PART NAME" "CAN芯片"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER FOOTPRINT" "TSSOP-20"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "https://atta.szlcsc.com/upload/public/pdf/source/20221108/54102364C5045B746FF767DA10992A5D.pdf"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ADD INTO BOM" "yes"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "CONVERT TO PCB" "yes"
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "TYPE" ""
+			(at 91.44 61.5696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "16"
+			(uuid "6e2eb712-34f3-46fa-aea6-bd00582ad673")
+		)
+		(pin "6"
+			(uuid "3c603c51-b3e0-4b73-9403-15a0fb8a52b0")
+		)
+		(pin "5"
+			(uuid "050a5933-a6e0-4413-ba14-75bee261e744")
+		)
+		(pin "4"
+			(uuid "194318a1-0240-4ef6-87e1-2fdaf786b0b4")
+		)
+		(pin "3"
+			(uuid "37b08b31-03e2-4fb9-ae38-c554895816ff")
+		)
+		(pin "2"
+			(uuid "26606d9a-02c0-45fd-83da-b0e78e67832b")
+		)
+		(pin "15"
+			(uuid "32147976-d59f-4537-81dc-9e7fb9f5ddb5")
+		)
+		(pin "14"
+			(uuid "aaec1ce6-741a-4497-8fd5-46a99b554d31")
+		)
+		(pin "13"
+			(uuid "dc118af9-f496-41ee-a1f7-06fa13c91d50")
+		)
+		(pin "8"
+			(uuid "776ddc3b-7059-4aca-abdc-0b3cfb59c83d")
+		)
+		(pin "7"
+			(uuid "aaea975a-f5eb-41eb-b026-387a39d05dc1")
+		)
+		(pin "1"
+			(uuid "06a0b9ad-e371-4bfc-a8aa-12b925c8c3ee")
+		)
+		(pin "12"
+			(uuid "bdd7b6a6-d20e-4efb-9656-f6be32387dfb")
+		)
+		(pin "11"
+			(uuid "ac7f53d5-912b-4e10-b7a9-6ba4a121d9ba")
+		)
+		(pin "10"
+			(uuid "2bdc2b2b-9006-45b6-ac3b-6255327fda9d")
+		)
+		(pin "9"
+			(uuid "54408aa1-bf7e-4367-9dad-92d8352defe6")
+		)
+		(pin "18"
+			(uuid "dbeea002-1a70-4999-8baa-9a93f055b755")
+		)
+		(pin "17"
+			(uuid "fa76f60c-3454-4806-894c-1cd5f8e86f53")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "U2")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_Cap_Tantalum_adafruit.IntLib")
+		(at 35.56 83.1596 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "736c491b-7a4c-4b3a-ab4c-8883e8b83417")
+		(property "Reference" "C1"
+			(at 29.972 85.1916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "10uF/16V"
+			(at 36.576 87.3506 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "tantalum  A"
+			(at 35.56 83.1596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 83.1596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SMD Tantalum Capacitor"
+			(at 35.56 83.1596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "74a03eb2-aad6-49a8-874e-f949789005e6")
+		)
+		(pin "2"
+			(uuid "6a8d434f-8eef-4b8b-8273-896999ab0549")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "C1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 208.28 84.4296 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a0f5dc8-f6fe-42cf-b81d-98ab59659544")
+		(property "Reference" "#PWR?"
+			(at 208.28 84.4296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 208.28 80.6196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 84.4296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 84.4296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 84.4296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "d07ee039-d551-4047-a7c8-9912314cbe1c")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 62.23 70.4596 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "807a7ce6-3b96-4373-a7ee-b02164c51e9d")
+		(property "Reference" "#PWR?"
+			(at 62.23 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 62.23 66.6496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 62.23 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "84310dc8-20ff-42b6-ade9-a61a62a385f5")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 173.99 86.9696 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "81bc1ad6-750c-4999-91b1-30d099a5933f")
+		(property "Reference" "#PWR?"
+			(at 173.99 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 173.99 93.3196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 86.9696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "fa485bb9-4177-4468-9fe1-033ba113e08d")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_LEDCHIP-LED0603_adafruit.IntLib")
+		(at 46.99 88.2396 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9a9fee75-b29b-4180-9fc0-08e22ba3817f")
+		(property "Reference" "POW"
+			(at 52.451 93.0906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "RED LED"
+			(at 52.705 92.8116 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "CHIPLED_0603"
+			(at 46.99 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SMD lamp beads"
+			(at 46.99 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "A"
+			(uuid "b7bca65c-e1e8-4b27-a347-093f7a316876")
+		)
+		(pin "C"
+			(uuid "faf4620b-d9dc-4e6a-a477-e9a208218cf8")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "POW")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_mirrored_Header 7_Miscellaneous Connectors.IntLib")
+		(at 161.29 106.0196 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1c552f9-26e7-4abd-86e3-551d01ac8566")
+		(property "Reference" "P1"
+			(at 161.29 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Header 7"
+			(at 161.29 108.5596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "HDR1X7"
+			(at 161.29 106.0196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 106.0196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Header, 7-Pin"
+			(at 161.29 106.0196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Jul-2002"
+			(at 155.702 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "Re-released for DXP Platform."
+			(at 155.702 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 155.702 85.6996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5a11e6db-23bb-40d7-8a18-a4fd4e7bd74c")
+		)
+		(pin "2"
+			(uuid "7d5e7f25-450f-4bc0-9ffe-33256288cc18")
+		)
+		(pin "3"
+			(uuid "c61e4edc-2e1d-4611-b499-630b81cecea0")
+		)
+		(pin "4"
+			(uuid "2b5c80c7-3eb7-41e7-952d-096a6806baa5")
+		)
+		(pin "5"
+			(uuid "eada87a6-24f4-477e-89c3-1aabd797aa6c")
+		)
+		(pin "6"
+			(uuid "28bd69fd-857c-4b01-b9cd-76c894521cf1")
+		)
+		(pin "7"
+			(uuid "6abc07fa-3c3b-4473-81a1-75dbe651c193")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "P1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_2_mirrored_Header 2_adafruit.IntLib")
+		(at 237.49 95.8596 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b43f761f-4575-4451-bc20-0dde94de337b")
+		(property "Reference" "P2"
+			(at 237.49 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Header 2"
+			(at 237.49 98.3996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "HDR1X2"
+			(at 237.49 95.8596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 95.8596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Header, 2-Pin"
+			(at 237.49 95.8596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Jul-2002"
+			(at 231.902 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "Re-released for DXP Platform."
+			(at 231.902 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 231.902 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8d9a3757-cfda-44f4-9003-97687c4e8a07")
+		)
+		(pin "2"
+			(uuid "99b3f74f-daac-41ed-b043-e236a63877ed")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "P2")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 128.27 92.0496 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c0499aa9-1be6-4970-8b6b-a6a21a26f344")
+		(property "Reference" "#PWR?"
+			(at 128.27 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 128.27 88.2396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 128.27 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 92.0496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "f92941c0-6643-410f-9667-c0758bbf83cb")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:VCC_BAR")
+		(at 46.99 70.4596 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c34ebc26-d47e-4bee-a239-c651e6c4f83d")
+		(property "Reference" "#PWR?"
+			(at 46.99 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 46.99 66.6496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 46.99 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 70.4596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "d76d2d19-af54-4670-8dce-b08a62f43825")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_0_Res_0603_adafruit.IntLib")
+		(at 76.2 79.3496 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec00250c-3630-4c41-852b-14f1c6fb955a")
+		(property "Reference" "R3"
+			(at 70.104 78.8416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 76.962 82.9056 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "R0603"
+			(at 76.2 79.3496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 79.3496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, ±1%, 0.100W"
+			(at 76.2 79.3496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "R0603-N.C.Ω"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-05-08"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10kΩ"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "NOTE" "Chip Res"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "N.A."
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 74.93 75.5396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "58824e7b-1617-48e0-bd99-8e5cb464d44b")
+		)
+		(pin "1"
+			(uuid "e6f658df-f9c5-4223-8098-0ef20484f803")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "R3")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_3_Cap_0603_adafruit.IntLib")
+		(at 74.295 102.2096 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f45d56e5-6142-45f7-a943-a0d4e11b8c53")
+		(property "Reference" "C4"
+			(at 65.786 101.7016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "C0603"
+			(at 74.295 102.2096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 74.295 102.2096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor, X5R, ±10%, 6.3V"
+			(at 74.295 102.2096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "C0603-N.C."
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-11-23"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "22pF"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "VOLTS" "6.3V"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "20069060"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 66.167 99.9236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0b9a610b-ee79-4637-a2ef-e4bab80bb4bb")
+		)
+		(pin "2"
+			(uuid "f8c9b2a7-b392-4d94-b861-0345e1a91d09")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "C4")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:root_1_Res_0603_adafruit.IntLib")
+		(at 46.99 78.0796 0)
+		(unit 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f90aec4b-3c73-4288-9ce6-9a7873bf5143")
+		(property "Reference" "R1"
+			(at 43.18 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "${ALTIUM_VALUE}"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "R0603"
+			(at 46.99 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, ±1%, 0.100W"
+			(at 46.99 78.0796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PART NUMBER" "R0603-N.C.Ω"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "N.A."
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "N.A."
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "DATASHEET" "*"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT DOC" "0603"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "LATESTREVISIONDATE" "2009-05-08"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PIN COUNT" "2"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Nordic Semiconductor"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHED" "2009-05-08"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "1kΩ"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "NOTE" "Chip Res"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "*"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER" "*"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE SUPPLIER" "*"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "2ND SOURCE PART NUMBER" "*"
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR NOCA" "N.A."
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ARTIKKELNR SIMPRO" "N.A."
+			(at 46.207 72.4916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0c68ca84-9604-4133-9d25-dc4083cc5ff7")
+		)
+		(pin "1"
+			(uuid "cb05ad7b-eabc-42d5-9bee-f6d495468a17")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "R1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CAN Integration-altium-import:GND_POWER_GROUND")
+		(at 35.56 104.7496 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fb183207-b408-422d-bc02-5d3a2081eab7")
+		(property "Reference" "#PWR?"
+			(at 35.56 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 35.56 111.0996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 35.56 104.7496 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "814aeff3-f455-4712-b0e8-ef65400525ef")
+		)
+		(instances
+			(project ""
+				(path "/5a977291-655d-4953-aea5-c3a0e1b496a1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "#")
+		)
+	)
+	(embedded_fonts no)
+)
