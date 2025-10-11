@@ -43,7 +43,7 @@ namespace BajaWildcatRacing
                 dashSubsystem.sendIndicatorLightState();
 
                 dashSubsystem.sendRPM(drivetrainSubsystem.getEngineRPM());
-                dashSubsystem.sendSpeed(drivetrainSubsystem.getCarSpeedMPH());
+                // dashSubsystem.sendSpeed(drivetrainSubsystem.getFrontRightRPM());
 
                 //Convert RPM to MPH with magic numbers
                 // float frontRightMPH = drivetrainSubsystem.getFrontRightRPM() * 0.0647f;
