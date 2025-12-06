@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "CANTProtocol",
+    "version": "0.0.2",
+    "dependencies": {
+        "coryjfowler/mcp_can": "1.5.1"
+    },
+    "frameworks": "arduino",
+    "platforms": "*"
+}

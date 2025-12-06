@@ -1,11 +1,11 @@
-# 2024-2025-Firmware
+# 2025-2026-Firmware
 
-The software behind the electrical system in Baja Wildcat Racing.
+The software behind the electrical & telemetry system in Baja Wildcat Racing.
 
-This is the BAJA Wildcat Racing team for school year 2024-2025.
+This is from the 2025-2026 Baja SAE season.
 
 Check out the 'doc' (documentation) folder in order to get started!
 
-Electrical Lead: Dylan Correa
+Electrical Lead: Julian Pimienta 
 
-Webmaster/Software Lead: Matthew Larson
+Software Lead: Karsten Yin
